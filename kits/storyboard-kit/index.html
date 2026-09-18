@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Storyboard kit — Week 4 | Interaction Design</title>
+<meta name="description" content="Printable Week 4 kit: the notation key, blank beat sheets and empty storyboard frames with annotation columns.">
+<style>
+:root{ --ink:#16181d; --ink-soft:#4a4f5a; --rule:#c8ccd4; --paper:#fff; --tint:#f2f4f7; }
+@media (prefers-color-scheme: dark){
+  :root{ --ink:#e9ecf1; --ink-soft:#aeb5c0; --rule:#454b56; --paper:#15171b; --tint:#1e2128; }
+}
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{
+  margin:0; padding:2rem 1.25rem 4rem; background:var(--paper); color:var(--ink);
+  font:16px/1.55 Georgia, "Iowan Old Style", "Times New Roman", serif;
+}
+.sheet{ max-width:52rem; margin:0 auto; }
+h1,h2,h3,.kicker,th,.frame__label,.legend b{
+  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+h1{ font-size:1.7rem; line-height:1.2; margin:0 0 .3rem; }
+.kicker{ font-size:.78rem; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 .6rem; }
+.standfirst{ color:var(--ink-soft); margin:0 0 2rem; }
+h2{ font-size:1.15rem; margin:2.4rem 0 .6rem; padding-bottom:.3rem; border-bottom:2px solid var(--ink); }
+p{ margin:0 0 .8rem; }
+table{ width:100%; border-collapse:collapse; margin:0 0 1.2rem; font-size:.88rem; }
+th,td{ border:1px solid var(--rule); padding:.5rem; text-align:left; vertical-align:top; }
+th{ background:var(--tint); font-size:.78rem; }
+.beats td{ height:3.1rem; }
+.beats th:first-child{ width:2.2rem; }
+.legend{ list-style:none; padding:0; margin:0 0 1.4rem; }
+.legend li{ display:flex; gap:.9rem; align-items:flex-start; margin:0 0 .6rem; font-size:.92rem; }
+.legend svg{ flex:0 0 62px; height:34px; color:inherit; }
+.legend b{ font-size:.85rem; }
+.frames{ display:grid; grid-template-columns:repeat(2,1fr); gap:1.1rem; }
+.frame{ border:1px solid var(--rule); }
+.frame__label{
+  display:flex; justify-content:space-between; gap:.5rem;
+  font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft);
+  padding:.35rem .5rem; border-bottom:1px solid var(--rule); background:var(--tint);
+}
+.frame__stage{ height:11rem; border-bottom:1px solid var(--rule); }
+.frame__notes{ font-size:.75rem; }
+.frame__notes div{ padding:.3rem .5rem; border-bottom:1px solid var(--rule); min-height:2.1rem; color:var(--ink-soft); }
+.frame__notes div:last-child{ border-bottom:0; }
+.page-break{ break-before:page; }
+.foot{ margin-top:3rem; padding-top:.8rem; border-top:1px solid var(--rule); font-size:.8rem; color:var(--ink-soft); }
+@media (max-width:640px){ .frames{ grid-template-columns:1fr; } }
+@media print{
+  :root{ --ink:#000; --ink-soft:#333; --rule:#999; --paper:#fff; --tint:#f4f4f4; }
+  body{ padding:0; font-size:11pt; }
+  h2{ break-after:avoid; }
+  .frame{ break-inside:avoid; }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<p class="kicker">Interaction Design &middot; Week 4</p>
+<h1>Storyboard kit</h1>
+<p class="standfirst">
+  Print a few of these. Pages two onwards are blank frames &mdash; you will want more than four.
+</p>
+
+<h2>The notation</h2>
+<ul class="legend">
+  <li>
+    <svg viewBox="0 0 62 34" role="img" aria-label="A solid rectangle"><rect x="6" y="4" width="50" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+    <span><b>The viewport</b> &mdash; what is on screen at this moment.</span>
+  </li>
+  <li>
+    <svg viewBox="0 0 62 34" role="img" aria-label="A hatched rectangle"><defs><pattern id="h" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="currentColor" stroke-width="1.2"/></pattern></defs><rect x="6" y="4" width="50" height="26" rx="3" fill="url(#h)" stroke="currentColor" stroke-width="1.5" opacity=".85"/></svg>
+    <span><b>Held in place</b> while the reader scrolls &rarr; <code>position: sticky</code> or a pin.</span>
+  </li>
+  <li>
+    <svg viewBox="0 0 62 34" role="img" aria-label="A single arrow"><defs><marker id="m1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs><line x1="10" y1="26" x2="50" y2="9" stroke="currentColor" stroke-width="1.8" marker-end="url(#m1)"/></svg>
+    <span><b>Moves once</b>, in this direction, when triggered &rarr; <code>gsap.from()</code>.</span>
+  </li>
+  <li>
+    <svg viewBox="0 0 62 34" role="img" aria-label="A double-headed arrow on a bar"><defs><marker id="m2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker><marker id="m3" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M10 0 L0 5 L10 10 z" fill="currentColor"/></marker></defs><line x1="8" y1="24" x2="54" y2="24" stroke="currentColor" stroke-width="1.2"/><line x1="14" y1="13" x2="48" y2="13" stroke="currentColor" stroke-width="1.8" marker-end="url(#m2)" marker-start="url(#m3)"/></svg>
+    <span><b>Tied to the scrollbar</b>; reverses on the way back up &rarr; <code>scrub</code>, Week&nbsp;7.</span>
+  </li>
+  <li>
+    <svg viewBox="0 0 62 34" role="img" aria-label="A dotted line across a rectangle"><rect x="6" y="4" width="50" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="22" x2="56" y2="22" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 3"/></svg>
+    <span><b>The trigger point</b> &mdash; where in the viewport this fires &rarr; <code>start: 'top 80%'</code>.</span>
+  </li>
+  <li>
+    <svg viewBox="0 0 62 34" role="img" aria-label="A circled pointer"><circle cx="31" cy="17" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M27 10 L27 23 L30.5 19.5 L33 24 L35 23 L32.5 18.5 L37 18 z" fill="currentColor"/></svg>
+    <span><b>The reader can act here</b> &mdash; your designed moment of interaction.</span>
+  </li>
+  <li>
+    <svg viewBox="0 0 62 34" role="img" aria-label="A small box in the corner of a rectangle"><rect x="6" y="4" width="50" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="40" y="18" width="14" height="10" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 2"/></svg>
+    <span><b>The reduced-motion version</b> of this frame &rarr; <code>gsap.matchMedia()</code>.</span>
+  </li>
+</ul>
+
+<h2>Beat sheet</h2>
+<p>Write this before you draw anything. One row per section. Be stingy with &ldquo;what moves&rdquo;.</p>
+<table class="beats">
+  <thead>
+    <tr>
+      <th>#</th><th>What the reader sees</th><th>What they now know</th><th>What moves</th><th>What they can do</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>2</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>3</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>4</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>5</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>6</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>7</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>8</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>9</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>10</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>11</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>12</td><td></td><td></td><td></td><td></td></tr>
+  </tbody>
+</table>
+<p><strong>The one-sentence test:</strong> &ldquo;This section exists so the reader understands, feels or notices ______.&rdquo; If you need the word &ldquo;and&rdquo;, it is two sections.</p>
+
+<div class="page-break"></div>
+
+<h2>Storyboard frames</h2>
+<p>One per section. Draw the frame, mark what is held, mark what moves, then fill the notes.</p>
+
+<div class="frames">
+  <div class="frame">
+    <p class="frame__label"><span>Section</span><span>Phone / desktop</span></p>
+    <div class="frame__stage"></div>
+    <div class="frame__notes">
+      <div>Trigger</div><div>Movement</div><div>How it feels</div><div>Reader can</div><div>Reduced motion</div>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="frame__label"><span>Section</span><span>Phone / desktop</span></p>
+    <div class="frame__stage"></div>
+    <div class="frame__notes">
+      <div>Trigger</div><div>Movement</div><div>How it feels</div><div>Reader can</div><div>Reduced motion</div>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="frame__label"><span>Section</span><span>Phone / desktop</span></p>
+    <div class="frame__stage"></div>
+    <div class="frame__notes">
+      <div>Trigger</div><div>Movement</div><div>How it feels</div><div>Reader can</div><div>Reduced motion</div>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="frame__label"><span>Section</span><span>Phone / desktop</span></p>
+    <div class="frame__stage"></div>
+    <div class="frame__notes">
+      <div>Trigger</div><div>Movement</div><div>How it feels</div><div>Reader can</div><div>Reduced motion</div>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="frame__label"><span>Section</span><span>Phone / desktop</span></p>
+    <div class="frame__stage"></div>
+    <div class="frame__notes">
+      <div>Trigger</div><div>Movement</div><div>How it feels</div><div>Reader can</div><div>Reduced motion</div>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="frame__label"><span>Section</span><span>Phone / desktop</span></p>
+    <div class="frame__stage"></div>
+    <div class="frame__notes">
+      <div>Trigger</div><div>Movement</div><div>How it feels</div><div>Reader can</div><div>Reduced motion</div>
+    </div>
+  </div>
+</div>
+
+<p class="foot">
+  Interaction Design &middot; Level 5 &middot; BSc (Hons) Content Creation &middot; Leeds Beckett
+  University. Ant Pearson, a.m.pearson@leedsbeckett.ac.uk
+</p>
+
+</div>
+</body>
+</html>

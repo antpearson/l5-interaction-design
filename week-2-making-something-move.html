@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 2 — Making something move | Interaction Design</title>
+<meta name="description" content="Week 2: re-levelling layout with Flexbox, linking GSAP, and your first scroll-driven fade and pin. Everyone leaves having made something move.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<link rel="stylesheet" href="tutorial.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="masthead__week">Week 2</p>
+    <h1>Making something move</h1>
+    <p class="masthead__sub">
+      Flexbox where you actually need it, GSAP linked and running, and your first two
+      scroll-driven effects on your own page. Everyone leaves today having made something move.
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+<main id="main" class="prose">
+
+<p class="lede">
+  Last week you built a page and put it on the internet. Today you make it behave.
+</p>
+
+<p>
+  This is the week the module stops being a refresher. By the end of the session your own page
+  will fade its chapters in as the reader arrives at them, and hold a scene still while text
+  passes over it &mdash; the two effects that most of the scrollytelling canon is built from.
+</p>
+
+<p>
+  We get there by way of a Flexbox recap, because a scene that falls apart when the window
+  resizes will only look worse once it moves. Layout first, then behaviour. That order matters
+  more than it sounds.
+</p>
+
+<div class="box box--note">
+  <p class="box__title">Before we start</p>
+  <p>
+    You should have committed and synced your Week&nbsp;1 work, and have a live GitHub Pages URL.
+    We open by putting a few of those on the projector. If yours is not working, sit near the front
+    &mdash; we will fix it in the first ten minutes rather than leave you behind.
+  </p>
+</div>
+
+<nav class="toc" aria-labelledby="toc-heading">
+  <h2 id="toc-heading">On this page</h2>
+  <ol>
+    <li><a href="#glance"><span>&mdash;</span> Session at a glance</a></li>
+    <li><a href="#part1"><span>1.</span> Layout before behaviour</a></li>
+    <li><a href="#part2"><span>2.</span> Linking GSAP</a></li>
+    <li><a href="#part3"><span>3.</span> The tween vocabulary</a></li>
+    <li><a href="#part4"><span>4.</span> Your first ScrollTrigger</a></li>
+    <li><a href="#part5"><span>5.</span> Pinning a scene</a></li>
+    <li><a href="#part6"><span>6.</span> Reduced motion, done properly</a></li>
+    <li><a href="#part7"><span>7.</span> What this thing can do</a></li>
+    <li><a href="#directed"><span>&mdash;</span> Your directed task</a></li>
+    <li><a href="#stuck"><span>&mdash;</span> If you get stuck</a></li>
+    <li><a href="#resources"><span>&mdash;</span> Resources</a></li>
+  </ol>
+</nav>
+
+<h2 id="glance">Session at a glance</h2>
+
+<ol class="runsheet">
+  <li>Where everyone got to &mdash; live URLs on the projector, and fixes</li>
+  <li>Layout before behaviour &mdash; the Flexbox recap, on a real scene</li>
+  <li><strong>Task 1</strong> &mdash; link GSAP and make one thing move</li>
+  <li>The tween vocabulary &mdash; <code>to</code>, <code>from</code>, <code>stagger</code>, ease</li>
+</ol>
+
+<p class="runsheet-break">Break</p>
+
+<ol class="runsheet" start="5">
+  <li><strong>Task 2</strong> &mdash; your first ScrollTrigger: chapters fade in as they arrive</li>
+  <li><strong>Task 3</strong> &mdash; pin your scene and make it notice the reader</li>
+  <li>Reduced motion, done properly</li>
+  <li>Capability screening &mdash; what this thing can actually do</li>
+  <li>Your directed task for Week&nbsp;3</li>
+</ol>
+
+<div class="box box--do">
+  <p class="box__title">The demo files</p>
+  <p>
+    Everything I show today is in the <code>demos</code> folder on the module site &mdash; seven
+    short pages, numbered in the order we use them. Open that folder in VS&nbsp;Code and run it with
+    <strong>Live Server</strong>. Do not double-click the files: GSAP loads from a CDN and needs a
+    real web address to do it.
+  </p>
+</div>
+
+
+<!-- ==================================================================== -->
+<div class="part" id="part1">
+  <p class="part__label">Part one</p>
+  <h2>Layout before behaviour</h2>
+</div>
+
+<p>
+  Open <code>demos/01-flexbox.html</code>. It shows the same chapter markup twice: once as plain
+  block elements, once with Flexbox. Identical HTML, one extra class.
+</p>
+
+<p>
+  You met Flexbox last year. The recap is here because scrollytelling scenes are the case where
+  it earns its keep: a chapter is almost always some text beside a picture, and it has to survive
+  being 1400 pixels wide on the studio monitor and 390 on a phone.
+</p>
+
+<p class="filename">css/style.css</p>
+<pre><code>.chapter--flex {
+  display: flex;        /* children sit in a row               */
+  flex-wrap: wrap;      /* ...and drop to a new line when tight */
+  gap: 2rem;            /* space between them                   */
+  align-items: center;  /* line them up vertically              */
+}
+
+.chapter--flex .chapter__text   { flex: 1 1 20rem; }
+.chapter--flex .chapter__figure { flex: 1 1 24rem; }</code></pre>
+
+<p>
+  The line worth understanding is <code>flex: 1 1 20rem</code>. It is three values at once:
+  <em>may grow</em>, <em>may shrink</em>, <em>aim for 20rem</em>. That third number is what decides
+  when the layout wraps &mdash; not a media query. Two children asking for 20rem and 24rem with a
+  2rem gap need about 46rem of room; below that, they stack. You get responsive behaviour without
+  writing a single breakpoint.
+</p>
+
+<figure class="video">
+  <div class="video__frame">
+    <a class="video__facade" data-video="u044iM9xsWU" href="https://www.youtube.com/watch?v=u044iM9xsWU">
+      <img src="https://i.ytimg.com/vi/u044iM9xsWU/hqdefault.jpg" alt="" width="480" height="360" loading="lazy">
+      <span class="video__play"><svg viewBox="0 0 68 48" width="68" height="48" aria-hidden="true" focusable="false"><path class="video__play-bg" d="M66.52 7.74a8 8 0 0 0-5.63-5.67C56.4.86 34 .86 34 .86s-22.4 0-26.89 1.21a8 8 0 0 0-5.63 5.67A83.7 83.7 0 0 0 .5 24a83.7 83.7 0 0 0 .98 16.26 8 8 0 0 0 5.63 5.67C11.6 47.14 34 47.14 34 47.14s22.4 0 26.89-1.21a8 8 0 0 0 5.63-5.67A83.7 83.7 0 0 0 67.5 24a83.7 83.7 0 0 0-.98-16.26z"/><path d="M27 34V14l18 10z" fill="#fff"/></svg></span>
+      <span class="visually-hidden">Play &ldquo;Learn flexbox the easy way&rdquo; on YouTube</span>
+    </a>
+  </div>
+  <figcaption class="video__caption">
+    <strong>Learn flexbox the easy way</strong> &mdash; Kevin Powell. If last year's Flexbox never
+    quite clicked, this is the one that usually does it.
+    <a href="https://www.youtube.com/watch?v=u044iM9xsWU">Watch on YouTube</a>
+  </figcaption>
+</figure>
+
+<div class="activity">
+  <p class="activity__kicker">10 minutes &middot; on your own page</p>
+  <h3>Re-level your own chapters</h3>
+  <p>
+    Your starter already has <code>.chapter--figure</code> doing this job with Grid rather than
+    Flexbox &mdash; open <code>css/style.css</code> and find it. Either is correct. What matters is
+    that you can read the rule and say what each line does.
+  </p>
+  <ul class="checklist">
+    <li>Find the layout rule for your chapters and read it out loud to the person next to you.</li>
+    <li>Change one value &mdash; the gap, the wrap width &mdash; and watch what happens.</li>
+    <li>Drag your window from full width to phone width. Nothing should overflow sideways.</li>
+  </ul>
+</div>
+
+
+<!-- ==================================================================== -->
+<div class="part" id="part2">
+  <p class="part__label">Part two &middot; Task 1</p>
+  <h2>Linking GSAP</h2>
+</div>
+
+<p>
+  <strong>GSAP</strong> is the animation library this module runs on. It is what sits underneath
+  Webflow's interaction tooling, and since 2025 it has been free for commercial use, plugins
+  included. It is the industry-standard tool for this genre, and you are about to use the real one.
+</p>
+
+<p>
+  Linking it is two script tags. Open <code>demos/02-link-gsap.html</code> and look at the bottom
+  of the file:
+</p>
+
+<p class="filename">index.html — just before &lt;/body&gt;</p>
+<pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"&gt;&lt;/script&gt;
+&lt;script src="js/main.js"&gt;&lt;/script&gt;</code></pre>
+
+<p>
+  Three things to notice. <strong>Order matters</strong> &mdash; the library has to arrive before
+  your code tries to use it, so your own script goes last. <strong>ScrollTrigger is separate</strong>
+  from GSAP itself; it is a plugin, and it needs GSAP loaded first. And we <strong>pin the
+  version</strong> to <code>3.15.0</code> rather than asking for &ldquo;latest&rdquo;, so the code
+  you write today still behaves identically in January when you hand in.
+</p>
+
+<p>Then, at the top of your own script, one line tells GSAP the plugin exists:</p>
+
+<p class="filename">js/main.js</p>
+<pre><code>gsap.registerPlugin(ScrollTrigger);
+
+console.log('GSAP', gsap.version, '— main.js connected');</code></pre>
+
+<div class="box box--warn">
+  <p class="box__title">Live Server, not double-click</p>
+  <p>
+    From today, always open your project through <strong>Live Server</strong>. A CDN request from a
+    <code>file://</code> page is unreliable, and you will spend twenty minutes debugging a problem
+    that does not exist. Right-click <code>index.html</code> &rarr;
+    <strong>Open with Live Server</strong>.
+  </p>
+</div>
+
+<div class="activity">
+  <p class="activity__kicker">Task 1 &middot; 15 minutes &middot; on your own page</p>
+  <h3>Link GSAP and make one thing move</h3>
+  <ol class="steps">
+    <li>Add the two CDN script tags to your <code>index.html</code>, above your existing <code>js/main.js</code> tag. Remove <code>defer</code> from your own script tag if it is there.</li>
+    <li>At the top of <code>main.js</code>, add <code>gsap.registerPlugin(ScrollTrigger);</code></li>
+    <li>Open the Console (<kbd>&#8997;&#8984;J</kbd>). You should see the version number print. If you see <code>gsap is not defined</code>, your script order is wrong.</li>
+    <li>
+      <p>Now make something move. Anything:</p>
+      <pre><code>gsap.from('.cover__title', { y: 60, opacity: 0, duration: 1, ease: 'power2.out' });</code></pre>
+    </li>
+    <li>Reload. Your headline should rise into place.</li>
+  </ol>
+  <div class="box box--do">
+    <p class="box__title">Commit it</p>
+    <p>That is a working GSAP install. Commit before you change anything else, so you have a point to come back to.</p>
+  </div>
+</div>
+
+
+<!-- ==================================================================== -->
+<div class="part" id="part3">
+  <p class="part__label">Part three</p>
+  <h2>The tween vocabulary</h2>
+</div>
+
+<p>
+  A <strong>tween</strong> is one animation: these properties, over this long, with this easing.
+  Open <code>demos/03-tween-vocabulary.html</code>. There are only four things to learn, and every
+  effect in this module is built from them.
+</p>
+
+<div class="table-scroll">
+<table>
+  <caption>The whole vocabulary. Press R on the demo page to replay.</caption>
+  <thead>
+    <tr><th scope="col">Method</th><th scope="col">What it does</th><th scope="col">Use it when</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>gsap.to()</code></td>
+      <td>From where it is now, to the values you name.</td>
+      <td>Something leaves, or changes from its resting state.</td>
+    </tr>
+    <tr>
+      <td><code>gsap.from()</code></td>
+      <td>From the values you name, to where your CSS already puts it.</td>
+      <td><strong>Entrances.</strong> This is the one you want most of the time &mdash; see below.</td>
+    </tr>
+    <tr>
+      <td><code>gsap.fromTo()</code></td>
+      <td>You name both ends.</td>
+      <td>Neither end is the CSS state.</td>
+    </tr>
+    <tr>
+      <td><code>stagger</code></td>
+      <td>One tween, many targets, offset in time.</td>
+      <td>Lists, grids, anything that should arrive in sequence.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box box--warn">
+  <p class="box__title">Why <code>from()</code> and not <code>to()</code> — this is a marked criterion</p>
+  <p>
+    The obvious way to fade something in is to set <code>opacity: 0</code> in your CSS and animate
+    up to 1. Do not do this. If JavaScript fails to load &mdash; blocked script, CDN down, a marker
+    with an aggressive network &mdash; your reader gets a blank page.
+  </p>
+  <p>
+    With <code>gsap.from()</code> the finished state is whatever your CSS already says, so the
+    no-JavaScript version of your page is the <em>readable</em> one. The brief requires a
+    no-JavaScript baseline, and this single decision is most of it.
+  </p>
+</div>
+
+<p>
+  <strong>Ease is where the character lives.</strong> <code>power2.out</code> starts fast and
+  settles &mdash; it feels like something arriving and coming to rest. <code>power2.in</code> does
+  the reverse and feels like something leaving. <code>none</code> is a constant speed and feels
+  mechanical, which is occasionally exactly right. Most of the difference between motion that feels
+  designed and motion that feels like a PowerPoint transition is easing.
+</p>
+
+<figure class="video">
+  <div class="video__frame">
+    <a class="video__facade" data-video="m6PDUIF24v4" href="https://www.youtube.com/watch?v=m6PDUIF24v4">
+      <img src="https://i.ytimg.com/vi/m6PDUIF24v4/hqdefault.jpg" alt="" width="480" height="360" loading="lazy">
+      <span class="video__play"><svg viewBox="0 0 68 48" width="68" height="48" aria-hidden="true" focusable="false"><path class="video__play-bg" d="M66.52 7.74a8 8 0 0 0-5.63-5.67C56.4.86 34 .86 34 .86s-22.4 0-26.89 1.21a8 8 0 0 0-5.63 5.67A83.7 83.7 0 0 0 .5 24a83.7 83.7 0 0 0 .98 16.26 8 8 0 0 0 5.63 5.67C11.6 47.14 34 47.14 34 47.14s22.4 0 26.89-1.21a8 8 0 0 0 5.63-5.67A83.7 83.7 0 0 0 67.5 24a83.7 83.7 0 0 0-.98-16.26z"/><path d="M27 34V14l18 10z" fill="#fff"/></svg></span>
+      <span class="visually-hidden">Play &ldquo;Learn GSAP In 23 Minutes&rdquo; on YouTube</span>
+    </a>
+  </div>
+  <figcaption class="video__caption">
+    <strong>Learn GSAP in 23 minutes</strong> &mdash; Web Dev Simplified. A tidy tour of tweens and
+    timelines. Watch it before Week&nbsp;7 if nothing else.
+    <a href="https://www.youtube.com/watch?v=m6PDUIF24v4">Watch on YouTube</a>
+  </figcaption>
+</figure>
+
+
+<!-- ==================================================================== -->
+<hr>
+<p class="break">Break &middot; 15 minutes</p>
+<hr>
+
+
+<!-- ==================================================================== -->
+<div class="part" id="part4">
+  <p class="part__label">Part four &middot; Task 2</p>
+  <h2>Your first ScrollTrigger</h2>
+</div>
+
+<p>
+  Everything so far has run the moment the page loaded. <strong>ScrollTrigger</strong> is the piece
+  that ties a tween to the scrollbar. Open <code>demos/04-scroll-fade.html</code> and scroll it
+  slowly.
+</p>
+
+<p>
+  You will see green and red lines on the right-hand side. Those are <strong>markers</strong> &mdash;
+  development tooling that shows exactly where each trigger starts and ends. They are the single
+  most useful thing about learning this library, and you turn them off before anyone else sees your
+  work.
+</p>
+
+<p class="filename">js/main.js</p>
+<pre><code>gsap.utils.toArray('.chapter__text').forEach(function (el) {
+  gsap.from(el, {
+    opacity: 0,
+    y: 40,
+    duration: 0.8,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 80%',
+      markers: true          // DELETE BEFORE YOU PUBLISH
+    }
+  });
+});</code></pre>
+
+<p>
+  <code>start: 'top 80%'</code> reads as two positions: <em>the top of the trigger element</em>
+  meets <em>80% of the way down the viewport</em>. So the animation fires when the element is
+  a fifth of the way up the screen &mdash; just after the reader would have noticed it. Change
+  <code>80%</code> to <code>50%</code> and it fires much later. This one string is most of your
+  pacing control.
+</p>
+
+<p>
+  <code>gsap.utils.toArray()</code> grabs every matching element and <code>forEach</code> gives
+  each one its own trigger. Without that loop you would get one trigger watching one element.
+</p>
+
+<div class="activity">
+  <p class="activity__kicker">Task 2 &middot; 20 minutes &middot; on your own page</p>
+  <h3>Fade your chapters in</h3>
+  <ol class="steps">
+    <li>Add the block above to your <code>main.js</code>, with <code>markers: true</code> on.</li>
+    <li>Scroll your page. Watch the markers pass the trigger lines.</li>
+    <li>Change <code>start</code> to <code>'top 50%'</code>. Scroll again. Feel the difference in pacing.</li>
+    <li>Put it back to something you actually like.</li>
+    <li>Try <code>stagger</code> on a group &mdash; your credits list is a good candidate.</li>
+    <li>Turn <code>markers</code> off. Commit.</li>
+  </ol>
+  <div class="box box--note">
+    <p class="box__title">If nothing happens</p>
+    <p>
+      Nine times in ten it is a selector that matches nothing. Type
+      <code>document.querySelectorAll('.chapter__text').length</code> into the Console. If it says
+      <code>0</code>, your class name is wrong.
+    </p>
+  </div>
+</div>
+
+
+<!-- ==================================================================== -->
+<div class="part" id="part5">
+  <p class="part__label">Part five &middot; Task 3</p>
+  <h2>Pinning a scene</h2>
+</div>
+
+<p>
+  Open <code>demos/05-pin.html</code>. A picture holds still in the middle of the screen while
+  three captions scroll over it, and the picture changes as each caption arrives. That is the single
+  most recognisable move in the whole genre.
+</p>
+
+<div class="box box--note">
+  <p class="box__title">You already had half of this in Week 1</p>
+  <p>
+    Your starter's scene is pinned by CSS <code>position: sticky</code> alone &mdash; no JavaScript
+    involved. Scroll to it now and you will see it hold. What we are adding today is not the
+    pinning; it is <strong>knowing which step the reader has reached</strong>, so the scene can
+    respond. That is the difference between a picture that sits still and a scene that reacts to
+    the reader &mdash; and it is the difference between motion design and interaction design that
+    the brief is asking you for.
+  </p>
+</div>
+
+<p class="filename">js/main.js</p>
+<pre><code>gsap.utils.toArray('.step').forEach(function (step, i) {
+  ScrollTrigger.create({
+    trigger: step,
+    start: 'top 65%',
+    end: 'bottom 65%',
+    onEnter:     function () { showStep(i); },
+    onEnterBack: function () { showStep(i); }
+  });
+});</code></pre>
+
+<p>
+  Note there is no animation in that block at all. <code>ScrollTrigger.create()</code> just
+  <em>watches</em> and calls your function. <code>onEnter</code> fires scrolling down;
+  <code>onEnterBack</code> fires scrolling back up &mdash; you need both, or your scene breaks for
+  anyone who scrolls backwards, which is everyone.
+</p>
+
+<div class="activity">
+  <p class="activity__kicker">Task 3 &middot; 20 minutes &middot; on your own page</p>
+  <h3>Make your scene notice the reader</h3>
+  <ol class="steps">
+    <li>Add the watcher block to <code>main.js</code>.</li>
+    <li>Write a <code>showStep(i)</code> function. Start with <code>console.log('step', i)</code> and confirm it fires as you scroll.</li>
+    <li>Now make it do something visible. Easiest wins: change the figure's caption text, or add a class that highlights the active step.</li>
+    <li>Scroll back up. Check it still works in reverse.</li>
+    <li>Commit and sync. Check your live URL updates.</li>
+  </ol>
+</div>
+
+
+<!-- ==================================================================== -->
+<div class="part" id="part6">
+  <p class="part__label">Part six</p>
+  <h2>Reduced motion, done properly</h2>
+</div>
+
+<p>
+  Some people are made genuinely unwell by movement on screen &mdash; nausea, vertigo, migraine.
+  The operating system lets them say so, and your page has to listen. Week&nbsp;1 handled this in
+  CSS. Now that you are animating in JavaScript, you need it there too.
+</p>
+
+<p>
+  Open <code>demos/07-reduced-motion.html</code>, then turn on <strong>System Settings &rarr;
+  Accessibility &rarr; Display &rarr; Reduce motion</strong> and reload it.
+</p>
+
+<p class="filename">js/main.js</p>
+<pre><code>var mm = gsap.matchMedia();
+
+mm.add('(prefers-reduced-motion: no-preference)', function () {
+  // every tween and ScrollTrigger goes in here
+});
+
+mm.add('(prefers-reduced-motion: reduce)', function () {
+  // deliberately empty — the page is already correct without us
+});</code></pre>
+
+<p>
+  <code>gsap.matchMedia()</code> runs the function when the query matches and cleanly reverts
+  everything inside it when it stops matching. No manual teardown, no leftover inline styles stuck
+  at <code>opacity: 0</code>.
+</p>
+
+<p>
+  This is why <code>gsap.from()</code> mattered earlier. Because your finished state lives in the
+  CSS, &ldquo;skip the animation&rdquo; and &ldquo;show the content&rdquo; are the same thing. The
+  accessible version costs you nothing except remembering to wrap your code.
+</p>
+
+<div class="box box--do">
+  <p class="box__title">Do this now, not in Week 10</p>
+  <p>
+    Wrap today's two effects in <code>matchMedia</code> before you leave. It takes two minutes now
+    and it is genuinely miserable to retrofit across a finished piece. There is an accessibility
+    review in Week&nbsp;10 and this is the first thing it looks at.
+  </p>
+</div>
+
+
+<!-- ==================================================================== -->
+<div class="part" id="part7">
+  <p class="part__label">Part seven</p>
+  <h2>What this thing can do</h2>
+</div>
+
+<p>
+  The last half hour is a screening, and it has a purpose: you pitch a story topic next week, and
+  it helps to know what is actually buildable before you commit to an idea.
+</p>
+
+<p>
+  We look at three things. First, <code>demos/06-scrub.html</code> &mdash; a counter and a bar tied
+  directly to the scrollbar, running forwards and backwards as the reader moves. We are not
+  learning <strong>scrub</strong> properly until Week&nbsp;7, but you should see it now, because
+  it is the pattern that any change-over-time story is built on.
+</p>
+
+<p>
+  Second, the <a href="https://gsap.com/showcase/">GSAP showcase</a> &mdash; agency work, most of it
+  well beyond what this module asks for. Watch it for what is possible, not as a standard to hit.
+</p>
+
+<p>
+  Third, we go back to some of the pieces from Week&nbsp;1 and name what they are doing now that
+  you have the words for it. You will find you can identify the fades, the pins and the scrubs, and
+  that is a genuinely different way of reading.
+</p>
+
+<figure class="video">
+  <div class="video__frame">
+    <a class="video__facade" data-video="X7IBa7vZjmo" href="https://www.youtube.com/watch?v=X7IBa7vZjmo">
+      <img src="https://i.ytimg.com/vi/X7IBa7vZjmo/hqdefault.jpg" alt="" width="480" height="360" loading="lazy">
+      <span class="video__play"><svg viewBox="0 0 68 48" width="68" height="48" aria-hidden="true" focusable="false"><path class="video__play-bg" d="M66.52 7.74a8 8 0 0 0-5.63-5.67C56.4.86 34 .86 34 .86s-22.4 0-26.89 1.21a8 8 0 0 0-5.63 5.67A83.7 83.7 0 0 0 .5 24a83.7 83.7 0 0 0 .98 16.26 8 8 0 0 0 5.63 5.67C11.6 47.14 34 47.14 34 47.14s22.4 0 26.89-1.21a8 8 0 0 0 5.63-5.67A83.7 83.7 0 0 0 67.5 24a83.7 83.7 0 0 0-.98-16.26z"/><path d="M27 34V14l18 10z" fill="#fff"/></svg></span>
+      <span class="visually-hidden">Play &ldquo;Introducing ScrollTrigger for GSAP&rdquo; on YouTube</span>
+    </a>
+  </div>
+  <figcaption class="video__caption">
+    <strong>Introducing ScrollTrigger</strong> &mdash; the official tour, 22&nbsp;min. Much of it
+    covers Weeks&nbsp;7 and 8, but everything we did today is in the first ten minutes.
+    <a href="https://www.youtube.com/watch?v=X7IBa7vZjmo">Watch on YouTube</a>
+  </figcaption>
+</figure>
+
+
+<!-- ==================================================================== -->
+<div class="activity" id="directed">
+  <p class="activity__kicker">Directed task &middot; before Week 3</p>
+  <h3>Work through the watch-list</h3>
+
+  <p>
+    Next week is the ideation workshop and the <strong>topic pitch gate</strong> &mdash; you leave
+    that session with an agreed story. Turning up with nothing in your head makes it a long
+    afternoon. So: read these properly, not in a tab you close after ten seconds.
+  </p>
+
+  <p>
+    They are grouped by <strong>story shape</strong>, which is what we work with next week. Read at
+    least <strong>one from each group</strong>, and for each one note in a sentence what shape it is
+    and where the reader has any agency.
+  </p>
+
+  <h4>Change over time</h4>
+  <ul class="cards">
+    <li>
+      <a class="card" href="https://pudding.cool/2026/06/love-story">
+        <span class="card__title">A Love Story</span>
+        <span class="card__meta">The Pudding, 2026</span>
+        <p>A thousand people's relationships tracked across three surveys and a pandemic. Watch how it moves between the aggregate and the individual.</p>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="https://science.nasa.gov/earth/earth-observatory/world-of-change/">
+        <span class="card__title">World of Change</span>
+        <span class="card__meta">NASA Earth Observatory</span>
+        <p>Not a narrative — raw material. The same place photographed for forty years. Dozens of stories are sitting in here unbuilt.</p>
+      </a>
+    </li>
+  </ul>
+
+  <h4>Linear reveal — a story told in order</h4>
+  <ul class="cards">
+    <li>
+      <a class="card" href="https://www.bbc.co.uk/news/resources/idt-e8c6cbab-da44-4a3c-8f9b-c4fccd53dd24">
+        <span class="card__title">Body on the Moor</span>
+        <span class="card__meta">BBC News</span>
+        <p>An unidentified man and the investigation to name him. Notice how little it moves, and how much each move is worth when it does.</p>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="https://www.bbc.co.uk/news/resources/idt-sh/the_reykjavik_confessions">
+        <span class="card__title">The Reykjavik Confessions</span>
+        <span class="card__meta">BBC News</span>
+        <p>Six confessions to murders nobody could remember. A masterclass in restraint and pace.</p>
+      </a>
+    </li>
+  </ul>
+
+  <h4>Explainer — understood step by step</h4>
+  <ul class="cards">
+    <li>
+      <a class="card" href="https://pudding.cool/2026/07/essential-words">
+        <span class="card__title">English Vocab Lists</span>
+        <span class="card__meta">The Pudding, 2026</span>
+        <p>How the words we teach English learners have changed. A good model for making something abstract feel concrete.</p>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="https://pudding.cool/2026/06/menu-story">
+        <span class="card__title">Restaurant Menu History</span>
+        <span class="card__meta">The Pudding, 2026</span>
+        <p>What America's earliest menus reveal about America. An archive turned into an argument.</p>
+      </a>
+    </li>
+  </ul>
+
+  <h4>And browse</h4>
+  <ul class="cards">
+    <li>
+      <a class="card" href="https://pudding.cool/pudding-cup/">
+        <span class="card__title">The Pudding Cup</span>
+        <span class="card__meta">Annual</span>
+        <p>The year's best visual stories, chosen by people who make them. The fastest way to calibrate what good looks like.</p>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="https://gsap.com/showcase/">
+        <span class="card__title">GSAP Showcase</span>
+        <span class="card__meta">Ongoing</span>
+        <p>What the tool can do in professional hands. Aspirational, not a target.</p>
+      </a>
+    </li>
+  </ul>
+
+  <div class="box box--task">
+    <p class="box__title">Also, before Week 3</p>
+    <ul class="checklist">
+      <li>Both of today's effects working on your own page, wrapped in <code>matchMedia</code>.</li>
+      <li>Markers turned off.</li>
+      <li>Committed and synced &mdash; check your live URL.</li>
+      <li><strong>Bring two or three topic ideas.</strong> Not polished. Written down.</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ==================================================================== -->
+<h2 id="stuck">If you get stuck</h2>
+
+<details>
+  <summary><code>gsap is not defined</code></summary>
+  <p>
+    Your own script is running before GSAP has loaded. Check the order of the script tags &mdash;
+    the two CDN tags must come first &mdash; and check you have not left <code>defer</code> on your
+    own <code>main.js</code> tag while the CDN tags do not have it.
+  </p>
+</details>
+
+<details>
+  <summary><code>ScrollTrigger is not defined</code>, but GSAP works</summary>
+  <p>
+    You have loaded <code>gsap.min.js</code> but not <code>ScrollTrigger.min.js</code>. They are two
+    separate files. Check the second script tag, and check <code>gsap.registerPlugin(ScrollTrigger)</code>
+    is in your code.
+  </p>
+</details>
+
+<details>
+  <summary>The animation does not fire at all</summary>
+  <p>
+    Almost always a selector matching nothing. In the Console, run
+    <code>document.querySelectorAll('.your-class').length</code>. If it returns <code>0</code>, fix
+    the class name. If it returns a number, turn <code>markers: true</code> on and check the trigger
+    lines are where you expect.
+  </p>
+</details>
+
+<details>
+  <summary>Things flash visible, then animate</summary>
+  <p>
+    The page rendered before your script ran. Move your script tag to just before
+    <code>&lt;/body&gt;</code> if it is not there already. A small flash on first load is normal on
+    a slow connection and not worth fighting.
+  </p>
+</details>
+
+<details>
+  <summary>The pinned scene jumps or overlaps</summary>
+  <p>
+    Usually a height problem: the sticky element needs a fixed height (<code>100svh</code>) and the
+    steps need enough space between them to scroll through. Check you have not accidentally put
+    <code>overflow: hidden</code> on a parent &mdash; that breaks <code>position: sticky</code>
+    silently.
+  </p>
+</details>
+
+<details>
+  <summary>It works locally but not on my live URL</summary>
+  <p>
+    Check the Console on the live page. Usually a path with a capital letter or a leading slash:
+    <code>/js/main.js</code> works locally and fails on GitHub Pages. Use <code>js/main.js</code>.
+  </p>
+</details>
+
+<details>
+  <summary>Something else</summary>
+  <p>
+    Ask in the studio. Out of hours, email
+    <a href="mailto:a.m.pearson@leedsbeckett.ac.uk">a.m.pearson@leedsbeckett.ac.uk</a> with the
+    error text from the Console and your live URL &mdash; I normally reply within two working days.
+  </p>
+</details>
+
+
+<!-- ==================================================================== -->
+<h2 id="resources">Resources</h2>
+
+<ul class="cards">
+  <li>
+    <a class="card" href="https://gsap.com/docs/v3/GSAP/Tween/">
+      <span class="card__title">GSAP — Tween</span>
+      <span class="card__meta">Official docs</span>
+      <p>Every property you can pass to <code>to</code>, <code>from</code> and <code>fromTo</code>.</p>
+    </a>
+  </li>
+  <li>
+    <a class="card" href="https://gsap.com/docs/v3/Plugins/ScrollTrigger/">
+      <span class="card__title">ScrollTrigger</span>
+      <span class="card__meta">Official docs</span>
+      <p>The full configuration list. Bookmark it — you will be back all term.</p>
+    </a>
+  </li>
+  <li>
+    <a class="card" href="https://gsap.com/docs/v3/GSAP/gsap.matchMedia()/">
+      <span class="card__title">gsap.matchMedia()</span>
+      <span class="card__meta">Official docs</span>
+      <p>Responsive and reduced-motion animation without manual cleanup.</p>
+    </a>
+  </li>
+  <li>
+    <a class="card" href="https://gsap.com/community/forums/">
+      <span class="card__title">GSAP forums</span>
+      <span class="card__meta">GreenSock</span>
+      <p>Unusually good for a support forum. Search before posting; your problem is almost certainly there.</p>
+    </a>
+  </li>
+  <li>
+    <a class="card" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox">
+      <span class="card__title">MDN — Flexbox basics</span>
+      <span class="card__meta">Mozilla</span>
+      <p>The reference for what <code>flex: 1 1 20rem</code> actually means.</p>
+    </a>
+  </li>
+  <li>
+    <a class="card" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion">
+      <span class="card__title">MDN — prefers-reduced-motion</span>
+      <span class="card__meta">Mozilla</span>
+      <p>What the setting is, and who relies on it.</p>
+    </a>
+  </li>
+</ul>
+
+</main>
+</div>
+
+<footer class="colophon">
+  <div class="wrap">
+    <p>
+      <strong>Interaction Design</strong> &middot; Level 5 &middot; BSc (Hons) Content Creation
+      &middot; Leeds School of Arts, Leeds Beckett University
+    </p>
+    <p>
+      Module leader: Ant Pearson &mdash;
+      <a href="mailto:a.m.pearson@leedsbeckett.ac.uk">a.m.pearson@leedsbeckett.ac.uk</a>.
+    </p>
+    <p>
+      Week 2 of 13 &middot; Teaching materials are posted at least 48 hours before each session.
+    </p>
+  </div>
+</footer>
+
+<script>
+/* Videos: a thumbnail that opens YouTube when this page is a local file, and
+   loads the player inline once the page is served over http(s). YouTube rejects
+   embeds with no referrer (Error 153), which is what file:// gives it. */
+(function () {
+  var canEmbed = /^https?:$/.test(location.protocol);
+
+  document.querySelectorAll('.video__facade').forEach(function (link) {
+    var id  = link.getAttribute('data-video');
+    var img = link.querySelector('img');
+    var label = link.querySelector('.visually-hidden').textContent;
+
+    var hi = new Image();
+    hi.onload = function () { if (hi.naturalWidth > 500) { img.src = hi.src; } };
+    hi.src = 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg';
+
+    if (!canEmbed) {
+      link.target = '_blank';
+      link.rel = 'noopener';
+      return;
+    }
+
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var frame = document.createElement('iframe');
+      frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+      frame.title = label;
+      frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      frame.allowFullscreen = true;
+      link.parentNode.replaceChild(frame, link);
+      frame.focus();
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Section skeleton — a worked example | Interaction Design</title>
+<meta name="description" content="A worked example of the HTML structure a scrolling narrative is built from: twelve sections, two scenes, and one marked interaction point.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<main id="main">
+
+<!-- ====================================================================
+     COVER
+     Every piece opens with one. Title, one line of standfirst, a credit.
+     Nothing animates here: the reader has just arrived and there is
+     nothing yet for movement to mean.
+     ==================================================================== -->
+<header class="cover" id="chapter-01-cover">
+  <p class="cover__kicker">A worked example</p>
+  <h1 class="cover__title">The section skeleton</h1>
+  <p class="cover__standfirst">
+    This page is the structure your piece is built from, with its own structure as the subject.
+    Every section below explains what that kind of section is for. Replace the words; keep the
+    shape.
+  </p>
+  <p class="cover__credit">Interaction Design &middot; Level 5 &middot; Leeds Beckett University</p>
+</header>
+
+
+<!-- ====================================================================
+     PLAIN SECTION — text and figure
+     The workhorse. Most of your piece is this, repeated.
+     ==================================================================== -->
+<section class="chapter chapter--figure" id="chapter-02-the-unit" aria-labelledby="chapter-02-the-unit-heading">
+  <div class="chapter__text">
+    <h2 id="chapter-02-the-unit-heading">One section, one idea</h2>
+    <p>
+      A scrolling narrative is a stack of sections read in one order, each doing one job. The test
+      is a single sentence: this section exists so the reader understands, feels or notices
+      something. If you need the word &ldquo;and&rdquo;, it is two sections.
+    </p>
+    <p>
+      Notice what this one has: a <code>section</code> element, a real heading, an
+      <code>aria-labelledby</code> pointing at that heading, and an <code>id</code> that starts with
+      a number. The number gives you reading order at a glance. The words tell you which one it is.
+    </p>
+  </div>
+
+  <figure class="chapter__figure">
+    <img src="images/placeholder.svg" alt="A diagram of three stacked blocks representing sections in reading order" width="800" height="600">
+    <figcaption>
+      Replace this with a real image. Write the <code>alt</code> text for what the picture shows,
+      not for the fact that there is a picture.
+    </figcaption>
+  </figure>
+</section>
+
+
+<section class="chapter chapter--figure chapter--reverse" id="chapter-03-order" aria-labelledby="chapter-03-order-heading">
+  <div class="chapter__text">
+    <h2 id="chapter-03-order-heading">Down has to mean something</h2>
+    <p>
+      Add <code>chapter--reverse</code> and the picture moves to the other side. Alternating gives a
+      long page a rhythm without any JavaScript at all, and it is the cheapest pacing tool you have.
+    </p>
+    <p>
+      More importantly: if a reader could shuffle these sections into a different order and lose
+      nothing, the scroll is decoration. Every section should earn its position.
+    </p>
+  </div>
+
+  <figure class="chapter__figure">
+    <img src="images/placeholder.svg" alt="A diagram showing the same three blocks with the figure on the opposite side" width="800" height="600">
+    <figcaption>Credit the source here, every time, for anything you did not make yourself.</figcaption>
+  </figure>
+</section>
+
+
+<!-- ====================================================================
+     TEXT-ONLY SECTION
+     Not everything needs a picture. Stillness is what makes the moving
+     parts count.
+     ==================================================================== -->
+<section class="chapter" id="chapter-04-quiet" aria-labelledby="chapter-04-quiet-heading">
+  <div class="chapter__text">
+    <h2 id="chapter-04-quiet-heading">Some sections are just words</h2>
+    <p>
+      A piece where every section has a full-bleed image and a transition is exhausting by the
+      fourth screen. Text-only sections are where the reader catches up, and they make the next
+      visual land harder.
+    </p>
+    <p>
+      A rough shape that works: long, short, short, long. All-long reads like homework.
+    </p>
+  </div>
+</section>
+
+
+<!-- ====================================================================
+     SCENE 1 — a held visual with steps passing over it
+     Two or three of these in a whole piece. This one works with no
+     JavaScript at all: the sticky block is position: sticky in the stylesheet.
+     In Week 7 you add ScrollTrigger so the figure knows WHICH step the
+     reader is on, which is the part CSS cannot do.
+     ==================================================================== -->
+<section class="scene" id="scene-05-anatomy" aria-labelledby="scene-05-anatomy-heading">
+  <h2 id="scene-05-anatomy-heading" class="scene__heading">A scene holds still while you scroll</h2>
+
+  <div class="scene__sticky">
+    <figure class="scene__figure">
+      <img src="images/placeholder.svg" alt="A placeholder image standing in for the held visual of this scene" width="800" height="600">
+      <figcaption class="scene__caption" data-caption>First state.</figcaption>
+    </figure>
+  </div>
+
+  <div class="scene__steps">
+    <div class="step" data-step="1">
+      <p>
+        The figure behind this text is pinned by <code>position: sticky</code> in the CSS. No script is
+        involved, which is why this scene still works with JavaScript switched off.
+      </p>
+    </div>
+    <div class="step" data-step="2">
+      <p>
+        What you add in Week&nbsp;7 is not the pinning. It is knowing which step the reader has
+        reached, so the figure can change as each one arrives.
+      </p>
+    </div>
+    <div class="step" data-step="3">
+      <p>
+        <code>data-step</code> carries the number in the markup rather than counting it in code, so
+        you can reorder steps without renumbering anything. You will reorder them.
+      </p>
+    </div>
+    <div class="step" data-step="4">
+      <p>
+        Give a scene roughly one screen height of scroll per step. Four steps is four screens. That
+        is longer than it feels on a storyboard.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="chapter chapter--figure" id="chapter-06-evidence" aria-labelledby="chapter-06-evidence-heading">
+  <div class="chapter__text">
+    <h2 id="chapter-06-evidence-heading">Where the evidence goes</h2>
+    <p>
+      Sections that carry a claim need the source visible somewhere the reader can find it &mdash;
+      in the figure caption, inline, or in the credits at the foot. Every claim in your finished
+      piece needs a source you could show a marker.
+    </p>
+  </div>
+  <figure class="chapter__figure">
+    <img src="images/placeholder.svg" alt="A placeholder standing in for a chart built from a public dataset" width="800" height="600">
+    <figcaption>
+      A chart you built yourself from a public dataset has no licence question and no credit
+      anxiety. Prefer them where you can.
+    </figcaption>
+  </figure>
+</section>
+
+
+<!-- ====================================================================
+     THE DESIGNED INTERACTION MOMENT
+     The brief requires at least one. This is a placeholder marking WHERE
+     it goes and WHAT it is. You build it in Week 9.
+
+     The rule that matters: the readable version must exist first. What
+     is inside this section right now is what a reader gets with no
+     JavaScript — two pictures and a caption. The interaction is an
+     upgrade on top of that, never a replacement for it.
+     ==================================================================== -->
+<section class="chapter chapter--interaction" id="chapter-07-interaction" aria-labelledby="chapter-07-interaction-heading">
+  <div class="chapter__text">
+    <h2 id="chapter-07-interaction-heading">The moment the reader acts</h2>
+    <p>
+      Somewhere in your piece the reader stops being an audience. A before-and-after they drag, a
+      choice of which thread to follow, a map they find their own street on. The test is that their
+      action changes what they see, and that a different reader could do it differently.
+    </p>
+    <p>
+      Mark it now, build it in Week&nbsp;9. Component&nbsp;1 asks you to have designed it, not to
+      have made it work.
+    </p>
+  </div>
+
+  <!-- INTERACTION: before/after slider goes here.
+       Baseline below is what a no-JS reader gets. Keep it. -->
+  <div class="compare" data-interaction="before-after">
+    <figure class="compare__item">
+      <img src="images/placeholder.svg" alt="Placeholder for the earlier state" width="800" height="600">
+      <figcaption>Before</figcaption>
+    </figure>
+    <figure class="compare__item">
+      <img src="images/placeholder.svg" alt="Placeholder for the later state" width="800" height="600">
+      <figcaption>After</figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<section class="chapter chapter--figure chapter--reverse" id="chapter-08-consequence" aria-labelledby="chapter-08-consequence-heading">
+  <div class="chapter__text">
+    <h2 id="chapter-08-consequence-heading">What it means</h2>
+    <p>
+      After the interaction, say what it showed. Readers who dragged the slider know; readers who
+      scrolled past need telling. Never let the only route to a point run through an optional action.
+    </p>
+  </div>
+  <figure class="chapter__figure">
+    <img src="images/placeholder.svg" alt="Placeholder image" width="800" height="600">
+    <figcaption>Caption and credit.</figcaption>
+  </figure>
+</section>
+
+
+<!-- ====================================================================
+     SCENE 2 — the same structure, fewer steps
+     ==================================================================== -->
+<section class="scene" id="scene-09-second" aria-labelledby="scene-09-second-heading">
+  <h2 id="scene-09-second-heading" class="scene__heading">A second scene, later, shorter</h2>
+
+  <div class="scene__sticky">
+    <figure class="scene__figure">
+      <img src="images/placeholder.svg" alt="Placeholder for the second scene's held visual" width="800" height="600">
+      <figcaption class="scene__caption" data-caption>First state.</figcaption>
+    </figure>
+  </div>
+
+  <div class="scene__steps">
+    <div class="step" data-step="1"><p>Two or three scenes in a whole piece. Six is a piece that has stopped moving.</p></div>
+    <div class="step" data-step="2"><p>Make the second one shorter than the first. Repetition at the same length reads as a formula.</p></div>
+    <div class="step" data-step="3"><p>Contrast is what makes a scene feel like an event.</p></div>
+  </div>
+</section>
+
+
+<section class="chapter" id="chapter-10-turn" aria-labelledby="chapter-10-turn-heading">
+  <div class="chapter__text">
+    <h2 id="chapter-10-turn-heading">The turn</h2>
+    <p>
+      Most pieces have a section near the end where the subject stops being a thing that happened
+      and becomes a thing that matters. It is usually quiet, usually short, and usually the part
+      readers quote back at you.
+    </p>
+  </div>
+</section>
+
+
+<section class="chapter chapter--figure" id="chapter-11-close" aria-labelledby="chapter-11-close-heading">
+  <div class="chapter__text">
+    <h2 id="chapter-11-close-heading">The close</h2>
+    <p>
+      Land it. Do not summarise what the reader has just read; give them the one thing to carry out
+      of the page. Then stop &mdash; a scrolling piece that will not end is the commonest fault in
+      the genre.
+    </p>
+  </div>
+  <figure class="chapter__figure">
+    <img src="images/placeholder.svg" alt="Placeholder for a closing image" width="800" height="600">
+    <figcaption>Caption and credit.</figcaption>
+  </figure>
+</section>
+
+
+<!-- ====================================================================
+     CREDITS
+     Build this as you go. Reconstructing it in January from forty files
+     called image7.jpg is a genuinely miserable evening.
+     ==================================================================== -->
+<footer class="credits" id="chapter-12-credits">
+  <h2>Sources and credits</h2>
+  <ul>
+    <li><strong>Every image you did not take:</strong> what it is, who made it, where you got it, under what terms.</li>
+    <li><strong>Every load-bearing claim:</strong> the source, and the date you checked it.</li>
+    <li><strong>Anyone who helped:</strong> people you interviewed, archives that said yes.</li>
+  </ul>
+  <p class="credits__meta">
+    Replace all of this. Written by you, Interaction Design, Leeds Beckett University, 2026&ndash;27.
+  </p>
+</footer>
+
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

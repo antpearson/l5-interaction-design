@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="SCENE 03 placeholder">
+  <defs>
+    <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ecf2ee"/>
+      <stop offset="1" stop-color="#2f7d55" stop-opacity="0.22"/>
+    </linearGradient>
+    <pattern id="p3" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M0 40 L40 0" stroke="#2f7d55" stroke-opacity="0.16" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g3)"/>
+  <rect width="1200" height="800" fill="url(#p3)"/>
+  <rect x="24" y="24" width="1152" height="752" fill="none" stroke="#2f7d55" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="600" y="386" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="64" font-weight="700" letter-spacing="8" fill="#2f7d55">SCENE 03</text>
+  <text x="600" y="440" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#2f7d55" fill-opacity="0.8">Replace with your own image &#183; 1200 &#215; 800</text>
+</svg>

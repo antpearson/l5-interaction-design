@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Editors
+.vscode/*
+!.vscode/extensions.json
+
+# Working files — keep these out of the published site
+*.sketch
+*.psd
+node_modules/

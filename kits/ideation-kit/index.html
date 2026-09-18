@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ideation kit — Week 3 | Interaction Design</title>
+<meta name="description" content="Printable Week 3 workshop handout: the archives, the prompts, the five tests and the pitch template.">
+<style>
+:root{
+  --ink:#16181d; --ink-soft:#4a4f5a; --rule:#c8ccd4; --paper:#fff; --tint:#f2f4f7;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --ink:#e9ecf1; --ink-soft:#aeb5c0; --rule:#454b56; --paper:#15171b; --tint:#1e2128; }
+}
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{
+  margin:0; padding:2rem 1.25rem 4rem;
+  background:var(--paper); color:var(--ink);
+  font:16px/1.55 Georgia, "Iowan Old Style", "Times New Roman", serif;
+}
+.sheet{ max-width:46rem; margin:0 auto; }
+h1,h2,h3,.kicker,.tests li strong,.pitch,th{
+  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+h1{ font-size:1.7rem; line-height:1.2; margin:0 0 .3rem; }
+.kicker{ font-size:.78rem; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 .6rem; }
+.standfirst{ color:var(--ink-soft); margin:0 0 2rem; }
+h2{ font-size:1.15rem; margin:2.4rem 0 .6rem; padding-bottom:.3rem; border-bottom:2px solid var(--ink); }
+h3{ font-size:.95rem; margin:1.4rem 0 .4rem; }
+p{ margin:0 0 .8rem; }
+ul,ol{ margin:0 0 1rem; padding-left:1.3rem; }
+li{ margin:0 0 .45rem; }
+a{ color:inherit; }
+.lines li{ list-style:none; margin:0 0 .1rem; }
+.lines{ padding-left:0; }
+.lines li::after{
+  content:""; display:block; border-bottom:1px solid var(--rule);
+  height:1.6rem; margin-top:.15rem;
+}
+.tests{ padding-left:0; counter-reset:t; }
+.tests li{ list-style:none; position:relative; padding-left:2.2rem; margin-bottom:.8rem; counter-increment:t; }
+.tests li::before{
+  content:counter(t); position:absolute; left:0; top:.05rem;
+  width:1.5rem; height:1.5rem; border:1.5px solid var(--ink); border-radius:50%;
+  display:grid; place-items:center; font:600 .8rem/1 -apple-system, system-ui, sans-serif;
+}
+.pitch{
+  border:2px solid var(--ink); padding:1rem 1.1rem; margin:1rem 0 1.4rem;
+  background:var(--tint); font-size:.98rem;
+}
+table{ width:100%; border-collapse:collapse; margin:0 0 1.2rem; font-size:.9rem; }
+th,td{ border:1px solid var(--rule); padding:.45rem .55rem; text-align:left; vertical-align:top; }
+th{ background:var(--tint); font-size:.8rem; letter-spacing:.02em; }
+.box{ border-left:4px solid var(--ink); padding:.1rem 0 .1rem 1rem; margin:1.2rem 0; }
+.box p:last-child{ margin-bottom:0; }
+.foot{ margin-top:3rem; padding-top:.8rem; border-top:1px solid var(--rule); font-size:.8rem; color:var(--ink-soft); }
+.page-break{ break-before:page; }
+@media print{
+  :root{ --ink:#000; --ink-soft:#333; --rule:#999; --paper:#fff; --tint:#f4f4f4; }
+  body{ padding:0; font-size:11pt; }
+  h2{ break-after:avoid; }
+  .lines li::after{ height:1.5rem; }
+  a{ text-decoration:none; }
+  a[href^="http"]::after{ content:" (" attr(href) ")"; font-size:8pt; color:#555; word-break:break-all; }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<p class="kicker">Interaction Design &middot; Week 3</p>
+<h1>Ideation kit</h1>
+<p class="standfirst">
+  Print this before the session. Laptops stay shut for the first hour, so you will want somewhere
+  to write.
+</p>
+
+<h2>Round A &mdash; raid an archive</h2>
+<p>
+  Pick one. You are not looking for a story yet, only for <strong>something that is not the same as
+  it used to be</strong>. Write down five, however thin.
+</p>
+<table>
+  <tr><th>NASA World of Change</th><td>science.nasa.gov/earth/earth-observatory/world-of-change/</td></tr>
+  <tr><th>USGS Earthshots</th><td>earthshots.usgs.gov</td></tr>
+  <tr><th>NLS side-by-side maps</th><td>maps.nls.uk/geo/explore/side-by-side/ &mdash; covers all of Britain</td></tr>
+  <tr><th>Historic England aerial</th><td>historicengland.org.uk/images-books/archive/collections/aerial-photos/</td></tr>
+  <tr><th>Leodis (Leeds)</th><td>leodis.net</td></tr>
+  <tr><th>Our World in Data</th><td>ourworldindata.org &mdash; CC BY, reusable with credit</td></tr>
+</table>
+<ol class="lines">
+  <li></li><li></li><li></li><li></li><li></li>
+</ol>
+
+<h2>Round B &mdash; prompts</h2>
+<p>Three answers each, minimum. First thing, second thing, then the stupid thing.</p>
+<ol class="lines">
+  <li>Something that used to be everywhere and now is not.</li>
+  <li>A building near me that has had at least three different lives.</li>
+  <li>A number that has gone one direction for fifty years.</li>
+  <li>Something everyone thinks they understand and almost nobody does.</li>
+  <li>A job that has nearly disappeared in my lifetime.</li>
+  <li>Something my grandparents would not recognise about where I grew up.</li>
+  <li>A thing I have to explain every time it comes up.</li>
+  <li>Somewhere I can walk to that has a story attached.</li>
+  <li>Something that got better, quietly, and nobody made a fuss.</li>
+  <li>A decision that gets made for people without them noticing.</li>
+</ol>
+<p><em>Then swap sheets and add one idea to three of someone else's answers.</em></p>
+
+<div class="page-break"></div>
+
+<h2>Round C &mdash; what you already know</h2>
+<p>Five things you know more about than the average person in this room. Then, for each, the one sentence a stranger needs to hear.</p>
+<ol class="lines">
+  <li></li><li></li><li></li><li></li><li></li>
+</ol>
+
+<h2>The five tests</h2>
+<p>Run every candidate through these. One fail is fixable. Two, come and talk to me. Three, it is a different topic.</p>
+<ol class="tests">
+  <li><strong>Is there a change?</strong> Something is different at the bottom of the page from the top &mdash; in the world, or in the reader's head.</li>
+  <li><strong>Can you see it?</strong> Find five images or a dataset you are allowed to use, before you commit.</li>
+  <li><strong>Can you check it?</strong> Every claim needs a source you could show me. This is a quarter of Component&nbsp;1.</li>
+  <li><strong>Is there a moment where the reader does something?</strong> Point at a place where letting them act would mean something.</li>
+  <li><strong>Do you care?</strong> Eleven more weeks, in evenings, when it is not working.</li>
+</ol>
+
+<table>
+  <tr><th></th><th>Idea 1</th><th>Idea 2</th><th>Idea 3</th></tr>
+  <tr><th>1 &middot; Change</th><td></td><td></td><td></td></tr>
+  <tr><th>2 &middot; See it</th><td></td><td></td><td></td></tr>
+  <tr><th>3 &middot; Check it</th><td></td><td></td><td></td></tr>
+  <tr><th>4 &middot; Reader acts</th><td></td><td></td><td></td></tr>
+  <tr><th>5 &middot; Care</th><td></td><td></td><td></td></tr>
+</table>
+
+<h2>The four shapes</h2>
+<table>
+  <tr><th>Change over time</th><td>Down is later. &ldquo;What happened to it?&rdquo;</td></tr>
+  <tr><th>Linear reveal</th><td>Down is the next thing you are allowed to know. &ldquo;What happens next?&rdquo;</td></tr>
+  <tr><th>Spatial journey</th><td>Down is further along or deeper in. &ldquo;Where am I now?&rdquo;</td></tr>
+  <tr><th>Layered explainer</th><td>Down is one more layer on the same object. &ldquo;How does it work?&rdquo;</td></tr>
+</table>
+<div class="box">
+  <p>All four have one thing in common: <strong>down means something</strong>. If your sections could be shuffled without loss, the scroll is decoration.</p>
+</div>
+
+<h2>The pitch</h2>
+<div class="pitch">
+  <p>
+    &ldquo;My piece is about <strong>[what]</strong>, for <strong>[who]</strong>, so that they
+    understand or feel <strong>[what]</strong>. It works as a scroll because <strong>[which shape,
+    and why down means something]</strong>. My evidence so far is <strong>[sources]</strong>.
+    Somewhere around <strong>[roughly where]</strong>, I think the reader should get to
+    <strong>[do something]</strong>.&rdquo;
+  </p>
+</div>
+<p>Then one line on what worries you about it. That line is the most useful thing you will say.</p>
+<ol class="lines"><li></li><li></li><li></li></ol>
+
+<p class="foot">
+  Interaction Design &middot; Level 5 &middot; BSc (Hons) Content Creation &middot; Leeds Beckett
+  University. Ant Pearson, a.m.pearson@leedsbeckett.ac.uk
+</p>
+
+</div>
+</body>
+</html>

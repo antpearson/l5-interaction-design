@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 5 — From concept to skeleton | Interaction Design</title>
+<meta name="description" content="Week 5: Component 1 goes in this week. A peer show of concepts, then your storyboard becomes real HTML sections so the build starts with momentum.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<link rel="stylesheet" href="tutorial.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="masthead__week">Week 5</p>
+    <h1>From concept to skeleton</h1>
+    <p class="masthead__sub">
+      Component&nbsp;1 goes in this week. In the studio: a peer show of concepts, then your
+      storyboard becomes real HTML sections, so the build starts with something already standing.
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+<main id="main" class="prose">
+
+<p class="lede">
+  The pre-production ends here. What you hand in this week is what you spend the next eight weeks
+  building.
+</p>
+
+<p>
+  That is worth taking literally. Component&nbsp;1 is not an essay about a piece you might make; the
+  concept you submit becomes the narrative you build, and the feedback you get back in Care Week
+  becomes the first evidence of iteration in Component&nbsp;2. There is no fresh start in
+  Week&nbsp;7.
+</p>
+
+<p>
+  Which is why we spend the second half of today writing HTML. A storyboard that turns into markup
+  in the same week it is finished is a storyboard you trust. One that sits in Figma until
+  Week&nbsp;7 tends to quietly stop matching what you build.
+</p>
+
+<div class="box box--warn">
+  <p class="box__title">The deadline</p>
+  <p>
+    Component&nbsp;1 (Research &amp; Concept, 30%) is uploaded to MyBeckett by
+    <strong>Friday 30 October at 12 noon</strong>. This session falls inside that week, so today is
+    a working session on a submission that is days away, not weeks.
+  </p>
+</div>
+
+<nav class="toc" aria-labelledby="toc-heading">
+  <h2 id="toc-heading">On this page</h2>
+  <ol>
+    <li><a href="#glance"><span>&mdash;</span> Session at a glance</a></li>
+    <li><a href="#part1"><span>1.</span> What you are submitting, exactly</a></li>
+    <li><a href="#part2"><span>2.</span> The peer show</a></li>
+    <li><a href="#part3"><span>3.</span> From storyboard to skeleton</a></li>
+    <li><a href="#part4"><span>4.</span> Naming things that survive to Week 8</a></li>
+    <li><a href="#part5"><span>5.</span> Submitting</a></li>
+    <li><a href="#care"><span>&mdash;</span> Care Week</a></li>
+    <li><a href="#stuck"><span>&mdash;</span> If you get stuck</a></li>
+    <li><a href="#resources"><span>&mdash;</span> Resources</a></li>
+  </ol>
+</nav>
+
+<h2 id="glance">Session at a glance</h2>
+
+<ol class="runsheet">
+  <li>What you are submitting, exactly &mdash; the four parts against the four criteria</li>
+  <li><strong>Peer show of concepts</strong> &mdash; in fours, structured feedback</li>
+  <li>Quiet time &mdash; write down what the peer show told you, and fix the cheap things</li>
+</ol>
+
+<p class="runsheet-break">Break</p>
+
+<ol class="runsheet" start="4">
+  <li>From storyboard to skeleton &mdash; the markup your piece will be built from</li>
+  <li><strong>Task</strong> &mdash; build your section skeleton</li>
+  <li>Naming things that will still make sense in Week&nbsp;8</li>
+  <li>Submission mechanics, the AI-use log, and what happens in Care Week</li>
+</ol>
+
+
+<!-- ==================================================================== -->
+<div class="part" id="part1">
+  <p class="part__label">Part one</p>
+  <h2>What you are submitting, exactly</h2>
+</div>
+
+<p>
+  Four things. They are weighted equally, at 25% of the component each, and that is the single most
+  useful fact on this page &mdash; every year somebody submits fifteen pages of research and half a
+  page of storyboard, and wonders where the marks went.
+</p>
+
+<div class="table-scroll">
+<table>
+  <caption>Component 1 deliverables against the marking criteria. Each is worth a quarter.</caption>
+  <thead>
+    <tr>
+      <th scope="col">You submit</th>
+      <th scope="col">It is marked as</th>
+      <th scope="col">The top band wants</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Story research</strong> &mdash; your verified story with credible sources</td>
+      <td>Research and verify the story</td>
+      <td>Every claim verified against authoritative sources, and research that <em>demonstrably shapes the narrative arc</em>.</td>
+    </tr>
+    <tr>
+      <td><strong>Audience and intent</strong> &mdash; who it is for, what you want them to understand or feel</td>
+      <td>Define the audience and intent</td>
+      <td>Audience precisely defined; intent articulated clearly enough that it drives every later design decision.</td>
+    </tr>
+    <tr>
+      <td><strong>Your concept</strong> &mdash; premise and experience arc</td>
+      <td>Develop a concept suited to scroll-driven narrative</td>
+      <td>A concept that could only work as a scrolling narrative, with moments of genuine agency already identified.</td>
+    </tr>
+    <tr>
+      <td><strong>Interaction intent</strong> &mdash; the motion storyboard</td>
+      <td>Communicate interaction intent through a motion storyboard</td>
+      <td>Pacing beats annotated, every decision justified against the story, at least one designed moment of choice.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box box--note">
+  <p class="box__title">Two phrases to design your document around</p>
+  <p>
+    <strong>&ldquo;Demonstrably shapes the narrative arc.&rdquo;</strong> Somewhere in your research
+    section, say what you found that changed your plan. If your <code>sources.md</code> has the
+    &ldquo;what this changed about my piece&rdquo; line from the research methods tutorial, this
+    writes itself.
+  </p>
+  <p>
+    <strong>&ldquo;Every decision justified against the story.&rdquo;</strong> Annotations that say
+    what happens are worth a pass. Annotations that say why this movement serves this moment are
+    worth a first.
+  </p>
+</div>
+
+<p>
+  Format is up to you &mdash; a PDF is the safe default and travels best through MyBeckett. Make the
+  storyboard legible at full width rather than four frames to a page, and check it opens on a
+  machine that is not yours before noon on Friday.
+</p>
+
+
+<!-- ==================================================================== -->
+<div class="part" id="part2">
+  <p class="part__label">Part two</p>
+  <h2>The peer show</h2>
+</div>
+
+<p>
+  In fours. Everyone shows, everyone responds. This is not a critique of how good your work is; it
+  is a test of whether your concept survives contact with someone who is not you.
+</p>
+
+<div class="activity">
+  <p class="activity__kicker">Peer show &middot; about 45 minutes &middot; groups of four</p>
+  <h3>Three minutes each, then two of response</h3>
+  <ol class="steps">
+    <li><strong>Three minutes.</strong> Your pitch sentence, then walk your storyboard. Do not apologise for anything and do not explain what it will look like when it is finished.</li>
+    <li><strong>Everyone else writes first, silently.</strong> One minute. Writing before speaking stops the loudest person in the group setting the verdict.</li>
+    <li><strong>Two minutes of response</strong>, using the four prompts below, in order. The person showing does not defend, argue or explain. They write.</li>
+    <li>Rotate. Four people, twenty minutes, two rounds if there is time.</li>
+  </ol>
+  <div class="box box--task">
+    <p class="box__title">The four prompts &mdash; use these words</p>
+    <ul class="checklist">
+      <li><strong>What I understood</strong> the piece was about. One sentence, in your own words.</li>
+      <li><strong>What surprised me</strong> &mdash; the bit I did not already know.</li>
+      <li><strong>Where I got lost</strong> &mdash; the first place the order stopped making sense.</li>
+      <li><strong>What I wanted to touch</strong> &mdash; where my hand went, whether or not anything is there.</li>
+    </ul>
+  </div>
+</div>
+
+<p>
+  The first prompt is the important one. If three people describe your piece three different ways,
+  your concept is not yet a concept. That is a fixable problem on a Tuesday and an expensive one in
+  January.
+</p>
+
+<p>
+  The fourth is the one people underrate. Where a reader's hand goes is where the interaction wants
+  to be, and it is very often somewhere you had not planned.
+</p>
+
+<div class="box box--do">
+  <p class="box__title">Then twenty minutes of quiet</p>
+  <p>
+    Straight afterwards, before you talk yourself out of any of it: write down the three things you
+    are going to change, and make the cheap ones now. Reordering two sections takes five minutes on
+    a beat sheet. Keep the notes &mdash; responding to feedback is evidence of iteration, and
+    Component&nbsp;2 asks for exactly that.
+  </p>
+</div>
+
+
+<!-- ==================================================================== -->
+<hr>
+<p class="break">Break &middot; 15 minutes</p>
+<hr>
+
+
+<!-- ==================================================================== -->
+<div class="part" id="part3">
+  <p class="part__label">Part three &middot; Task</p>
+  <h2>From storyboard to skeleton</h2>
+</div>
+
+<p>
+  Your storyboard is a stack of sections. So is your HTML. The translation is close to mechanical,
+  and doing it today means Week&nbsp;7 opens with your own real page rather than a blank file.
+</p>
+
+<p>
+  <strong>No JavaScript today, and no animation.</strong> What you are building is the readable
+  baseline the brief requires &mdash; the version that still tells the story with scripts disabled.
+  Get that right and the rest of the module is layering. Get it wrong and you will be fighting your
+  own markup in Week&nbsp;8.
+</p>
+
+<h3>A plain section</h3>
+
+<p>Most of your piece is this, repeated.</p>
+
+<p class="filename">index.html</p>
+<pre><code>&lt;section class="chapter chapter--figure"
+         id="chapter-02-then-and-now"
+         aria-labelledby="chapter-02-then-and-now-heading"&gt;
+
+  &lt;div class="chapter__text"&gt;
+    &lt;h2 id="chapter-02-then-and-now-heading"&gt;Then and now&lt;/h2&gt;
+    &lt;p&gt;One idea. Two or three paragraphs at most.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;figure class="chapter__figure"&gt;
+    &lt;img src="images/1972.jpg" alt="What the picture shows, not that
+         it is a picture"&gt;
+    &lt;figcaption&gt;What it is, and who it is by.&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/section&gt;</code></pre>
+
+<p>
+  Three things are doing real work there. The <code>&lt;section&gt;</code> with a heading is what
+  makes the page navigable to a screen reader. The <code>id</code> is what your ScrollTrigger will
+  aim at in Week&nbsp;7. And the <code>alt</code> text is a marked accessibility requirement that
+  takes ten seconds now and is tedious to retrofit across forty images.
+</p>
+
+<h3>A scene</h3>
+
+<p>
+  Two or three of these in the whole piece. A held visual, with steps that scroll <em>over</em>
+  it &mdash; the structure you drew last week, and the one already sitting in your starter at
+  <code>#scene-1</code>. The sticky block and the steps occupy the same grid cell, and that
+  overlay is what makes the text pass across the picture rather than sit beside it.
+</p>
+
+<p class="filename">index.html</p>
+<pre><code>&lt;section class="scene" id="scene-04-decisions"
+         aria-labelledby="scene-04-decisions-heading"&gt;
+
+  &lt;h2 id="scene-04-decisions-heading"&gt;How it happened&lt;/h2&gt;
+
+  &lt;div class="scene__sticky"&gt;        &lt;!-- the bit that holds still --&gt;
+    &lt;figure class="scene__figure"&gt;
+      &lt;img src="images/map.jpg" alt="..."&gt;
+      &lt;figcaption class="scene__caption"&gt;First state.&lt;/figcaption&gt;
+    &lt;/figure&gt;
+  &lt;/div&gt;
+
+  &lt;div class="scene__steps"&gt;
+    &lt;div class="step" data-step="1"&gt;&lt;p&gt;First thing that happened.&lt;/p&gt;&lt;/div&gt;
+    &lt;div class="step" data-step="2"&gt;&lt;p&gt;Then this.&lt;/p&gt;&lt;/div&gt;
+    &lt;div class="step" data-step="3"&gt;&lt;p&gt;And then this.&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+
+<div class="box box--note">
+  <p class="box__title">Why <code>data-step</code></p>
+  <p>
+    Your starter already carries <code>data-step</code> on each step, numbered from&nbsp;1. In
+    Week&nbsp;2 the watcher used its own loop counter instead; from Week&nbsp;7 we read the
+    attribute, so you can reorder your steps in the HTML without renumbering anything. You will
+    do that more than once.
+  </p>
+</div>
+
+<div class="activity">
+  <p class="activity__kicker">Task &middot; 45 minutes &middot; on your own project</p>
+  <h3>Build your section skeleton</h3>
+  <ol class="steps">
+    <li>Open your project from Week&nbsp;2. Work on a copy if you would rather not disturb it.</li>
+    <li>One <code>&lt;section&gt;</code> per row of your beat sheet, in order, top to bottom.</li>
+    <li>Real headings, in order, no levels skipped. Placeholder body text is fine for now &mdash; but the headings should be the real ones.</li>
+    <li>Mark your two or three scenes with the scene structure above. Do not style them yet.</li>
+    <li>Drop in whatever images you have. Low-resolution placeholders are fine; write the real <code>alt</code> text anyway.</li>
+    <li>Put a comment where your interaction moment goes: <code>&lt;!-- INTERACTION: before/after slider --&gt;</code></li>
+    <li>Read the whole thing top to bottom in the browser with no CSS applied at all. It should still make sense. That is the no-JavaScript baseline the brief asks for, and it is easiest to check now.</li>
+    <li>Commit and sync. Check your live URL.</li>
+  </ol>
+  <div class="box box--do">
+    <p class="box__title">There is a worked example</p>
+    <p>
+      The <a href="kits/section-skeleton/">section skeleton</a> on the module site is a complete,
+      commented example of the structure above &mdash; twelve sections including two scenes and a
+      marked interaction point. Read it, take what is useful, do not hand it in.
+    </p>
+  </div>
+</div>
+
+
+<!-- ==================================================================== -->
+<div class="part" id="part4">
+  <p class="part__label">Part four</p>
+  <h2>Naming things that survive to Week 8</h2>
+</div>
+
+<p>
+  Small discipline, disproportionate payoff. In three weeks you will be writing selectors against
+  this markup at half past eleven at night.
+</p>
+
+<ul class="checklist">
+  <li><strong>Number your section IDs, then name them.</strong> <code>chapter-02-then-and-now</code>, not <code>section2</code> or <code>aral</code>. The number gives you reading order at a glance; the words tell you which one it is. Your starter uses <code>chapter-2</code> and <code>scene-1</code> &mdash; same prefix, same <code>-heading</code> suffix on the heading ID, with a slug added because twelve sections need one.</li>
+  <li><strong>Match your Figma frame names to your section IDs.</strong> Same names in both places, so a comment in a crit points at one thing.</li>
+  <li><strong>Keep the class names you already have.</strong> <code>chapter</code>, <code>chapter--figure</code>, <code>chapter__text</code>, <code>chapter__figure</code>, <code>scene</code>, <code>scene__sticky</code>, <code>scene__steps</code> and <code>step</code> all came from the starter, and every recipe from Week&nbsp;7 onwards assumes them. Renaming them is a silent way to make every example on the module site stop working for you.</li>
+  <li><strong>One idea per section, still.</strong> If a section has two headings in it, it is two sections.</li>
+  <li><strong>Do not style for animation yet.</strong> No <code>opacity: 0</code> anywhere. That is the Week&nbsp;2 rule and it is what keeps the no-JavaScript baseline readable.</li>
+</ul>
+
+
+<!-- ==================================================================== -->
+<div class="part" id="part5">
+  <p class="part__label">Part five</p>
+  <h2>Submitting</h2>
+</div>
+
+<div class="box box--task">
+  <p class="box__title">Before Friday, 12 noon</p>
+  <ul class="checklist">
+    <li>All four parts present, and roughly balanced &mdash; they are worth the same.</li>
+    <li>Storyboard legible at full size, with the notation key on it.</li>
+    <li>Your interaction moment drawn and justified, not just mentioned.</li>
+    <li>Sources listed properly, with dates checked.</li>
+    <li>Image credits complete for anything you did not make.</li>
+    <li><strong>AI-use log included</strong>, even if it is empty.</li>
+    <li>Uploaded through the MyBeckett link for Component&nbsp;1 &mdash; then downloaded again and opened, to prove it arrived intact.</li>
+    <li>Figma file shared with me, version history visible.</li>
+    <li>Today's skeleton committed and synced.</li>
+  </ul>
+</div>
+
+<p>
+  That last pair are process evidence rather than the submission itself, but the brief is explicit
+  that work you cannot evidence or explain does not earn marks. The commits and the Figma history
+  are what make your authorship visible, and they only work if they have been accumulating.
+</p>
+
+<p>
+  If something goes wrong on Friday morning, upload what you have before noon and email me. A
+  slightly incomplete submission on time is an entirely different situation from a late one.
+</p>
+
+
+<!-- ==================================================================== -->
+<div class="activity" id="care">
+  <p class="activity__kicker">Week 6</p>
+  <h3>Care Week</h3>
+  <p>
+    No taught session next week. Three things happen:
+  </p>
+  <ul class="checklist">
+    <li><strong>Component&nbsp;1 feedback comes back</strong> during the week, in time to shape the build rather than after it.</li>
+    <li><strong>An optional drop-in</strong> for anyone who wants it.</li>
+    <li><strong>A recorded Rive and Spline demo</strong> goes on MyBeckett. Awareness only &mdash; watch it if you are curious about where this work goes next. Nothing assessed depends on it.</li>
+  </ul>
+  <p>
+    Week&nbsp;7 opens with ScrollTrigger proper, applied to the skeleton you built today. Come back
+    with your feedback read and your sections in order. There is no directed task over Care Week
+    beyond that; it is called Care Week for a reason.
+  </p>
+</div>
+
+
+<!-- ==================================================================== -->
+<h2 id="stuck">If you get stuck</h2>
+
+<details>
+  <summary>My storyboard is not finished and the deadline is Friday</summary>
+  <p>
+    Finish it roughly rather than perfecting half. Twelve annotated frames at medium quality mark
+    better than five beautiful ones and a gap, because the criterion is about communicating the
+    whole piece. Frames for sections you are unsure about can say so &mdash; a note reading
+    &ldquo;undecided between these two&rdquo; is honest design thinking, not a hole.
+  </p>
+</details>
+
+<details>
+  <summary>The peer show made me want to change everything</summary>
+  <p>
+    Normal, and usually an overreaction. Change the order and the opening if they need it &mdash;
+    both are cheap. Do not change your topic four days before the hand-in. Write the bigger doubts
+    down and bring them to the Week&nbsp;7 studio; some of them will turn out to be the iteration
+    evidence Component&nbsp;2 wants.
+  </p>
+</details>
+
+<details>
+  <summary>How long should the document be?</summary>
+  <p>
+    There is no word count. As a rough shape: a page or two of research with sources, half a page on
+    audience and intent, a page on the concept, and then the storyboard, which is usually the bulk
+    of it. If your storyboard is not the longest part, the balance is probably wrong.
+  </p>
+</details>
+
+<details>
+  <summary>Can I still change my mind about the interaction moment?</summary>
+  <p>
+    Yes, and many people will. Component&nbsp;1 asks you to have designed one, not to be bound to it
+    for ever. Changing it later with a reason is iteration; never having designed one is a missing
+    criterion.
+  </p>
+</details>
+
+<details>
+  <summary>My skeleton looks terrible</summary>
+  <p>
+    It should. It is unstyled markup. Judge it on whether it reads top to bottom in the right order
+    with the right headings &mdash; that is the only question today. Styling starts once the
+    structure has stopped moving.
+  </p>
+</details>
+
+<details>
+  <summary>Something else</summary>
+  <p>
+    Ask in the studio, or email
+    <a href="mailto:a.m.pearson@leedsbeckett.ac.uk">a.m.pearson@leedsbeckett.ac.uk</a> &mdash; I
+    normally reply within two working days, but I check more often in a hand-in week.
+  </p>
+</details>
+
+
+<!-- ==================================================================== -->
+<h2 id="resources">Resources</h2>
+
+<ul class="cards">
+  <li>
+    <a class="card" href="kits/section-skeleton/">
+      <span class="card__title">The section skeleton</span>
+      <span class="card__meta">Module site &middot; worked example</span>
+      <p>Twelve commented sections including two scenes and a marked interaction point. The structure Week&nbsp;7 attaches to.</p>
+    </a>
+  </li>
+  <li>
+    <a class="card" href="kits/research-methods/">
+      <span class="card__title">Research methods</span>
+      <span class="card__meta">Week 3 directed task</span>
+      <p>Sources, verification, credits and the AI-use log. Worth rereading before you assemble the document.</p>
+    </a>
+  </li>
+  <li>
+    <a class="card" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section">
+      <span class="card__title">MDN — the section element</span>
+      <span class="card__meta">Mozilla</span>
+      <p>When a section is the right element, and why it wants a heading.</p>
+    </a>
+  </li>
+  <li>
+    <a class="card" href="https://www.w3.org/WAI/tutorials/images/">
+      <span class="card__title">W3C — images tutorial</span>
+      <span class="card__meta">Web Accessibility Initiative</span>
+      <p>How to write alt text for informative, decorative and complex images. Your figures are mostly the third kind.</p>
+    </a>
+  </li>
+  <li>
+    <a class="card" href="https://libguides.leedsbeckett.ac.uk/skills-for-learning/">
+      <span class="card__title">Skills for Learning</span>
+      <span class="card__meta">Leeds Beckett Library</span>
+      <p>Referencing guidance if you want your source list formally Harvard.</p>
+    </a>
+  </li>
+  <li>
+    <a class="card" href="https://libguides.leedsbeckett.ac.uk/skills-for-learning/building-on-feedback">
+      <span class="card__title">Building on feedback</span>
+      <span class="card__meta">Leeds Beckett</span>
+      <p>Worth ten minutes before the Care Week feedback lands, given how much of Component&nbsp;2 is your response to it.</p>
+    </a>
+  </li>
+</ul>
+
+</main>
+</div>
+
+<footer class="colophon">
+  <div class="wrap">
+    <p>
+      <strong>Interaction Design</strong> &middot; Level 5 &middot; BSc (Hons) Content Creation
+      &middot; Leeds School of Arts, Leeds Beckett University
+    </p>
+    <p>
+      Module leader: Ant Pearson &mdash;
+      <a href="mailto:a.m.pearson@leedsbeckett.ac.uk">a.m.pearson@leedsbeckett.ac.uk</a>.
+    </p>
+    <p>
+      Week 5 of 13 &middot; Teaching materials are posted at least 48 hours before each session.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

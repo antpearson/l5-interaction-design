@@ -1,0 +1,1547 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Week 1 — Introduction to the Module | Interaction Design</title>
+    <meta
+      name="description"
+      content="Week 1: what this module is about, why the emphasis moves from code to content, deconstructing the canon, setting up your kit, and publishing your first live page."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
+    />
+    <link rel="stylesheet" href="tutorial.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="masthead" style="--masthead-image: url(images/week-1/header.png)">
+      <div class="wrap">
+        <p class="masthead__week">Week 1</p>
+        <h1>Introduction to the Module</h1>
+        <p class="masthead__sub">
+          What this module is about, why it is not last year with harder code,
+          and how to get your machine ready. You leave today with a page of your
+          own, live on the web.
+        </p>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <main id="main" class="prose">
+        <p class="lede">
+          Last year, on Web&nbsp;Interaction, the work was technical. You
+          learned how a web page is built. That was the point of Level&nbsp;4,
+          and you did it.
+        </p>
+
+        <p>
+          <strong
+            >This year the centre of gravity moves from code to content.</strong
+          >
+          The technical skills stay and you will extend them, but they are no
+          longer what the module is about. A site that merely works is cheap
+          now: templates and AI tools turn one out in minutes. What none of them
+          can do is decide what is worth saying, who it is for, and the order it
+          has to land in. That judgement is what you are training.
+        </p>
+
+        <p>
+          So over thirteen weeks each of you will research, design and build a
+          <strong>one-page scrolling interactive narrative</strong>: a true
+          story or explainer, built so the scroll drives the unfolding. The
+          story comes first. The code is how you serve it.
+        </p>
+
+        <nav class="toc" aria-labelledby="toc-heading">
+          <h2 id="toc-heading">On this page</h2>
+          <ol>
+            <li>
+              <a href="#glance"><span>&mdash;</span> Session at a glance</a>
+            </li>
+            <li>
+              <a href="#part1"><span>1.</span> The medium</a>
+            </li>
+            <li>
+              <a href="#activity-1"
+                ><span>&mdash;</span> Activity: deconstruct a piece</a
+              >
+            </li>
+            <li>
+              <a href="#definition"
+                ><span>&mdash;</span> Interaction design, on our terms</a
+              >
+            </li>
+            <li>
+              <a href="#brief"
+                ><span>&mdash;</span> The brief and how you are marked</a
+              >
+            </li>
+            <li>
+              <a href="#part2"><span>2.</span> Your kit</a>
+            </li>
+            <li>
+              <a href="#part3"><span>3.</span> The starter file</a>
+            </li>
+            <li>
+              <a href="#part4"><span>4.</span> Publish it</a>
+            </li>
+            <li>
+              <a href="#directed"><span>&mdash;</span> Your directed task</a>
+            </li>
+            <li>
+              <a href="#stuck"><span>&mdash;</span> If you get stuck</a>
+            </li>
+            <li>
+              <a href="#resources"><span>&mdash;</span> Resources</a>
+            </li>
+          </ol>
+        </nav>
+
+        <h2 id="glance">Session at a glance</h2>
+
+        <ol class="runsheet">
+          <li>Welcome &mdash; what you are making this term</li>
+          <li>Screening &mdash; three pieces from the canon</li>
+          <li>
+            <strong>Activity 1</strong> &mdash; deconstruct a piece, in pairs
+          </li>
+          <li>
+            Debrief &mdash; interaction design defined; the brief and how you
+            are marked
+          </li>
+        </ol>
+
+        <p class="runsheet-break">Break</p>
+
+        <ol class="runsheet" start="5">
+          <li>
+            <strong>Task 1</strong> &mdash; set up your kit and project folder
+          </li>
+          <li>
+            <strong>Task 2</strong> &mdash; the starter file: HTML and CSS
+            refresher
+          </li>
+          <li>
+            <strong>Task 3</strong> &mdash; first commit, publish to GitHub, go
+            live
+          </li>
+          <li>Your directed task for Week&nbsp;2</li>
+        </ol>
+
+        <!-- ==================================================================== -->
+        <div class="part" id="part1">
+          <p class="part__label">Part one</p>
+          <h2>The medium</h2>
+        </div>
+
+        <h3 id="what-is-it">What is a scrolling narrative?</h3>
+
+        <p>
+          In December 2012 the <em>New York Times</em> published
+          <cite>Snow Fall</cite>, an account of an avalanche at Tunnel Creek.
+          The reporting was long-form, but the way it was built was new: as you
+          scrolled, the page changed around the words. Maps drew themselves,
+          photographs took over the screen, video started and stopped. It won a
+          Pulitzer, and for a year every newsroom in the world wanted to
+          &ldquo;do a Snow Fall&rdquo;.
+        </p>
+
+        <p>
+          The form is called <strong>scrollytelling</strong>, and the idea is
+          simple: <strong>the reader's scroll position is an input</strong>.
+          Scroll becomes a timeline the reader controls. That is a medium with
+          its own grammar, and a working genre: the BBC, the <em>Guardian</em>,
+          Reuters and The Pudding publish in it constantly.
+        </p>
+
+        <figure class="bleed" id="bleed-hero">
+          <img
+            src="images/week-1/snow-fall.jpg"
+            alt="The opening screen of Snow Fall: a wind-blown snow slope under a white sky, with the title set small in the top right."
+            width="2400"
+            height="1339"
+            loading="lazy"
+          />
+          <figcaption>
+            <p>
+              <strong>Snow Fall</strong>, <em>New York Times</em>, 2012. Notice
+              how rarely the piece moves, and how much each move is worth when
+              it does.
+              <span class="credit">Screenshot &middot; New York Times</span>
+            </p>
+          </figcaption>
+        </figure>
+
+        <div class="video-grid">
+          <figure class="video">
+            <div class="video__frame">
+              <a
+                class="video__facade"
+                data-video="rqux0bcyzRs"
+                href="https://www.youtube.com/watch?v=rqux0bcyzRs"
+              >
+                <img
+                  src="https://i.ytimg.com/vi/rqux0bcyzRs/hqdefault.jpg"
+                  alt=""
+                  width="480"
+                  height="360"
+                  loading="lazy"
+                />
+                <span class="video__play"
+                  ><svg
+                    viewBox="0 0 68 48"
+                    width="68"
+                    height="48"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      class="video__play-bg"
+                      d="M66.52 7.74a8 8 0 0 0-5.63-5.67C56.4.86 34 .86 34 .86s-22.4 0-26.89 1.21a8 8 0 0 0-5.63 5.67A83.7 83.7 0 0 0 .5 24a83.7 83.7 0 0 0 .98 16.26 8 8 0 0 0 5.63 5.67C11.6 47.14 34 47.14 34 47.14s22.4 0 26.89-1.21a8 8 0 0 0 5.63-5.67A83.7 83.7 0 0 0 67.5 24a83.7 83.7 0 0 0-.98-16.26z"
+                    />
+                    <path d="M27 34V14l18 10z" fill="#fff" /></svg
+                ></span>
+                <span class="visually-hidden"
+                  >Play &ldquo;Joe Sexton on how The New York Times built Snow
+                  Fall&rdquo; on YouTube</span
+                >
+              </a>
+            </div>
+            <figcaption class="video__caption">
+              <strong
+                >How the <em>New York Times</em> built &ldquo;Snow
+                Fall&rdquo;</strong
+              >
+              &mdash; Joe Sexton, the editor. 12&nbsp;min &middot; Nieman
+              Foundation.
+              <a href="https://www.youtube.com/watch?v=rqux0bcyzRs"
+                >Watch on YouTube</a
+              >
+            </figcaption>
+          </figure>
+
+          <figure class="video">
+            <div class="video__frame">
+              <a
+                class="video__facade"
+                data-video="BkCmfOh2SPM"
+                href="https://www.youtube.com/watch?v=BkCmfOh2SPM"
+              >
+                <img
+                  src="https://i.ytimg.com/vi/BkCmfOh2SPM/hqdefault.jpg"
+                  alt=""
+                  width="480"
+                  height="360"
+                  loading="lazy"
+                />
+                <span class="video__play"
+                  ><svg
+                    viewBox="0 0 68 48"
+                    width="68"
+                    height="48"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      class="video__play-bg"
+                      d="M66.52 7.74a8 8 0 0 0-5.63-5.67C56.4.86 34 .86 34 .86s-22.4 0-26.89 1.21a8 8 0 0 0-5.63 5.67A83.7 83.7 0 0 0 .5 24a83.7 83.7 0 0 0 .98 16.26 8 8 0 0 0 5.63 5.67C11.6 47.14 34 47.14 34 47.14s22.4 0 26.89-1.21a8 8 0 0 0 5.63-5.67A83.7 83.7 0 0 0 67.5 24a83.7 83.7 0 0 0-.98-16.26z"
+                    />
+                    <path d="M27 34V14l18 10z" fill="#fff" /></svg
+                ></span>
+                <span class="visually-hidden"
+                  >Play &ldquo;What is Scrollytelling?&rdquo; on YouTube</span
+                >
+              </a>
+            </div>
+            <figcaption class="video__caption">
+              <strong>What is scrollytelling?</strong> &mdash; the form and its
+              patterns. 9&nbsp;min &middot; Lights OnData.
+              <a href="https://www.youtube.com/watch?v=BkCmfOh2SPM"
+                >Watch on YouTube</a
+              >
+            </figcaption>
+          </figure>
+        </div>
+
+        <h3 id="screening">The screening list</h3>
+
+        <p>
+          We look at three together on the projector. Open them yourself too:
+          half of what you are learning is how it <em>feels</em> to be the
+          reader.
+        </p>
+
+        <ul class="cards">
+          <li>
+            <a
+              class="card"
+              href="https://www.nytimes.com/projects/2012/snow-fall/index.html"
+            >
+              <img class="card__thumb" src="images/week-1/snow-fall-thumb.jpg" alt="" width="900" height="600" loading="lazy" />
+              <span class="card__title"
+                >Snow Fall: The Avalanche at Tunnel Creek</span
+              >
+              <span class="card__meta">New York Times, 2012</span>
+              <p>The piece that named the genre. Restraint is the lesson.</p>
+            </a>
+          </li>
+          <li>
+            <a
+              class="card"
+              href="https://www.bbc.co.uk/news/resources/idt-e8c6cbab-da44-4a3c-8f9b-c4fccd53dd24"
+            >
+              <img class="card__thumb" src="images/week-1/body-moor-thumb.jpg" alt="" width="900" height="600" loading="lazy" />
+              <span class="card__title">Body on the Moor</span>
+              <span class="card__meta">BBC News</span>
+              <p>
+                An unidentified man and a police investigation, unfolding as you
+                descend. Structure over spectacle.
+              </p>
+            </a>
+          </li>
+          <li>
+            <a
+              class="card"
+              href="https://www.bbc.co.uk/news/resources/idt-sh/the_reykjavik_confessions"
+            >
+              <span class="card__thumb card__thumb--ph" aria-hidden="true">Image needed &middot; 900&times;600</span>
+              <span class="card__title">The Reykjavik Confessions</span>
+              <span class="card__meta">BBC News</span>
+              <p>
+                Six people confessed to murders they could not remember. Watch
+                how black space and pace hold you.
+              </p>
+            </a>
+          </li>
+          <li>
+            <a class="card" href="https://pudding.cool/">
+              <span class="card__thumb card__thumb--ph" aria-hidden="true">Image needed &middot; 900&times;600</span>
+              <span class="card__title">The Pudding</span>
+              <span class="card__meta">Ongoing</span>
+              <p>
+                Visual essays, weekly. The best single source of ideas for what
+                this medium can do.
+              </p>
+            </a>
+          </li>
+        </ul>
+
+        <div class="box box--note">
+          <p class="box__title">A note on paywalls</p>
+          <p>
+            The <em>New York Times</em> sometimes asks you to sign in. The BBC
+            pieces and The Pudding are free, and there is more than enough there
+            for the activity.
+          </p>
+        </div>
+
+        <!-- ==================================================================== -->
+        <div class="activity" id="activity-1">
+          <p class="activity__kicker">
+            Activity 1 &middot; 25 minutes &middot; in pairs
+          </p>
+          <h3>Deconstruct a piece</h3>
+
+          <p>
+            Pick <strong>one</strong> piece from the screening list, not the one
+            we spent longest on. Scroll it together, slowly, twice. The second
+            time, stop being a reader and start being a designer: watch the
+            seams. Answer these five questions in writing. Rough notes are fine;
+            you need them in Week&nbsp;3.
+          </p>
+
+          <ol class="steps">
+            <li>
+              <strong>What is the story in one sentence?</strong>
+              If it takes three, the piece has a structure problem, or you have
+              not found the spine.
+            </li>
+            <li>
+              <strong>What is the scroll actually doing?</strong>
+              List every distinct behaviour and count them. Most good pieces use
+              fewer than six.
+            </li>
+            <li>
+              <strong>Where does the reader have agency?</strong>
+              Any point where <em>you</em> act and the piece responds? Or does
+              it only play at you? Be honest; plenty of famous pieces fail this
+              test.
+            </li>
+            <li>
+              <strong>How is it paced?</strong>
+              Find one deliberate moment and describe what it achieves.
+            </li>
+            <li>
+              <strong>What breaks if you turn the pictures off?</strong>
+              Is there still a story, or was the text carrying nothing?
+            </li>
+          </ol>
+
+          <div class="box box--do">
+            <p class="box__title">Bring back one sentence</p>
+            <p>
+              Each pair names
+              <strong>one thing the piece does that you would steal</strong>.
+              Not &ldquo;it looked nice&rdquo; &mdash; a technique, named.
+            </p>
+          </div>
+        </div>
+
+        <!-- ==================================================================== -->
+        <h3 id="definition">Interaction design, on this module's terms</h3>
+
+        <p>
+          &ldquo;Interaction design&rdquo; is a broad term. Here it means
+          something specific, and the distinction below is what your work is
+          marked against.
+        </p>
+
+        <div class="table-scroll">
+          <table>
+            <caption>
+              The difference the brief is asking you to make.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Motion design</th>
+                <th scope="col">Interaction design</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>The reader scrolls; the piece plays.</td>
+                <td>The reader acts; the piece responds.</td>
+              </tr>
+              <tr>
+                <td>The only decision available is <em>how fast</em>.</td>
+                <td>
+                  There is at least one point where the reader's choice changes
+                  what they see.
+                </td>
+              </tr>
+              <tr>
+                <td>Take away the scroll and it is a video.</td>
+                <td>
+                  Take away the scroll and it is still a page you can use.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          A page that only plays a film as you scroll is motion design. It can
+          be beautiful and earn a good craft mark, but the brief asks for
+          <strong>at least one designed moment of genuine interaction</strong>.
+          The discipline is four things:
+        </p>
+
+        <ul>
+          <li>
+            <strong>Pacing</strong> &mdash; how fast it moves, and where you
+            make the reader wait.
+          </li>
+          <li>
+            <strong>Feedback</strong> &mdash; how the piece shows it has heard
+            the reader.
+          </li>
+          <li>
+            <strong>Reveal order</strong> &mdash; what the reader is allowed to
+            know, and when.
+          </li>
+          <li>
+            <strong>Agency</strong> &mdash; where the reader is genuinely in
+            charge.
+          </li>
+        </ul>
+
+        <p>
+          Accessibility sits underneath all four, and here it is craft rather
+          than compliance. Motion on screen makes some people genuinely unwell,
+          so we design a version that does not move &mdash; not a broken
+          version, a designed one. You are marked on how well you solve it.
+        </p>
+
+        <h3 id="brief">The brief, and how you are marked</h3>
+
+        <p>
+          The full brief is in the <strong>Assessment</strong> area on
+          MyBeckett. Read it properly this week. In outline:
+        </p>
+
+        <div class="table-scroll">
+          <table>
+            <caption>
+              Two components. The first one is only five weeks away.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Component</th>
+                <th scope="col">What it is</th>
+                <th class="time" scope="col">Due</th>
+                <th scope="col">Weight</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>C1 &middot; Research &amp; Concept</strong></td>
+                <td>
+                  Your verified story and sources; your audience and intent;
+                  your concept and its experience arc; a motion storyboard
+                  showing how key moments behave.
+                </td>
+                <td class="time">Fri 30 Oct 2026, 12 noon</td>
+                <td>30%</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>C2 &middot; Interaction Design Portfolio</strong>
+                </td>
+                <td>
+                  Figma storyboard and prototype; the working build, published
+                  and responsive, with reduced-motion and no-JavaScript
+                  baselines; evaluation, rationale and a presentation.
+                </td>
+                <td class="time">Fri 15 Jan 2027, 12 noon</td>
+                <td>70%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box box--warn">
+          <p class="box__title">Two things that catch people out</p>
+          <p>
+            <strong>Your process is evidence.</strong> Your commits, your Figma
+            version history and the interim uploads in Weeks 3, 8 and 10 are a
+            timestamped record of you doing the work. It supports your marks and
+            it is how authorship is established, which is why we start
+            committing today rather than in Week&nbsp;7.
+          </p>
+          <p>
+            <strong>AI use must be declared and explained.</strong> Generative
+            AI is permitted provided every use is declared in an AI-use log
+            submitted with each component. You must be able to justify every
+            element you submit, including AI-assisted code. Anything you cannot
+            explain earns no marks, so if you use it, use it somewhere you
+            understand.
+          </p>
+        </div>
+
+        <div class="box box--do">
+          <p class="box__title">There are two routes to a good mark</p>
+          <p>
+            The <strong>editorial route</strong>: a verified story, precise
+            pacing, a consistent look, interactions built from the recipes
+            taught in class. Very little custom code. The
+            <strong>technical route</strong>: custom GSAP, layered and pinned
+            scenes, inventions past the taught material. Neither is worth more.
+            What earns marks is <em>ambition matched by execution</em>.
+          </p>
+        </div>
+
+        <!-- ==================================================================== -->
+        <hr />
+        <p class="break">Break</p>
+        <hr />
+
+        <!-- ==================================================================== -->
+        <div class="part" id="part2">
+          <p class="part__label">Part two &middot; Task 1</p>
+          <h2>Your kit</h2>
+        </div>
+
+        <p>
+          One environment, from today until January. Last year sessions drifted
+          between text editors and half of everyone's problems were tooling
+          problems. Five things.
+        </p>
+
+        <h3 id="vscode">1. Visual Studio Code</h3>
+
+        <ol class="steps">
+          <li>
+            <p>
+              Already in <strong>Applications</strong> on the studio Macs. On
+              your own machine, download from
+              <a href="https://code.visualstudio.com/">code.visualstudio.com</a>
+              and drag it into <strong>Applications</strong>. Do not run it from
+              Downloads.
+            </p>
+          </li>
+          <li>
+            <p>
+              Open the Extensions panel (<kbd>&#8679;&#8984;X</kbd>) and install
+              three:
+            </p>
+            <ul>
+              <li>
+                <strong>Live Server</strong> &mdash; serves your page at a local
+                address instead of opening it as a file. Essential the moment
+                JavaScript is involved.
+              </li>
+              <li>
+                <strong>Prettier</strong> &mdash; tidies your indentation on
+                save.
+              </li>
+              <li>
+                <strong>Error Lens</strong> &mdash; puts mistakes next to the
+                line that caused them.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>
+              Turn on format-on-save: <kbd>&#8984;,</kbd>, search
+              <code>format on save</code>, tick the box.
+            </p>
+          </li>
+        </ol>
+
+        <h3 id="git">2. Git</h3>
+
+        <p>
+          The version-control system underneath everything we do this term.
+          macOS supplies it but sometimes needs a nudge. Open
+          <strong>Terminal</strong> (<kbd>&#8984;Space</kbd>, type
+          <code>terminal</code>) and run:
+        </p>
+
+        <p class="filename">Terminal</p>
+        <pre><code>git --version</code></pre>
+
+        <p>
+          A version number means you are done. If macOS offers to install the
+          command line developer tools, say yes and wait. Then tell Git who you
+          are:
+        </p>
+
+        <p class="filename">Terminal</p>
+        <pre><code>git config --global user.name "Your Name"
+git config --global user.email "your.name@student.leedsbeckett.ac.uk"</code></pre>
+
+        <div class="box box--note">
+          <p class="box__title">You also need a GitHub account</p>
+          <p>
+            Sign up free at
+            <a href="https://github.com/signup">github.com/signup</a>. Use a
+            username you would put on a CV: it becomes part of your public web
+            address for three years. While you are there, apply for the
+            <a href="https://education.github.com/pack"
+              >Student Developer Pack</a
+            >
+            with your university email.
+          </p>
+        </div>
+
+        <h3 id="figma">3. Figma</h3>
+
+        <p>
+          From Week&nbsp;4 you storyboard your scroll scenes in Figma, and your
+          version history is process evidence. Sign in at
+          <a href="https://www.figma.com/education/">figma.com/education</a>
+          with your student email for the free education plan, and make a
+          project called <strong>Interaction Design</strong> now.
+        </p>
+
+        <h3 id="devtools">4. Chrome DevTools</h3>
+
+        <p>Your fourth tool is the browser itself. In Chrome:</p>
+
+        <ul>
+          <li><kbd>&#8997;&#8984;I</kbd> &mdash; open DevTools.</li>
+          <li>
+            <kbd>&#8997;&#8984;J</kbd> &mdash; open the Console, where
+            JavaScript errors appear. Get in the habit of leaving it open.
+          </li>
+          <li>
+            The device icon toggles <strong>device toolbar</strong>: how you
+            check your piece at phone size without a phone.
+          </li>
+        </ul>
+
+        <h3 id="folder">5. Your project folder</h3>
+
+        <p>
+          Where you keep this matters more than you would think. Make a
+          <code>Developer</code> folder in your home folder and keep the module
+          inside it:
+        </p>
+
+        <p class="filename">Finder</p>
+        <pre><code>~/Developer/interaction-design/</code></pre>
+
+        <div class="box box--warn">
+          <p class="box__title">Do not put it on the Desktop or in Documents</p>
+          <p>
+            If iCloud Drive is syncing those folders &mdash; the default on a
+            personal Mac &mdash; it fights with Git, quietly corrupts files, and
+            produces errors nobody can diagnose at 11pm. On the studio Macs,
+            save to <strong>OneDrive</strong> or a USB drive before you leave:
+            the local drive is wiped.
+          </p>
+        </div>
+
+        <div class="box box--do">
+          <p class="box__title">Naming, from today</p>
+          <p>
+            Lower case. Hyphens, never spaces. No
+            <code>Final_v2 FINAL.html</code>. Web servers care and your own
+            machine does not, which is how people discover on hand-in day that
+            their site works locally and nowhere else.
+          </p>
+        </div>
+
+        <figure class="bleed" id="bleed-kit">
+          <div
+            class="bleed__ph"
+            role="img"
+            aria-label="Placeholder for a screenshot of the VS Code window with the starter project open"
+          >
+            <span
+              >Image slot 2 &middot; VS Code, starter project open, Live Server
+              running &middot; 2400&times;1030</span
+            >
+          </div>
+          <figcaption>
+            <p>
+              <strong>The end of Task 1</strong>: starter folder open, Live
+              Server running, Console visible.
+              <span class="credit">Screenshot &middot; own</span>
+            </p>
+          </figcaption>
+        </figure>
+
+        <!-- ==================================================================== -->
+        <div class="part" id="part3">
+          <p class="part__label">Part three &middot; Task 2</p>
+          <h2>The starter file</h2>
+        </div>
+
+        <p>
+          Download <strong>interaction-design-starter.zip</strong> from
+          MyBeckett, unzip it into <code>~/Developer/interaction-design/</code>,
+          then <strong>File &rarr; Open Folder&hellip;</strong> in VS Code and
+          choose it. Right-click <code>index.html</code> and pick
+          <strong>Open with Live Server</strong>. Leave it running: it reloads
+          every time you save.
+        </p>
+
+        <p class="filename">Folder structure</p>
+        <pre><code>interaction-design-starter/
+├── index.html          the page
+├── css/
+│   └── style.css       the stylesheet
+├── js/
+│   └── main.js         empty on purpose — Week 2
+├── images/             placeholder graphics
+└── README.md</code></pre>
+
+        <p>
+          This is the file you build on all term. Deliberately not a blank page:
+          the structure, stylesheet and accessibility baseline are done, so your
+          effort goes into the story rather than plumbing you proved you could
+          do last year.
+        </p>
+
+        <h3 id="html-refresher">Read the HTML</h3>
+
+        <p>
+          Open <code>index.html</code> and read it top to bottom; it is heavily
+          commented. Three things matter, because all three are marked in
+          January.
+        </p>
+
+        <p>
+          <strong>Everything is a landmark.</strong>
+          <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>,
+          <code>&lt;section&gt;</code>, <code>&lt;figure&gt;</code>,
+          <code>&lt;footer&gt;</code>. A screen-reader user navigates by jumping
+          between these; a page built from <code>&lt;div&gt;</code>s is one
+          undifferentiated wall.
+        </p>
+
+        <p>
+          <strong>Every section is labelled</strong>, with an
+          <code>aria-labelledby</code> pointing at its own heading's
+          <code>id</code>:
+        </p>
+
+        <p class="filename">index.html</p>
+        <pre><code>&lt;section class="chapter" id="chapter-1" aria-labelledby="chapter-1-heading"&gt;
+  &lt;div class="chapter__text"&gt;
+    &lt;h2 id="chapter-1-heading"&gt;A chapter is one idea&lt;/h2&gt;
+    &lt;p&gt;&hellip;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+
+        <p>
+          <strong>The sticky scene already works without JavaScript.</strong>
+          Scroll to <code>&lt;section class="scene"&gt;</code>. The picture
+          holds still while three text blocks pass over it, with no script
+          running &mdash; plain CSS <code>position: sticky</code>. In Weeks 7
+          and 8 you layer GSAP on top, but the version that works with
+          JavaScript off is the version you have <em>right now</em>. Keep it
+          that way. That is <strong>progressive enhancement</strong>, and the
+          brief requires it.
+        </p>
+
+        <figure class="video">
+          <div class="video__frame">
+            <a
+              class="video__facade"
+              data-video="YOsMJQfwqow"
+              href="https://www.youtube.com/watch?v=YOsMJQfwqow"
+            >
+              <img
+                src="https://i.ytimg.com/vi/YOsMJQfwqow/hqdefault.jpg"
+                alt=""
+                width="480"
+                height="360"
+                loading="lazy"
+              />
+              <span class="video__play"
+                ><svg
+                  viewBox="0 0 68 48"
+                  width="68"
+                  height="48"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    class="video__play-bg"
+                    d="M66.52 7.74a8 8 0 0 0-5.63-5.67C56.4.86 34 .86 34 .86s-22.4 0-26.89 1.21a8 8 0 0 0-5.63 5.67A83.7 83.7 0 0 0 .5 24a83.7 83.7 0 0 0 .98 16.26 8 8 0 0 0 5.63 5.67C11.6 47.14 34 47.14 34 47.14s22.4 0 26.89-1.21a8 8 0 0 0 5.63-5.67A83.7 83.7 0 0 0 67.5 24a83.7 83.7 0 0 0-.98-16.26z"
+                  />
+                  <path d="M27 34V14l18 10z" fill="#fff" /></svg
+              ></span>
+              <span class="visually-hidden"
+                >Play &ldquo;HTML and CSS for Absolute Beginners: Semantic
+                HTML&rdquo; on YouTube</span
+              >
+            </a>
+          </div>
+          <figcaption class="video__caption">
+            <strong>Semantic HTML, refreshed</strong> &mdash; Kevin Powell on
+            why the tag you choose matters. 10&nbsp;min. Worth it tonight if
+            last year is hazy.
+            <a href="https://www.youtube.com/watch?v=YOsMJQfwqow"
+              >Watch on YouTube</a
+            >
+          </figcaption>
+        </figure>
+
+        <h3 id="css-refresher">Read the CSS</h3>
+
+        <p>
+          Open <code>css/style.css</code>. The first block is the one that
+          matters:
+        </p>
+
+        <p class="filename">css/style.css</p>
+        <pre><code>:root {
+  --ink:       #14161a;
+  --paper:     #fbfaf8;
+  --accent:    #b4451f;
+
+  --step-3: clamp(2.07rem, 1.55rem + 2.60vw, 4.00rem);
+
+  --measure: 34rem;
+}</code></pre>
+
+        <p>
+          Those are <strong>custom properties</strong>, named values used
+          everywhere else in the file. Change <code>--accent</code> once and
+          every accent changes. Not a convenience trick: it is the beginning of
+          a <strong>design system</strong>, and &ldquo;a consistent visual and
+          motion language&rdquo; is 30% of your mark in January.
+        </p>
+
+        <p>
+          Two other things. <code>clamp(min, preferred, max)</code> resizes type
+          with the viewport without a media query &mdash; drag the window narrow
+          and watch the headline. And <code>--measure</code> caps line width,
+          because past about 75 characters people lose their place between
+          lines.
+        </p>
+
+        <div class="box box--note">
+          <p class="box__title">Section 9 of the stylesheet</p>
+          <p>
+            At the bottom, find
+            <code>@media (prefers-reduced-motion: reduce)</code>. That block is
+            the accessible version of the whole page: animation stops and the
+            sticky scene unpins into an ordinary captioned picture. Test it
+            &mdash;
+            <strong
+              >System Settings &rarr; Accessibility &rarr; Display &rarr; Reduce
+              motion</strong
+            >
+            &mdash; then reload. Far easier to maintain from Week&nbsp;1 than to
+            retrofit in Week&nbsp;10.
+          </p>
+        </div>
+
+        <div class="activity">
+          <p class="activity__kicker">
+            Task 2 &middot; 15 minutes &middot; on your own
+          </p>
+          <h3>Make it yours</h3>
+          <p>
+            Small changes. The point is to prove the whole chain works, not to
+            design anything yet.
+          </p>
+          <ol class="steps">
+            <li>
+              Change the <code>&lt;title&gt;</code> and the
+              <code>&lt;meta name="author"&gt;</code> to your own name.
+            </li>
+            <li>
+              Change <code>--accent</code> in <code>style.css</code> to a colour
+              you actually like. Watch what moves.
+            </li>
+            <li>
+              Change the headline and standfirst on the cover to anything you
+              want.
+            </li>
+            <li>
+              Copy
+              <code
+                >&lt;section class="chapter"
+                id="chapter-1"&gt;&hellip;&lt;/section&gt;</code
+              >, paste it below itself, and change the <code>id</code> to
+              <code>chapter-3</code>, with the <code>aria-labelledby</code> and
+              heading <code>id</code> to match. Confirm it appears.
+            </li>
+            <li>
+              Open the Console (<kbd>&#8997;&#8984;J</kbd>). You should see the
+              line <code>main.js</code> prints. If not, the script is not
+              connected &mdash; find out why now, not in Week&nbsp;7.
+            </li>
+          </ol>
+          <div class="box box--do">
+            <p class="box__title">Then narrow the window</p>
+            <p>
+              Drag your browser window as narrow as it goes. Everything should
+              stay readable, with no sideways scrolling. That is the baseline
+              you are inheriting; the day you break it, you will know it was
+              something you added.
+            </p>
+          </div>
+        </div>
+
+        <!-- ==================================================================== -->
+        <div class="part" id="part4">
+          <p class="part__label">Part four &middot; Task 3</p>
+          <h2>Publish it</h2>
+        </div>
+
+        <p>
+          The part that makes today count. In the next twenty minutes your page
+          goes onto the public web at an address you own, and every save from
+          now until January leaves a dated record.
+        </p>
+
+        <h3 id="commit">Your first commit</h3>
+
+        <ol class="steps">
+          <li>
+            <p>
+              Open <strong>Source Control</strong> &mdash; the branching icon in
+              the left bar, or <kbd>&#8963;&#8679;G</kbd>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Click <strong>Initialize Repository</strong>. Your files appear in
+              a list of changes.
+            </p>
+          </li>
+          <li>
+            <p>
+              Type a message in the box at the top. Present tense, and say what
+              you did:
+              <code>Set up starter project</code>, not <code>asdf</code>. In
+              January you read these back as evidence of your own process.
+            </p>
+          </li>
+          <li>
+            <p>
+              Click <strong>Commit</strong>. If it asks whether to stage all
+              changes, say yes.
+            </p>
+          </li>
+        </ol>
+
+        <div class="box box--note">
+          <p class="box__title">What a commit actually is</p>
+          <p>
+            A snapshot of the whole folder with your name, the time and your
+            note attached, which you can return to. Not a backup and not a cloud
+            drive: a record of the decisions you made and when. Commit at the
+            end of every working session, finished or not.
+          </p>
+        </div>
+
+        <h3 id="publish">Publish to GitHub</h3>
+
+        <ol class="steps">
+          <li>
+            <p>
+              Still in Source Control, click <strong>Publish Branch</strong> (it
+              may read <strong>Publish to GitHub</strong>).
+            </p>
+          </li>
+          <li>
+            <p>
+              VS Code asks you to sign in to GitHub. Allow it: a browser window
+              opens, you authorise once, and it remembers.
+            </p>
+          </li>
+          <li>
+            <p>
+              Name the repository <code>interaction-design</code> and choose
+              <strong>public</strong>.
+            </p>
+          </li>
+        </ol>
+
+        <div class="box box--warn">
+          <p class="box__title">It has to be public, and that is fine</p>
+          <p>
+            GitHub Pages only publishes from
+            <strong>public</strong> repositories on a free account. Public means
+            anyone can read your code. That is how the industry works and it is
+            an asset when you apply for jobs. It does not create an
+            academic-honesty problem for you &mdash; <em>your</em>
+            commit history is the proof the work is yours &mdash; but it does
+            mean you should not copy anyone else's, and nothing private belongs
+            in the folder.
+          </p>
+        </div>
+
+        <h3 id="pages">Turn on GitHub Pages</h3>
+
+        <ol class="steps">
+          <li>
+            <p>
+              On <a href="https://github.com/">github.com</a>, open your new
+              <code>interaction-design</code> repository.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Settings</strong>, then <strong>Pages</strong> in the left
+              sidebar.
+            </p>
+          </li>
+          <li>
+            <p>
+              Under <strong>Build and deployment &rarr; Source</strong>, choose
+              <strong>Deploy from a branch</strong>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Branch <strong>main</strong>, folder <strong>/ (root)</strong>.
+              <strong>Save</strong>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Wait a minute or two, then reload. Your address appears at the
+              top:
+            </p>
+            <p class="filename">Your live address</p>
+            <pre><code>https://&lt;your-username&gt;.github.io/interaction-design/</code></pre>
+          </li>
+        </ol>
+
+        <figure class="bleed" id="bleed-publish">
+          <div
+            class="bleed__ph"
+            role="img"
+            aria-label="Placeholder for a screenshot of the GitHub Pages settings screen showing a published address"
+          >
+            <span
+              >Image slot 3 &middot; GitHub Pages settings, live address showing
+              &middot; 2400&times;1030</span
+            >
+          </div>
+          <figcaption>
+            <p>
+              <strong>Settings &rarr; Pages</strong>, branch <code>main</code>,
+              published address at the top. The screen to check when a URL 404s.
+              <span class="credit">Screenshot &middot; own</span>
+            </p>
+          </figcaption>
+        </figure>
+
+        <div class="box box--do">
+          <p class="box__title">Open it on your phone before you leave</p>
+          <p>
+            A real, live web page on the public internet, made by you, in your
+            first session. Send it to someone. Then put it somewhere you will
+            not lose it: you are submitting it in January.
+          </p>
+        </div>
+
+        <div class="video-grid">
+          <figure class="video">
+            <div class="video__frame">
+              <a
+                class="video__facade"
+                data-video="i_23KUAEtUM"
+                href="https://www.youtube.com/watch?v=i_23KUAEtUM"
+              >
+                <img
+                  src="https://i.ytimg.com/vi/i_23KUAEtUM/hqdefault.jpg"
+                  alt=""
+                  width="480"
+                  height="360"
+                  loading="lazy"
+                />
+                <span class="video__play"
+                  ><svg
+                    viewBox="0 0 68 48"
+                    width="68"
+                    height="48"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      class="video__play-bg"
+                      d="M66.52 7.74a8 8 0 0 0-5.63-5.67C56.4.86 34 .86 34 .86s-22.4 0-26.89 1.21a8 8 0 0 0-5.63 5.67A83.7 83.7 0 0 0 .5 24a83.7 83.7 0 0 0 .98 16.26 8 8 0 0 0 5.63 5.67C11.6 47.14 34 47.14 34 47.14s22.4 0 26.89-1.21a8 8 0 0 0 5.63-5.67A83.7 83.7 0 0 0 67.5 24a83.7 83.7 0 0 0-.98-16.26z"
+                    />
+                    <path d="M27 34V14l18 10z" fill="#fff" /></svg
+                ></span>
+                <span class="visually-hidden"
+                  >Play &ldquo;Using Git with Visual Studio Code&rdquo; on
+                  YouTube</span
+                >
+              </a>
+            </div>
+            <figcaption class="video__caption">
+              <strong>Using Git with VS Code</strong> &mdash; the official
+              walkthrough of the exact panel we just used. 7&nbsp;min &middot;
+              Visual Studio Code.
+              <a href="https://www.youtube.com/watch?v=i_23KUAEtUM"
+                >Watch on YouTube</a
+              >
+            </figcaption>
+          </figure>
+
+          <figure class="video">
+            <div class="video__frame">
+              <a
+                class="video__facade"
+                data-video="b2r9Cdvssi0"
+                href="https://www.youtube.com/watch?v=b2r9Cdvssi0"
+              >
+                <img
+                  src="https://i.ytimg.com/vi/b2r9Cdvssi0/hqdefault.jpg"
+                  alt=""
+                  width="480"
+                  height="360"
+                  loading="lazy"
+                />
+                <span class="video__play"
+                  ><svg
+                    viewBox="0 0 68 48"
+                    width="68"
+                    height="48"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      class="video__play-bg"
+                      d="M66.52 7.74a8 8 0 0 0-5.63-5.67C56.4.86 34 .86 34 .86s-22.4 0-26.89 1.21a8 8 0 0 0-5.63 5.67A83.7 83.7 0 0 0 .5 24a83.7 83.7 0 0 0 .98 16.26 8 8 0 0 0 5.63 5.67C11.6 47.14 34 47.14 34 47.14s22.4 0 26.89-1.21a8 8 0 0 0 5.63-5.67A83.7 83.7 0 0 0 67.5 24a83.7 83.7 0 0 0-.98-16.26z"
+                    />
+                    <path d="M27 34V14l18 10z" fill="#fff" /></svg
+                ></span>
+                <span class="visually-hidden"
+                  >Play &ldquo;Getting started with GitHub Pages&rdquo; on
+                  YouTube</span
+                >
+              </a>
+            </div>
+            <figcaption class="video__caption">
+              <strong>Getting started with GitHub Pages</strong> &mdash; four
+              minutes, from GitHub. April 2026, so the screens match.
+              <a href="https://www.youtube.com/watch?v=b2r9Cdvssi0"
+                >Watch on YouTube</a
+              >
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- ==================================================================== -->
+        <div class="activity" id="directed">
+          <p class="activity__kicker">Directed task &middot; before Week 2</p>
+          <h3>Commit tonight's work</h3>
+
+          <p>
+            Week&nbsp;2 picks up where this leaves off, and we link GSAP to the
+            file you publish tonight.
+          </p>
+
+          <ul class="checklist">
+            <li>
+              Make one more change to the starter: rewrite the cover, change the
+              type, add a chapter.
+            </li>
+            <li>Commit it, with a message that says what you changed.</li>
+            <li>
+              <strong>Sync</strong> (the circular arrows in the status bar) so
+              it reaches GitHub.
+            </li>
+            <li>Check your live URL updates. It takes a minute or so.</li>
+            <li>Read the assignment brief on MyBeckett, all of it, once.</li>
+            <li>
+              Spend twenty minutes on
+              <a href="https://pudding.cool/">The Pudding</a>. Find one piece
+              you wish you had made and note down why.
+            </li>
+          </ul>
+
+          <div class="box box--note">
+            <p class="box__title">Coming in Week 2</p>
+            <p>
+              Flexbox re-levelling folded into linking GSAP, then your first
+              ScrollTrigger fade and pin. Everyone leaves having made something
+              move.
+            </p>
+          </div>
+        </div>
+
+        <!-- ==================================================================== -->
+        <h2 id="stuck">If you get stuck</h2>
+
+        <details>
+          <summary>Live Server does nothing, or opens a blank page</summary>
+          <p>
+            You have opened a single <em>file</em> rather than the
+            <em>folder</em>. Close everything, then
+            <strong>File &rarr; Open Folder&hellip;</strong> and choose
+            <code>interaction-design-starter</code> itself. The sidebar should
+            show <code>index.html</code>, <code>css</code>, <code>js</code> and
+            <code>images</code> at the top level.
+          </p>
+        </details>
+
+        <details>
+          <summary>The page loads but has no styling</summary>
+          <p>
+            The path in your <code>&lt;link&gt;</code> tag does not match where
+            the file is. It should read <code>href="css/style.css"</code>: no
+            leading slash, lower case, and the file genuinely inside a
+            <code>css</code> folder. Check the Console
+            (<kbd>&#8997;&#8984;J</kbd>) for a 404.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            &ldquo;Publish Branch&rdquo; is greyed out or missing
+          </summary>
+          <p>
+            You need one commit before there is anything to publish. Stage,
+            write a message, click
+            <strong>Commit</strong>, and the button appears.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            Git asks for a username and password in the Terminal
+          </summary>
+          <p>
+            Do not type your GitHub password; GitHub stopped accepting passwords
+            over Git years ago. Cancel out and sign in through VS Code's own
+            prompt, which handles it for you.
+          </p>
+        </details>
+
+        <details>
+          <summary>My GitHub Pages URL shows a 404</summary>
+          <p>
+            Three usual causes. The first deploy is slow, so give it a few
+            minutes. Check
+            <strong>Settings &rarr; Pages</strong> really says
+            <strong>main</strong> and <strong>/ (root)</strong>. And the file
+            must be <code>index.html</code>, lower case, at the top level of the
+            repository.
+          </p>
+        </details>
+
+        <details>
+          <summary>My commits are not showing up on GitHub</summary>
+          <p>
+            Committing saves locally; <strong>syncing</strong> sends it. Click
+            the circular arrows in the bottom-left status bar.
+          </p>
+        </details>
+
+        <details>
+          <summary>Something else</summary>
+          <p>
+            Ask in the studio: most of this is thirty seconds at the machine and
+            twenty minutes by email. Out of hours, email
+            <a href="mailto:a.m.pearson@leedsbeckett.ac.uk"
+              >a.m.pearson@leedsbeckett.ac.uk</a
+            >; I normally reply within two working days. Send the error text and
+            a screenshot, not &ldquo;it doesn't work&rdquo;.
+          </p>
+        </details>
+
+        <!-- ==================================================================== -->
+        <h2 id="resources">Resources</h2>
+
+        <h3>Read and watch these pieces</h3>
+
+        <ul class="cards">
+          <li>
+            <a class="card" href="https://pudding.cool/pudding-cup/">
+              <span class="card__title">The Pudding Cup</span>
+              <span class="card__meta">Annual, currently 2025</span>
+              <p>
+                The year's best visual and data-driven stories, chosen by people
+                who make them.
+              </p>
+            </a>
+          </li>
+          <li>
+            <a
+              class="card"
+              href="https://shorthand.com/the-craft/scrollytelling-examples/index.html"
+            >
+              <span class="card__title">Scrollytelling examples</span>
+              <span class="card__meta">Shorthand</span>
+              <p>
+                Curated, with commentary on why each one works. Useful when you
+                are stuck for a structure.
+              </p>
+            </a>
+          </li>
+          <li>
+            <a
+              class="card"
+              href="https://www.informationisbeautifulawards.com/"
+            >
+              <span class="card__title">Information is Beautiful Awards</span>
+              <span class="card__meta">Annual</span>
+              <p>
+                Broader than scrollytelling. A good corrective if your instincts
+                all run one way.
+              </p>
+            </a>
+          </li>
+        </ul>
+
+        <h3>Archives you can build a story from</h3>
+
+        <p>
+          You choose your own topic in Week&nbsp;3. To browse early: these are
+          free, credible and full of change-over-time material.
+        </p>
+
+        <ul class="cards">
+          <li>
+            <a
+              class="card"
+              href="https://science.nasa.gov/earth/earth-observatory/world-of-change/"
+            >
+              <span class="card__title">NASA &mdash; World of Change</span>
+              <span class="card__meta">Earth Observatory</span>
+              <p>
+                The same place over decades: the Aral Sea, Amazon deforestation,
+                glaciers, Shanghai.
+              </p>
+            </a>
+          </li>
+          <li>
+            <a class="card" href="https://eros.usgs.gov/earthshots">
+              <span class="card__title">USGS &mdash; Earthshots</span>
+              <span class="card__meta">EROS</span>
+              <p>
+                Over 100 locations where satellite imagery documents land
+                changing.
+              </p>
+            </a>
+          </li>
+          <li>
+            <a
+              class="card"
+              href="https://www.esa.int/ESA_Multimedia/Sets/Earth_from_Space_image_collection"
+            >
+              <span class="card__title">ESA &mdash; Earth from Space</span>
+              <span class="card__meta">European Space Agency</span>
+              <p>The European equivalent, with text you can source from.</p>
+            </a>
+          </li>
+        </ul>
+
+        <h3>Reference for the tools</h3>
+
+        <ul class="cards">
+          <li>
+            <a
+              class="card"
+              href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements"
+            >
+              <span class="card__title">MDN &mdash; HTML elements</span>
+              <span class="card__meta">Mozilla</span>
+              <p>
+                The reference. When you are unsure which tag to use, this is the
+                answer, not a search engine.
+              </p>
+            </a>
+          </li>
+          <li>
+            <a
+              class="card"
+              href="https://code.visualstudio.com/docs/sourcecontrol/intro-to-git"
+            >
+              <span class="card__title">Source control in VS Code</span>
+              <span class="card__meta">Microsoft</span>
+              <p>The official quickstart for the panel we used today.</p>
+            </a>
+          </li>
+          <li>
+            <a class="card" href="https://docs.github.com/en/pages/quickstart">
+              <span class="card__title">GitHub Pages quickstart</span>
+              <span class="card__meta">GitHub</span>
+              <p>If publishing goes wrong, start here.</p>
+            </a>
+          </li>
+          <li>
+            <a class="card" href="https://gsap.com/docs/v3/">
+              <span class="card__title">GSAP documentation</span>
+              <span class="card__meta"
+                >Webflow &middot; free for commercial use</span
+              >
+              <p>Next week's engine. Have a look; do not worry about it yet.</p>
+            </a>
+          </li>
+        </ul>
+
+        <h3>One to watch before Week 2, if you are keen</h3>
+
+        <figure class="video">
+          <div class="video__frame">
+            <a
+              class="video__facade"
+              data-video="X7IBa7vZjmo"
+              href="https://www.youtube.com/watch?v=X7IBa7vZjmo"
+            >
+              <img
+                src="https://i.ytimg.com/vi/X7IBa7vZjmo/hqdefault.jpg"
+                alt=""
+                width="480"
+                height="360"
+                loading="lazy"
+              />
+              <span class="video__play"
+                ><svg
+                  viewBox="0 0 68 48"
+                  width="68"
+                  height="48"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    class="video__play-bg"
+                    d="M66.52 7.74a8 8 0 0 0-5.63-5.67C56.4.86 34 .86 34 .86s-22.4 0-26.89 1.21a8 8 0 0 0-5.63 5.67A83.7 83.7 0 0 0 .5 24a83.7 83.7 0 0 0 .98 16.26 8 8 0 0 0 5.63 5.67C11.6 47.14 34 47.14 34 47.14s22.4 0 26.89-1.21a8 8 0 0 0 5.63-5.67A83.7 83.7 0 0 0 67.5 24a83.7 83.7 0 0 0-.98-16.26z"
+                  />
+                  <path d="M27 34V14l18 10z" fill="#fff" /></svg
+              ></span>
+              <span class="visually-hidden"
+                >Play &ldquo;Introducing ScrollTrigger for GSAP&rdquo; on
+                YouTube</span
+              >
+            </a>
+          </div>
+          <figcaption class="video__caption">
+            <strong>Introducing ScrollTrigger</strong> &mdash; the tool you use
+            all term. Optional, and it makes more sense after Week&nbsp;2.
+            22&nbsp;min &middot; GSAP Learning.
+            <a href="https://www.youtube.com/watch?v=X7IBa7vZjmo"
+              >Watch on YouTube</a
+            >
+          </figcaption>
+        </figure>
+      </main>
+    </div>
+
+    <footer class="colophon">
+      <div class="wrap">
+        <p>
+          <strong>Interaction Design</strong> &middot; Level 5 &middot; BSc
+          (Hons) Content Creation &middot; Leeds School of Arts, Leeds Beckett
+          University
+        </p>
+        <p>
+          Module leader: Ant Pearson &mdash;
+          <a href="mailto:a.m.pearson@leedsbeckett.ac.uk"
+            >a.m.pearson@leedsbeckett.ac.uk</a
+          >. Bring questions to the studio first where you can; most problems
+          are quicker to solve at the machine.
+        </p>
+        <p>
+          Week 1 of 13 &middot; Teaching materials are posted at least 48 hours
+          before each session. Session recordings appear on MyBeckett within a
+          week.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      /* Videos: a thumbnail that opens YouTube when this page is a local file, and
+   loads the player inline once the page is served over http(s). YouTube rejects
+   embeds with no referrer (Error 153), which is what file:// gives it. */
+      (function () {
+        var canEmbed = /^https?:$/.test(location.protocol);
+
+        document.querySelectorAll(".video__facade").forEach(function (link) {
+          var id = link.getAttribute("data-video");
+          var img = link.querySelector("img");
+          var label = link.querySelector(".visually-hidden").textContent;
+
+          /* Use the higher-resolution still where YouTube has one. */
+          var hi = new Image();
+          hi.onload = function () {
+            if (hi.naturalWidth > 500) {
+              img.src = hi.src;
+            }
+          };
+          hi.src = "https://i.ytimg.com/vi/" + id + "/maxresdefault.jpg";
+
+          if (!canEmbed) {
+            link.target = "_blank";
+            link.rel = "noopener";
+            return;
+          }
+
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            var frame = document.createElement("iframe");
+            frame.src =
+              "https://www.youtube-nocookie.com/embed/" +
+              id +
+              "?autoplay=1&rel=0";
+            frame.title = label;
+            frame.allow =
+              "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+            frame.allowFullscreen = true;
+            link.parentNode.replaceChild(frame, link);
+            frame.focus();
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
