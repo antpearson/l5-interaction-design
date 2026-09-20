@@ -6,7 +6,7 @@
    that is the no-JavaScript baseline the brief requires, and you have it
    already. Everything you add from here is an enhancement on top.
 
-   Week 2:  GSAP is linked in index.html and your first tween goes here.
+   Week 5:  GSAP is linked in index.html and your first tween goes here.
    Week 7:  ScrollTrigger — tweens, timelines, triggers, scrub.
    Week 8:  Pinning and layered scenes.
    Week 9:  Your designed moment of interaction.

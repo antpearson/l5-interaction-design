@@ -76,3 +76,11 @@ These could not be fetched in the session that built this page — the network
 policy blocked nytimes.com, bbc.co.uk, pudding.cool and nasa.gov, and the Chrome
 extension's allowed-domain list only covered bbc.co.uk. Adding the other three in
 the extension's site permissions would let them be pulled next time.
+
+## Files present (18 Sep 2026)
+
+`snow-fall.jpg` (hero), `snow-fall-thumb.jpg`, `body-moor.jpg`, `body-moor-thumb.jpg`,
+`wonky.jpg`, `wonky-thumb.jpg`, `header.png`, `deep-sea-thumb.jpg`, `airpods-thumb.jpg`,
+`pudding-thumb.jpg`, `the-boat-thumb.jpg`. Sources in `Week-1/source-images/`.
+
+All seven screening cards now carry a real thumbnail. No placeholders remain.

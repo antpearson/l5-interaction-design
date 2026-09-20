@@ -15,7 +15,7 @@ interaction-design-starter/
 ├── css/
 │   └── style.css       the stylesheet — change the tokens at the top first
 ├── js/
-│   └── main.js         empty on purpose. Week 2 onwards.
+│   └── main.js         empty on purpose. Week 5 onwards.
 ├── images/             placeholder graphics. Replace with your own.
 └── README.md           this file
 ```
@@ -34,8 +34,8 @@ local web server, which is what you need once JavaScript and media are involved.
 | Week | What you add |
 |------|--------------|
 | 1 | Your kit, your project folder, your first commit, your live URL |
-| 2 | GSAP linked, first ScrollTrigger fade and pin |
-| 5 | Your storyboard translated into real sections |
+| 2 | Layout re-levelled, the sticky scene understood, first story ideas |
+| 5 | Your storyboard translated into real sections; GSAP linked, first fade |
 | 7 | Tweens, timelines, triggers, scrub |
 | 8 | Pinning and layered scenes |
 | 9 | Your designed moment of interaction |

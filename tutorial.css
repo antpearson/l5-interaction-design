@@ -560,6 +560,7 @@ td.time, th.time { font-variant-numeric: tabular-nums; white-space: nowrap; }
   border-color: var(--band-rule);
   color: var(--band-ink);
 }
+.activity pre code { background: none; color: var(--code-ink); }
 .activity kbd {
   background: rgb(255 255 255 / .09);
   border-color: var(--band-rule);
