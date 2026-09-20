@@ -83,4 +83,13 @@ the extension's site permissions would let them be pulled next time.
 `wonky.jpg`, `wonky-thumb.jpg`, `header.png`, `deep-sea-thumb.jpg`, `airpods-thumb.jpg`,
 `pudding-thumb.jpg`, `the-boat-thumb.jpg`. Sources in `Week-1/source-images/`.
 
+`vscode-live-server-console.png` (bleed-kit, added 20 Sep 2026): the starter open in
+VS Code, Live Server at 127.0.0.1:5500, DevTools console open and clean.
+
+`github-pages-live.png` (bleed-publish, added 20 Sep 2026): Settings → Pages showing
+the site live at a github.io address (deployed from a separate demo repo, not
+l5-interaction-design), beside the published page in a second window.
+
+All three full-bleed slots are now filled. `bleed-hero` uses `snow-fall.jpg`.
+
 All seven screening cards now carry a real thumbnail. No placeholders remain.
