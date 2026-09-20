@@ -1,22 +1,21 @@
-# Interaction Design — starter project
+# Interaction Design: starter project
 
 Level 5 · BSc (Hons) Content Creation · Leeds Beckett University
 
-This is the file you build on all term. It is a working one-page scrolling
-narrative with the structure, the stylesheet and the accessibility baseline
-already in place, so you can spend your time on the story rather than on
-plumbing.
-
-## What is in here
+This is the file you build on all term. It is a starting point, not a design:
+a cover, one chapter and a credits list, with a placeholder font, three
+placeholder colours and some very basic layout. `css/style.css` is commented
+line by line. Change all of it to suit your own story.
 
 ```
 interaction-design-starter/
-├── index.html          the page — semantic HTML, commented section by section
+├── index.html          the page
 ├── css/
-│   └── style.css       the stylesheet — change the tokens at the top first
+│   └── style.css       the stylesheet
 ├── js/
-│   └── main.js         empty on purpose. Week 5 onwards.
+│   └── main.js         empty on purpose, until Week 5
 ├── images/             placeholder graphics. Replace with your own.
+├── ai-use-log.docx     your AI-use log. See below.
 └── README.md           this file
 ```
 
@@ -26,30 +25,13 @@ interaction-design-starter/
 2. Install the **Live Server** extension if you have not already.
 3. Right-click `index.html` → **Open with Live Server**.
 
-Do not open the file by double-clicking it in Finder. Live Server runs a real
-local web server, which is what you need once JavaScript and media are involved.
+## The AI-use log
 
-## Where the module takes it
-
-| Week | What you add |
-|------|--------------|
-| 1 | Your kit, your project folder, your first commit, your live URL |
-| 2 | Layout re-levelled, the sticky scene understood, first story ideas |
-| 5 | Your storyboard translated into real sections; GSAP linked, first fade |
-| 7 | Tweens, timelines, triggers, scrub |
-| 8 | Pinning and layered scenes |
-| 9 | Your designed moment of interaction |
-| 10 | Testing, accessibility, polish |
-
-## The two baselines
-
-The brief requires both, and they are already working here:
-
-- **No JavaScript.** Turn JS off and the page is still a readable story. The
-  sticky scene uses CSS `position: sticky`, not a script.
-- **Reduced motion.** Turn on macOS *Reduce motion* and the animation stops,
-  the scene unpins, and the story reads as a normal page. Section 9 of
-  `style.css` does this. Keep it working as you build.
+`ai-use-log.docx` is your AI-use log for the whole module. Whenever you use an AI
+tool for anything connected to this module, add a row that day, then commit. A
+copy is uploaded with each component, even if it is empty. The rules on what AI
+may and may not be used for are in section 9 of the assignment brief. Your
+project is public on GitHub, so keep your student ID out of it.
 
 ## Credit your sources
 

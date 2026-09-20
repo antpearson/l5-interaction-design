@@ -4,11 +4,14 @@
 .Spotlight-V100
 .Trashes
 
+# Word's temporary lock files
+~$*
+
 # Editors
 .vscode/*
 !.vscode/extensions.json
 
-# Working files — keep these out of the published site
+# Working files: keep these out of the published site
 *.sketch
 *.psd
 node_modules/

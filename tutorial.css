@@ -184,10 +184,11 @@ h3 { font-size: clamp(1.3rem, 1.13rem + .72vw, 1.65rem); margin-top: 2.5rem; let
 
 h4 {
   font-family: var(--font-display);
-  font-size: .78rem; font-weight: 700;
-  letter-spacing: .11em; text-transform: uppercase;
-  color: var(--ink-quiet);
-  margin: 2rem 0 .5rem;
+  font-size: clamp(1.25rem, 1.05rem + .6vw, 1.45rem); font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  margin: 2rem 0 .85rem;
 }
 
 p, ul, ol, dl { margin: 0 0 1.15rem; }
@@ -206,7 +207,6 @@ hr {
 /* Shared small-caps label, used by every kicker on the page */
 .part__label,
 .activity__kicker,
-.box__title,
 .toc h2,
 .masthead__week,
 .filename,
@@ -432,26 +432,46 @@ thead th,
   margin: 0 0 1rem;
 }
 .toc ol {
+  /* One column, read top to bottom. A multi-column grid made the order ambiguous. */
   margin: 0; padding: 0; list-style: none;
-  display: grid; gap: .55rem 2.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  display: grid; gap: .5rem;
+}
+.toc ol ol {
+  margin: .5rem 0 .15rem;
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--rule);
+  font-size: .94em;
 }
 .toc li { margin: 0; }
 .toc a {
-  display: grid;
-  grid-template-columns: 2.1rem 1fr;
-  text-decoration: none;
-  color: var(--ink);
+  /* Looks like a link: accent colour and underline come from the base a rule. */
   font-size: .98rem;
 }
-.toc a:hover { color: var(--accent); text-decoration: underline; }
-.toc span {
-  font-family: var(--font-display);
-  font-size: .74rem;
-  font-weight: 700;
-  color: var(--ink-faint);
-  font-variant-numeric: tabular-nums;
-  padding-top: .22em;
+
+/* A small UI icon shown in a line of text, e.g. a VS Code toolbar button. */
+.inline-icon {
+  display: inline-block;
+  height: 1.7em; width: auto;
+  vertical-align: middle;
+  border-radius: .25em;
+  margin-inline: .1em;
+}
+
+/* -------------------------------------------------------------------------
+   TILTED DOCUMENT — a page shot shown as an object, e.g. the brief's cover.
+   450px tall rotated 10deg occupies just under 500px; the margin absorbs the
+   corners that swing outside the box.
+   ------------------------------------------------------------------------- */
+
+.tilt { margin: 4rem 0; }
+.tilt img {
+  margin-inline: auto;
+  height: auto; width: auto;
+  max-height: 450px;
+  max-width: min(100% - 5rem, 318px);
+  transform: rotate(-10deg);
+  border: 1px solid var(--rule);
+  box-shadow: 0 1.1rem 2.2rem rgb(0 0 0 / .28), 0 .2rem .5rem rgb(0 0 0 / .18);
 }
 
 /* -------------------------------------------------------------------------
@@ -512,30 +532,22 @@ thead th {
 td.time, th.time { font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 /* -------------------------------------------------------------------------
-   CALLOUTS — a rule and a label, no tinted box
+   CALLOUTS — a bold sub-heading and slightly smaller text, nothing else.
+   No rule, no bar, no colour: those read as a new section.
    ------------------------------------------------------------------------- */
 
-.box {
-  border-top: 2px solid var(--ink);
-  padding-top: .9rem;
-  margin: 2.25rem 0;
-}
+.box { margin: 2.25rem 0; }
 .box > :last-child { margin-bottom: 0; }
 .box__title {
-  font-size: .74rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 1.05rem + .6vw, 1.45rem);
+  line-height: 1.2;
+  letter-spacing: -.01em;
   color: var(--ink);
-  margin: 0 0 .55rem;
+  margin: 0 0 .85rem;
 }
 .box p { font-size: .98rem; }
-
-.box--note { border-top-color: var(--accent); }
-.box--note .box__title { color: var(--accent); }
-.box--warn { border-top-color: var(--warn); }
-.box--warn .box__title { color: var(--warn); }
-.box--do   { border-top-color: var(--good); }
-.box--do   .box__title { color: var(--good); }
-.box--task { border-top-color: var(--accent); }
-.box--task .box__title { color: var(--accent); }
 
 /* -------------------------------------------------------------------------
    ACTIVITY / TASK PANELS — inverted, so they read as "stop reading, do this"
@@ -566,8 +578,7 @@ td.time, th.time { font-variant-numeric: tabular-nums; white-space: nowrap; }
   border-color: var(--band-rule);
   color: var(--band-ink);
 }
-.activity .box { border-top-color: var(--band-rule); }
-.activity .box__title { color: var(--accent-on-band); }
+.activity .box__title { color: var(--band-ink); }
 .activity .steps > li::before { background: var(--accent-on-band); color: var(--band); }
 .activity .checklist li::before { border-color: var(--band-rule); }
 

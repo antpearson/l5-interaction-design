@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Week 2: Before anything moves | Interaction Design</title>
-<meta name="description" content="Week 2: getting your site back on a new Mac, layout re-levelled on your own page, the sticky scene taken apart, what scroll-driven pieces are made of, and a first long list of story ideas.">
+<meta name="description" content="Week 2: getting your site back on a new Mac, a chapter laid out in Flexbox, a scene that holds still built from nothing, what scroll-driven pieces are made of, and a first long list of story ideas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
@@ -19,7 +19,7 @@
     <p class="masthead__week">Week 2</p>
     <h1>Before anything moves</h1>
     <p class="masthead__sub">
-      Your site back on a new Mac, layout you can read and change, a scene that holds still,
+      Your site back on a new Mac, a layout and a scene that holds still, both built by you,
       and a long list of story ideas. No animation yet, on purpose.
     </p>
   </div>
@@ -58,17 +58,17 @@
 </div>
 
 <nav class="toc" aria-labelledby="toc-heading">
-  <h2 id="toc-heading">On this page</h2>
+  <h2 id="toc-heading">Jump to a section</h2>
   <ol>
-    <li><a href="#glance"><span>&middot;</span> Session at a glance</a></li>
-    <li><a href="#part1"><span>1.</span> Get your site back</a></li>
-    <li><a href="#part2"><span>2.</span> Layout, re-levelled</a></li>
-    <li><a href="#part3"><span>3.</span> The scene that holds still</a></li>
-    <li><a href="#part4"><span>4.</span> What these pieces are made of</a></li>
-    <li><a href="#part5"><span>5.</span> Ideas, and lots of them</a></li>
-    <li><a href="#directed"><span>&middot;</span> Your directed task</a></li>
-    <li><a href="#stuck"><span>&middot;</span> If you get stuck</a></li>
-    <li><a href="#resources"><span>&middot;</span> Resources</a></li>
+    <li><a href="#glance">Session at a glance</a></li>
+    <li><a href="#part1">1. Get your site back</a></li>
+    <li><a href="#part2">2. Text beside a picture</a></li>
+    <li><a href="#part3">3. The scene that holds still</a></li>
+    <li><a href="#part4">4. What these pieces are made of</a></li>
+    <li><a href="#part5">5. Ideas, and lots of them</a></li>
+    <li><a href="#directed">Your directed task</a></li>
+    <li><a href="#stuck">If you get stuck</a></li>
+    <li><a href="#resources">Resources</a></li>
   </ol>
 </nav>
 
@@ -77,9 +77,9 @@
 <ol class="runsheet">
   <li>Where everyone got to: live addresses on the projector, and fixes</li>
   <li><strong>Task 1</strong>: get your site back on today's Mac</li>
-  <li>Layout, re-levelled: reading the rules your starter already has</li>
-  <li><strong>Task 2</strong>: change the layout of your own chapters</li>
-  <li><strong>Task 3</strong>: the scene that holds still, rewritten as a three-step story</li>
+  <li>Text beside a picture: last year's Flexbox, put back to work</li>
+  <li><strong>Task 2</strong>: build a chapter with a picture</li>
+  <li><strong>Task 3</strong>: build the scene that holds still, and tell a three-step story in it</li>
 </ol>
 
 <p class="runsheet-break">Break</p>
@@ -133,58 +133,62 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
 <!-- ==================================================================== -->
 <div class="part" id="part2">
   <p class="part__label">Part two &middot; Task 2</p>
-  <h2>Layout, re-levelled</h2>
+  <h2>Text beside a picture</h2>
 </div>
 
 <p>
   A chapter in a scrolling story is almost always some text beside a picture, and it has to
-  survive being 1400 pixels wide on the studio monitor and 390 on a phone. You met the two
-  tools for that last year. This is the recap, on a page that matters to you.
+  survive being 1400 pixels wide on the studio monitor and 390 on a phone. Your starter does
+  not have one. You are going to build it, with the tool you used for exactly this last year:
+  Flexbox.
 </p>
 
-<p>
-  Open <code>css/style.css</code> and find <code>.chapter--figure</code>. It is the rule that
-  puts a chapter's text and picture side by side:
-</p>
+<p>First the HTML: a section with a class, holding a <code>&lt;div&gt;</code> of text and a <code>&lt;figure&gt;</code>.</p>
+
+<p class="filename">index.html</p>
+<pre><code>&lt;section class="chapter-figure"&gt;
+  &lt;div class="chapter-text"&gt;
+    &lt;h2&gt;Your heading&lt;/h2&gt;
+    &lt;p&gt;&hellip;&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;figure&gt;
+    &lt;img src="images/scene-01.svg" alt="Say what the picture shows."&gt;
+    &lt;figcaption&gt;What it shows, when, and who made it.&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/section&gt;</code></pre>
+
+<p>Then the CSS:</p>
 
 <p class="filename">css/style.css</p>
-<pre><code>@media (min-width: 60rem) {
-  .chapter--figure {
-    display: grid;                       /* children go into columns */
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-    gap: var(--space-l);                 /* space between them */
-    align-items: center;                 /* line them up vertically */
-  }
-}</code></pre>
-
-<p>
-  Read it as a sentence. <em>Once the window is at least 60rem wide, make two columns, the
-  second a little wider than the first, with a gap, centred against each other.</em> Below
-  60rem none of it applies, so the text and picture simply stack. That is the whole responsive
-  strategy for a chapter: one rule, one breakpoint.
-</p>
-
-<p>
-  The same job in Flexbox, which is the version most of you wrote last year:
-</p>
-
-<p class="filename">css/style.css</p>
-<pre><code>.chapter--flex {
+<pre><code>.chapter-figure {
   display: flex;
-  flex-wrap: wrap;        /* drop to a new line when tight */
-  gap: 2rem;
-  align-items: center;
+  flex-wrap: wrap;            /* drop to a new line when tight */
+  gap: 3rem;                  /* space between them */
+  align-items: center;        /* line them up vertically */
+  max-width: 70rem;           /* wider than a text chapter */
+  margin: 0 auto;
+  padding: 4rem 2rem;
 }
-.chapter--flex .chapter__text   { flex: 1 1 20rem; }
-.chapter--flex .chapter__figure { flex: 1 1 24rem; }</code></pre>
+.chapter-figure .chapter-text { flex: 1 1 20rem; }
+.chapter-figure figure        { flex: 1 1 24rem; margin: 0; }</code></pre>
 
 <p>
   The line worth understanding is <code>flex: 1 1 20rem</code>. It is three values at once:
   <em>may grow, may shrink, aim for 20rem</em>. The third number decides when the layout
-  wraps, not a media query. Two children asking for 20rem and 24rem with a 2rem gap need about
-  46rem of room; below that, they stack. Either approach is correct. What matters is that you
-  can read the rule in front of you and say what each line does.
+  wraps, not a media query. Two children asking for 20rem and 24rem with a gap between them
+  need about 48rem of room; below that, they stack. That is the whole responsive strategy for
+  a chapter: no breakpoint, the content decides.
 </p>
+
+<div class="box box--note">
+  <p class="box__title">New this year: Grid</p>
+  <p>
+    There is a second layout tool, CSS Grid, which you have not met yet. It does this same job
+    with columns you name up front, and you will see it in other people's code. You do not
+    need it today. When you are curious, <em>MDN: Grid basics</em> in the resources at the
+    bottom of this page is the place to start.
+  </p>
+</div>
 
 <figure class="video">
   <div class="video__frame">
@@ -202,15 +206,17 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
 </figure>
 
 <div class="activity">
-  <p class="activity__kicker">Task 2 &middot; 20 minutes &middot; on your own page</p>
-  <h3>Change the layout of your own chapters</h3>
+  <p class="activity__kicker">Task 2 &middot; 30 minutes &middot; on your own page</p>
+  <h3>Build a chapter with a picture</h3>
 
   <ol class="steps">
-    <li><p>Find <code>.chapter--figure</code> and read it out loud to the person next to you, one line at a time. If either of you cannot say what a line does, that is the line to ask about.</p></li>
-    <li><p>Change <code>1.2fr</code> to <code>2fr</code>. Save and look. Put it back to something you like.</p></li>
-    <li><p>Make one chapter put its picture on the <em>left</em>. There is more than one way; find one. A hint: the order of two grid children can be changed with <code>order</code>, or by swapping them in the HTML.</p></li>
+    <li><p>In <code>index.html</code>, add a new <code>&lt;section&gt;</code> with the class <code>chapter-figure</code>, a <code>&lt;div class="chapter-text"&gt;</code> and a <code>&lt;figure&gt;</code>, as above. Use one of the placeholder pictures in <code>images/</code>. Save. The picture sits under the text, because nothing has told it otherwise.</p></li>
+    <li><p>Before you look at the CSS above: on paper, from memory, write the Flexbox rule that would put two things side by side. Compare it with your neighbour's, then with the rule above.</p></li>
+    <li><p>Type the rule into <code>style.css</code>, under <strong>YOUR STYLES</strong>. Type it, do not paste it. Save after each line and watch what each one does.</p></li>
+    <li><p>Change <code>24rem</code> to <code>40rem</code>. Save and look. Put it back to something you like.</p></li>
+    <li><p>Make the picture sit on the <em>left</em>. There is more than one way; find one. A hint: <code>order</code>, <code>flex-direction</code>, or swapping the two in the HTML.</p></li>
     <li><p>Drag your window from full width down to phone width. Nothing should overflow sideways. If it does, the last thing you changed did it.</p></li>
-    <li><p>Commit, with a message that says what you changed.</p></li>
+    <li><p>Commit, with a message that says what you built.</p></li>
   </ol>
 </div>
 
@@ -221,33 +227,51 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
 </div>
 
 <p>
-  Scroll your page to the placeholder picture that stays put while three boxes of text pass
-  over it. That move, a picture that holds while the words change, is the single most
-  recognisable thing in the whole genre. <em>Snow Fall</em> does it. <em>Body on the Moor</em>
-  does it. And yours does it already, with no JavaScript at all.
+  A picture that stays put while boxes of text pass over it. That move, a picture that holds
+  while the words change, is the single most recognisable thing in the whole genre.
+  <em>Snow Fall</em> does it. <em>Body on the Moor</em> does it. It needs no JavaScript at
+  all, and you are about to build it.
 </p>
 
 <p>The markup is two siblings inside a section:</p>
 
 <p class="filename">index.html</p>
 <pre><code>&lt;section class="scene"&gt;
-  &lt;div class="scene__sticky"&gt;     &lt;!-- the picture: this holds still --&gt;
-    &lt;figure&gt;&hellip;&lt;/figure&gt;
+  &lt;div class="scene-sticky"&gt;      &lt;!-- the picture: this holds still --&gt;
+    &lt;img src="images/scene-02.svg" alt="Say what the picture shows."&gt;
   &lt;/div&gt;
-  &lt;div class="scene__steps"&gt;      &lt;!-- the words: these scroll past --&gt;
-    &lt;div class="step"&gt;&hellip;&lt;/div&gt;
-    &lt;div class="step"&gt;&hellip;&lt;/div&gt;
-    &lt;div class="step"&gt;&hellip;&lt;/div&gt;
+  &lt;div class="scene-steps"&gt;       &lt;!-- the words: these scroll past --&gt;
+    &lt;div class="step"&gt;&lt;p&gt;&hellip;&lt;/p&gt;&lt;/div&gt;
+    &lt;div class="step"&gt;&lt;p&gt;&hellip;&lt;/p&gt;&lt;/div&gt;
+    &lt;div class="step"&gt;&lt;p&gt;&hellip;&lt;/p&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/section&gt;</code></pre>
 
-<p>And the CSS that does the holding is three lines:</p>
+<p>The CSS that does the holding is three lines. The rest is Flexbox you already know, centring things:</p>
 
 <p class="filename">css/style.css</p>
-<pre><code>.scene__sticky {
+<pre><code>.scene-sticky {
   position: sticky;   /* scroll normally, until... */
   top: 0;             /* ...you reach the top of the window. Then stay. */
-  height: 100svh;     /* exactly one screen tall */
+  height: 100svh;     /* exactly one screen tall, like your cover */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scene-steps {
+  position: relative;       /* so the words pass in front of the picture */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60svh;               /* how far the reader scrolls between steps */
+  padding-bottom: 40svh;
+}
+
+.step {
+  max-width: 26rem;
+  padding: 1rem 1.5rem;
+  background: var(--paper); /* or the words vanish into the picture */
 }</code></pre>
 
 <p>
@@ -260,8 +284,8 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
 </p>
 
 <div class="activity">
-  <p class="activity__kicker">Task 3 &middot; 25 minutes &middot; on your own page</p>
-  <h3>Tell something true in three steps</h3>
+  <p class="activity__kicker">Task 3 &middot; 35 minutes &middot; on your own page</p>
+  <h3>Build the scene, then tell something true in three steps</h3>
 
   <p>
     Not your assignment topic. Something small and true that you already know: how to make a
@@ -270,10 +294,13 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
   </p>
 
   <ol class="steps">
-    <li><p>Rewrite the three <code>.step</code> paragraphs so they tell your three-step story. One or two sentences each.</p></li>
+    <li><p>Add the scene's HTML after your picture chapter. Save. It is a picture with three paragraphs under it. That is fine.</p></li>
+    <li><p>Add the CSS, starting with <code>.scene-sticky</code>. Save after the first three lines and scroll: the picture already holds.</p></li>
+    <li><p>Style the <code>.step</code> boxes so they belong to your page: your colours, your spacing.</p></li>
+    <li><p>Write your three <code>.step</code> paragraphs so they tell your three-step story. One or two sentences each.</p></li>
     <li><p>Replace the placeholder picture with one that belongs to the story. Put it in <code>images/</code>, lower case, no spaces, and write a real <code>alt</code>.</p></li>
     <li><p>Add a fourth step. Notice that the picture now holds for longer, and you did not touch the CSS.</p></li>
-    <li><p>In <code>.scene__steps</code>, change <code>gap: 60svh</code> to <code>120svh</code>, then to <code>20svh</code>. Scroll each. One drags and one rushes. Put it where your story reads best.</p></li>
+    <li><p>In <code>.scene-steps</code>, change <code>gap: 60svh</code> to <code>120svh</code>, then to <code>20svh</code>. Scroll each. One drags and one rushes. Put it where your story reads best.</p></li>
     <li><p>Commit and sync. Check your live address updates.</p></li>
   </ol>
 

@@ -1,403 +1,106 @@
-/* =========================================================================
-   Interaction Design — starter stylesheet
-   Level 5, BSc (Hons) Content Creation, Leeds Beckett University
+/* =====================================================================
+   Interaction Design: starter stylesheet
 
-   HOW TO USE THIS FILE
-   1. Change the tokens in :root. That is your visual system.
-   2. Leave the layout and accessibility sections alone until you understand them.
-   3. Add your own rules at the bottom, under YOUR STYLES.
-   ========================================================================= */
+   This is a starting point, not a design. The font, the colours and
+   the spacing are placeholders. Change all of it to suit your own
+   story: your visual design is part of what you are marked on.
+   ===================================================================== */
 
 
-/* -------------------------------------------------------------------------
-   1. TOKENS
-   Every colour, size and timing in this file comes from here.
-   Changing a token changes the whole page. This is design-system thinking,
-   and it is assessed in Component 2.
-   ------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------
+   COLOURS
+   These are CSS variables (the proper name is "custom properties").
+   You name a value once here, then use it anywhere with var(--name).
+   Change --accent on this one line and everything that uses it changes.
+   Replace these three with your own palette, and add more if you need.
+   --------------------------------------------------------------------- */
 
 :root {
-  /* Colour */
-  --ink:            #14161a;   /* body text            */
-  --ink-quiet:      #5c626e;   /* captions, metadata   */
-  --paper:          #fbfaf8;   /* page background      */
-  --paper-sunk:     #f1efec;   /* panels, figures      */
-  --rule:           #dcd8d2;   /* hairlines            */
-  --accent:         #b4451f;   /* one accent. Just one. */
-  --accent-on-dark: #e8845c;   /* the same accent, lightened so it stays
-                                  readable on the dark cover. Contrast is a
-                                  design decision, not an afterthought. */
-  --cover-bg:       #14161a;
-  --cover-ink:      #fbfaf8;
-
-  /* Type */
-  --font-display:   Georgia, "Times New Roman", serif;
-  --font-body:      -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  --font-mono:      ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-
-  /* A fluid type scale. clamp(min, preferred, max) — resizes with the viewport. */
-  --step--1: clamp(0.83rem, 0.80rem + 0.15vw, 0.92rem);
-  --step-0:  clamp(1.06rem, 1.00rem + 0.30vw, 1.25rem);
-  --step-1:  clamp(1.33rem, 1.20rem + 0.65vw, 1.75rem);
-  --step-2:  clamp(1.66rem, 1.40rem + 1.30vw, 2.60rem);
-  --step-3:  clamp(2.07rem, 1.55rem + 2.60vw, 4.00rem);
-
-  /* Space */
-  --space-xs: 0.5rem;
-  --space-s:  1rem;
-  --space-m:  2rem;
-  --space-l:  4rem;
-  --space-xl: 8rem;
-
-  /* Measure — how wide a line of text is allowed to get */
-  --measure: 34rem;
-
-  /* Motion. Week 7 onwards, GSAP reads its timings from ideas like these. */
-  --ease:     cubic-bezier(0.22, 0.61, 0.36, 1);
-  --duration: 400ms;
+  --ink:    #1a1a1a;   /* text */
+  --paper:  #ffffff;   /* page background */
+  --accent: #c0392b;   /* links, and anything you want to stand out */
 }
 
 
-/* -------------------------------------------------------------------------
-   2. RESET AND BASE
-   ------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------
+   BASICS
+   --------------------------------------------------------------------- */
 
-*,
-*::before,
-*::after { box-sizing: border-box; }
-
-html {
-  /* Smooth scroll, but never for people who asked us not to move things. */
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
+/* Makes padding and borders count as part of an element's width,
+   so a box you set to 300px wide stays 300px wide. */
+* {
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  background: var(--paper);
+  margin: 0;                          /* removes the browser's white edge */
+  font-family: "Inter", sans-serif;   /* the Google Font linked in index.html */
+  font-size: 1.125rem;                /* 18px */
+  line-height: 1.6;                   /* space between lines of text */
   color: var(--ink);
-  font-family: var(--font-body);
-  font-size: var(--step-0);
-  line-height: 1.6;
-  text-wrap: pretty;
+  background: var(--paper);
 }
 
-img,
-svg,
-video {
+/* Stops a large picture being wider than the screen it is on. */
+img {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-h1, h2, h3 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.1;
-  text-wrap: balance;
-  margin: 0 0 var(--space-s);
-}
-
-h2 { font-size: var(--step-2); }
-h3 { font-size: var(--step-1); }
-
-p { margin: 0 0 var(--space-s); }
-
 a {
   color: var(--accent);
-  text-underline-offset: 0.15em;
-}
-
-code {
-  font-family: var(--font-mono);
-  font-size: 0.9em;
-  background: var(--paper-sunk);
-  padding: 0.1em 0.35em;
-  border-radius: 3px;
 }
 
 
-/* -------------------------------------------------------------------------
-   3. ACCESSIBILITY UTILITIES
-   Do not delete these. They are part of the marking criteria.
-   ------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------
+   THE COVER
+   --------------------------------------------------------------------- */
 
-/* Visible only to screen readers. */
-.visually-hidden {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
-/* The skip link: hidden until it is focused by the keyboard. */
-.skip-link {
-  position: absolute;
-  top: 0; left: 0;
-  z-index: 100;
-  padding: var(--space-xs) var(--space-s);
-  background: var(--accent);
-  color: #fff;
-  text-decoration: none;
-  transform: translateY(-120%);
-  transition: transform var(--duration) var(--ease);
-}
-.skip-link:focus { transform: translateY(0); }
-
-/* Every interactive thing must show where the keyboard is. */
-:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 3px;
-}
-
-
-/* -------------------------------------------------------------------------
-   4. COVER
-   ------------------------------------------------------------------------- */
-
-.cover {
-  min-height: 100svh;
-  display: grid;
-  place-items: center;
-  padding: var(--space-l) var(--space-m);
-  background: var(--cover-bg);
-  color: var(--cover-ink);
-}
-
-.cover__inner { max-width: 44rem; }
-
-.kicker {
-  font-size: var(--step--1);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent-on-dark);
-  margin-bottom: var(--space-s);
-}
-
-.cover__title {
-  font-size: var(--step-3);
-  margin-bottom: var(--space-s);
-}
-
-.cover__standfirst {
-  font-size: var(--step-1);
-  line-height: 1.4;
-  max-width: 38rem;
-  opacity: 0.9;
-}
-
-.cover__byline,
-.cover__hint {
-  font-size: var(--step--1);
-  opacity: 0.65;
-}
-
-.cover__hint { margin-top: var(--space-m); margin-bottom: 0; }
-
-.cover__arrow {
-  display: inline-block;
-  animation: nudge 1.8s var(--ease) infinite;
-}
-
-@keyframes nudge {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(0.35em); }
-}
-
-
-/* -------------------------------------------------------------------------
-   5. CHAPTERS
-   ------------------------------------------------------------------------- */
-
-.chapter {
-  padding: var(--space-xl) var(--space-m);
-}
-
-.chapter__text {
-  max-width: var(--measure);
-  margin-inline: auto;
-}
-
-/* Text and figure side by side once there is room for both. */
-@media (min-width: 60rem) {
-  .chapter--figure {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-    gap: var(--space-l);
-    align-items: center;
-    max-width: 76rem;
-    margin-inline: auto;
-  }
-  .chapter--figure .chapter__text { margin-inline: 0; }
-}
-
-.chapter__figure { margin: var(--space-m) 0 0; }
-
-@media (min-width: 60rem) {
-  .chapter__figure { margin: 0; }
-}
-
-.chapter__figure img {
-  width: 100%;
-  border-radius: 4px;
-  background: var(--paper-sunk);
-}
-
-figcaption {
-  font-size: var(--step--1);
-  color: var(--ink-quiet);
-  margin-top: var(--space-xs);
-}
-
-.chapter--close { padding-bottom: var(--space-xl); }
-
-
-/* -------------------------------------------------------------------------
-   6. STICKY SCENE
-   The shape a pinned ScrollTrigger scene takes. Works today with plain CSS,
-   which is exactly the no-JavaScript baseline the brief asks for.
-   ------------------------------------------------------------------------- */
-
-.scene {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
-  padding-inline: var(--space-m);
-}
-
-.scene__sticky {
-  position: sticky;
-  top: 0;
-  height: 100svh;
-  display: grid;
-  place-items: center;
-  grid-row: 1;
-  grid-column: 1;
-}
-
-.scene__figure { margin: 0; width: min(100%, 46rem); }
-
-.scene__figure img {
-  width: 100%;
-  border-radius: 4px;
-  background: var(--paper-sunk);
-}
-
-.scene__steps {
-  grid-row: 1;
-  grid-column: 1;
-  position: relative;
-  z-index: 2;
-  display: grid;
-  gap: 60svh;
-  padding: 30svh 0;
-  justify-items: center;
-}
-
-.step {
-  max-width: 26rem;
-  padding: var(--space-s) var(--space-m);
-  background: var(--paper);
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  box-shadow: 0 6px 24px rgb(0 0 0 / 0.08);
-}
-
-.step p { margin: 0; }
-
-
-/* -------------------------------------------------------------------------
-   7. INTERACTION PLACEHOLDER
-   ------------------------------------------------------------------------- */
-
-.placeholder-box {
-  border: 2px dashed var(--rule);
-  border-radius: 4px;
-  padding: var(--space-m);
+header {
+  min-height: 100svh;        /* svh = "small viewport height". 100svh is one
+                                full screen. It is like 100vh, but it allows
+                                for the address bar on a phone, so the cover
+                                is never taller than what the reader can see. */
+  display: flex;             /* Flexbox, used here to centre the content */
+  flex-direction: column;    /* stack the heading and paragraphs */
+  justify-content: center;   /* centre them top to bottom */
+  align-items: center;       /* centre them left to right */
   text-align: center;
-  color: var(--ink-quiet);
-  background: var(--paper-sunk);
+  padding: 2rem;
+  color: var(--paper);       /* the two colours swapped over: light on dark */
+  background: var(--ink);
 }
 
-.placeholder-box p { margin: 0; }
-
-
-/* -------------------------------------------------------------------------
-   8. CREDITS
-   ------------------------------------------------------------------------- */
-
-.credits {
-  border-top: 1px solid var(--rule);
-  padding: var(--space-l) var(--space-m);
-  font-size: var(--step--1);
-  color: var(--ink-quiet);
+h1 {
+  margin: 0;
+  font-size: 3rem;
+  line-height: 1.1;
 }
 
-.credits h2 {
-  font-size: var(--step-0);
-  font-family: var(--font-body);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink);
-  max-width: var(--measure);
-  margin-inline: auto;
-}
-
-.credits__list,
-.credits__meta {
-  max-width: var(--measure);
-  margin-inline: auto;
-}
-
-.credits__list { padding-left: 1.2em; }
-.credits__list li { margin-bottom: var(--space-xs); }
-
-
-/* -------------------------------------------------------------------------
-   9. REDUCED MOTION
-   Some people get genuinely ill from animation. The brief asks you to treat
-   this as a designed experience, not an afterthought: the story still works,
-   it just stops moving. Test it — macOS: System Settings > Accessibility >
-   Display > Reduce motion.
-   ------------------------------------------------------------------------- */
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-
-  /* Unpin the scene: it becomes a picture followed by its captions. */
-  .scene { display: block; }
-  .scene__sticky { position: static; height: auto; }
-  .scene__steps {
-    gap: var(--space-m);
-    padding: var(--space-m) 0;
-    justify-items: start;
-  }
-  .step { box-shadow: none; }
+/* Keeps the cover's paragraphs to a readable width. */
+header p {
+  max-width: 38rem;
 }
 
 
-/* -------------------------------------------------------------------------
-   10. PRINT
-   ------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------
+   CHAPTERS AND CREDITS
+   --------------------------------------------------------------------- */
 
-@media print {
-  .cover { min-height: auto; background: none; color: #000; }
-  .scene__sticky { position: static; height: auto; }
-  .skip-link { display: none; }
+.chapter,
+footer {
+  max-width: 40rem;          /* keeps lines of text short enough to read */
+  margin: 0 auto;            /* auto left and right centres the block */
+  padding: 4rem 2rem;
+}
+
+footer {
+  font-size: 1rem;
 }
 
 
-/* -------------------------------------------------------------------------
+/* ---------------------------------------------------------------------
    YOUR STYLES
-   Everything you write goes below this line.
-   ------------------------------------------------------------------------- */
+   Write your own rules below this line.
+   --------------------------------------------------------------------- */
