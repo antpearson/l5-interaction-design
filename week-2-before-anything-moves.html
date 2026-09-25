@@ -1,152 +1,200 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Week 2: Before anything moves | Interaction Design</title>
-<meta name="description" content="Week 2: getting your site back on a new Mac, a chapter laid out in Flexbox, a scene that holds still built from nothing, what scroll-driven pieces are made of, and a first long list of story ideas.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="tutorial.css">
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Week 2: Before anything moves | Interaction Design</title>
+    te
+    <meta
+      name="description"
+      content="Week 2: getting your site back on a new Mac, a chapter laid out in Flexbox, a scene that holds still built from nothing, what scroll-driven pieces are made of, and a first long list of story ideas."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
+    />
+    <link rel="stylesheet" href="tutorial.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-<a class="skip-link" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="wrap">
+        <p class="masthead__week">Week 2</p>
+        <h1>Before anything moves</h1>
+        <p class="masthead__sub">
+          Your site back on a new Mac, a layout and a scene that holds still,
+          both built by you, and a long list of story ideas. No animation yet,
+          on purpose.
+        </p>
+      </div>
+    </header>
 
-<header class="masthead">
-  <div class="wrap">
-    <p class="masthead__week">Week 2</p>
-    <h1>Before anything moves</h1>
-    <p class="masthead__sub">
-      Your site back on a new Mac, a layout and a scene that holds still, both built by you,
-      and a long list of story ideas. No animation yet, on purpose.
-    </p>
-  </div>
-</header>
+    <div class="wrap">
+      <main id="main" class="prose">
+        <p class="lede">
+          Last week you built a page and put it on the internet. This week you
+          find out what you might fill it with.
+        </p>
 
-<div class="wrap">
-<main id="main" class="prose">
+        <p>
+          You might expect Week&nbsp;2 to be the week things start moving. It is
+          not, and that is a decision. Every year the same thing happens:
+          someone gets a heading to fly in from the left, spends three weeks
+          making more things fly in, and arrives at the first deadline with a
+          lively page about nothing. Component&nbsp;1 is marked entirely on your
+          story, your audience and your concept. None of it is code.
+        </p>
 
-<p class="lede">
-  Last week you built a page and put it on the internet. This week you find out what you
-  might fill it with.
-</p>
+        <p>
+          So the animation library waits until Week&nbsp;5, when you have a
+          story for it to serve. Today does three things instead. It gets the
+          Level&nbsp;4 layout skills back under your fingers, on your own page.
+          It shows you what scroll-driven pieces are made of, so your ideas are
+          buildable ones. And it starts the ideas.
+        </p>
 
-<p>
-  You might expect Week&nbsp;2 to be the week things start moving. It is not, and that is a
-  decision. Every year the same thing happens: someone gets a heading to fly in from the left,
-  spends three weeks making more things fly in, and arrives at the first deadline with a
-  lively page about nothing. Component&nbsp;1 is marked entirely on your story, your audience
-  and your concept. None of it is code.
-</p>
+        <div class="box box--note">
+          <p class="box__title">Before we start</p>
+          <p>
+            You should have committed and synced your Week&nbsp;1 work, and have
+            a live GitHub Pages address. If you do not, or it shows a 404, sit
+            near the front. We fix those first rather than leave you behind.
+          </p>
+        </div>
 
-<p>
-  So the animation library waits until Week&nbsp;5, when you have a story for it to serve.
-  Today does three things instead. It gets the Level&nbsp;4 layout skills back under your
-  fingers, on your own page. It shows you what scroll-driven pieces are made of, so your ideas
-  are buildable ones. And it starts the ideas.
-</p>
+        <nav class="toc" aria-labelledby="toc-heading">
+          <h2 id="toc-heading">Jump to a section</h2>
+          <ol>
+            <li><a href="#glance">Session at a glance</a></li>
+            <li><a href="#part1">1. Get your site back</a></li>
+            <li><a href="#part2">2. Text beside a picture</a></li>
+            <li><a href="#part3">3. The scene that holds still</a></li>
+            <li><a href="#part4">4. What these pieces are made of</a></li>
+            <li><a href="#part5">5. Ideas, and lots of them</a></li>
+            <li><a href="#directed">Your directed task</a></li>
+            <li><a href="#stuck">If you get stuck</a></li>
+            <li><a href="#resources">Resources</a></li>
+          </ol>
+        </nav>
 
-<div class="box box--note">
-  <p class="box__title">Before we start</p>
-  <p>
-    You should have committed and synced your Week&nbsp;1 work, and have a live GitHub Pages
-    address. If you do not, or it shows a 404, sit near the front. We fix those first rather
-    than leave you behind.
-  </p>
-</div>
+        <h2 id="glance">Session at a glance</h2>
 
-<nav class="toc" aria-labelledby="toc-heading">
-  <h2 id="toc-heading">Jump to a section</h2>
-  <ol>
-    <li><a href="#glance">Session at a glance</a></li>
-    <li><a href="#part1">1. Get your site back</a></li>
-    <li><a href="#part2">2. Text beside a picture</a></li>
-    <li><a href="#part3">3. The scene that holds still</a></li>
-    <li><a href="#part4">4. What these pieces are made of</a></li>
-    <li><a href="#part5">5. Ideas, and lots of them</a></li>
-    <li><a href="#directed">Your directed task</a></li>
-    <li><a href="#stuck">If you get stuck</a></li>
-    <li><a href="#resources">Resources</a></li>
-  </ol>
-</nav>
+        <ol class="runsheet">
+          <li>
+            Where everyone got to: live addresses on the projector, and fixes
+          </li>
+          <li><strong>Task 1</strong>: get your site back on today's Mac</li>
+          <li>Text beside a picture: last year's Flexbox, put back to work</li>
+          <li><strong>Task 2</strong>: build a chapter with a picture</li>
+          <li>
+            <strong>Task 3</strong>: build the scene that holds still, and tell
+            a three-step story in it
+          </li>
+        </ol>
 
-<h2 id="glance">Session at a glance</h2>
+        <p class="runsheet-break">Break</p>
 
-<ol class="runsheet">
-  <li>Where everyone got to: live addresses on the projector, and fixes</li>
-  <li><strong>Task 1</strong>: get your site back on today's Mac</li>
-  <li>Text beside a picture: last year's Flexbox, put back to work</li>
-  <li><strong>Task 2</strong>: build a chapter with a picture</li>
-  <li><strong>Task 3</strong>: build the scene that holds still, and tell a three-step story in it</li>
-</ol>
+        <ol class="runsheet" start="6">
+          <li>Screening: what these pieces are made of, in six moves</li>
+          <li><strong>Activity</strong>: ideas, and lots of them</li>
+          <li>Your directed task for Week&nbsp;3</li>
+        </ol>
 
-<p class="runsheet-break">Break</p>
+        <!-- ==================================================================== -->
+        <div class="part" id="part1">
+          <p class="part__label">Part one &middot; Task 1</p>
+          <h2>Get your site back</h2>
+        </div>
 
-<ol class="runsheet" start="6">
-  <li>Screening: what these pieces are made of, in six moves</li>
-  <li><strong>Activity</strong>: ideas, and lots of them</li>
-  <li>Your directed task for Week&nbsp;3</li>
-</ol>
+        <p>
+          Unless you are on your own laptop, you are probably not at the Mac you
+          used last week, and the folder you made is not on this one. That is
+          fine. Your site lives on GitHub; this Mac is just where you are
+          working on it today. Getting it back is called
+          <strong>cloning</strong>, and from now on it is how every studio
+          session starts.
+        </p>
 
-<!-- ==================================================================== -->
-<div class="part" id="part1">
-  <p class="part__label">Part one &middot; Task 1</p>
-  <h2>Get your site back</h2>
-</div>
+        <div class="activity">
+          <p class="activity__kicker">
+            Task 1 &middot; 15 minutes &middot; on your own
+          </p>
+          <h3>Clone, then tell Git who you are</h3>
 
-<p>
-  Unless you are on your own laptop, you are probably not at the Mac you used last week, and
-  the folder you made is not on this one. That is fine. Your site lives on GitHub; this Mac is
-  just where you are working on it today. Getting it back is called <strong>cloning</strong>,
-  and from now on it is how every studio session starts.
-</p>
-
-<div class="activity">
-  <p class="activity__kicker">Task 1 &middot; 15 minutes &middot; on your own</p>
-  <h3>Clone, then tell Git who you are</h3>
-
-  <ol class="steps">
-    <li><p>Open VS&nbsp;Code. Close every tab it opens and ignore anything GitLens asks for.</p></li>
-    <li><p>Click <strong>Clone Git Repository&hellip;</strong>, then <strong>Clone from GitHub</strong>. Sign in through the browser if it asks.</p></li>
-    <li><p>Pick <code>your-username/interaction-design</code> from the list, choose the <strong>Desktop</strong> as the destination, and click <strong>Open</strong>.</p></li>
-    <li>
-      <p>Open <strong>Terminal &rarr; New Terminal</strong> and run the two identity lines. This Mac has never met you.</p>
-      <p class="filename">Terminal</p>
-      <pre><code>git config --global user.name "Your Name"
+          <ol class="steps">
+            <li>
+              <p>
+                Open VS&nbsp;Code. Close every tab it opens and ignore anything
+                GitLens asks for.
+              </p>
+            </li>
+            <li>
+              <p>
+                Click <strong>Clone Git Repository&hellip;</strong>, then
+                <strong>Clone from GitHub</strong>. Sign in through the browser
+                if it asks.
+              </p>
+            </li>
+            <li>
+              <p>
+                Pick <code>your-username/interaction-design</code> from the
+                list, choose the <strong>Desktop</strong> as the destination,
+                and click <strong>Open</strong>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Open <strong>Terminal &rarr; New Terminal</strong> and run the
+                two identity lines. This Mac has never met you.
+              </p>
+              <p class="filename">Terminal</p>
+              <pre><code>git config --global user.name "Your Name"
 git config --global user.email "the-email-on-your-github-account"</code></pre>
-    </li>
-    <li><p>Right-click <code>index.html</code> and choose <strong>Open with Live Server</strong>. Your page from last week should be in front of you.</p></li>
-  </ol>
+            </li>
+            <li>
+              <p>
+                Right-click <code>index.html</code> and choose
+                <strong>Open with Live Server</strong>. Your page from last week
+                should be in front of you.
+              </p>
+            </li>
+          </ol>
 
-  <div class="box box--note">
-    <p class="box__title">Screenshots of every step</p>
-    <p>
-      Part&nbsp;2 of <a href="working-with-github.html#part2">Working with GitHub</a> is this
-      routine, screen by screen. On your own laptop you skip all of it: your folder is where
-      you left it.
-    </p>
-  </div>
-</div>
+          <div class="box box--note">
+            <p class="box__title">Screenshots of every step</p>
+            <p>
+              Part&nbsp;2 of
+              <a href="working-with-github.html#part2">Working with GitHub</a>
+              is this routine, screen by screen. On your own laptop you skip all
+              of it: your folder is where you left it.
+            </p>
+          </div>
+        </div>
 
-<!-- ==================================================================== -->
-<div class="part" id="part2">
-  <p class="part__label">Part two &middot; Task 2</p>
-  <h2>Text beside a picture</h2>
-</div>
+        <!-- ==================================================================== -->
+        <div class="part" id="part2">
+          <p class="part__label">Part two &middot; Task 2</p>
+          <h2>Text beside a picture</h2>
+        </div>
 
-<p>
-  A chapter in a scrolling story is almost always some text beside a picture, and it has to
-  survive being 1400 pixels wide on the studio monitor and 390 on a phone. Your starter does
-  not have one. You are going to build it, with the tool you used for exactly this last year:
-  Flexbox.
-</p>
+        <p>
+          A chapter in a scrolling story is almost always some text beside a
+          picture, and it has to survive being 1400 pixels wide on the studio
+          monitor and 390 on a phone. Your starter does not have one. You are
+          going to build it, with the tool you used for exactly this last year:
+          Flexbox.
+        </p>
 
-<p>First the HTML: a section with a class, holding a <code>&lt;div&gt;</code> of text and a <code>&lt;figure&gt;</code>.</p>
+        <p>
+          First the HTML: a section with a class, holding a
+          <code>&lt;div&gt;</code> of text and a <code>&lt;figure&gt;</code>.
+        </p>
 
-<p class="filename">index.html</p>
-<pre><code>&lt;section class="chapter-figure"&gt;
+        <p class="filename">index.html</p>
+        <pre><code>&lt;section class="chapter-figure"&gt;
   &lt;div class="chapter-text"&gt;
     &lt;h2&gt;Your heading&lt;/h2&gt;
     &lt;p&gt;&hellip;&lt;/p&gt;
@@ -157,10 +205,10 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
   &lt;/figure&gt;
 &lt;/section&gt;</code></pre>
 
-<p>Then the CSS:</p>
+        <p>Then the CSS:</p>
 
-<p class="filename">css/style.css</p>
-<pre><code>.chapter-figure {
+        <p class="filename">css/style.css</p>
+        <pre><code>.chapter-figure {
   display: flex;
   flex-wrap: wrap;            /* drop to a new line when tight */
   gap: 3rem;                  /* space between them */
@@ -172,71 +220,143 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
 .chapter-figure .chapter-text { flex: 1 1 20rem; }
 .chapter-figure figure        { flex: 1 1 24rem; margin: 0; }</code></pre>
 
-<p>
-  The line worth understanding is <code>flex: 1 1 20rem</code>. It is three values at once:
-  <em>may grow, may shrink, aim for 20rem</em>. The third number decides when the layout
-  wraps, not a media query. Two children asking for 20rem and 24rem with a gap between them
-  need about 48rem of room; below that, they stack. That is the whole responsive strategy for
-  a chapter: no breakpoint, the content decides.
-</p>
+        <p>
+          The line worth understanding is <code>flex: 1 1 20rem</code>. It is
+          three values at once: <em>may grow, may shrink, aim for 20rem</em>.
+          The third number decides when the layout wraps, not a media query. Two
+          children asking for 20rem and 24rem with a gap between them need about
+          48rem of room; below that, they stack. That is the whole responsive
+          strategy for a chapter: no breakpoint, the content decides.
+        </p>
 
-<div class="box box--note">
-  <p class="box__title">New this year: Grid</p>
-  <p>
-    There is a second layout tool, CSS Grid, which you have not met yet. It does this same job
-    with columns you name up front, and you will see it in other people's code. You do not
-    need it today. When you are curious, <em>MDN: Grid basics</em> in the resources at the
-    bottom of this page is the place to start.
-  </p>
-</div>
+        <div class="box box--note">
+          <p class="box__title">New this year: Grid</p>
+          <p>
+            There is a second layout tool, CSS Grid, which you have not met yet.
+            It does this same job with columns you name up front, and you will
+            see it in other people's code. You do not need it today. When you
+            are curious, <em>MDN: Grid basics</em> in the resources at the
+            bottom of this page is the place to start.
+          </p>
+        </div>
 
-<figure class="video">
-  <div class="video__frame">
-    <a class="video__facade" data-video="u044iM9xsWU" href="https://www.youtube.com/watch?v=u044iM9xsWU">
-      <img src="https://i.ytimg.com/vi/u044iM9xsWU/hqdefault.jpg" alt="" width="480" height="360" loading="lazy">
-      <span class="video__play"><svg viewBox="0 0 68 48" width="68" height="48" aria-hidden="true" focusable="false"><path class="video__play-bg" d="M66.52 7.74a8 8 0 0 0-5.63-5.67C56.4.86 34 .86 34 .86s-22.4 0-26.89 1.21a8 8 0 0 0-5.63 5.67A83.7 83.7 0 0 0 .5 24a83.7 83.7 0 0 0 .98 16.26 8 8 0 0 0 5.63 5.67C11.6 47.14 34 47.14 34 47.14s22.4 0 26.89-1.21a8 8 0 0 0 5.63-5.67A83.7 83.7 0 0 0 67.5 24a83.7 83.7 0 0 0-.98-16.26z"/><path d="M27 34V14l18 10z" fill="#fff"/></svg></span>
-      <span class="visually-hidden">Play &ldquo;Learn flexbox the easy way&rdquo; on YouTube</span>
-    </a>
-  </div>
-  <figcaption class="video__caption">
-    <strong>Learn flexbox the easy way</strong>: Kevin Powell. If last year's Flexbox never
-    quite clicked, this is the one that usually does it.
-    <a href="https://www.youtube.com/watch?v=u044iM9xsWU">Watch on YouTube</a>
-  </figcaption>
-</figure>
+        <figure class="video">
+          <div class="video__frame">
+            <a
+              class="video__facade"
+              data-video="u044iM9xsWU"
+              href="https://www.youtube.com/watch?v=u044iM9xsWU"
+            >
+              <img
+                src="https://i.ytimg.com/vi/u044iM9xsWU/hqdefault.jpg"
+                alt=""
+                width="480"
+                height="360"
+                loading="lazy"
+              />
+              <span class="video__play"
+                ><svg
+                  viewBox="0 0 68 48"
+                  width="68"
+                  height="48"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    class="video__play-bg"
+                    d="M66.52 7.74a8 8 0 0 0-5.63-5.67C56.4.86 34 .86 34 .86s-22.4 0-26.89 1.21a8 8 0 0 0-5.63 5.67A83.7 83.7 0 0 0 .5 24a83.7 83.7 0 0 0 .98 16.26 8 8 0 0 0 5.63 5.67C11.6 47.14 34 47.14 34 47.14s22.4 0 26.89-1.21a8 8 0 0 0 5.63-5.67A83.7 83.7 0 0 0 67.5 24a83.7 83.7 0 0 0-.98-16.26z"
+                  />
+                  <path d="M27 34V14l18 10z" fill="#fff" /></svg
+              ></span>
+              <span class="visually-hidden"
+                >Play &ldquo;Learn flexbox the easy way&rdquo; on YouTube</span
+              >
+            </a>
+          </div>
+          <figcaption class="video__caption">
+            <strong>Learn flexbox the easy way</strong>: Kevin Powell. If last
+            year's Flexbox never quite clicked, this is the one that usually
+            does it.
+            <a href="https://www.youtube.com/watch?v=u044iM9xsWU"
+              >Watch on YouTube</a
+            >
+          </figcaption>
+        </figure>
 
-<div class="activity">
-  <p class="activity__kicker">Task 2 &middot; 30 minutes &middot; on your own page</p>
-  <h3>Build a chapter with a picture</h3>
+        <div class="activity">
+          <p class="activity__kicker">
+            Task 2 &middot; 30 minutes &middot; on your own page
+          </p>
+          <h3>Build a chapter with a picture</h3>
 
-  <ol class="steps">
-    <li><p>In <code>index.html</code>, add a new <code>&lt;section&gt;</code> with the class <code>chapter-figure</code>, a <code>&lt;div class="chapter-text"&gt;</code> and a <code>&lt;figure&gt;</code>, as above. Use one of the placeholder pictures in <code>images/</code>. Save. The picture sits under the text, because nothing has told it otherwise.</p></li>
-    <li><p>Before you look at the CSS above: on paper, from memory, write the Flexbox rule that would put two things side by side. Compare it with your neighbour's, then with the rule above.</p></li>
-    <li><p>Type the rule into <code>style.css</code>, under <strong>YOUR STYLES</strong>. Type it, do not paste it. Save after each line and watch what each one does.</p></li>
-    <li><p>Change <code>24rem</code> to <code>40rem</code>. Save and look. Put it back to something you like.</p></li>
-    <li><p>Make the picture sit on the <em>left</em>. There is more than one way; find one. A hint: <code>order</code>, <code>flex-direction</code>, or swapping the two in the HTML.</p></li>
-    <li><p>Drag your window from full width down to phone width. Nothing should overflow sideways. If it does, the last thing you changed did it.</p></li>
-    <li><p>Commit, with a message that says what you built.</p></li>
-  </ol>
-</div>
+          <ol class="steps">
+            <li>
+              <p>
+                In <code>index.html</code>, add a new
+                <code>&lt;section&gt;</code> with the class
+                <code>chapter-figure</code>, a
+                <code>&lt;div class="chapter-text"&gt;</code> and a
+                <code>&lt;figure&gt;</code>, as above. Use one of the
+                placeholder pictures in <code>images/</code>. Save. The picture
+                sits under the text, because nothing has told it otherwise.
+              </p>
+            </li>
+            <li>
+              <p>
+                Before you look at the CSS above: on paper, from memory, write
+                the Flexbox rule that would put two things side by side. Compare
+                it with your neighbour's, then with the rule above.
+              </p>
+            </li>
+            <li>
+              <p>
+                Type the rule into <code>style.css</code>, under
+                <strong>YOUR STYLES</strong>. Type it, do not paste it. Save
+                after each line and watch what each one does.
+              </p>
+            </li>
+            <li>
+              <p>
+                Change <code>24rem</code> to <code>40rem</code>. Save and look.
+                Put it back to something you like.
+              </p>
+            </li>
+            <li>
+              <p>
+                Make the picture sit on the <em>left</em>. There is more than
+                one way; find one. A hint: <code>order</code>,
+                <code>flex-direction</code>, or swapping the two in the HTML.
+              </p>
+            </li>
+            <li>
+              <p>
+                Drag your window from full width down to phone width. Nothing
+                should overflow sideways. If it does, the last thing you changed
+                did it.
+              </p>
+            </li>
+            <li><p>Commit, with a message that says what you built.</p></li>
+          </ol>
+        </div>
 
-<!-- ==================================================================== -->
-<div class="part" id="part3">
-  <p class="part__label">Part three &middot; Task 3</p>
-  <h2>The scene that holds still</h2>
-</div>
+        <!-- ==================================================================== -->
+        <div class="part" id="part3">
+          <p class="part__label">Part three &middot; Task 3</p>
+          <h2>The scene that holds still</h2>
+        </div>
 
-<p>
-  A picture that stays put while boxes of text pass over it. That move, a picture that holds
-  while the words change, is the single most recognisable thing in the whole genre.
-  <em>Snow Fall</em> does it. <em>Body on the Moor</em> does it. It needs no JavaScript at
-  all, and you are about to build it.
-</p>
+        <p>
+          A picture that stays put while boxes of text pass over it. That move,
+          a picture that holds while the words change, is the single most
+          recognisable thing in the whole genre.
+          <em>Snow Fall</em> does it. <em>Body on the Moor</em> does it. It
+          needs no JavaScript at all, and you are about to build it.
+        </p>
 
-<p>The markup is two siblings inside a section:</p>
+        <p>The markup is two siblings inside a section:</p>
 
-<p class="filename">index.html</p>
-<pre><code>&lt;section class="scene"&gt;
+        <p class="filename">index.html</p>
+        <pre><code>&lt;section class="scene"&gt;
   &lt;div class="scene-sticky"&gt;      &lt;!-- the picture: this holds still --&gt;
     &lt;img src="images/scene-02.svg" alt="Say what the picture shows."&gt;
   &lt;/div&gt;
@@ -247,10 +367,13 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
   &lt;/div&gt;
 &lt;/section&gt;</code></pre>
 
-<p>The CSS that does the holding is three lines. The rest is Flexbox you already know, centring things:</p>
+        <p>
+          The CSS that does the holding is three lines. The rest is Flexbox you
+          already know, centring things:
+        </p>
 
-<p class="filename">css/style.css</p>
-<pre><code>.scene-sticky {
+        <p class="filename">css/style.css</p>
+        <pre><code>.scene-sticky {
   position: sticky;   /* scroll normally, until... */
   top: 0;             /* ...you reach the top of the window. Then stay. */
   height: 100svh;     /* exactly one screen tall, like your cover */
@@ -274,433 +397,646 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
   background: var(--paper); /* or the words vanish into the picture */
 }</code></pre>
 
-<p>
-  <code>position: sticky</code> means <em>behave normally until you would scroll off, then
-  stick</em>. The picture stays stuck for as long as its parent, the <code>.scene</code>, is
-  still on screen. The steps are what make the scene tall: each one is separated by
-  <code>gap: 60svh</code>, a little over half a screen, so the reader has to scroll to reach the
-  next. More steps, or bigger gaps, and the picture holds for longer. That gap is a pacing
-  control, and it is the first one you have.
-</p>
+        <p>
+          <code>position: sticky</code> means
+          <em>behave normally until you would scroll off, then stick</em>. The
+          picture stays stuck for as long as its parent, the
+          <code>.scene</code>, is still on screen. The steps are what make the
+          scene tall: each one is separated by <code>gap: 60svh</code>, a little
+          over half a screen, so the reader has to scroll to reach the next.
+          More steps, or bigger gaps, and the picture holds for longer. That gap
+          is a pacing control, and it is the first one you have.
+        </p>
 
-<div class="activity">
-  <p class="activity__kicker">Task 3 &middot; 35 minutes &middot; on your own page</p>
-  <h3>Build the scene, then tell something true in three steps</h3>
+        <div class="activity">
+          <p class="activity__kicker">
+            Task 3 &middot; 35 minutes &middot; on your own page
+          </p>
+          <h3>Build the scene, then tell something true in three steps</h3>
 
-  <p>
-    Not your assignment topic. Something small and true that you already know: how to make a
-    proper cup of tea, the three stages of your commute, what happened to the pub at the end of
-    your road. The point is to feel what it is like to write <em>for</em> this structure.
-  </p>
+          <p>
+            Not your assignment topic. Something small and true that you already
+            know: how to make a proper cup of tea, the three stages of your
+            commute, what happened to the pub at the end of your road. The point
+            is to feel what it is like to write <em>for</em> this structure.
+          </p>
 
-  <ol class="steps">
-    <li><p>Add the scene's HTML after your picture chapter. Save. It is a picture with three paragraphs under it. That is fine.</p></li>
-    <li><p>Add the CSS, starting with <code>.scene-sticky</code>. Save after the first three lines and scroll: the picture already holds.</p></li>
-    <li><p>Style the <code>.step</code> boxes so they belong to your page: your colours, your spacing.</p></li>
-    <li><p>Write your three <code>.step</code> paragraphs so they tell your three-step story. One or two sentences each.</p></li>
-    <li><p>Replace the placeholder picture with one that belongs to the story. Put it in <code>images/</code>, lower case, no spaces, and write a real <code>alt</code>.</p></li>
-    <li><p>Add a fourth step. Notice that the picture now holds for longer, and you did not touch the CSS.</p></li>
-    <li><p>In <code>.scene-steps</code>, change <code>gap: 60svh</code> to <code>120svh</code>, then to <code>20svh</code>. Scroll each. One drags and one rushes. Put it where your story reads best.</p></li>
-    <li><p>Commit and sync. Check your live address updates.</p></li>
-  </ol>
+          <ol class="steps">
+            <li>
+              <p>
+                Add the scene's HTML after your picture chapter. Save. It is a
+                picture with three paragraphs under it. That is fine.
+              </p>
+            </li>
+            <li>
+              <p>
+                Add the CSS, starting with <code>.scene-sticky</code>. Save
+                after the first three lines and scroll: the picture already
+                holds.
+              </p>
+            </li>
+            <li>
+              <p>
+                Style the <code>.step</code> boxes so they belong to your page:
+                your colours, your spacing.
+              </p>
+            </li>
+            <li>
+              <p>
+                Write your three <code>.step</code> paragraphs so they tell your
+                three-step story. One or two sentences each.
+              </p>
+            </li>
+            <li>
+              <p>
+                Replace the placeholder picture with one that belongs to the
+                story. Put it in <code>images/</code>, lower case, no spaces,
+                and write a real <code>alt</code>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Add a fourth step. Notice that the picture now holds for longer,
+                and you did not touch the CSS.
+              </p>
+            </li>
+            <li>
+              <p>
+                In <code>.scene-steps</code>, change <code>gap: 60svh</code> to
+                <code>120svh</code>, then to <code>20svh</code>. Scroll each.
+                One drags and one rushes. Put it where your story reads best.
+              </p>
+            </li>
+            <li><p>Commit and sync. Check your live address updates.</p></li>
+          </ol>
 
-  <div class="box box--do">
-    <p class="box__title">What you just did</p>
-    <p>
-      You made three decisions a reader will feel: what they see, the order the words arrive
-      in, and how long they wait between them. That is pacing and reveal order, two of the four
-      things from last week's definition, and there was no animation involved.
-    </p>
-  </div>
-</div>
+          <div class="box box--do">
+            <p class="box__title">What you just did</p>
+            <p>
+              You made three decisions a reader will feel: what they see, the
+              order the words arrive in, and how long they wait between them.
+              That is pacing and reveal order, two of the four things from last
+              week's definition, and there was no animation involved.
+            </p>
+          </div>
+        </div>
 
-<p class="runsheet-break">Break</p>
+        <p class="runsheet-break">Break</p>
 
-<!-- ==================================================================== -->
-<div class="part" id="part4">
-  <p class="part__label">Part four &middot; Screening</p>
-  <h2>What these pieces are made of</h2>
-</div>
+        <!-- ==================================================================== -->
+        <div class="part" id="part4">
+          <p class="part__label">Part four &middot; Screening</p>
+          <h2>What these pieces are made of</h2>
+        </div>
 
-<p>
-  You pitch a story next week, and it helps to know what is buildable before you fall for an
-  idea. So this part is a screening, and for you it is watching only. I run some short demos
-  on the projector, then we go back to the pieces from Week&nbsp;1 and name what they are
-  doing. You do not need to know how any of it is coded. That starts in Week&nbsp;5, and by then
-  you will know exactly which of these your story needs.
-</p>
+        <p>
+          You pitch a story next week, and it helps to know what is buildable
+          before you fall for an idea. So this part is a screening, and for you
+          it is watching only. I run some short demos on the projector, then we
+          go back to the pieces from Week&nbsp;1 and name what they are doing.
+          You do not need to know how any of it is coded. That starts in
+          Week&nbsp;5, and by then you will know exactly which of these your
+          story needs.
+        </p>
 
-<p>
-  Almost everything in this genre is built from six moves:
-</p>
+        <p>Almost everything in this genre is built from six moves:</p>
 
-<div class="table-scroll">
-<table>
-  <caption>The six moves. Most good pieces use three or four of them, not all six.</caption>
-  <thead>
-    <tr><th scope="col">Move</th><th scope="col">What the reader sees</th><th scope="col">What it is good for</th></tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Hold</strong></td>
-      <td>Something stays on screen while other things scroll past it.</td>
-      <td>Keeping the subject in view while you talk about it. You built this one today.</td>
-    </tr>
-    <tr>
-      <td><strong>Reveal</strong></td>
-      <td>Something arrives as the reader reaches it: fades up, slides in, draws itself.</td>
-      <td>Directing attention. Used on everything, it directs attention nowhere.</td>
-    </tr>
-    <tr>
-      <td><strong>Swap</strong></td>
-      <td>The held picture changes as each step of text arrives.</td>
-      <td>Before and after. Then and now. The same place across forty years.</td>
-    </tr>
-    <tr>
-      <td><strong>Scrub</strong></td>
-      <td>The scrollbar is wired directly to a change: a counter runs, a line draws, a map zooms. Scroll back and it runs backwards.</td>
-      <td>Anything continuous. The engine of most change-over-time stories.</td>
-    </tr>
-    <tr>
-      <td><strong>Layer</strong></td>
-      <td>Foreground and background move at different speeds.</td>
-      <td>Depth and atmosphere. Easy to overdo, and the first thing to make people feel ill.</td>
-    </tr>
-    <tr>
-      <td><strong>Respond</strong></td>
-      <td>The reader does something other than scroll, and the piece answers.</td>
-      <td>The moment of genuine interaction the brief asks for. The other five are motion design.</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+        <div class="table-scroll">
+          <table>
+            <caption>
+              The six moves. Most good pieces use three or four of them, not all
+              six.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Move</th>
+                <th scope="col">What the reader sees</th>
+                <th scope="col">What it is good for</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Hold</strong></td>
+                <td>
+                  Something stays on screen while other things scroll past it.
+                </td>
+                <td>
+                  Keeping the subject in view while you talk about it. You built
+                  this one today.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Reveal</strong></td>
+                <td>
+                  Something arrives as the reader reaches it: fades up, slides
+                  in, draws itself.
+                </td>
+                <td>
+                  Directing attention. Used on everything, it directs attention
+                  nowhere.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Swap</strong></td>
+                <td>The held picture changes as each step of text arrives.</td>
+                <td>
+                  Before and after. Then and now. The same place across forty
+                  years.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Scrub</strong></td>
+                <td>
+                  The scrollbar is wired directly to a change: a counter runs, a
+                  line draws, a map zooms. Scroll back and it runs backwards.
+                </td>
+                <td>
+                  Anything continuous. The engine of most change-over-time
+                  stories.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Layer</strong></td>
+                <td>Foreground and background move at different speeds.</td>
+                <td>
+                  Depth and atmosphere. Easy to overdo, and the first thing to
+                  make people feel ill.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Respond</strong></td>
+                <td>
+                  The reader does something other than scroll, and the piece
+                  answers.
+                </td>
+                <td>
+                  The moment of genuine interaction the brief asks for. The
+                  other five are motion design.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-<p>
-  Then we reopen three pieces from the Week&nbsp;1 screening list and call the moves out as
-  they happen. You will find you can name nearly everything on screen, and that is a different
-  way of reading: last week you were the audience, this week you can see the joins.
-</p>
+        <p>
+          Then we reopen three pieces from the Week&nbsp;1 screening list and
+          call the moves out as they happen. You will find you can name nearly
+          everything on screen, and that is a different way of reading: last
+          week you were the audience, this week you can see the joins.
+        </p>
 
-<div class="box box--note">
-  <p class="box__title">Keep this table next to you in Part five</p>
-  <p>
-    When an idea turns up, ask which of the six it would lean on. &ldquo;The high street, then
-    and now&rdquo; is a <em>swap</em>. &ldquo;How deep the mine goes&rdquo; is a <em>scrub</em>.
-    If an idea needs none of them, it may be an article rather than a scroll story. If it needs
-    something that is not on the list, tell me, because that is either a problem or the best
-    idea in the room.
-  </p>
-</div>
+        <div class="box box--note">
+          <p class="box__title">Keep this table next to you in Part five</p>
+          <p>
+            When an idea turns up, ask which of the six it would lean on.
+            &ldquo;The high street, then and now&rdquo; is a <em>swap</em>.
+            &ldquo;How deep the mine goes&rdquo; is a <em>scrub</em>. If an idea
+            needs none of them, it may be an article rather than a scroll story.
+            If it needs something that is not on the list, tell me, because that
+            is either a problem or the best idea in the room.
+          </p>
+        </div>
 
-<!-- ==================================================================== -->
-<div class="part" id="part5">
-  <p class="part__label">Part five &middot; Activity</p>
-  <h2>Ideas, and lots of them</h2>
-</div>
+        <!-- ==================================================================== -->
+        <div class="part" id="part5">
+          <p class="part__label">Part five &middot; Activity</p>
+          <h2>Ideas, and lots of them</h2>
+        </div>
 
-<p>
-  The brief asks for a true story or an explainer: something that has changed, developed or
-  run down over time, or a subject your reader comes to understand step by step. The topic is
-  yours. Next week you choose one. This week the job is the opposite of choosing.
-</p>
+        <p>
+          The brief asks for a true story or an explainer: something that has
+          changed, developed or run down over time, or a subject your reader
+          comes to understand step by step. The topic is yours. Next week you
+          choose one. This week the job is the opposite of choosing.
+        </p>
 
-<p>
-  People who say they have no ideas usually have three, have already decided all three are
-  rubbish, and have stopped. The way round that is volume. The first ideas anyone has are the
-  ones everyone has. The interesting ones turn up somewhere after number ten, once the obvious
-  is used up and you are slightly bored.
-</p>
+        <p>
+          People who say they have no ideas usually have three, have already
+          decided all three are rubbish, and have stopped. The way round that is
+          volume. The first ideas anyone has are the ones everyone has. The
+          interesting ones turn up somewhere after number ten, once the obvious
+          is used up and you are slightly bored.
+        </p>
 
-<div class="activity" id="ideas">
-  <p class="activity__kicker">Activity &middot; 40 minutes &middot; laptops shut, paper out</p>
-  <h3>Thirty ideas before you leave</h3>
+        <div class="activity" id="ideas">
+          <p class="activity__kicker">
+            Activity &middot; 40 minutes &middot; laptops shut, paper out
+          </p>
+          <h3>Thirty ideas before you leave</h3>
 
-  <p><strong>Two rules.</strong> Nobody judges anything today, including their own. And every idea gets written down, in a few words, however thin it seems.</p>
+          <p>
+            <strong>Two rules.</strong> Nobody judges anything today, including
+            their own. And every idea gets written down, in a few words, however
+            thin it seems.
+          </p>
 
-  <ol class="steps">
-    <li>
-      <p><strong>Round one: what you already know.</strong> 10 minutes, on your own. Five things you know more about than most people in this room: a place, a job, a sport, a scene, a family story, an obsession. For each, write two things about it that have <em>changed</em>, or that outsiders always get wrong. That is ten ideas.</p>
-    </li>
-    <li>
-      <p><strong>Round two: prompts.</strong> 10 minutes, on your own. Two answers to each, fast. The second answer is usually better than the first.</p>
-      <ul>
-        <li>Something that used to be everywhere and now is not.</li>
-        <li>A building near me that has had at least three different lives.</li>
-        <li>A job that has nearly disappeared in my lifetime.</li>
-        <li>Something everyone thinks they understand and almost nobody does.</li>
-        <li>Something my grandparents would not recognise about where I grew up.</li>
-        <li>A thing I end up explaining every time it comes up.</li>
-        <li>Somewhere I can walk to that has a story attached.</li>
-        <li>Something that got better, quietly, and nobody made a fuss.</li>
-      </ul>
-    </li>
-    <li>
-      <p><strong>Round three: swap.</strong> 10 minutes, in pairs. Swap sheets. Read your partner's list and add one idea underneath any three of theirs: a twist, a narrower version, the same thing somewhere else. Then swap back and read what they did to yours.</p>
-    </li>
-    <li>
-      <p><strong>Round four: mark, do not choose.</strong> 10 minutes. Put a star by the five you would most like to read if somebody else made them. Next to each star, write which of the six moves it might lean on. Do not pick a winner. That is next week.</p>
-    </li>
-  </ol>
+          <ol class="steps">
+            <li>
+              <p>
+                <strong>Round one: what you already know.</strong> 10 minutes,
+                on your own. Five things you know more about than most people in
+                this room: a place, a job, a sport, a scene, a family story, an
+                obsession. For each, write two things about it that have
+                <em>changed</em>, or that outsiders always get wrong. That is
+                ten ideas.
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Round two: prompts.</strong> 10 minutes, on your own.
+                Two answers to each, fast. The second answer is usually better
+                than the first.
+              </p>
+              <ul>
+                <li>Something that used to be everywhere and now is not.</li>
+                <li>
+                  A building near me that has had at least three different
+                  lives.
+                </li>
+                <li>A job that has nearly disappeared in my lifetime.</li>
+                <li>
+                  Something everyone thinks they understand and almost nobody
+                  does.
+                </li>
+                <li>
+                  Something my grandparents would not recognise about where I
+                  grew up.
+                </li>
+                <li>A thing I end up explaining every time it comes up.</li>
+                <li>Somewhere I can walk to that has a story attached.</li>
+                <li>
+                  Something that got better, quietly, and nobody made a fuss.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p>
+                <strong>Round three: swap.</strong> 10 minutes, in pairs. Swap
+                sheets. Read your partner's list and add one idea underneath any
+                three of theirs: a twist, a narrower version, the same thing
+                somewhere else. Then swap back and read what they did to yours.
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Round four: mark, do not choose.</strong> 10 minutes.
+                Put a star by the five you would most like to read if somebody
+                else made them. Next to each star, write which of the six moves
+                it might lean on. Do not pick a winner. That is next week.
+              </p>
+            </li>
+          </ol>
 
-  <div class="box box--warn">
-    <p class="box__title">Keep the sheet</p>
-    <p>
-      Photograph it before you leave and bring it next week. It is the raw material for the
-      Week&nbsp;3 workshop, and the first page of your research trail for Component&nbsp;1.
-    </p>
-  </div>
-</div>
+          <div class="box box--warn">
+            <p class="box__title">Keep the sheet</p>
+            <p>
+              Photograph it before you leave and bring it next week. It is the
+              raw material for the Week&nbsp;3 workshop, and the first page of
+              your research trail for Component&nbsp;1.
+            </p>
+          </div>
+        </div>
 
-<!-- ==================================================================== -->
-<div class="activity" id="directed">
-  <p class="activity__kicker">Directed task &middot; before Week 3</p>
-  <h3>Work through the watch-list, and keep the list growing</h3>
+        <!-- ==================================================================== -->
+        <div class="activity" id="directed">
+          <p class="activity__kicker">Directed task &middot; before Week 3</p>
+          <h3>Work through the watch-list, and keep the list growing</h3>
 
-  <p>
-    Next week is the topic workshop. You leave that session with an agreed story, and it goes
-    much better if your head is full. So read these properly, not in a tab you close after
-    ten seconds.
-  </p>
+          <p>
+            Next week is the topic workshop. You leave that session with an
+            agreed story, and it goes much better if your head is full. So read
+            these properly, not in a tab you close after ten seconds.
+          </p>
 
-  <p>
-    They are grouped by <strong>story shape</strong>, which is what we work with next week. Read at
-    least <strong>one from each group</strong>. For each, note in a sentence which of the six moves
-    it uses, and whether the reader ever gets to do anything except scroll.
-  </p>
+          <p>
+            They are grouped by <strong>story shape</strong>, which is what we
+            work with next week. Read at least
+            <strong>one from each group</strong>. For each, note in a sentence
+            which of the six moves it uses, and whether the reader ever gets to
+            do anything except scroll.
+          </p>
 
-  <h4>Change over time</h4>
-  <ul class="cards">
-    <li>
-      <a class="card" href="https://pudding.cool/2026/06/love-story">
-        <span class="card__title">A Love Story</span>
-        <span class="card__meta">The Pudding, 2026</span>
-        <p>A thousand people's relationships tracked across three surveys and a pandemic. Watch how it moves between the aggregate and the individual.</p>
-      </a>
-    </li>
-    <li>
-      <a class="card" href="https://science.nasa.gov/earth/earth-observatory/world-of-change/">
-        <span class="card__title">World of Change</span>
-        <span class="card__meta">NASA Earth Observatory</span>
-        <p>Not a narrative: raw material. The same place photographed for forty years. Dozens of stories are sitting in here unbuilt.</p>
-      </a>
-    </li>
-  </ul>
+          <h4>Change over time</h4>
+          <ul class="cards">
+            <li>
+              <a class="card" href="https://pudding.cool/2026/06/love-story">
+                <span class="card__title">A Love Story</span>
+                <span class="card__meta">The Pudding, 2026</span>
+                <p>
+                  A thousand people's relationships tracked across three surveys
+                  and a pandemic. Watch how it moves between the aggregate and
+                  the individual.
+                </p>
+              </a>
+            </li>
+            <li>
+              <a
+                class="card"
+                href="https://science.nasa.gov/earth/earth-observatory/world-of-change/"
+              >
+                <span class="card__title">World of Change</span>
+                <span class="card__meta">NASA Earth Observatory</span>
+                <p>
+                  Not a narrative: raw material. The same place photographed for
+                  forty years. Dozens of stories are sitting in here unbuilt.
+                </p>
+              </a>
+            </li>
+          </ul>
 
-  <h4>Linear reveal: a story told in order</h4>
-  <ul class="cards">
-    <li>
-      <a class="card" href="https://www.bbc.co.uk/news/resources/idt-e8c6cbab-da44-4a3c-8f9b-c4fccd53dd24">
-        <span class="card__title">Body on the Moor</span>
-        <span class="card__meta">BBC News</span>
-        <p>An unidentified man and the investigation to name him. Notice how little it moves, and how much each move is worth when it does.</p>
-      </a>
-    </li>
-    <li>
-      <a class="card" href="https://www.bbc.co.uk/news/resources/idt-sh/the_reykjavik_confessions">
-        <span class="card__title">The Reykjavik Confessions</span>
-        <span class="card__meta">BBC News</span>
-        <p>Six confessions to murders nobody could remember. A masterclass in restraint and pace.</p>
-      </a>
-    </li>
-  </ul>
+          <h4>Linear reveal: a story told in order</h4>
+          <ul class="cards">
+            <li>
+              <a
+                class="card"
+                href="https://www.bbc.co.uk/news/resources/idt-e8c6cbab-da44-4a3c-8f9b-c4fccd53dd24"
+              >
+                <span class="card__title">Body on the Moor</span>
+                <span class="card__meta">BBC News</span>
+                <p>
+                  An unidentified man and the investigation to name him. Notice
+                  how little it moves, and how much each move is worth when it
+                  does.
+                </p>
+              </a>
+            </li>
+            <li>
+              <a
+                class="card"
+                href="https://www.bbc.co.uk/news/resources/idt-sh/the_reykjavik_confessions"
+              >
+                <span class="card__title">The Reykjavik Confessions</span>
+                <span class="card__meta">BBC News</span>
+                <p>
+                  Six confessions to murders nobody could remember. A
+                  masterclass in restraint and pace.
+                </p>
+              </a>
+            </li>
+          </ul>
 
-  <h4>Explainer: understood step by step</h4>
-  <ul class="cards">
-    <li>
-      <a class="card" href="https://pudding.cool/2026/07/essential-words">
-        <span class="card__title">English Vocab Lists</span>
-        <span class="card__meta">The Pudding, 2026</span>
-        <p>How the words we teach English learners have changed. A good model for making something abstract feel concrete.</p>
-      </a>
-    </li>
-    <li>
-      <a class="card" href="https://pudding.cool/2026/06/menu-story">
-        <span class="card__title">Restaurant Menu History</span>
-        <span class="card__meta">The Pudding, 2026</span>
-        <p>What America's earliest menus reveal about America. An archive turned into an argument.</p>
-      </a>
-    </li>
-  </ul>
+          <h4>Explainer: understood step by step</h4>
+          <ul class="cards">
+            <li>
+              <a
+                class="card"
+                href="https://pudding.cool/2026/07/essential-words"
+              >
+                <span class="card__title">English Vocab Lists</span>
+                <span class="card__meta">The Pudding, 2026</span>
+                <p>
+                  How the words we teach English learners have changed. A good
+                  model for making something abstract feel concrete.
+                </p>
+              </a>
+            </li>
+            <li>
+              <a class="card" href="https://pudding.cool/2026/06/menu-story">
+                <span class="card__title">Restaurant Menu History</span>
+                <span class="card__meta">The Pudding, 2026</span>
+                <p>
+                  What America's earliest menus reveal about America. An archive
+                  turned into an argument.
+                </p>
+              </a>
+            </li>
+          </ul>
 
-  <h4>And browse</h4>
-  <ul class="cards">
-    <li>
-      <a class="card" href="https://pudding.cool/pudding-cup/">
-        <span class="card__title">The Pudding Cup</span>
-        <span class="card__meta">Annual</span>
-        <p>The year's best visual stories, chosen by people who make them. The fastest way to calibrate what good looks like.</p>
-      </a>
-    </li>
-  </ul>
+          <h4>And browse</h4>
+          <ul class="cards">
+            <li>
+              <a class="card" href="https://pudding.cool/pudding-cup/">
+                <span class="card__title">The Pudding Cup</span>
+                <span class="card__meta">Annual</span>
+                <p>
+                  The year's best visual stories, chosen by people who make
+                  them. The fastest way to calibrate what good looks like.
+                </p>
+              </a>
+            </li>
+          </ul>
 
-  
-  <div class="box box--task">
-    <p class="box__title">Also, before Week 3</p>
-    <ul class="checklist">
-      <li>Tasks 2 and 3 finished on your own page, committed and synced. Check your live address.</li>
-      <li>Five more ideas on your sheet. They turn up on buses and in showers, not at desks.</li>
-      <li>For your five starred ideas: ten minutes each, finding out whether pictures or data exist that you would be allowed to use.</li>
-    </ul>
-  </div>
-</div>
+          <div class="box box--task">
+            <p class="box__title">Also, before Week 3</p>
+            <ul class="checklist">
+              <li>
+                Tasks 2 and 3 finished on your own page, committed and synced.
+                Check your live address.
+              </li>
+              <li>
+                Five more ideas on your sheet. They turn up on buses and in
+                showers, not at desks.
+              </li>
+              <li>
+                For your five starred ideas: ten minutes each, finding out
+                whether pictures or data exist that you would be allowed to use.
+              </li>
+            </ul>
+          </div>
+        </div>
 
-<!-- ==================================================================== -->
-<h2 id="stuck">If you get stuck</h2>
+        <!-- ==================================================================== -->
+        <h2 id="stuck">If you get stuck</h2>
 
-<details>
-  <summary>My repository is not in the clone list</summary>
-  <p>
-    Either you are signed in to GitHub as somebody else (shared Macs remember the last person;
-    sign out on github.com and start again), or last week's publish never finished. Check
-    github.com in the browser. If the repository is not there, it was never published: see
-    Part&nbsp;1 of <a href="working-with-github.html">Working with GitHub</a>.
-  </p>
-</details>
+        <details>
+          <summary>My repository is not in the clone list</summary>
+          <p>
+            Either you are signed in to GitHub as somebody else (shared Macs
+            remember the last person; sign out on github.com and start again),
+            or last week's publish never finished. Check github.com in the
+            browser. If the repository is not there, it was never published: see
+            Part&nbsp;1 of
+            <a href="working-with-github.html">Working with GitHub</a>.
+          </p>
+        </details>
 
-<details>
-  <summary>&ldquo;Make sure you configure your user.name and user.email&rdquo;</summary>
-  <p>
-    You skipped step 4 of Task&nbsp;1. None of the buttons on that message help. Click
-    <strong>Cancel</strong>, run the two identity lines in the terminal, then commit again.
-  </p>
-</details>
+        <details>
+          <summary>
+            &ldquo;Make sure you configure your user.name and user.email&rdquo;
+          </summary>
+          <p>
+            You skipped step 4 of Task&nbsp;1. None of the buttons on that
+            message help. Click
+            <strong>Cancel</strong>, run the two identity lines in the terminal,
+            then commit again.
+          </p>
+        </details>
 
-<details>
-  <summary>The picture in my scene does not hold still</summary>
-  <p>
-    Three usual causes. A parent element has <code>overflow: hidden</code>, which switches
-    sticky off without telling you. The sticky element has lost its <code>top: 0</code>.
-    Or you have moved the steps outside the <code>.scene</code> section, so the scene is only
-    one screen tall and there is nothing to hold through.
-  </p>
-</details>
+        <details>
+          <summary>The picture in my scene does not hold still</summary>
+          <p>
+            Three usual causes. A parent element has
+            <code>overflow: hidden</code>, which switches sticky off without
+            telling you. The sticky element has lost its <code>top: 0</code>. Or
+            you have moved the steps outside the <code>.scene</code> section, so
+            the scene is only one screen tall and there is nothing to hold
+            through.
+          </p>
+        </details>
 
-<details>
-  <summary>My page scrolls sideways on a narrow window</summary>
-  <p>
-    Something is wider than the screen. Usually an image without <code>max-width: 100%</code>,
-    or a fixed width in pixels that you added. Open DevTools, turn on the device toolbar, and
-    look for the element poking out of the right-hand edge.
-  </p>
-</details>
+        <details>
+          <summary>My page scrolls sideways on a narrow window</summary>
+          <p>
+            Something is wider than the screen. Usually an image without
+            <code>max-width: 100%</code>, or a fixed width in pixels that you
+            added. Open DevTools, turn on the device toolbar, and look for the
+            element poking out of the right-hand edge.
+          </p>
+        </details>
 
-<details>
-  <summary>I changed the CSS and nothing happened</summary>
-  <p>
-    Check the file is saved (a dot on the tab means it is not). Check you are looking at the
-    Live Server tab, not a copy you opened by double-clicking. Then check whether the rule sits
-    inside the <code>@media (min-width: 60rem)</code> block, and if it does, that your window is
-    actually that wide.
-  </p>
-</details>
+        <details>
+          <summary>I changed the CSS and nothing happened</summary>
+          <p>
+            Check the file is saved (a dot on the tab means it is not). Check
+            you are looking at the Live Server tab, not a copy you opened by
+            double-clicking. Then check whether the rule sits inside the
+            <code>@media (min-width: 60rem)</code> block, and if it does, that
+            your window is actually that wide.
+          </p>
+        </details>
 
-<details>
-  <summary>I cannot think of any ideas</summary>
-  <p>
-    Nobody can, on demand, in a quiet room. Go back to round one and make the list of things
-    you know about longer and more boring: your street, your part-time job, the bus you catch.
-    Boring subjects make good pieces because nobody has looked at them properly.
-  </p>
-</details>
+        <details>
+          <summary>I cannot think of any ideas</summary>
+          <p>
+            Nobody can, on demand, in a quiet room. Go back to round one and
+            make the list of things you know about longer and more boring: your
+            street, your part-time job, the bus you catch. Boring subjects make
+            good pieces because nobody has looked at them properly.
+          </p>
+        </details>
 
-<details>
-  <summary>Something else</summary>
-  <p>
-    Ask in the studio. Out of hours, email
-    <a href="mailto:a.m.pearson@leedsbeckett.ac.uk">a.m.pearson@leedsbeckett.ac.uk</a> with a
-    screenshot and your live address. I normally reply within two working days.
-  </p>
-</details>
+        <details>
+          <summary>Something else</summary>
+          <p>
+            Ask in the studio. Out of hours, email
+            <a href="mailto:a.m.pearson@leedsbeckett.ac.uk"
+              >a.m.pearson@leedsbeckett.ac.uk</a
+            >
+            with a screenshot and your live address. I normally reply within two
+            working days.
+          </p>
+        </details>
 
-<!-- ==================================================================== -->
-<h2 id="resources">Resources</h2>
+        <!-- ==================================================================== -->
+        <h2 id="resources">Resources</h2>
 
-<ul class="cards">
-  <li>
-    <a class="card" href="working-with-github.html">
-      <span class="card__title">Working with GitHub</span>
-      <span class="card__meta">Module guide</span>
-      <p>Clone, commit, sync and check, with a screenshot of every screen on the studio Macs.</p>
-    </a>
-  </li>
-  <li>
-    <a class="card" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#sticky_positioning">
-      <span class="card__title">MDN: sticky positioning</span>
-      <span class="card__meta">Mozilla</span>
-      <p>What <code>position: sticky</code> does, and the conditions under which it quietly stops.</p>
-    </a>
-  </li>
-  <li>
-    <a class="card" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout">
-      <span class="card__title">MDN: Grid basics</span>
-      <span class="card__meta">Mozilla</span>
-      <p>The reference for <code>grid-template-columns</code>, <code>fr</code> and <code>minmax()</code>.</p>
-    </a>
-  </li>
-  <li>
-    <a class="card" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox">
-      <span class="card__title">MDN: Flexbox basics</span>
-      <span class="card__meta">Mozilla</span>
-      <p>The reference for what <code>flex: 1 1 20rem</code> actually means.</p>
-    </a>
-  </li>
-</ul>
+        <ul class="cards">
+          <li>
+            <a class="card" href="working-with-github.html">
+              <span class="card__title">Working with GitHub</span>
+              <span class="card__meta">Module guide</span>
+              <p>
+                Clone, commit, sync and check, with a screenshot of every screen
+                on the studio Macs.
+              </p>
+            </a>
+          </li>
+          <li>
+            <a
+              class="card"
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#sticky_positioning"
+            >
+              <span class="card__title">MDN: sticky positioning</span>
+              <span class="card__meta">Mozilla</span>
+              <p>
+                What <code>position: sticky</code> does, and the conditions
+                under which it quietly stops.
+              </p>
+            </a>
+          </li>
+          <li>
+            <a
+              class="card"
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout"
+            >
+              <span class="card__title">MDN: Grid basics</span>
+              <span class="card__meta">Mozilla</span>
+              <p>
+                The reference for <code>grid-template-columns</code>,
+                <code>fr</code> and <code>minmax()</code>.
+              </p>
+            </a>
+          </li>
+          <li>
+            <a
+              class="card"
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox"
+            >
+              <span class="card__title">MDN: Flexbox basics</span>
+              <span class="card__meta">Mozilla</span>
+              <p>
+                The reference for what <code>flex: 1 1 20rem</code> actually
+                means.
+              </p>
+            </a>
+          </li>
+        </ul>
+      </main>
+    </div>
 
-</main>
-</div>
+    <footer class="colophon">
+      <div class="wrap">
+        <p>
+          <strong>Interaction Design</strong> &middot; Level 5 &middot; BSc
+          (Hons) Content Creation &middot; Leeds School of Arts, Leeds Beckett
+          University
+        </p>
+        <p>
+          Module leader: Ant Pearson,
+          <a href="mailto:a.m.pearson@leedsbeckett.ac.uk"
+            >a.m.pearson@leedsbeckett.ac.uk</a
+          >.
+        </p>
+        <p>
+          Week 2 of 13 &middot;
+          <a href="index.html">All sessions and kits</a> &middot; Teaching
+          materials are posted at least 48 hours before each session.
+        </p>
+      </div>
+    </footer>
 
-<footer class="colophon">
-  <div class="wrap">
-    <p>
-      <strong>Interaction Design</strong> &middot; Level 5 &middot; BSc (Hons) Content Creation
-      &middot; Leeds School of Arts, Leeds Beckett University
-    </p>
-    <p>
-      Module leader: Ant Pearson,
-      <a href="mailto:a.m.pearson@leedsbeckett.ac.uk">a.m.pearson@leedsbeckett.ac.uk</a>.
-    </p>
-    <p>
-      Week 2 of 13 &middot; <a href="index.html">All sessions and kits</a> &middot; Teaching
-      materials are posted at least 48 hours before each session.
-    </p>
-  </div>
-</footer>
-
-<script>
-/* Videos: a thumbnail that opens YouTube when this page is a local file, and
+    <script>
+      /* Videos: a thumbnail that opens YouTube when this page is a local file, and
    loads the player inline once the page is served over http(s). YouTube rejects
    embeds with no referrer (Error 153), which is what file:// gives it. */
-(function () {
-  var canEmbed = /^https?:$/.test(location.protocol);
+      (function () {
+        var canEmbed = /^https?:$/.test(location.protocol);
 
-  document.querySelectorAll('.video__facade').forEach(function (link) {
-    var id  = link.getAttribute('data-video');
-    var img = link.querySelector('img');
-    var label = link.querySelector('.visually-hidden').textContent;
+        document.querySelectorAll(".video__facade").forEach(function (link) {
+          var id = link.getAttribute("data-video");
+          var img = link.querySelector("img");
+          var label = link.querySelector(".visually-hidden").textContent;
 
-    var hi = new Image();
-    hi.onload = function () { if (hi.naturalWidth > 500) { img.src = hi.src; } };
-    hi.src = 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg';
+          var hi = new Image();
+          hi.onload = function () {
+            if (hi.naturalWidth > 500) {
+              img.src = hi.src;
+            }
+          };
+          hi.src = "https://i.ytimg.com/vi/" + id + "/maxresdefault.jpg";
 
-    if (!canEmbed) {
-      link.target = '_blank';
-      link.rel = 'noopener';
-      return;
-    }
+          if (!canEmbed) {
+            link.target = "_blank";
+            link.rel = "noopener";
+            return;
+          }
 
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      var frame = document.createElement('iframe');
-      frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
-      frame.title = label;
-      frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-      frame.allowFullscreen = true;
-      link.parentNode.replaceChild(frame, link);
-      frame.focus();
-    });
-  });
-})();
-</script>
-
-</body>
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            var frame = document.createElement("iframe");
+            frame.src =
+              "https://www.youtube-nocookie.com/embed/" +
+              id +
+              "?autoplay=1&rel=0";
+            frame.title = label;
+            frame.allow =
+              "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+            frame.allowFullscreen = true;
+            link.parentNode.replaceChild(frame, link);
+            frame.focus();
+          });
+        });
+      })();
+    </script>
+  </body>
 </html>
