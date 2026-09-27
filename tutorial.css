@@ -191,9 +191,9 @@ a:hover {
   grid-column: wide-start / measure-end;
 }
 
-.prose > .toc,
 .prose > .runsheet,
 .prose > .runsheet-break,
+.prose > .runsheet-also,
 .prose > .table-scroll,
 .prose > table,
 .prose > pre,
@@ -202,6 +202,7 @@ a:hover {
 .prose > .video,
 .prose > .video-grid,
 .prose > .activity,
+.prose > .brief,
 .prose > hr {
   grid-column: wide-start / wide-end;
 }
@@ -281,7 +282,7 @@ hr {
 /* Shared small-caps label, used by every kicker on the page */
 .part__label,
 .activity__kicker,
-.toc h2,
+.brief__label,
 .masthead__week,
 .filename,
 .break,
@@ -514,6 +515,14 @@ thead th,
   border-top: 1px solid var(--rule);
 }
 
+/* Items link to where each step starts on the page. Pages that use this have
+   no separate contents list. */
+.runsheet-also {
+  margin: 1.25rem 0 0;
+  font-size: 0.94rem;
+  color: var(--ink-quiet);
+}
+
 /* Mid-session break marker */
 .break {
   text-align: center;
@@ -524,40 +533,79 @@ thead th,
 }
 
 /* -------------------------------------------------------------------------
-   CONTENTS
+   THE BRIEF — the Component 1 list, quoted from the assignment brief on
+   Weeks 3 to 5. One block, three placements; edit the wording in the HTML
+   when the brief changes. The .brief__now badge marks the items a session
+   feeds.
    ------------------------------------------------------------------------- */
 
-.toc {
+.brief {
   border-top: 2px solid var(--ink);
   border-bottom: 1px solid var(--rule);
   padding: 1.25rem 0 1.5rem;
   margin: 3rem 0;
 }
-.toc h2 {
+.brief__label {
   font-size: 0.74rem;
   color: var(--ink-quiet);
-  margin: 0 0 1rem;
+  margin: 0 0 0.6rem;
 }
-.toc ol {
-  /* One column, read top to bottom. A multi-column grid made the order ambiguous. */
-  margin: 0;
-  padding: 0;
+.brief__title {
+  margin: 0 0 0.9rem;
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem);
+}
+.brief > p {
+  max-width: var(--measure);
+}
+.brief ol {
   list-style: none;
+  padding: 0;
+  margin: 1.25rem 0;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  counter-reset: brief;
 }
-.toc ol ol {
-  margin: 0.5rem 0 0.15rem;
-  padding-left: 1.25rem;
-  border-left: 1px solid var(--rule);
-  font-size: 0.94em;
-}
-.toc li {
+.brief li {
+  position: relative;
   margin: 0;
+  padding-left: 2.6rem;
+  font-size: 1.02rem;
+  counter-increment: brief;
 }
-.toc a {
-  /* Looks like a link: accent colour and underline come from the base a rule. */
-  font-size: 0.98rem;
+.brief li::before {
+  content: counter(brief, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.brief li strong {
+  color: var(--ink);
+}
+.brief__now {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.05em 0.5em;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  vertical-align: 0.15em;
+  white-space: nowrap;
+}
+.brief__foot {
+  font-size: 0.9rem;
+  color: var(--ink-quiet);
+  margin: 0;
 }
 
 /* A small UI icon shown in a line of text, e.g. a VS Code toolbar button. */
@@ -1115,7 +1163,6 @@ details p {
   }
   .skip-link,
   .video__frame,
-  .toc,
   .bleed {
     display: none;
   }

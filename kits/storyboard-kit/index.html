@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Storyboard kit — Week 4 | Interaction Design</title>
+<title>Storyboard kit: Week 4 | Interaction Design</title>
 <meta name="description" content="Printable Week 4 kit: the notation key, blank beat sheets and empty storyboard frames with annotation columns.">
 <style>
 :root{ --ink:#16181d; --ink-soft:#4a4f5a; --rule:#c8ccd4; --paper:#fff; --tint:#f2f4f7; }
@@ -48,11 +48,20 @@ th{ background:var(--tint); font-size:.78rem; }
 .page-break{ break-before:page; }
 .foot{ margin-top:3rem; padding-top:.8rem; border-top:1px solid var(--rule); font-size:.8rem; color:var(--ink-soft); }
 @media (max-width:640px){ .frames{ grid-template-columns:1fr; } }
+@page{ size:A4 portrait; margin:14mm 12mm; }
 @media print{
   :root{ --ink:#000; --ink-soft:#333; --rule:#999; --paper:#fff; --tint:#f4f4f4; }
-  body{ padding:0; font-size:11pt; }
-  h2{ break-after:avoid; }
+  html,body{ width:auto; }
+  body{ padding:0; font-size:10.5pt; }
+  .sheet{ max-width:none; width:100%; }
+  table{ table-layout:fixed; width:100%; }
+  .beats td{ height:2.7rem; }
+    h2{ break-after:avoid; }
+  .frames{ gap:.7rem; }
   .frame{ break-inside:avoid; }
+  .frame__stage{ height:10rem; }
+  .legend svg{ flex-basis:54px; }
+  .foot{ margin-top:1.5rem; }
 }
 </style>
 </head>
@@ -62,112 +71,108 @@ th{ background:var(--tint); font-size:.78rem; }
 <p class="kicker">Interaction Design &middot; Week 4</p>
 <h1>Storyboard kit</h1>
 <p class="standfirst">
-  Print a few of these. Pages two onwards are blank frames &mdash; you will want more than four.
+  Print a few of these. Pages two onwards are blank frames: you will want more than four.
 </p>
 
 <h2>The notation</h2>
 <ul class="legend">
   <li>
     <svg viewBox="0 0 62 34" role="img" aria-label="A solid rectangle"><rect x="6" y="4" width="50" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-    <span><b>The viewport</b> &mdash; what is on screen at this moment.</span>
+    <span><b>The viewport</b>: what is on screen at this beat.</span>
   </li>
   <li>
     <svg viewBox="0 0 62 34" role="img" aria-label="A hatched rectangle"><defs><pattern id="h" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="currentColor" stroke-width="1.2"/></pattern></defs><rect x="6" y="4" width="50" height="26" rx="3" fill="url(#h)" stroke="currentColor" stroke-width="1.5" opacity=".85"/></svg>
-    <span><b>Held in place</b> while the reader scrolls &rarr; <code>position: sticky</code> or a pin.</span>
+    <span><b>Held in place</b> while the reader scrolls.</span>
   </li>
   <li>
     <svg viewBox="0 0 62 34" role="img" aria-label="A single arrow"><defs><marker id="m1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs><line x1="10" y1="26" x2="50" y2="9" stroke="currentColor" stroke-width="1.8" marker-end="url(#m1)"/></svg>
-    <span><b>Moves once</b>, in this direction, when triggered &rarr; <code>gsap.from()</code>.</span>
+    <span><b>Moves once</b>, in this direction, when triggered.</span>
   </li>
   <li>
     <svg viewBox="0 0 62 34" role="img" aria-label="A double-headed arrow on a bar"><defs><marker id="m2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker><marker id="m3" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M10 0 L0 5 L10 10 z" fill="currentColor"/></marker></defs><line x1="8" y1="24" x2="54" y2="24" stroke="currentColor" stroke-width="1.2"/><line x1="14" y1="13" x2="48" y2="13" stroke="currentColor" stroke-width="1.8" marker-end="url(#m2)" marker-start="url(#m3)"/></svg>
-    <span><b>Tied to the scrollbar</b>; reverses on the way back up &rarr; <code>scrub</code>, Week&nbsp;7.</span>
+    <span><b>Tied to the scrollbar</b>; runs backwards when the reader scrolls back.</span>
   </li>
   <li>
     <svg viewBox="0 0 62 34" role="img" aria-label="A dotted line across a rectangle"><rect x="6" y="4" width="50" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="22" x2="56" y2="22" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 3"/></svg>
-    <span><b>The trigger point</b> &mdash; where in the viewport this fires &rarr; <code>start: 'top 80%'</code>.</span>
+    <span><b>The trigger point</b>: where in the viewport this fires.</span>
   </li>
   <li>
     <svg viewBox="0 0 62 34" role="img" aria-label="A circled pointer"><circle cx="31" cy="17" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M27 10 L27 23 L30.5 19.5 L33 24 L35 23 L32.5 18.5 L37 18 z" fill="currentColor"/></svg>
-    <span><b>The reader can act here</b> &mdash; your designed moment of interaction.</span>
-  </li>
-  <li>
-    <svg viewBox="0 0 62 34" role="img" aria-label="A small box in the corner of a rectangle"><rect x="6" y="4" width="50" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="40" y="18" width="14" height="10" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 2"/></svg>
-    <span><b>The reduced-motion version</b> of this frame &rarr; <code>gsap.matchMedia()</code>.</span>
+    <span><b>The reader can act here</b>: your designed moment of interaction.</span>
   </li>
 </ul>
 
-<h2>Beat sheet</h2>
-<p>Write this before you draw anything. One row per section. Be stingy with &ldquo;what moves&rdquo;.</p>
+<h2 class="page-break">Beat sheet</h2>
+<p>Write this before you draw anything. One row per beat. Be stingy with &ldquo;the move&rdquo;: three or four across the whole piece is normal.</p>
 <table class="beats">
   <thead>
     <tr>
-      <th>#</th><th>What the reader sees</th><th>What they now know</th><th>What moves</th><th>What they can do</th>
+      <th>#</th><th>What the reader sees</th><th>What they now know</th><th>What changed</th><th>The move</th><th>What they can do</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td>1</td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>2</td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>3</td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>4</td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>5</td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>6</td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>7</td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>8</td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>9</td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>10</td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>11</td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>12</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>6</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>7</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>8</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>9</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>10</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>11</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>12</td><td></td><td></td><td></td><td></td><td></td></tr>
   </tbody>
 </table>
-<p><strong>The one-sentence test:</strong> &ldquo;This section exists so the reader understands, feels or notices ______.&rdquo; If you need the word &ldquo;and&rdquo;, it is two sections.</p>
+<p><strong>A beat</strong> is one thing that happens as the reader scrolls: a moment where the page changes state. One row per beat. <strong>The test for a row:</strong> &ldquo;After this, the reader knows or feels ______.&rdquo; If the answer repeats the row above, merge them.</p>
 
 <div class="page-break"></div>
 
 <h2>Storyboard frames</h2>
-<p>One per section. Draw the frame, mark what is held, mark what moves, then fill the notes.</p>
+<p>One frame per beat. Draw the frame, mark what is held, mark what changes, fill the notes, and write one line on why this change serves the story.</p>
 
 <div class="frames">
   <div class="frame">
     <p class="frame__label"><span>Section</span><span>Phone / desktop</span></p>
     <div class="frame__stage"></div>
     <div class="frame__notes">
-      <div>Trigger</div><div>Movement</div><div>How it feels</div><div>Reader can</div><div>Reduced motion</div>
+      <div>Trigger</div><div>Change</div><div>How it feels</div><div>Reader can</div><div>Why</div>
     </div>
   </div>
   <div class="frame">
     <p class="frame__label"><span>Section</span><span>Phone / desktop</span></p>
     <div class="frame__stage"></div>
     <div class="frame__notes">
-      <div>Trigger</div><div>Movement</div><div>How it feels</div><div>Reader can</div><div>Reduced motion</div>
+      <div>Trigger</div><div>Change</div><div>How it feels</div><div>Reader can</div><div>Why</div>
     </div>
   </div>
   <div class="frame">
     <p class="frame__label"><span>Section</span><span>Phone / desktop</span></p>
     <div class="frame__stage"></div>
     <div class="frame__notes">
-      <div>Trigger</div><div>Movement</div><div>How it feels</div><div>Reader can</div><div>Reduced motion</div>
+      <div>Trigger</div><div>Change</div><div>How it feels</div><div>Reader can</div><div>Why</div>
     </div>
   </div>
   <div class="frame">
     <p class="frame__label"><span>Section</span><span>Phone / desktop</span></p>
     <div class="frame__stage"></div>
     <div class="frame__notes">
-      <div>Trigger</div><div>Movement</div><div>How it feels</div><div>Reader can</div><div>Reduced motion</div>
+      <div>Trigger</div><div>Change</div><div>How it feels</div><div>Reader can</div><div>Why</div>
     </div>
   </div>
   <div class="frame">
     <p class="frame__label"><span>Section</span><span>Phone / desktop</span></p>
     <div class="frame__stage"></div>
     <div class="frame__notes">
-      <div>Trigger</div><div>Movement</div><div>How it feels</div><div>Reader can</div><div>Reduced motion</div>
+      <div>Trigger</div><div>Change</div><div>How it feels</div><div>Reader can</div><div>Why</div>
     </div>
   </div>
   <div class="frame">
     <p class="frame__label"><span>Section</span><span>Phone / desktop</span></p>
     <div class="frame__stage"></div>
     <div class="frame__notes">
-      <div>Trigger</div><div>Movement</div><div>How it feels</div><div>Reader can</div><div>Reduced motion</div>
+      <div>Trigger</div><div>Change</div><div>How it feels</div><div>Reader can</div><div>Why</div>
     </div>
   </div>
 </div>
