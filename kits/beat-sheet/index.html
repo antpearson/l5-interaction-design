@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beat sheet | Interaction Design</title>
+<meta name="description" content="Printable beat sheet on landscape A4: one row per beat, six columns, for listing what happens as the reader scrolls.">
+<style>
+:root{ --ink:#16181d; --ink-soft:#4a4f5a; --rule:#c8ccd4; --paper:#fff; --tint:#f2f4f7; }
+@media (prefers-color-scheme: dark){
+  :root{ --ink:#e9ecf1; --ink-soft:#aeb5c0; --rule:#454b56; --paper:#15171b; --tint:#1e2128; }
+}
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{
+  margin:0; padding:2rem 1.25rem 4rem; background:var(--paper); color:var(--ink);
+  font:16px/1.55 Georgia, "Iowan Old Style", "Times New Roman", serif;
+}
+.sheet{ max-width:72rem; margin:0 auto; }
+h1,.kicker,th{ font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+.top{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; gap:.4rem 2rem; margin:0 0 .9rem; }
+h1{ font-size:1.7rem; line-height:1.2; margin:0; }
+.kicker{ font-size:.78rem; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 .3rem; }
+.name{ font-size:.9rem; color:var(--ink-soft); margin:0; }
+.how{ color:var(--ink-soft); margin:0 0 1rem; max-width:60rem; }
+.scroll{ overflow-x:auto; }
+table{ width:100%; min-width:46rem; border-collapse:collapse; table-layout:fixed; font-size:.9rem; }
+th,td{ border:1px solid var(--rule); padding:.45rem .5rem; text-align:left; vertical-align:top; }
+th{ background:var(--tint); font-size:.78rem; line-height:1.25; }
+th small{ display:block; font-weight:400; color:var(--ink-soft); font-size:.72rem; margin-top:.15rem; }
+td{ height:3.6rem; }
+td:first-child{ color:var(--ink-soft); font-size:.8rem; }
+col.n{ width:2.4rem; }
+col.sees{ width:25%; }
+col.knows{ width:23%; }
+col.changed{ width:18%; }
+col.move{ width:11%; }
+col.can{ width:auto; }
+.foot{ margin-top:.9rem; font-size:.8rem; color:var(--ink-soft); }
+@page{ size:A4 landscape; margin:10mm 12mm; }
+@media print{
+  :root{ --ink:#000; --ink-soft:#333; --rule:#999; --paper:#fff; --tint:#f4f4f4; }
+  body{ padding:0; font-size:10pt; }
+  .sheet{ max-width:none; }
+  .scroll{ overflow:visible; }
+  table{ min-width:0; font-size:9pt; }
+  h1{ font-size:15pt; }
+  .how{ font-size:9pt; margin-bottom:3mm; max-width:none; }
+  th{ font-size:8pt; padding:1.5mm 2mm; }
+  th small{ font-size:7pt; }
+  td{ height:13.2mm; padding:1mm 2mm; }
+  .foot{ font-size:7.5pt; margin-top:2mm; }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<div class="top">
+  <div>
+    <p class="kicker">Interaction Design &middot; Level 5</p>
+    <h1>Beat sheet</h1>
+  </div>
+  <p class="name">Name ____________________ &nbsp; Piece ______________________________</p>
+</div>
+
+<p class="how">
+  One row per beat, in reading order. A <strong>beat</strong> is one moment where the page changes as the reader scrolls. Write your first and last beats first, then fill in the middle. <strong>The test for a row:</strong> &ldquo;After this, the reader knows ______.&rdquo; If the answer repeats the row above, merge them. Ten rows a sheet: print another for beats 11 onwards. There is a <a href="example.html">filled-in example</a>.
+</p>
+
+<div class="scroll">
+<table>
+  <colgroup><col class="n"><col class="sees"><col class="knows"><col class="changed"><col class="move"><col class="can"></colgroup>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>What the reader sees<small>Say what it is: photo, archive photo, video, drawing, chart, map, 3D.</small></th>
+      <th>What they now know<small>Read this column top to bottom: it should tell the story.</small></th>
+      <th>What changed<small>What happened on the page to get here.</small></th>
+      <th>The move<small>Hold, reveal, swap, scrub, layer, respond, or none.</small></th>
+      <th>What they can do<small>&ldquo;Scroll&rdquo;, or the moment they act. Circle that row.</small></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>6</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>7</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>8</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>9</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>10</td><td></td><td></td><td></td><td></td><td></td></tr>
+  </tbody>
+</table>
+</div>
+
+<p class="foot">Interaction Design &middot; Level 5 &middot; BSc (Hons) Content Creation &middot; Leeds Beckett University. Prints on one landscape A4 sheet.</p>
+
+</div>
+</body>
+</html>

@@ -199,10 +199,13 @@ a:hover {
 .prose > pre,
 .prose > .filename,
 .prose > .cards,
+.prose > .figure,
+.prose > .duo,
 .prose > .video,
 .prose > .video-grid,
 .prose > .activity,
 .prose > .brief,
+.prose > .box--media,
 .prose > hr {
   grid-column: wide-start / wide-end;
 }
@@ -440,6 +443,14 @@ thead th,
   text-transform: uppercase;
   text-align: center;
   padding: 1rem;
+}
+
+/* A single picture across the wide track, the same width as the tables */
+.figure {
+  margin: 2rem 0;
+}
+.figure img {
+  width: 100%;
 }
 
 /* Two figures side by side, inside the wide track */
@@ -729,6 +740,27 @@ th.time {
 }
 .box p {
   font-size: 0.98rem;
+}
+
+/* A callout with a picture to the right; stacks when there is no room */
+.box--media {
+  display: grid;
+  gap: 1.5rem 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  align-items: start;
+}
+.box__figure {
+  margin: 0;
+}
+.box__figure img {
+  width: 100%;
+  height: auto;
+}
+.box__figure figcaption {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--ink-quiet);
+  margin-top: 0.6rem;
 }
 
 /* -------------------------------------------------------------------------
