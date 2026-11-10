@@ -1430,6 +1430,90 @@ details p {
   border: 1px solid var(--rule-strong);
 }
 
+/* Week 7: how start: "top 80%" reads (first value on the element, second on the screen) */
+.st-diagram {
+  display: block;
+  width: 100%;
+  max-width: var(--measure);
+  height: auto;
+}
+.st-diagram .st-code {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  fill: var(--ink);
+}
+.st-diagram .st-pill {
+  fill: var(--paper-sunk);
+  stroke-width: 2;
+}
+.st-diagram .st-pill--el {
+  stroke: var(--accent);
+}
+.st-diagram .st-pill--sc {
+  stroke: var(--good);
+}
+.st-diagram .st-fill-el,
+.st-diagram text.st-fill-el {
+  fill: var(--accent);
+  font-weight: 700;
+}
+.st-diagram .st-fill-sc,
+.st-diagram text.st-fill-sc {
+  fill: var(--good);
+  font-weight: 700;
+}
+.st-diagram .st-window {
+  fill: var(--paper-raised);
+  stroke: var(--rule-strong);
+  stroke-width: 1.5;
+}
+.st-diagram .st-bar {
+  stroke: var(--rule-strong);
+  stroke-width: 1.5;
+}
+.st-diagram .st-dot {
+  fill: var(--rule-strong);
+}
+.st-diagram .st-label {
+  font-family: var(--font-display);
+  font-size: 18px;
+}
+.st-diagram .st-small {
+  font-family: var(--font-display);
+  font-size: 15px;
+  fill: var(--ink-quiet);
+}
+.st-diagram .st-heading-box {
+  fill: var(--paper-sunk);
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+.st-diagram .st-heading-text {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  fill: var(--ink);
+}
+.st-diagram .st-line-el {
+  stroke: var(--accent);
+  stroke-width: 4;
+}
+.st-diagram .st-line-sc {
+  stroke: var(--good);
+  stroke-width: 2.5;
+}
+.st-diagram .st-arrow-el,
+.st-diagram .st-arrow-sc {
+  fill: none;
+  stroke-width: 2.5;
+}
+.st-diagram .st-arrow-el {
+  stroke: var(--accent);
+}
+.st-diagram .st-arrow-sc {
+  stroke: var(--good);
+}
+
 @media print {
   :root {
     --paper: #fff;

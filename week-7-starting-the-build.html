@@ -216,46 +216,203 @@
           </figcaption>
         </figure>
 
+        <h3 id="get-your-page">Get your page back</h3>
+
+        <p>
+          Your page is on GitHub. Before you change anything, open it in VS
+          Code.
+        </p>
+
+        <p>
+          <strong>On a lab Mac, or any computer it is not on yet,</strong>
+          clone it: download a full working copy from GitHub.
+        </p>
+        <ol class="steps">
+          <li>
+            Open VS Code with no folder open. If one is open, choose
+            <strong>File</strong>, <strong>Close Folder</strong>.
+          </li>
+          <li>
+            Click <strong>Clone Repository</strong> in the Explorer panel, then
+            <strong>Clone from GitHub</strong>. Sign in to GitHub if it asks.
+          </li>
+          <li>Pick your website's repository from the list.</li>
+          <li>
+            Choose the Desktop as the place to put it. When VS Code asks, click
+            <strong>Open</strong>.
+          </li>
+        </ol>
+        <p>
+          Every step with screenshots:
+          <a href="working-with-github.html#part2">Sitting at a new Mac</a>, in
+          the GitHub guide.
+        </p>
+
+        <p>
+          <strong>On your own laptop, where it already is,</strong> choose
+          <strong>File</strong>, <strong>Open Folder</strong> and pick your
+          website folder. Then click <strong>Sync Changes</strong> in Source
+          Control, so you have the latest version.
+        </p>
+
+        <h3 id="clear-practice">Start again with a clean page</h3>
+
+        <p>
+          Everything in your <code>index.html</code> and
+          <code>style.css</code> so far was practice: the starter's chapter,
+          the Week 2 side-by-side and held picture, the Week 3 full-screen
+          video. It was dummy content for learning the moves. Now you have your
+          own storyboard, clear both files and start again.
+        </p>
+
+        <ol class="steps">
+          <li>
+            Open <code>index.html</code>, select everything
+            (<strong>Cmd-A</strong>) and delete it. Copy in the
+            <code>index.html</code> below.
+          </li>
+          <li>
+            Do the same with <code>css/style.css</code>, using the
+            <code>style.css</code> below.
+          </li>
+          <li>
+            Leave <code>js/main.js</code> and your <code>images</code> folder as
+            they are.
+          </li>
+        </ol>
+
         <div class="box box--warn">
-          <p class="box__title">First, change one word in your starter</p>
+          <p class="box__title">Same repository, not a new one</p>
           <p>
-            In <code>css/style.css</code>, find the rule under
-            <strong>CHAPTERS AND CREDITS</strong> that starts
-            <code>.chapter, footer</code>. Change <code>.chapter</code> to
-            <code>.beat</code>. That rule keeps lines of text short; on a whole
-            chapter it would squeeze a held picture into a narrow column.
+            Clear the files, not the project. Its history of commits is your
+            record that the work is yours.
           </p>
         </div>
 
+        <h3 id="structure">How to structure your page</h3>
+
+        <p>
+          Your HTML follows the four rules: chapters inside
+          <code>&lt;main&gt;</code>, beats inside chapters, a held picture first
+          in its chapter, cover and credits outside the chapters. Here are both
+          files for the bank story, in full. Copy them in, then replace the
+          bank's chapters, beats and names with yours.
+        </p>
+
         <p class="filename">index.html</p>
-        <pre><code>&lt;main&gt;
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en-GB"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Your title here&lt;/title&gt;
 
-  &lt;!-- Chapter 1: the corner. Beats 01 and 02 share one held picture --&gt;
-  &lt;section class="chapter" id="chapter-1-the-corner"&gt;
-    &lt;div class="held"&gt;
-      &lt;img src="images/scene-01.svg" alt="The bar today."&gt;
-    &lt;/div&gt;
-    &lt;div class="beat" id="beat-01-today"&gt;
-      &lt;h1&gt;This was a bank for 120 years&lt;/h1&gt;
-    &lt;/div&gt;
-    &lt;div class="beat" id="beat-02-1905"&gt;
-      &lt;p&gt;1905. Built as a bank.&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/section&gt;
+  &lt;!-- Your Google Font. Swap these for the font you chose. --&gt;
+  &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+  &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+  &lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"&gt;
 
-  &lt;!-- Chapter 2: the closing. Three beats, each with its own picture --&gt;
-  &lt;section class="chapter" id="chapter-2-the-closing"&gt;
-    &lt;div class="beat" id="beat-03-queue"&gt;&lt;h2&gt;The queue&lt;/h2&gt;&lt;/div&gt;
-    &lt;div class="beat" id="beat-04-closures"&gt;&lt;h2&gt;Closures&lt;/h2&gt;&lt;/div&gt;
-    &lt;div class="beat" id="beat-05-notice"&gt;&lt;h2&gt;The notice&lt;/h2&gt;&lt;/div&gt;
-  &lt;/section&gt;
+  &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
 
-  &lt;!-- Chapters 3 and 4 the same way. Beat 07 gets the comment INTERACTION --&gt;
+  &lt;main&gt;
 
-&lt;/main&gt;</code></pre>
+    &lt;!-- Chapter 1: the corner. Beats 01 and 02 share one held picture.
+         Beat 01 is also the cover, so this page has no &lt;header&gt;. --&gt;
+    &lt;section class="chapter" id="chapter-1-the-corner"&gt;
+      &lt;div class="held"&gt;
+        &lt;img src="images/scene-01.svg" alt="The bar today."&gt;
+      &lt;/div&gt;
+      &lt;div class="beat" id="beat-01-today"&gt;
+        &lt;h1&gt;This was a bank for 120 years&lt;/h1&gt;
+      &lt;/div&gt;
+      &lt;div class="beat" id="beat-02-1905"&gt;
+        &lt;p&gt;1905. Built as a bank.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
 
-        <p class="filename">css/style.css, under YOUR STYLES</p>
-        <pre><code>/* Skeleton page */
+    &lt;!-- Chapter 2: the closing. Three beats, each with its own picture --&gt;
+    &lt;section class="chapter" id="chapter-2-the-closing"&gt;
+      &lt;div class="beat" id="beat-03-queue"&gt;
+        &lt;h2&gt;The queue&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div class="beat" id="beat-04-closures"&gt;
+        &lt;h2&gt;Closures&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div class="beat" id="beat-05-notice"&gt;
+        &lt;h2&gt;The notice&lt;/h2&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Chapter 3: inside. Beat 07 is the interaction --&gt;
+    &lt;section class="chapter" id="chapter-3-inside"&gt;
+      &lt;div class="beat" id="beat-06-refit"&gt;
+        &lt;h2&gt;The refit&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div class="beat" id="beat-07-then-now"&gt;
+        &lt;!-- INTERACTION: before/after slider --&gt;
+        &lt;h2&gt;Then and now&lt;/h2&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Chapter 4: outside --&gt;
+    &lt;section class="chapter" id="chapter-4-outside"&gt;
+      &lt;div class="beat" id="beat-08-outside"&gt;
+        &lt;h2&gt;Outside&lt;/h2&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+  &lt;/main&gt;
+
+  &lt;!-- Credits belong to the whole page, so they sit outside the chapters --&gt;
+  &lt;footer&gt;
+    &lt;h2&gt;Sources and credits&lt;/h2&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Every source and every picture: who, what, where, licence.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/footer&gt;
+
+  &lt;script src="js/main.js"&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <p class="filename">css/style.css</p>
+        <pre><code>/* COLOURS: placeholders. Change them to your own palette. */
+:root {
+  --ink:    #1a1a1a;   /* text */
+  --paper:  #ffffff;   /* page background */
+  --accent: #c0392b;   /* links, and anything you want to stand out */
+}
+
+/* BASICS */
+* {
+  box-sizing: border-box;             /* padding counts inside the width */
+}
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;   /* the Google Font in index.html */
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+}
+img {
+  display: block;
+  max-width: 100%;                    /* never wider than the screen */
+  height: auto;
+}
+a {
+  color: var(--accent);
+}
+h1 {
+  margin: 0;
+  font-size: 3rem;
+  line-height: 1.1;
+}
+
+/* SKELETON PAGE */
 .chapter {
   border-bottom: 3px solid var(--ink);    /* where each chapter ends */
 }
@@ -264,9 +421,14 @@
   min-height: 100svh;                     /* one screen per beat until proven otherwise */
   border-bottom: 1px dashed var(--ink);   /* where each beat ends */
 }
-#beat-05-notice { min-height: 200svh; }   /* beat 05 holds for a second screen */
+.beat,
+footer {
+  max-width: 40rem;                       /* keeps lines of text short */
+  margin: 0 auto;                         /* centres the block */
+  padding: 4rem 2rem;
+}
 
-/* A held picture, as in Week 2 */
+/* A HELD PICTURE: stays in place while its chapter's beats scroll past */
 .held {
   position: sticky;
   top: 0;
@@ -274,26 +436,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}</code></pre>
+}
+
+/* BEAT HEIGHTS: only the beats that need more than one screen */
+#beat-05-notice { min-height: 200svh; }   /* beat 05 holds for a second screen */
+
+/* YOUR STYLES: your layouts and design go below this line */</code></pre>
 
         <p>
-          The bank's first beat is its cover, so chapter 1 takes the place of
-          the starter's <code>&lt;header&gt;</code>. If your cover stands on its
-          own, keep your <code>&lt;header&gt;</code>: it belongs to the whole
-          page, so it sits outside the chapters (rule 4).
+          The bank's first beat is its cover, so it needs no
+          <code>&lt;header&gt;</code>. If your cover stands on its own, add a
+          <code>&lt;header&gt;</code> just above <code>&lt;main&gt;</code>: it
+          belongs to the whole page, so it sits outside the chapters (rule 4).
         </p>
-
-        <div class="box box--note">
-          <p class="box__title">Your Week 2 code has new names</p>
-          <p>
-            The Week&nbsp;2 page now uses these rules. If you kept your practice
-            code: <code>scene</code> is now <code>chapter</code>,
-            <code>scene-sticky</code> is <code>held</code>, <code>step</code> is
-            <code>beat</code>, and <code>chapter-figure</code> is
-            <code>side-by-side</code>. You can also delete it: your skeleton page
-            replaces it.
-          </p>
-        </div>
 
         <div class="activity" id="task-1">
           <p class="activity__kicker">
@@ -301,7 +456,8 @@
           </p>
           <h3>Build your skeleton page</h3>
           <ol class="steps">
-            <li>Change <code>.chapter</code> to <code>.beat</code> in your starter, as above.</li>
+            <li>Get your page back: clone it, or open it and sync.</li>
+            <li>Clear <code>index.html</code> and <code>style.css</code> and copy in the two files above.</li>
             <li>
               Group your storyboard frames into chapters: the big sections of
               your story. Write each frame's chapter on it.
@@ -455,34 +611,171 @@
     ease: "power2.out",
     scrollTrigger: {
       trigger: heading,
-      start: "top 80%",         // fires when the heading is 80% down the screen
+      start: "top 80%",         // the heading's top meets 80% down the screen
       markers: true             // DELETE BEFORE YOU PUBLISH
     }
   });
 });</code></pre>
 
+        <h3 id="two-values">Why start has two values</h3>
+
         <p>
-          Scroll. Each heading rises when its green <code>start</code> marker
-          meets the green <code>scroller-start</code> line.
+          <code>start</code> tells ScrollTrigger when to begin. To do that it
+          needs two pieces of information: which part of the heading to watch,
+          and how far up the screen that part has to travel. So it always takes
+          two values, in that order: first the heading, then the screen.
         </p>
 
-        <div class="activity" id="task-2">
-          <p class="activity__kicker">
-            Task 2 &middot; 25 minutes &middot; on your own project
-          </p>
-          <h3>Make one thing move</h3>
-          <ol class="steps">
-            <li>
-              Work through the steps above on your own page. Type the code, do
-              not paste it.
-            </li>
-            <li>After every reload, check the console: no red.</li>
-            <li>
-              Try <code>"top 50%"</code>, then <code>y: 400</code> and
-              <code>y: 0</code>. Keep what suits your story.
-            </li>
-          </ol>
+        <figure class="figure">
+          <svg
+            class="st-diagram"
+            viewBox="0 0 600 450"
+            role="img"
+            aria-labelledby="st-diagram-title"
+          >
+            <title id="st-diagram-title">
+              How start: "top 80%" works. An arrow from the first value, top,
+              points to the top edge of a heading inside a browser window: a
+              place on the heading, marked start. An arrow from the second
+              value, 80%, points to a line across the window 80% of the way
+              down: a place on the screen, marked scroller-start. The heading
+              sits just below the line.
+            </title>
+            <defs>
+              <marker id="st-head-el" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                <path class="st-fill-el" d="M0 0 L10 5 L0 10 z" />
+              </marker>
+              <marker id="st-head-sc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                <path class="st-fill-sc" d="M0 0 L10 5 L0 10 z" />
+              </marker>
+            </defs>
+
+            <text class="st-code" x="196" y="61" text-anchor="end">start: "</text>
+            <rect class="st-pill st-pill--el" x="202" y="34" width="66" height="38" rx="6" />
+            <text class="st-code st-fill-el" x="235" y="61" text-anchor="middle">top</text>
+            <rect class="st-pill st-pill--sc" x="280" y="34" width="70" height="38" rx="6" />
+            <text class="st-code st-fill-sc" x="315" y="61" text-anchor="middle">80%</text>
+            <text class="st-code" x="356" y="61">",</text>
+
+            <rect class="st-window" x="110" y="110" width="360" height="320" rx="8" />
+            <line class="st-bar" x1="110" y1="134" x2="470" y2="134" />
+            <circle class="st-dot" cx="126" cy="122" r="4" />
+            <circle class="st-dot" cx="140" cy="122" r="4" />
+            <circle class="st-dot" cx="154" cy="122" r="4" />
+            <text class="st-small" x="300" y="127" text-anchor="middle">the screen (browser window)</text>
+
+            <line class="st-arrow-sc" x1="128" y1="140" x2="128" y2="364" marker-start="url(#st-head-sc)" marker-end="url(#st-head-sc)" />
+            <text class="st-label st-fill-sc" x="138" y="258">80%</text>
+
+            <line class="st-line-sc" x1="110" y1="370" x2="470" y2="370" />
+            <text class="st-small st-fill-sc" x="462" y="362" text-anchor="end">scroller-start</text>
+
+            <rect class="st-heading-box" x="170" y="386" width="220" height="34" />
+            <line class="st-line-el" x1="170" y1="386" x2="390" y2="386" />
+            <text class="st-heading-text" x="184" y="411">Closures</text>
+            <text class="st-small st-fill-el" x="398" y="391">start</text>
+
+            <path class="st-arrow-el" d="M235 74 V90 H72 V386 H160" marker-end="url(#st-head-el)" />
+            <path class="st-arrow-sc" d="M315 74 V90 H530 V370 H480" marker-end="url(#st-head-sc)" />
+
+            <text class="st-label st-fill-el" transform="translate(56 238) rotate(-90)" text-anchor="middle">a place on the heading</text>
+            <text class="st-label st-fill-sc" transform="translate(546 230) rotate(90)" text-anchor="middle">a place on the screen</text>
+          </svg>
+          <figcaption class="video__caption">
+            <strong>Just before it starts.</strong> As you scroll, the heading
+            rises. When its top edge reaches the line 80% of the way down the
+            screen, the animation plays.
+          </figcaption>
+        </figure>
+
+        <p>
+          <strong>The first value, <code>top</code>, is a place on the
+          heading:</strong> its top edge. This point belongs to the heading, so
+          it moves.
+        </p>
+
+        <p>
+          <strong>The second value, <code>80%</code>, is a place on the
+          screen:</strong> a line 80% of the way down from the top of the
+          browser window. It belongs to the screen, not the page, so it never
+          moves: the page scrolls past it. GSAP's <code>scroller-start</code>
+          line shows where it is.
+        </p>
+
+        <p>
+          The animation starts at the moment the first reaches the second: when
+          the top of the heading has scrolled up to 80% of the way down the
+          screen. With <code>markers: true</code> you can watch it happen. The
+          <code>start</code> marker rides up with the heading until it touches
+          the <code>scroller-start</code> line, which stays still. GSAP draws
+          both in green; in the diagram I have made the heading's marker blue
+          so you can tell them apart.
+        </p>
+
+        <p>
+          <code>end</code> works in exactly the same way, with red markers:
+          <code>end: "top 40%"</code> means "finish when the top of the heading
+          reaches 40% of the way down the screen". You will use it further down
+          this page.
+        </p>
+
+        <div class="table-scroll">
+          <table>
+            <caption>
+              Values you can use. Change one, reload, and watch the markers
+              move.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Value</th>
+                <th scope="col">First value: on the heading</th>
+                <th scope="col">Second value: on the screen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>top</code></td>
+                <td>its top edge</td>
+                <td>the top of the screen</td>
+              </tr>
+              <tr>
+                <td><code>center</code></td>
+                <td>its middle</td>
+                <td>halfway down the screen</td>
+              </tr>
+              <tr>
+                <td><code>bottom</code></td>
+                <td>its bottom edge</td>
+                <td>the bottom of the screen</td>
+              </tr>
+              <tr>
+                <td><code>80%</code></td>
+                <td>80% of the way down the heading</td>
+                <td>80% of the way down the screen</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+
+        <p>
+          So <code>"center center"</code> starts when the middle of the heading
+          reaches the middle of the screen, and <code>"top bottom"</code>
+          starts as soon as the top of the heading appears at the bottom of the
+          screen. <code>"top bottom"</code> is what GSAP uses if you leave
+          <code>start</code> out. GSAP spells <code>center</code> the American
+          way: <code>centre</code> will not work.
+        </p>
+
+        <p>Now scroll your page and watch the markers.</p>
+
+        <p>
+          <strong>See it working:</strong> I have made
+          <a href="kits/scrolltrigger-demos/index.html">three ScrollTrigger demos</a>:
+          arrive, scrub, and one where you change both values and watch the
+          markers move.
+          <a href="kits/scrolltrigger-demos.zip">Download them</a> and read
+          the code in VS Code.
+        </p>
 
         <h3 id="scrub">Let the reader drive it</h3>
 
@@ -505,10 +798,15 @@ scrub: true,                // the scroll position drives it</code></pre>
               alt="A skeleton page with the heading Closures half faded in. At the right-hand edge, a green start marker sits just above a green scroller-start line, a red end marker below it, and a red scroller-end line at the top of the screen."
               loading="lazy"
             />
+            <pre><code>start: "top 80%",
+// no end, so GSAP uses "bottom top"</code></pre>
             <figcaption>
-              <strong>Arrive.</strong> Once <code>start</code> passes
-              <code>scroller-start</code>, the heading plays to the end on its
-              own.
+              <strong>Arrive.</strong> <code>start</code> is on the heading's
+              top, <code>scroller-start</code> 80% down the screen. With no
+              <code>end</code>, the <code>end</code> marker is on the heading's
+              bottom and <code>scroller-end</code> at the top of the screen.
+              Once <code>start</code> passes <code>scroller-start</code>, the
+              heading plays to the end on its own.
             </figcaption>
           </figure>
           <figure>
@@ -519,17 +817,22 @@ scrub: true,                // the scroll position drives it</code></pre>
               alt="The same page with scrub on. The Closures heading is half faded. Its green start and red end markers sit together, between the green scroller-start line low on the screen and the red scroller-end line above the middle."
               loading="lazy"
             />
+            <pre><code>start: "top 80%",
+end: "top 40%",
+scrub: true,</code></pre>
             <figcaption>
-              <strong>Scrub.</strong> The heading only moves while it travels
-              from <code>scroller-start</code> up to
-              <code>scroller-end</code>.
+              <strong>Scrub.</strong> Both say <code>top</code>, so
+              <code>start</code> and <code>end</code> sit together on the
+              heading's top edge. <code>scroller-end</code> has moved up to
+              40%. The heading only moves while its top travels from 80% up to
+              40% of the screen.
             </figcaption>
           </figure>
         </figure>
 
-        <div class="activity" id="task-3">
+        <div class="activity" id="task-2">
           <p class="activity__kicker">
-            Task 3 &middot; 10 minutes &middot; on your own project
+            Task 2 &middot; 10 minutes &middot; on your own project
           </p>
           <h3>Arrive, or follow the hand?</h3>
           <ol class="steps">
@@ -544,6 +847,92 @@ scrub: true,                // the scroll position drives it</code></pre>
             </li>
           </ol>
         </div>
+
+        <h3 id="learn-gsap">Learn GSAP in your own time</h3>
+
+        <p>
+          Class gets you started. The rest is practice: work through these
+          between sessions.
+        </p>
+
+        <figure class="figure figure--shot">
+          <a href="https://gsap.com/resources/">
+            <img
+              src="images/week-7/gsap-learning.jpg"
+              width="2702"
+              height="1688"
+              alt="GSAP's Learning page, headed Unlock the power of GSAP. A sidebar lists Quick Start (Installation, YouTube, Demos, Cheatsheet), Getting Started (Your first animation, Easing, Staggers, Sequencing animations, Control and Callbacks) and Plugins (including ScrollTrigger tips and mistakes)."
+              loading="lazy"
+            />
+          </a>
+          <figcaption class="video__caption">
+            <strong>Start here:</strong>
+            <a href="https://gsap.com/resources/">gsap.com/resources</a>.
+            Work down the Getting Started list in the sidebar, then the
+            ScrollTrigger tips. Screenshot: GSAP.
+          </figcaption>
+        </figure>
+
+        <ul class="cards">
+          <li>
+            <a class="card" href="kits/scrolltrigger-demos/index.html">
+              <span class="card__title">ScrollTrigger demos</span>
+              <span class="card__meta">Kit &middot; three pages</span>
+              <p>Arrive, scrub, and try the values with the markers on.</p>
+            </a>
+          </li>
+          <li>
+            <a class="card" href="https://gsap.com/resources/">
+              <span class="card__title">GSAP learning</span>
+              <span class="card__meta">GSAP &middot; start here</span>
+              <p>Guides, videos and courses, all in one place.</p>
+            </a>
+          </li>
+          <li>
+            <a class="card" href="https://gsap.com/resources/get-started">
+              <span class="card__title">Getting started</span>
+              <span class="card__meta">GSAP guide</span>
+              <p>Your first animation, then easing, staggers and timelines.</p>
+            </a>
+          </li>
+          <li>
+            <a
+              class="card"
+              href="https://gsap.com/docs/v3/Plugins/ScrollTrigger/"
+            >
+              <span class="card__title">ScrollTrigger</span>
+              <span class="card__meta">GSAP docs</span>
+              <p>
+                <code>start</code>, <code>end</code>, <code>scrub</code> and
+                <code>markers</code>.
+              </p>
+            </a>
+          </li>
+          <li>
+            <a class="card" href="https://gsap.com/resources/st-mistakes">
+              <span class="card__title">ScrollTrigger tips and mistakes</span>
+              <span class="card__meta">GSAP guide</span>
+              <p>When something does not fire where you expect.</p>
+            </a>
+          </li>
+          <li>
+            <a class="card" href="https://www.youtube.com/@GreenSockLearning">
+              <span class="card__title">GreenSock Learning</span>
+              <span class="card__meta">YouTube</span>
+              <p>GSAP's own videos, including today's ScrollTrigger one.</p>
+            </a>
+          </li>
+          <li>
+            <a
+              class="card"
+              href="https://www.creativecodingclub.com/courses/FreeGSAP3Express"
+            >
+              <span class="card__title">GSAP Express</span>
+              <span class="card__meta">Free course &middot; Creative Coding Club</span>
+              <p>34 short video lessons on the basics. Free, but you sign up.</p>
+            </a>
+          </li>
+        </ul>
 
         <p class="runsheet-break">Break</p>
 
@@ -653,9 +1042,9 @@ scrub: true,                // the scroll position drives it</code></pre>
           </figcaption>
         </figure>
 
-        <div class="activity" id="task-4">
+        <div class="activity" id="task-3">
           <p class="activity__kicker">
-            Task 4 &middot; 25 minutes &middot; on your own
+            Task 3 &middot; 25 minutes &middot; on your own
           </p>
           <h3>Set up your Figma file</h3>
           <ol class="steps">
@@ -716,9 +1105,9 @@ scrub: true,                // the scroll position drives it</code></pre>
           </ol>
         </div>
 
-        <div class="activity" id="task-5">
+        <div class="activity" id="task-4">
           <p class="activity__kicker">
-            Task 5 &middot; 5 minutes &middot; on your own
+            Task 4 &middot; 5 minutes &middot; on your own
           </p>
           <h3>Save a version and share it with me</h3>
           <ol class="steps">
@@ -736,9 +1125,9 @@ scrub: true,                // the scroll position drives it</code></pre>
           </ol>
         </div>
 
-        <div class="activity" id="task-6">
+        <div class="activity" id="task-5">
           <p class="activity__kicker">
-            Task 6 &middot; the rest of the session &middot; on your own
+            Task 5 &middot; the rest of the session &middot; on your own
           </p>
           <h3>Start the graphics</h3>
           <p>
@@ -828,19 +1217,6 @@ scrub: true,                // the scroll position drives it</code></pre>
               <span class="card__title">Storyboard worked example</span>
               <span class="card__meta">Kit &middot; the bank story</span>
               <p>All eight frames, with pacing in screen heights.</p>
-            </a>
-          </li>
-          <li>
-            <a
-              class="card"
-              href="https://gsap.com/docs/v3/Plugins/ScrollTrigger/"
-            >
-              <span class="card__title">ScrollTrigger</span>
-              <span class="card__meta">GSAP docs</span>
-              <p>
-                <code>start</code>, <code>end</code>, <code>scrub</code> and
-                <code>markers</code>.
-              </p>
             </a>
           </li>
           <li>

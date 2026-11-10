@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Demo 1: Arrive | ScrollTrigger demos</title>
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        color: #12141a;
+        background: #fbfbfc;
+      }
+      .intro {
+        min-height: 100svh;
+        display: grid;
+        place-content: center;
+        padding: 2rem 1.25rem 8rem;
+        text-align: center;
+      }
+      .intro h1 { font-size: clamp(2.2rem, 7vw, 4rem); margin: 0 0 1rem; }
+      .intro p { max-width: 34rem; margin: 0 auto 0.8rem; font-size: 1.15rem; line-height: 1.5; color: #454a58; }
+      .intro .down { font-weight: 700; color: #12141a; }
+      .beat {
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        padding: 2rem 1.25rem;
+        border-top: 1px solid #d8dbe3;
+      }
+      .beat:nth-child(even) { background: #eef0f4; }
+      .beat h2 {
+        margin: 0;
+        font-size: clamp(2.2rem, 8vw, 4.5rem);
+        outline: 3px dashed #1b45c4; /* so you can see the heading's top edge */
+      }
+      .panel {
+        position: fixed;
+        left: 1rem;
+        top: 1rem;
+        z-index: 2000;
+        max-width: calc(100vw - 2rem);
+        overflow-x: auto;
+        margin: 0;
+        padding: 0.9rem 1.1rem;
+        border-radius: 8px;
+        background: #12141a;
+        color: #f4f5f8;
+        font: 16px/1.55 ui-monospace, Menlo, Consolas, monospace;
+        white-space: pre;
+      }
+      .panel b { color: #9db3ff; }
+      .panel select { font: inherit; font-size: 15px; }
+      .end { padding: 4rem 1.25rem 12rem; text-align: center; color: #454a58; line-height: 1.6; }
+      .end a { color: #1b45c4; }
+    </style>
+  </head>
+  <body>
+    <header class="intro">
+      <h1>1 Arrive</h1>
+      <p>
+        Each heading has a dashed outline so you can see its top edge. Until it starts, the heading is invisible: its start marker shows where it is. The
+        green <strong>start</strong> marker sits on that top edge and scrolls
+        up with the heading. The green <strong>scroller-start</strong> line sits
+        80% of the way down the screen and never moves.
+      </p>
+      <p>When the two meet, the heading plays to the end on its own.</p>
+      <p class="down">Scroll down slowly.</p>
+    </header>
+
+    <main>
+      <section class="beat"><h2>Today</h2></section>
+      <section class="beat"><h2>1905</h2></section>
+      <section class="beat"><h2>The queue</h2></section>
+      <section class="beat"><h2>Closures</h2></section>
+      <section class="beat"><h2>The notice</h2></section>
+      <section class="beat"><h2>Inside</h2></section>
+    </main>
+
+    <div class="end">
+      <p>End of the demo. Scroll back up and watch it again.</p>
+      <p>
+        <a href="01-arrive.html">1 Arrive</a> &middot;
+        <a href="02-scrub.html">2 Scrub</a> &middot;
+        <a href="03-try-the-values.html">3 Try the values</a> &middot;
+        <a href="index.html">All demos</a>
+      </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+    <pre class="panel" aria-label="The code running on this page">scrollTrigger: {
+  trigger: heading,
+  start: <b>"top 80%"</b>,  // heading's top meets 80% down the screen
+  markers: true
+}</pre>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.utils.toArray(".beat h2").forEach(function (heading) {
+        gsap.from(heading, {
+          opacity: 0,
+          y: 40,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: heading,
+            start: "top 80%", // the heading's top meets 80% down the screen
+            markers: true     // DELETE BEFORE YOU PUBLISH
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
