@@ -85,10 +85,12 @@ header p {
 
 
 /* ---------------------------------------------------------------------
-   CHAPTERS AND CREDITS
+   BEATS AND CREDITS
+   A chapter is a whole section of your story. The words sit inside its
+   beats, so the line length goes on .beat, not on .chapter.
    --------------------------------------------------------------------- */
 
-.chapter,
+.beat,
 footer {
   max-width: 40rem;          /* keeps lines of text short enough to read */
   margin: 0 auto;            /* auto left and right centres the block */

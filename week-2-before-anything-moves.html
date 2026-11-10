@@ -6,7 +6,7 @@
     <title>Week 2: Generating ideas | Interaction Design</title>
     <meta
       name="description"
-      content="Week 2: getting your site back on a new Mac, a chapter laid out in Flexbox, a scene that holds still built from nothing, what scroll-driven pieces are made of, and a first long list of story ideas."
+      content="Week 2: getting your site back on a new Mac, text beside a picture in Flexbox, a picture that holds still built from nothing, what scroll-driven pieces are made of, and a first long list of story ideas."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -93,8 +93,8 @@
           </li>
           <li>
             <a href="#part3"
-              ><strong>Task 3</strong>: build the scene that holds still, and
-              tell a three-step story in it</a
+              ><strong>Task 3</strong>: build a picture that holds still, and
+              tell a three-beat story over it</a
             >
           </li>
         </ol>
@@ -203,44 +203,48 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
         </div>
 
         <p>
-          A chapter in a scrolling story is almost always some text beside a
-          picture, and it has to survive being 1400 pixels wide on the studio
+          Much of a scrolling story is some text beside a picture, and it has
+          to survive being 1400 pixels wide on the studio
           monitor and 390 on a phone. Your starter does not have one. You are
           going to build it, with the tool you used for exactly this last year:
           Flexbox.
         </p>
 
         <p>
-          First the HTML: a section with a class, holding a
-          <code>&lt;div&gt;</code> of text and a <code>&lt;figure&gt;</code>.
+          First the HTML: a chapter, with one beat inside it laid out side by
+          side: a <code>&lt;div&gt;</code> of text and a
+          <code>&lt;figure&gt;</code>. A <strong>chapter</strong> is one section
+          of your story; a <strong>beat</strong> is one moment inside it.
         </p>
 
         <p class="filename">index.html</p>
-        <pre><code>&lt;section class="chapter-figure"&gt;
-  &lt;div class="chapter-text"&gt;
-    &lt;h2&gt;Your heading&lt;/h2&gt;
-    &lt;p&gt;&hellip;&lt;/p&gt;
+        <pre><code>&lt;section class="chapter"&gt;
+  &lt;div class="beat side-by-side"&gt;
+    &lt;div class="side-text"&gt;
+      &lt;h2&gt;Your heading&lt;/h2&gt;
+      &lt;p&gt;&hellip;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;figure&gt;
+      &lt;img src="images/scene-01.svg" alt="Say what the picture shows."&gt;
+      &lt;figcaption&gt;What it shows, when, and who made it.&lt;/figcaption&gt;
+    &lt;/figure&gt;
   &lt;/div&gt;
-  &lt;figure&gt;
-    &lt;img src="images/scene-01.svg" alt="Say what the picture shows."&gt;
-    &lt;figcaption&gt;What it shows, when, and who made it.&lt;/figcaption&gt;
-  &lt;/figure&gt;
 &lt;/section&gt;</code></pre>
 
         <p>Then the CSS:</p>
 
         <p class="filename">css/style.css</p>
-        <pre><code>.chapter-figure {
+        <pre><code>.side-by-side {
   display: flex;
   flex-wrap: wrap;            /* drop to a new line when tight */
   gap: 3rem;                  /* space between them */
   align-items: center;        /* line them up vertically */
-  max-width: 70rem;           /* wider than a text chapter */
+  max-width: 70rem;           /* wider than a beat of plain text */
   margin: 0 auto;
   padding: 4rem 2rem;
 }
-.chapter-figure .chapter-text { flex: 1 1 20rem; }
-.chapter-figure figure        { flex: 1 1 24rem; margin: 0; }</code></pre>
+.side-by-side .side-text { flex: 1 1 20rem; }
+.side-by-side figure     { flex: 1 1 24rem; margin: 0; }</code></pre>
 
         <p>
           The line worth understanding is <code>flex: 1 1 20rem</code>. It is
@@ -248,7 +252,7 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
           The third number decides when the layout wraps, not a media query. Two
           children asking for 20rem and 24rem with a gap between them need about
           48rem of room; below that, they stack. That is the whole responsive
-          strategy for a chapter: no breakpoint, the content decides.
+          strategy for a beat like this: no breakpoint, the content decides.
         </p>
 
         <div class="box box--note">
@@ -314,11 +318,11 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
           <ol class="steps">
             <li>
               <p>
-                In <code>index.html</code>, add a new
-                <code>&lt;section&gt;</code> with the class
-                <code>chapter-figure</code>, a
-                <code>&lt;div class="chapter-text"&gt;</code> and a
-                <code>&lt;figure&gt;</code>, as above. Use one of the
+                In <code>index.html</code>, add a new chapter as above: a
+                <code>&lt;section class="chapter"&gt;</code> holding a
+                <code>&lt;div class="beat side-by-side"&gt;</code>, with a
+                <code>&lt;div class="side-text"&gt;</code> and a
+                <code>&lt;figure&gt;</code> inside it. Use one of the
                 placeholder pictures in <code>images/</code>. Save. The picture
                 sits under the text, because nothing has told it otherwise.
               </p>
@@ -364,7 +368,7 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
         <!-- ==================================================================== -->
         <div class="part" id="part3">
           <p class="part__label">Part three &middot; Task 3</p>
-          <h2>The scene that holds still</h2>
+          <h2>The picture that holds still</h2>
         </div>
 
         <p>
@@ -375,18 +379,19 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
           needs no JavaScript at all, and you are about to build it.
         </p>
 
-        <p>The markup is two siblings inside a section:</p>
+        <p>
+          The markup is a chapter with the <strong>held</strong> picture first,
+          then one beat for each piece of text:
+        </p>
 
         <p class="filename">index.html</p>
-        <pre><code>&lt;section class="scene"&gt;
-  &lt;div class="scene-sticky"&gt;      &lt;!-- the picture: this holds still --&gt;
+        <pre><code>&lt;section class="chapter"&gt;
+  &lt;div class="held"&gt;                 &lt;!-- the picture: this holds still --&gt;
     &lt;img src="images/scene-02.svg" alt="Say what the picture shows."&gt;
   &lt;/div&gt;
-  &lt;div class="scene-steps"&gt;       &lt;!-- the words: these scroll past --&gt;
-    &lt;div class="step"&gt;&lt;p&gt;&hellip;&lt;/p&gt;&lt;/div&gt;
-    &lt;div class="step"&gt;&lt;p&gt;&hellip;&lt;/p&gt;&lt;/div&gt;
-    &lt;div class="step"&gt;&lt;p&gt;&hellip;&lt;/p&gt;&lt;/div&gt;
-  &lt;/div&gt;
+  &lt;div class="beat"&gt;&lt;p class="caption"&gt;&hellip;&lt;/p&gt;&lt;/div&gt;   &lt;!-- the words: these scroll past --&gt;
+  &lt;div class="beat"&gt;&lt;p class="caption"&gt;&hellip;&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="beat"&gt;&lt;p class="caption"&gt;&hellip;&lt;/p&gt;&lt;/div&gt;
 &lt;/section&gt;</code></pre>
 
         <p>
@@ -395,7 +400,7 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
         </p>
 
         <p class="filename">css/style.css</p>
-        <pre><code>.scene-sticky {
+        <pre><code>.held {
   position: sticky;   /* scroll normally, until... */
   top: 0;             /* ...you reach the top of the window. Then stay. */
   height: 100svh;     /* exactly one screen tall, like your cover */
@@ -404,17 +409,14 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
   justify-content: center;
 }
 
-.scene-steps {
+.beat {
   position: relative;       /* so the words pass in front of the picture */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 60svh;               /* how far the reader scrolls between steps */
-  padding-bottom: 40svh;
+  min-height: 60svh;        /* how far the reader scrolls for each beat */
 }
 
-.step {
+.caption {
   max-width: 26rem;
+  margin: 0 auto;
   padding: 1rem 1.5rem;
   background: var(--paper); /* or the words vanish into the picture */
 }</code></pre>
@@ -423,18 +425,19 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
           <code>position: sticky</code> means
           <em>behave normally until you would scroll off, then stick</em>. The
           picture stays stuck for as long as its parent, the
-          <code>.scene</code>, is still on screen. The steps are what make the
-          scene tall: each one is separated by <code>gap: 60svh</code>, a little
-          over half a screen, so the reader has to scroll to reach the next.
-          More steps, or bigger gaps, and the picture holds for longer. That gap
-          is a pacing control, and it is the first one you have.
+          <code>.chapter</code>, is still on screen. The beats are what make the
+          chapter tall: each one is at least <code>60svh</code>, a little over
+          half a screen, so the reader has to scroll to reach the next. More
+          beats, or taller ones, and the picture holds for longer. That
+          <code>min-height</code> is a pacing control, and it is the first one
+          you have.
         </p>
 
         <div class="activity">
           <p class="activity__kicker">
             Task 3 &middot; 35 minutes &middot; on your own page
           </p>
-          <h3>Build the scene, then tell something true in three steps</h3>
+          <h3>Build the held picture, then tell something true in three beats</h3>
 
           <p>
             Not your assignment topic. Something small and true that you already
@@ -446,27 +449,27 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
           <ol class="steps">
             <li>
               <p>
-                Add the scene's HTML after your picture chapter. Save. It is a
+                Add the new chapter's HTML after your picture chapter. Save. It is a
                 picture with three paragraphs under it. That is fine.
               </p>
             </li>
             <li>
               <p>
-                Add the CSS, starting with <code>.scene-sticky</code>. Save
+                Add the CSS, starting with <code>.held</code>. Save
                 after the first three lines and scroll: the picture already
                 holds.
               </p>
             </li>
             <li>
               <p>
-                Style the <code>.step</code> boxes so they belong to your page:
+                Style the <code>.caption</code> boxes so they belong to your page:
                 your colours, your spacing.
               </p>
             </li>
             <li>
               <p>
-                Write your three <code>.step</code> paragraphs so they tell your
-                three-step story. One or two sentences each.
+                Write your three captions so they tell your story in three
+                beats. One or two sentences each.
               </p>
             </li>
             <li>
@@ -478,13 +481,13 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
             </li>
             <li>
               <p>
-                Add a fourth step. Notice that the picture now holds for longer,
+                Add a fourth beat. Notice that the picture now holds for longer,
                 and you did not touch the CSS.
               </p>
             </li>
             <li>
               <p>
-                In <code>.scene-steps</code>, change <code>gap: 60svh</code> to
+                In <code>.beat</code>, change <code>min-height: 60svh</code> to
                 <code>120svh</code>, then to <code>20svh</code>. Scroll each.
                 One drags and one rushes. Put it where your story reads best.
               </p>
@@ -558,7 +561,7 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
               </tr>
               <tr>
                 <td><strong>Swap</strong></td>
-                <td>The held picture changes as each step of text arrives.</td>
+                <td>The held picture changes as each beat of text arrives.</td>
                 <td>
                   Before and after. Then and now. The same place across forty
                   years.
@@ -999,14 +1002,14 @@ git config --global user.email "the-email-on-your-github-account"</code></pre>
         </details>
 
         <details>
-          <summary>The picture in my scene does not hold still</summary>
+          <summary>My picture does not hold still</summary>
           <p>
             Three usual causes. A parent element has
             <code>overflow: hidden</code>, which switches sticky off without
             telling you. The sticky element has lost its <code>top: 0</code>. Or
-            you have moved the steps outside the <code>.scene</code> section, so
-            the scene is only one screen tall and there is nothing to hold
-            through.
+            you have moved the beats outside the chapter's
+            <code>&lt;section&gt;</code>, so the chapter is only one screen tall
+            and there is nothing to hold through.
           </p>
         </details>
 

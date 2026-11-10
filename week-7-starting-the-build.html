@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Week 7: Starting the build | Interaction Design</title>
+    <meta
+      name="description"
+      content="Week 7: we start building your story. Your skeleton page, the first GSAP, and a Figma recap to start the graphics that fill it."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
+    />
+    <link rel="stylesheet" href="tutorial.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header
+      class="masthead"
+      style="
+        --masthead-image: url(images/week-7/masthead-grotto.jpg);
+        --scrim-start: 78%;
+        --scrim-mid: 68%;
+        --scrim-end: 30%;
+        --scrim-narrow: 75%;
+      "
+    >
+      <div class="wrap">
+        <p class="masthead__week">Week 7</p>
+        <h1>Starting the build</h1>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <main id="main" class="prose">
+        <p class="lede">
+          We have spent the last five weeks planning your story. Today we start
+          building it, and start learning GSAP. We will piece together the
+          structure of your story on the page, using grey boxes for now. Later
+          in the session we will recap Figma and start creating the graphics
+          that will fill those boxes.
+        </p>
+
+        <h2 id="glance">Session at a glance</h2>
+
+        <ol class="runsheet">
+          <li>
+            <a href="#part1"><strong>Creating your skeleton page</strong></a>
+          </li>
+          <li>
+            <a href="#part2"><strong>Intro to GSAP</strong></a>
+          </li>
+        </ol>
+
+        <p class="runsheet-break">Break</p>
+
+        <ol class="runsheet" start="3">
+          <li>
+            <a href="#part3"><strong>Figma: filling the boxes</strong></a>
+          </li>
+          <li>
+            <a href="#part4">Before you go</a>
+          </li>
+        </ol>
+
+        <p class="runsheet-also">
+          Also on this page: <a href="#stuck">If you get stuck</a> &middot;
+          <a href="#resources">Resources</a>
+        </p>
+
+        <!-- ==================================================================== -->
+        <div class="part" id="part1">
+          <p class="part__label">Part one</p>
+          <h2>Creating your skeleton page</h2>
+        </div>
+
+        <p>
+          In the first three weeks, you created the start of your scrolling page
+          on GitHub. In each of those weeks, we added a small piece of content
+          whilst we got used to learning how to commit changes and push those up
+          to GitHub. This week, we are going to start adding in the real content
+          that will form your page. This starts by looking at your storyboard
+          and using this as a blueprint for creating all of the sections to the
+          page.
+        </p>
+
+        <p>
+          Work from your storyboard, not your beat sheet. Every frame on it is
+          one beat.
+        </p>
+
+        <aside class="brief brief--rules" id="rules" aria-labelledby="rules-heading">
+          <p class="brief__label">Keep these open all term</p>
+          <h3 id="rules-heading" class="brief__title">
+            Four rules for building your story
+          </h3>
+          <ol>
+            <li>
+              A <strong>chapter</strong> is a significant section of your
+              story: <code>&lt;section class="chapter"&gt;</code>.
+            </li>
+            <li>
+              A <strong>beat</strong> is one storyboard frame:
+              <code>&lt;div class="beat"&gt;</code> inside its chapter, with the
+              frame's name as its id.
+            </li>
+            <li>
+              A <strong>held</strong> picture stays put while its chapter's
+              beats scroll past: <code>&lt;div class="held"&gt;</code>, first in
+              the chapter.
+            </li>
+            <li>Your cover and credits sit outside the chapters.</li>
+          </ol>
+        </aside>
+
+        <figure class="figure figure--shot">
+          <img
+            src="images/week-7/bank-storyboard.png"
+            width="1800"
+            height="1727"
+            alt="The bank storyboard: eight frames, each labelled with its beat, 01-today to 08-outside, and its chapter: 1 the corner, 2 the closing, 3 inside, 4 outside. Each has a drawing and five notes. Beat 02 is hatched: the photo from beat 01 holds while caption 2 swaps it to 1905."
+            loading="lazy"
+          />
+          <figcaption class="video__caption">
+            <strong>The bank storyboard</strong>, from the
+            <a href="kits/storyboard-kit/example.html">worked example</a>:
+            eight beats in four chapters. Open it full size to read the notes.
+          </figcaption>
+        </figure>
+
+        <figure class="figure">
+          <ol class="pacing">
+            <li class="pacing__chapter pacing__chapter--held">
+              <span class="pacing__label">Chapter 1 &middot; the corner &middot; held picture</span>
+              <ol>
+                <li style="--screens: 1">
+                  <span class="pacing__id">beat-01-today</span>
+                  <span class="pacing__h">1 screen</span>
+                </li>
+                <li style="--screens: 2">
+                  <span class="pacing__id">beat-02-1905</span>
+                  <span class="pacing__h">2 screens</span>
+                </li>
+              </ol>
+            </li>
+            <li class="pacing__chapter">
+              <span class="pacing__label">Chapter 2 &middot; the closing</span>
+              <ol>
+                <li style="--screens: 1">
+                  <span class="pacing__id">beat-03-queue</span>
+                  <span class="pacing__h">1 screen</span>
+                </li>
+                <li style="--screens: 1">
+                  <span class="pacing__id">beat-04-closures</span>
+                  <span class="pacing__h">1 screen</span>
+                </li>
+                <li style="--screens: 2">
+                  <span class="pacing__id">beat-05-notice</span>
+                  <span class="pacing__h">2 screens</span>
+                </li>
+              </ol>
+            </li>
+            <li class="pacing__chapter">
+              <span class="pacing__label">Chapter 3 &middot; inside</span>
+              <ol>
+                <li style="--screens: 1">
+                  <span class="pacing__id">beat-06-refit</span>
+                  <span class="pacing__h">1 screen</span>
+                </li>
+                <li style="--screens: 1">
+                  <span class="pacing__id">beat-07-then-now</span>
+                  <span class="pacing__h">1 screen &middot; the interaction</span>
+                </li>
+              </ol>
+            </li>
+            <li class="pacing__chapter">
+              <span class="pacing__label">Chapter 4 &middot; outside</span>
+              <ol>
+                <li style="--screens: 1">
+                  <span class="pacing__id">beat-08-outside</span>
+                  <span class="pacing__h">1 screen</span>
+                </li>
+              </ol>
+            </li>
+          </ol>
+          <figcaption class="video__caption">
+            <strong>The bank story's skeleton page.</strong> Four chapters,
+            eight beats, each beat as tall as its scroll distance: ten screens
+            in all. In chapter 1 the picture is held (hatched) while its two
+            beats scroll past.
+          </figcaption>
+        </figure>
+
+        <figure class="figure">
+          <ol class="trail">
+            <li>
+              <span class="trail__where">Your storyboard</span>
+              <span class="trail__name">Beat 02-1905</span>
+            </li>
+            <li>
+              <span class="trail__where">Your page</span>
+              <span class="trail__name">id="beat-02-1905"</span>
+            </li>
+            <li>
+              <span class="trail__where">Your Figma frame</span>
+              <span class="trail__name">beat-02-1905</span>
+            </li>
+          </ol>
+          <figcaption class="video__caption">
+            One beat, one name, three places. The id starts with
+            <strong>beat-</strong> because a CSS id cannot start with a number.
+          </figcaption>
+        </figure>
+
+        <div class="box box--warn">
+          <p class="box__title">First, change one word in your starter</p>
+          <p>
+            In <code>css/style.css</code>, find the rule under
+            <strong>CHAPTERS AND CREDITS</strong> that starts
+            <code>.chapter, footer</code>. Change <code>.chapter</code> to
+            <code>.beat</code>. That rule keeps lines of text short; on a whole
+            chapter it would squeeze a held picture into a narrow column.
+          </p>
+        </div>
+
+        <p class="filename">index.html</p>
+        <pre><code>&lt;main&gt;
+
+  &lt;!-- Chapter 1: the corner. Beats 01 and 02 share one held picture --&gt;
+  &lt;section class="chapter" id="chapter-1-the-corner"&gt;
+    &lt;div class="held"&gt;
+      &lt;img src="images/scene-01.svg" alt="The bar today."&gt;
+    &lt;/div&gt;
+    &lt;div class="beat" id="beat-01-today"&gt;
+      &lt;h1&gt;This was a bank for 120 years&lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;div class="beat" id="beat-02-1905"&gt;
+      &lt;p&gt;1905. Built as a bank.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;!-- Chapter 2: the closing. Three beats, each with its own picture --&gt;
+  &lt;section class="chapter" id="chapter-2-the-closing"&gt;
+    &lt;div class="beat" id="beat-03-queue"&gt;&lt;h2&gt;The queue&lt;/h2&gt;&lt;/div&gt;
+    &lt;div class="beat" id="beat-04-closures"&gt;&lt;h2&gt;Closures&lt;/h2&gt;&lt;/div&gt;
+    &lt;div class="beat" id="beat-05-notice"&gt;&lt;h2&gt;The notice&lt;/h2&gt;&lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;!-- Chapters 3 and 4 the same way. Beat 07 gets the comment INTERACTION --&gt;
+
+&lt;/main&gt;</code></pre>
+
+        <p class="filename">css/style.css, under YOUR STYLES</p>
+        <pre><code>/* Skeleton page */
+.chapter {
+  border-bottom: 3px solid var(--ink);    /* where each chapter ends */
+}
+.beat {
+  position: relative;                     /* in front of a held picture */
+  min-height: 100svh;                     /* one screen per beat until proven otherwise */
+  border-bottom: 1px dashed var(--ink);   /* where each beat ends */
+}
+#beat-05-notice { min-height: 200svh; }   /* beat 05 holds for a second screen */
+
+/* A held picture, as in Week 2 */
+.held {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}</code></pre>
+
+        <p>
+          The bank's first beat is its cover, so chapter 1 takes the place of
+          the starter's <code>&lt;header&gt;</code>. If your cover stands on its
+          own, keep your <code>&lt;header&gt;</code>: it belongs to the whole
+          page, so it sits outside the chapters (rule 4).
+        </p>
+
+        <div class="box box--note">
+          <p class="box__title">Your Week 2 code has new names</p>
+          <p>
+            The Week&nbsp;2 page now uses these rules. If you kept your practice
+            code: <code>scene</code> is now <code>chapter</code>,
+            <code>scene-sticky</code> is <code>held</code>, <code>step</code> is
+            <code>beat</code>, and <code>chapter-figure</code> is
+            <code>side-by-side</code>. You can also delete it: your skeleton page
+            replaces it.
+          </p>
+        </div>
+
+        <div class="activity" id="task-1">
+          <p class="activity__kicker">
+            Task 1 &middot; 35 minutes &middot; on your own project
+          </p>
+          <h3>Build your skeleton page</h3>
+          <ol class="steps">
+            <li>Change <code>.chapter</code> to <code>.beat</code> in your starter, as above.</li>
+            <li>
+              Group your storyboard frames into chapters: the big sections of
+              your story. Write each frame's chapter on it.
+            </li>
+            <li>
+              For each chapter, a <code>&lt;section class="chapter"&gt;</code>
+              with an id. Inside it, a <code>&lt;div class="beat"&gt;</code> for
+              each frame, with the frame's name as its id and its line of text.
+            </li>
+            <li>
+              Hatched frames: put <code>&lt;div class="held"&gt;</code> first in
+              their chapter.
+            </li>
+            <li>
+              Set each beat's height in <code>svh</code>. Scroll at reading
+              speed. Adjust until it feels right.
+            </li>
+            <li>
+              Mark your interaction moment:
+              <code>&lt;!-- INTERACTION: before/after slider --&gt;</code>
+            </li>
+            <li>Check it at phone width, then commit as <strong>skeleton page</strong> and sync.</li>
+          </ol>
+        </div>
+
+        <!-- ==================================================================== -->
+        <div class="part" id="part2">
+          <p class="part__label">Part two</p>
+          <h2>Intro to GSAP</h2>
+        </div>
+
+        <p>
+          <strong>GSAP</strong> is a free JavaScript library for animating
+          anything on a web page. Its <strong>ScrollTrigger</strong> plugin ties
+          that animation to the reader's scroll.
+        </p>
+
+        <h3 id="gsap-can-do">What GSAP can do</h3>
+
+        <p>
+          In a story, it puts you in charge of timing. A photo fades in as the
+          reader reaches it, a line draws as they scroll, a picture holds while
+          the words move past. Your storyboard says what changes in each beat;
+          GSAP makes it change.
+        </p>
+
+        <figure class="video">
+          <div class="video__frame">
+            <a
+              class="video__facade"
+              data-video="X7IBa7vZjmo"
+              href="https://www.youtube.com/watch?v=X7IBa7vZjmo"
+            >
+              <img
+                src="https://i.ytimg.com/vi/X7IBa7vZjmo/hqdefault.jpg"
+                alt=""
+                width="480"
+                height="360"
+                loading="lazy"
+              />
+              <span class="video__play"
+                ><svg
+                  viewBox="0 0 68 48"
+                  width="68"
+                  height="48"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    class="video__play-bg"
+                    d="M66.52 7.74a8 8 0 0 0-5.63-5.67C56.4.86 34 .86 34 .86s-22.4 0-26.89 1.21a8 8 0 0 0-5.63 5.67A83.7 83.7 0 0 0 .5 24a83.7 83.7 0 0 0 .98 16.26 8 8 0 0 0 5.63 5.67C11.6 47.14 34 47.14 34 47.14s22.4 0 26.89-1.21a8 8 0 0 0 5.63-5.67A83.7 83.7 0 0 0 67.5 24a83.7 83.7 0 0 0-.98-16.26z"
+                  />
+                  <path d="M27 34V14l18 10z" fill="#fff" /></svg
+              ></span>
+              <span class="visually-hidden"
+                >Play &ldquo;Introducing ScrollTrigger for GSAP&rdquo; on
+                YouTube</span
+              >
+            </a>
+          </div>
+          <figcaption class="video__caption">
+            <strong>Introducing ScrollTrigger</strong>, from GSAP's own channel.
+            Watch the first three minutes now: what it can do, then the basics.
+            Scrub, which you try in Task&nbsp;3, starts at 8:51. 21&nbsp;min
+            &middot; GSAP Learning.
+            <a href="https://www.youtube.com/watch?v=X7IBa7vZjmo"
+              >Watch on YouTube</a
+            >
+          </figcaption>
+        </figure>
+
+        <h3 id="link-gsap">Link GSAP to your page</h3>
+
+        <p>
+          Two script tags load GSAP and ScrollTrigger. They go above your own,
+          so GSAP is ready before your code runs.
+        </p>
+
+        <p class="filename">index.html, above your own script tag</p>
+        <pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"&gt;&lt;/script&gt;
+&lt;script src="js/main.js"&gt;&lt;/script&gt;</code></pre>
+
+        <p>
+          Reload, open the console and type <code>gsap</code>. If it says
+          <em>gsap is not defined</em>, check the two tags.
+        </p>
+
+        <h3 id="switch-on">Switch on ScrollTrigger</h3>
+
+        <p>One line, at the very top of <code>main.js</code>.</p>
+
+        <p class="filename">js/main.js</p>
+        <pre><code>gsap.registerPlugin(ScrollTrigger);</code></pre>
+
+        <h3 id="make-it-move">Make something move</h3>
+
+        <p class="filename">js/main.js, under that line</p>
+        <pre><code>gsap.from(".beat h2", {
+  opacity: 0,
+  y: 40,                // starts 40px lower than its resting place
+  duration: 0.8,        // seconds
+  ease: "power2.out"    // arrives fast, settles gently
+});</code></pre>
+
+        <p>
+          Reload. <code>gsap.from()</code> starts each heading from these values
+          and ends it wherever your CSS already puts it. If the script never
+          runs, the heading is simply there, so never set
+          <code>opacity: 0</code> in your CSS.
+        </p>
+
+        <p>
+          Now scroll down. The other headings have already played, while no one
+          was looking.
+        </p>
+
+        <h3 id="wait-for-reader">Wait for the reader</h3>
+
+        <p>
+          Give every heading its own trigger, so each one waits until the reader
+          reaches it.
+        </p>
+
+        <p class="filename">js/main.js, replacing the block above</p>
+        <pre><code>gsap.utils.toArray(".beat h2").forEach(function (heading) {
+  gsap.from(heading, {
+    opacity: 0,
+    y: 40,
+    duration: 0.8,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: heading,
+      start: "top 80%",         // fires when the heading is 80% down the screen
+      markers: true             // DELETE BEFORE YOU PUBLISH
+    }
+  });
+});</code></pre>
+
+        <p>
+          Scroll. Each heading rises when its green <code>start</code> marker
+          meets the green <code>scroller-start</code> line.
+        </p>
+
+        <div class="activity" id="task-2">
+          <p class="activity__kicker">
+            Task 2 &middot; 25 minutes &middot; on your own project
+          </p>
+          <h3>Make one thing move</h3>
+          <ol class="steps">
+            <li>
+              Work through the steps above on your own page. Type the code, do
+              not paste it.
+            </li>
+            <li>After every reload, check the console: no red.</li>
+            <li>
+              Try <code>"top 50%"</code>, then <code>y: 400</code> and
+              <code>y: 0</code>. Keep what suits your story.
+            </li>
+          </ol>
+        </div>
+
+        <h3 id="scrub">Let the reader drive it</h3>
+
+        <p>
+          That plays once. Add two lines and the scroll drives it instead:
+          stop, and it stops; scroll back, and it goes back.
+        </p>
+
+        <p class="filename">js/main.js, inside the scrollTrigger</p>
+        <pre><code>start: "top 80%",
+end: "top 40%",             // the animation finishes here
+scrub: true,                // the scroll position drives it</code></pre>
+
+        <figure class="duo duo--shots">
+          <figure>
+            <img
+              src="images/week-7/markers-arrive.png"
+              width="1280"
+              height="960"
+              alt="A skeleton page with the heading Closures half faded in. At the right-hand edge, a green start marker sits just above a green scroller-start line, a red end marker below it, and a red scroller-end line at the top of the screen."
+              loading="lazy"
+            />
+            <figcaption>
+              <strong>Arrive.</strong> Once <code>start</code> passes
+              <code>scroller-start</code>, the heading plays to the end on its
+              own.
+            </figcaption>
+          </figure>
+          <figure>
+            <img
+              src="images/week-7/markers-scrub.png"
+              width="1280"
+              height="960"
+              alt="The same page with scrub on. The Closures heading is half faded. Its green start and red end markers sit together, between the green scroller-start line low on the screen and the red scroller-end line above the middle."
+              loading="lazy"
+            />
+            <figcaption>
+              <strong>Scrub.</strong> The heading only moves while it travels
+              from <code>scroller-start</code> up to
+              <code>scroller-end</code>.
+            </figcaption>
+          </figure>
+        </figure>
+
+        <div class="activity" id="task-3">
+          <p class="activity__kicker">
+            Task 3 &middot; 10 minutes &middot; on your own project
+          </p>
+          <h3>Arrive, or follow the hand?</h3>
+          <ol class="steps">
+            <li>Add <code>end</code> and <code>scrub</code>. Scroll slowly, then back.</li>
+            <li>
+              For each frame on your storyboard, decide which it needs. The bank story
+              has no scrub at all.
+            </li>
+            <li>
+              Set <code>markers: false</code>. Commit as
+              <strong>first motion</strong> and sync.
+            </li>
+          </ol>
+        </div>
+
+        <p class="runsheet-break">Break</p>
+
+        <!-- ==================================================================== -->
+        <div class="part" id="part3">
+          <p class="part__label">Part three</p>
+          <h2>Figma: filling the boxes</h2>
+        </div>
+
+        <p>
+          A quick recap of Figma, then you start designing what fills the
+          boxes. Figma also keeps a <strong>version history</strong> of your
+          file: a record that the work is yours, from the day the file exists.
+        </p>
+
+        <figure class="figure figure--shot">
+          <img
+            src="images/week-7/south-figma-frames.jpg"
+            width="2324"
+            height="1224"
+            alt="My South file in Figma. A section named chapter-1-intro holds two desktop frames: beat-01-entry, the title South, The Race to the Pole, a short introduction and an Explore button over a pale snowfield; and beat-02-teaser, a quote over a windswept snowfield. Each has a phone frame beside it and notes to the right listing its changes and moves. A Components section on the left holds the Continue button."
+            loading="lazy"
+          />
+          <figcaption class="video__caption">
+            <strong>Where today ends up.</strong> The start of my own piece,
+            about the race to the South Pole: a section for each chapter, a
+            frame for each beat, notes to the right.
+          </figcaption>
+        </figure>
+
+        <div class="box box--warn">
+          <p class="box__title">Or your history is gone by January</p>
+          <ul class="checklist">
+            <li>
+              <strong>Education plan.</strong> Without it, Figma keeps 30 days.
+              Not sure you have it? Apply at
+              <a href="https://www.figma.com/education/">figma.com/education</a>
+              now; it is not instant.
+            </li>
+            <li>
+              <strong>Not in Drafts.</strong> Drafts keep 30 days too. Use your
+              Interaction Design project.
+            </li>
+          </ul>
+        </div>
+
+        <figure class="figure">
+          <div
+            class="canvas"
+            role="img"
+            aria-label="A Figma canvas for the first two chapters of the bank story. Each chapter is a section: chapter-1-the-corner holds the frames beat-01-today and beat-02-1905; chapter-2-the-closing holds beat-03-queue, beat-04-closures and beat-05-notice. Each frame has notes to its right. In chapter 1 the held picture sits in the same place in both frames, and beat 02 adds one line of text. Beats 01 and 03 also have a phone frame, because their layout changes on a phone."
+          >
+            <div class="canvas__section">
+              <p class="canvas__label">chapter-1-the-corner</p>
+              <div class="canvas__row">
+                <span class="canvas__name">beat-01-today</span>
+                <span class="canvas__name">phone</span>
+                <span></span>
+                <span class="canvas__screen"><span class="canvas__line"></span><span class="canvas__held"></span></span>
+                <span class="canvas__screen canvas__screen--phone"><span class="canvas__held"></span><span class="canvas__line"></span></span>
+                <span class="canvas__notes">Notes<i></i><i></i><i></i></span>
+              </div>
+              <div class="canvas__row">
+                <span class="canvas__name">beat-02-1905</span>
+                <span></span>
+                <span></span>
+                <span class="canvas__screen"><span class="canvas__line"></span><span class="canvas__line canvas__line--2 canvas__line--new"></span><span class="canvas__held"></span></span>
+                <span></span>
+                <span class="canvas__notes">Notes<i></i><i></i><i></i></span>
+              </div>
+            </div>
+            <div class="canvas__section">
+              <p class="canvas__label">chapter-2-the-closing</p>
+              <div class="canvas__row">
+                <span class="canvas__name">beat-03-queue</span>
+                <span class="canvas__name">phone</span>
+                <span></span>
+                <span class="canvas__screen"><span class="canvas__pic"></span><span class="canvas__card"></span></span>
+                <span class="canvas__screen canvas__screen--phone"><span class="canvas__pic"></span><span class="canvas__card"></span></span>
+                <span class="canvas__notes">Notes<i></i><i></i><i></i></span>
+              </div>
+              <div class="canvas__row">
+                <span class="canvas__name">beat-04-closures</span>
+                <span></span>
+                <span></span>
+                <span class="canvas__screen"><span class="canvas__pic"></span><span class="canvas__card"></span></span>
+                <span></span>
+                <span class="canvas__notes">Notes<i></i><i></i><i></i></span>
+              </div>
+              <div class="canvas__row">
+                <span class="canvas__name">beat-05-notice</span>
+                <span></span>
+                <span></span>
+                <span class="canvas__screen"><span class="canvas__pic"></span><span class="canvas__card"></span></span>
+                <span></span>
+                <span class="canvas__notes">Notes<i></i><i></i><i></i></span>
+              </div>
+            </div>
+          </div>
+          <figcaption class="video__caption">
+            <strong>Your Figma canvas</strong>, drawn for the first two
+            chapters of the bank story: a section for each chapter, a
+            1440&nbsp;x&nbsp;900 frame for each beat, notes to the right.
+            Hatched: a held picture, in the same place in every frame of its
+            chapter. Blue: the one line beat&nbsp;02 adds. A phone frame
+            (390&nbsp;x&nbsp;844) only where the layout changes.
+          </figcaption>
+        </figure>
+
+        <div class="activity" id="task-4">
+          <p class="activity__kicker">
+            Task 4 &middot; 25 minutes &middot; on your own
+          </p>
+          <h3>Set up your Figma file</h3>
+          <ol class="steps">
+            <li>
+              <strong>Make the file.</strong> In your Interaction Design
+              project, not Drafts, make a new design file. Name it with your
+              name.
+            </li>
+            <li>
+              <strong>Make one screen.</strong> Press <kbd>F</kbd> and draw a
+              frame. In the right-hand panel, set <strong>W</strong> to
+              <strong>1440</strong> and <strong>H</strong> to
+              <strong>900</strong>: one laptop screen, the same unit as your
+              skeleton page.
+            </li>
+            <li>
+              <strong>Add a layout guide.</strong> With the frame selected,
+              click <strong>Add layout guide</strong> in the right-hand panel.
+              Change it to <strong>Columns</strong>: count 12, type Stretch,
+              margin 80, gutter 24. It keeps text and pictures lined up from
+              beat to beat.
+            </li>
+            <li>
+              <strong>Make your colours.</strong> Click the empty canvas, then
+              <strong>Open variables</strong> under Local variables. Create
+              three colour variables, <strong>ink</strong>,
+              <strong>paper</strong> and <strong>accent</strong>, with the same
+              values as the variables in your <code>style.css</code>. Fill the
+              frame with paper.
+            </li>
+            <li>
+              <strong>Pick your font.</strong> Use the Google Font from your
+              page. Figma has Google Fonts built in.
+            </li>
+            <li>
+              <strong>One frame per beat.</strong> Name the frame after your
+              first beat, <code>beat-01-today</code>, then
+              <kbd>&#8984;</kbd> <kbd>D</kbd> (Windows: <kbd>Ctrl</kbd>
+              <kbd>D</kbd>) to copy it for every beat. Rename each copy and
+              stack them top to bottom, in reading order.
+            </li>
+            <li>
+              <strong>A section for each chapter.</strong> Select a
+              chapter's frames, right-click, <strong>Wrap in new
+              section</strong>. Double-click its title and name it after the
+              chapter: <code>chapter-1-the-corner</code>.
+            </li>
+            <li>
+              <strong>Notes beside each frame.</strong> Text (<kbd>T</kbd>) to
+              the right: trigger, change, how it moves, reader can, why.
+            </li>
+            <li>
+              <strong>Pictures.</strong> Drag them in from your project's
+              <code>images</code> folder. A frame crops anything that hangs
+              over its edge. Name each picture layer after its file:
+              <code>1905.jpg</code>.
+            </li>
+          </ol>
+        </div>
+
+        <div class="activity" id="task-5">
+          <p class="activity__kicker">
+            Task 5 &middot; 5 minutes &middot; on your own
+          </p>
+          <h3>Save a version and share it with me</h3>
+          <ol class="steps">
+            <li>
+              <kbd>&#8984;</kbd> <kbd>Option</kbd> <kbd>S</kbd> (Windows:
+              <kbd>Ctrl</kbd> <kbd>Alt</kbd> <kbd>S</kbd>), or File, Save to
+              version history. Title: <strong>Week 7 set-up</strong>.
+            </li>
+            <li>
+              <strong>Share</strong>: invite a.m.pearson@leedsbeckett.ac.uk as
+              <strong>can edit</strong>. Figma only shows earlier versions to
+              editors. I will not change anything.
+            </li>
+            <li>Save a named version at the end of every sitting.</li>
+          </ol>
+        </div>
+
+        <div class="activity" id="task-6">
+          <p class="activity__kicker">
+            Task 6 &middot; the rest of the session &middot; on your own
+          </p>
+          <h3>Start the graphics</h3>
+          <p>
+            Pick the beat your story turns on and design what fills its box:
+            the type, the pictures, the colour. Then the next one.
+          </p>
+          <p>
+            When a picture is ready for the page: select it, then
+            <strong>Export</strong> at the bottom of the right-hand panel. JPG
+            for photos, SVG for flat shapes. Save it into your project's
+            <code>images</code> folder.
+          </p>
+        </div>
+
+        <!-- ==================================================================== -->
+        <div class="part" id="part4">
+          <p class="part__label">Part four</p>
+          <h2>Before you go</h2>
+        </div>
+
+        <div class="box box--task">
+          <ul class="checklist">
+            <li>
+              <strong>skeleton page</strong> and <strong>first motion</strong>
+              committed and synced.
+            </li>
+            <li>
+              Figma file in your project, shared with me, one named version.
+            </li>
+            <li>Any AI use today is in your AI-use log.</li>
+          </ul>
+        </div>
+
+        <p>
+          <strong>Before the next session:</strong> a Figma frame for every
+          beat, with its notes.
+        </p>
+
+        <!-- ==================================================================== -->
+        <h2 id="stuck">If you get stuck</h2>
+
+        <details>
+          <summary>My storyboard was not finished</summary>
+          <p>
+            Use your beat sheet for the frames you have not drawn: each row is
+            one beat. Draw the missing frames straight into Figma.
+          </p>
+        </details>
+
+        <details>
+          <summary>My skeleton page looks terrible</summary>
+          <p>It should. Judge it on order and pacing only.</p>
+        </details>
+
+        <details>
+          <summary>Nothing moves</summary>
+          <p>
+            Red in the console? GSAP script tags above <code>main.js</code>?
+            Any <code>.beat h2</code> on the page?
+          </p>
+        </details>
+
+        <details>
+          <summary>Figma has not confirmed my education plan</summary>
+          <p>
+            Carry on as normal and tell me. Figma says the full history appears
+            once the plan does.
+          </p>
+        </details>
+
+        <details>
+          <summary>Something else</summary>
+          <p>
+            Ask in the class, or email
+            <a href="mailto:a.m.pearson@leedsbeckett.ac.uk"
+              >a.m.pearson@leedsbeckett.ac.uk</a
+            >.
+          </p>
+        </details>
+
+        <!-- ==================================================================== -->
+        <h2 id="resources">Resources</h2>
+
+        <ul class="cards">
+          <li>
+            <a class="card" href="kits/storyboard-kit/example.html">
+              <span class="card__title">Storyboard worked example</span>
+              <span class="card__meta">Kit &middot; the bank story</span>
+              <p>All eight frames, with pacing in screen heights.</p>
+            </a>
+          </li>
+          <li>
+            <a
+              class="card"
+              href="https://gsap.com/docs/v3/Plugins/ScrollTrigger/"
+            >
+              <span class="card__title">ScrollTrigger</span>
+              <span class="card__meta">GSAP docs</span>
+              <p>
+                <code>start</code>, <code>end</code>, <code>scrub</code> and
+                <code>markers</code>.
+              </p>
+            </a>
+          </li>
+          <li>
+            <a
+              class="card"
+              href="https://help.figma.com/hc/en-us/articles/360038006754"
+            >
+              <span class="card__title">Version history</span>
+              <span class="card__meta">Figma help</span>
+              <p>Naming, viewing and restoring versions.</p>
+            </a>
+          </li>
+          <li>
+            <a class="card" href="https://www.figma.com/education/">
+              <span class="card__title">Figma for Education</span>
+              <span class="card__meta">Figma</span>
+              <p>Apply for the free education plan.</p>
+            </a>
+          </li>
+        </ul>
+      </main>
+    </div>
+
+    <footer class="colophon">
+      <div class="wrap">
+        <p>
+          <strong>Interaction Design</strong> &middot; Level 5 &middot; BSc
+          (Hons) Content Creation &middot; Leeds School of Arts, Leeds Beckett
+          University
+        </p>
+        <p>
+          Header photograph: Herbert Ponting, <em>Grotto in an iceberg</em>, 5
+          January 1911, British Antarctic Expedition. Public domain; National
+          Library of New Zealand, via
+          <a href="https://commons.wikimedia.org/wiki/File:Grotto_in_an_iceberg.jpg"
+            >Wikimedia Commons</a
+          >.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      /* Videos: a thumbnail that opens YouTube when this page is a local file, and
+   loads the player inline once the page is served over http(s). YouTube rejects
+   embeds with no referrer (Error 153), which is what file:// gives it. */
+      (function () {
+        var canEmbed = /^https?:$/.test(location.protocol);
+
+        document.querySelectorAll(".video__facade").forEach(function (link) {
+          var id = link.getAttribute("data-video");
+          var img = link.querySelector("img");
+          var label = link.querySelector(".visually-hidden").textContent;
+
+          /* Use the higher-resolution still where YouTube has one, unless
+             the facade carries its own poster (data-poster). */
+          if (!link.hasAttribute("data-poster")) {
+            var hi = new Image();
+            hi.onload = function () {
+              if (hi.naturalWidth > 500) {
+                img.src = hi.src;
+              }
+            };
+            hi.src = "https://i.ytimg.com/vi/" + id + "/maxresdefault.jpg";
+          }
+
+          if (!canEmbed) {
+            link.target = "_blank";
+            link.rel = "noopener";
+            return;
+          }
+
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            var frame = document.createElement("iframe");
+            frame.src =
+              "https://www.youtube-nocookie.com/embed/" +
+              id +
+              "?autoplay=1&rel=0";
+            frame.title = label;
+            frame.allow =
+              "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+            frame.allowFullscreen = true;
+            link.parentNode.replaceChild(frame, link);
+            frame.focus();
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -310,13 +310,15 @@ thead th,
   border-bottom: 1px solid var(--band-rule);
   /* Optional image behind the band: set --masthead-image on the element.
      The scrim is heavy on the text side so white type stays AA against any
-     picture; it thins to the right where nothing sits over it. */
+     picture; it thins to the right where nothing sits over it. A page can
+     thin it for a dark picture with --scrim-start, --scrim-mid, --scrim-end
+     and --scrim-narrow (check the contrast of the type if you do). */
   background-image:
     linear-gradient(
       90deg,
-      color-mix(in srgb, var(--band) 92%, transparent) 0%,
-      color-mix(in srgb, var(--band) 88%, transparent) 55%,
-      color-mix(in srgb, var(--band) 60%, transparent) 100%
+      color-mix(in srgb, var(--band) var(--scrim-start, 92%), transparent) 0%,
+      color-mix(in srgb, var(--band) var(--scrim-mid, 88%), transparent) 55%,
+      color-mix(in srgb, var(--band) var(--scrim-end, 60%), transparent) 100%
     ),
     var(--masthead-image, none);
   background-size: cover;
@@ -328,8 +330,8 @@ thead th,
   .masthead {
     background-image:
       linear-gradient(
-        color-mix(in srgb, var(--band) 90%, transparent),
-        color-mix(in srgb, var(--band) 90%, transparent)
+        color-mix(in srgb, var(--band) var(--scrim-narrow, 90%), transparent),
+        color-mix(in srgb, var(--band) var(--scrim-narrow, 90%), transparent)
       ),
       var(--masthead-image, none);
   }
@@ -597,6 +599,18 @@ thead th,
 }
 .brief li strong {
   color: var(--ink);
+}
+/* A solid box for rules students keep coming back to (Week 7) */
+.brief--rules {
+  border: 2px solid var(--ink);
+  background: var(--paper-sunk);
+  padding: clamp(1.4rem, 4vw, 2.25rem);
+}
+.brief--rules ol {
+  margin-bottom: 0;
+}
+.brief--rules code {
+  background: var(--paper-raised);
 }
 .brief__now {
   display: inline-block;
@@ -1173,6 +1187,248 @@ details p {
 /* -------------------------------------------------------------------------
    PRINT
    ------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------
+   DIAGRAMS DRAWN IN HTML (Week 7 onwards)
+   ------------------------------------------------------------------------- */
+
+/* One name in three places: list, page, Figma */
+.trail {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+}
+.trail li,
+.pacing li {
+  margin: 0;
+}
+.trail li {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--rule-strong);
+  background: var(--paper-raised);
+}
+.trail__where {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+}
+.trail__name {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+/* A skeleton page drawn as nested lists: chapters holding beats, each beat
+   as tall as its scroll distance (set --screens on the beat) */
+.pacing,
+.pacing ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.pacing {
+  display: grid;
+  gap: 0.75rem;
+}
+.pacing__chapter {
+  border: 2px solid var(--rule-strong);
+}
+.pacing__label {
+  display: block;
+  padding: 0.45rem 1rem;
+  border-bottom: 1px solid var(--rule-strong);
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+}
+.pacing__chapter li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  min-height: calc(var(--screens, 1) * 2.6rem);
+  padding: 0.4rem 1rem;
+  border-top: 1px dashed var(--rule-strong);
+  background: var(--paper-sunk);
+}
+.pacing__chapter li:first-child {
+  border-top: 0;
+}
+.pacing__chapter--held li {
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--paper-sunk) 0 8px,
+    var(--paper) 8px 16px
+  );
+}
+.pacing__id,
+.pacing__h {
+  background: var(--paper-sunk);
+  padding: 0 0.25rem;
+}
+.pacing__id {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+.pacing__h {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  color: var(--ink-quiet);
+}
+
+/* A Figma canvas drawn in HTML: a section per chapter, a 1440 x 900 frame
+   per beat, a phone frame only where the layout changes, notes to the right.
+   Each row is a 3-column grid: names on the first line, screens below. */
+.canvas {
+  display: grid;
+  gap: 0.75rem;
+  max-width: var(--measure);
+}
+.canvas__section {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.6rem clamp(0.5rem, 2vw, 1rem) 0.9rem;
+  border: 1px dashed var(--rule-strong);
+  border-radius: 6px;
+  background: var(--paper-sunk);
+}
+.canvas__label,
+.canvas__name {
+  margin: 0;
+  font-family: var(--font-mono);
+  line-height: 1.2;
+  color: var(--ink-quiet);
+  overflow-wrap: anywhere;
+}
+.canvas__label {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.canvas__name {
+  font-size: 0.72rem;
+}
+.canvas__row {
+  display: grid;
+  grid-template-columns: 10fr 3fr 7fr;
+  gap: 0.25rem clamp(0.4rem, 1.5vw, 0.75rem);
+}
+.canvas__screen {
+  position: relative;
+  display: block;
+  align-self: start;
+  aspect-ratio: 1440 / 900;
+  border: 1px solid var(--rule-strong);
+  background: var(--paper-raised);
+}
+.canvas__screen--phone {
+  aspect-ratio: 390 / 844;
+}
+.canvas__screen > span {
+  position: absolute;
+  box-sizing: border-box;
+}
+/* A held picture is hatched, as on the storyboard and the pacing diagram */
+.canvas__held {
+  top: 8%;
+  bottom: 8%;
+  right: 6%;
+  width: 42%;
+  border: 1px solid var(--ink-faint);
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--rule-strong) 0 3px,
+    var(--paper-raised) 3px 7px
+  );
+}
+.canvas__pic {
+  inset: 5%;
+  border: 1px solid var(--ink-faint);
+  background: var(--paper-sunk);
+}
+.canvas__card {
+  left: 9%;
+  bottom: 12%;
+  width: 36%;
+  height: 18%;
+  border: 1px solid var(--ink-faint);
+  background: var(--paper-raised);
+}
+.canvas__line {
+  left: 7%;
+  top: 40%;
+  width: 34%;
+  height: 4.5%;
+  min-height: 3px;
+  background: var(--ink-faint);
+}
+.canvas__line--2 {
+  top: 52%;
+  width: 28%;
+}
+.canvas__line--new {
+  background: var(--accent);
+}
+.canvas__screen--phone .canvas__held {
+  top: 5%;
+  bottom: auto;
+  left: 8%;
+  right: 8%;
+  width: auto;
+  height: 46%;
+}
+.canvas__screen--phone .canvas__line {
+  left: 12%;
+  top: 58%;
+  width: 60%;
+  height: 3%;
+}
+.canvas__screen--phone .canvas__card {
+  left: 12%;
+  right: 12%;
+  bottom: 6%;
+  width: auto;
+  height: 9%;
+}
+.canvas__notes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--rule-strong);
+  background: var(--paper-raised);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-quiet);
+}
+.canvas__notes i {
+  display: block;
+  height: 0.3rem;
+  background: var(--rule-strong);
+}
+.canvas__notes i:nth-child(even) {
+  width: 70%;
+}
+
+/* Screenshots on white need an edge on the near-white page */
+.duo--shots img,
+.figure--shot img {
+  border: 1px solid var(--rule-strong);
+}
 
 @media print {
   :root {
