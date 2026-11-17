@@ -1514,6 +1514,102 @@ details p {
   stroke: var(--good);
 }
 
+/* A storyboard frame beside the code it becomes (Week 8). The numbers in
+   the frame's rows match the comments in the code. */
+.sbmap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);   /* lets the code scroll inside its box */
+  gap: 1rem 1.5rem;
+  align-items: start;
+}
+@media (min-width: 56rem) {
+  .sbmap {
+    grid-template-columns: minmax(0, 19rem) minmax(0, 1fr);
+  }
+}
+.sbmap pre {
+  margin: 0;
+}
+.sbframe {
+  border: 2px solid var(--rule-strong);
+  background: var(--paper-raised);
+}
+.sbframe__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  margin: 0;
+  padding: 0.45rem 1rem;
+  border-bottom: 1px solid var(--rule-strong);
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+}
+.sbframe__pic {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  margin: 0;
+  padding: 1rem;
+  border-bottom: 1px solid var(--rule-strong);
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--paper-sunk) 0 8px,
+    var(--paper) 8px 16px
+  );
+  text-align: center;
+}
+.sbframe__pic span {
+  padding: 0.15rem 0.5rem;
+  background: var(--paper-raised);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+.sbframe dl {
+  margin: 0;
+}
+.sbframe__row {
+  padding: 0.5rem 1rem;
+  border-top: 1px dashed var(--rule-strong);
+}
+.sbframe__row:first-child {
+  border-top: 0;
+}
+.sbframe dt {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+}
+.sbframe dd {
+  margin: 0.15rem 0 0 2rem;
+  font-size: 0.98rem;
+  color: var(--ink);
+}
+.sbnum {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0;
+}
+
 @media print {
   :root {
     --paper: #fff;

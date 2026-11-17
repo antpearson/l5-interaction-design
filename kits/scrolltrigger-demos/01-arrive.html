@@ -30,6 +30,8 @@
         border-top: 1px solid #d8dbe3;
       }
       .beat:nth-child(even) { background: #eef0f4; }
+      .beat { flex-direction: column; align-items: flex-start; justify-content: center; }
+      .beat p { margin: 1rem 0 0; max-width: 34rem; font-size: 1.2rem; line-height: 1.5; color: #454a58; }
       .beat h2 {
         margin: 0;
         font-size: clamp(2.2rem, 8vw, 4.5rem);
@@ -54,6 +56,7 @@
       .panel select { font: inherit; font-size: 15px; }
       .end { padding: 4rem 1.25rem 12rem; text-align: center; color: #454a58; line-height: 1.6; }
       .end a { color: #1b45c4; }
+      .end .sources { max-width: 40rem; margin: 1rem auto; font-size: 0.95rem; }
     </style>
   </head>
   <body>
@@ -70,20 +73,46 @@
     </header>
 
     <main>
-      <section class="beat"><h2>Today</h2></section>
-      <section class="beat"><h2>1905</h2></section>
-      <section class="beat"><h2>The queue</h2></section>
-      <section class="beat"><h2>Closures</h2></section>
-      <section class="beat"><h2>The notice</h2></section>
-      <section class="beat"><h2>Inside</h2></section>
+      <section class="beat">
+        <h2>1898</h2>
+        <p>The Grand Hotel opens on Granby Street, Leicester. A coaching inn was knocked down to make room for it.</p>
+      </section>
+      <section class="beat">
+        <h2>1902</h2>
+        <p>It is sold for &pound;150,000. People call it the finest hotel in the Midlands.</p>
+      </section>
+      <section class="beat">
+        <h2>1909</h2>
+        <p>Winston Churchill stays here.</p>
+      </section>
+      <section class="beat">
+        <h2>1915</h2>
+        <p>A 700-seat cinema opens upstairs, in the ballroom. It closes in 1928.</p>
+      </section>
+      <section class="beat">
+        <h2>2009</h2>
+        <p>The hotel is a Ramada. Under it: an army surplus store and an acupuncture clinic.</p>
+      </section>
+      <section class="beat">
+        <h2>2024</h2>
+        <p>The shopfronts are rebuilt in wood and glass, as close to the 1898 design as possible.</p>
+      </section>
     </main>
 
     <div class="end">
       <p>End of the demo. Scroll back up and watch it again.</p>
+      <p class="sources">
+        The story is true. Sources:
+        <a href="https://storyofleicester.info/leisure-entertainment/grand-hotel-and-general-newsroom">Story of Leicester</a>,
+        <a href="https://en.wikipedia.org/wiki/The_Grand_Hotel_Leicester">Wikipedia</a>,
+        <a href="https://cinematreasures.org/theaters/50167">Cinema Treasures</a>,
+        <a href="https://news.leicester.gov.uk/news-articles/2024/december/grand-revamp-for-historic-hotel-and-shopping-street">Leicester City Council</a>.
+      </p>
       <p>
         <a href="01-arrive.html">1 Arrive</a> &middot;
         <a href="02-scrub.html">2 Scrub</a> &middot;
         <a href="03-try-the-values.html">3 Try the values</a> &middot;
+        <a href="04-held-picture.html">4 Held picture</a> &middot;
         <a href="index.html">All demos</a>
       </p>
     </div>

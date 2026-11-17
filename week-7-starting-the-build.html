@@ -6,7 +6,7 @@
     <title>Week 7: Starting the build | Interaction Design</title>
     <meta
       name="description"
-      content="Week 7: we start building your story. Your skeleton page, the first GSAP, and a Figma recap to start the graphics that fill it."
+      content="Week 7: we start building your story. Your skeleton page, and a Figma recap to start the graphics that fill it."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,7 +39,7 @@
       <main id="main" class="prose">
         <p class="lede">
           We have spent the last five weeks planning your story. Today we start
-          building it, and start learning GSAP. We will piece together the
+          building it. We will piece together the
           structure of your story on the page, using grey boxes for now. Later
           in the session we will recap Figma and start creating the graphics
           that will fill those boxes.
@@ -51,19 +51,16 @@
           <li>
             <a href="#part1"><strong>Creating your skeleton page</strong></a>
           </li>
-          <li>
-            <a href="#part2"><strong>Intro to GSAP</strong></a>
-          </li>
         </ol>
 
         <p class="runsheet-break">Break</p>
 
-        <ol class="runsheet" start="3">
+        <ol class="runsheet" start="2">
           <li>
-            <a href="#part3"><strong>Figma: filling the boxes</strong></a>
+            <a href="#part2"><strong>Figma: filling the boxes</strong></a>
           </li>
           <li>
-            <a href="#part4">Before you go</a>
+            <a href="#part3">Before you go</a>
           </li>
         </ol>
 
@@ -483,462 +480,11 @@ footer {
           </ol>
         </div>
 
-        <!-- ==================================================================== -->
-        <div class="part" id="part2">
-          <p class="part__label">Part two</p>
-          <h2>Intro to GSAP</h2>
-        </div>
-
-        <p>
-          <strong>GSAP</strong> is a free JavaScript library for animating
-          anything on a web page. Its <strong>ScrollTrigger</strong> plugin ties
-          that animation to the reader's scroll.
-        </p>
-
-        <h3 id="gsap-can-do">What GSAP can do</h3>
-
-        <p>
-          In a story, it puts you in charge of timing. A photo fades in as the
-          reader reaches it, a line draws as they scroll, a picture holds while
-          the words move past. Your storyboard says what changes in each beat;
-          GSAP makes it change.
-        </p>
-
-        <figure class="video">
-          <div class="video__frame">
-            <a
-              class="video__facade"
-              data-video="X7IBa7vZjmo"
-              href="https://www.youtube.com/watch?v=X7IBa7vZjmo"
-            >
-              <img
-                src="https://i.ytimg.com/vi/X7IBa7vZjmo/hqdefault.jpg"
-                alt=""
-                width="480"
-                height="360"
-                loading="lazy"
-              />
-              <span class="video__play"
-                ><svg
-                  viewBox="0 0 68 48"
-                  width="68"
-                  height="48"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path
-                    class="video__play-bg"
-                    d="M66.52 7.74a8 8 0 0 0-5.63-5.67C56.4.86 34 .86 34 .86s-22.4 0-26.89 1.21a8 8 0 0 0-5.63 5.67A83.7 83.7 0 0 0 .5 24a83.7 83.7 0 0 0 .98 16.26 8 8 0 0 0 5.63 5.67C11.6 47.14 34 47.14 34 47.14s22.4 0 26.89-1.21a8 8 0 0 0 5.63-5.67A83.7 83.7 0 0 0 67.5 24a83.7 83.7 0 0 0-.98-16.26z"
-                  />
-                  <path d="M27 34V14l18 10z" fill="#fff" /></svg
-              ></span>
-              <span class="visually-hidden"
-                >Play &ldquo;Introducing ScrollTrigger for GSAP&rdquo; on
-                YouTube</span
-              >
-            </a>
-          </div>
-          <figcaption class="video__caption">
-            <strong>Introducing ScrollTrigger</strong>, from GSAP's own channel.
-            Watch the first three minutes now: what it can do, then the basics.
-            Scrub, which you try in Task&nbsp;3, starts at 8:51. 21&nbsp;min
-            &middot; GSAP Learning.
-            <a href="https://www.youtube.com/watch?v=X7IBa7vZjmo"
-              >Watch on YouTube</a
-            >
-          </figcaption>
-        </figure>
-
-        <h3 id="link-gsap">Link GSAP to your page</h3>
-
-        <p>
-          Two script tags load GSAP and ScrollTrigger. They go above your own,
-          so GSAP is ready before your code runs.
-        </p>
-
-        <p class="filename">index.html, above your own script tag</p>
-        <pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"&gt;&lt;/script&gt;
-&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"&gt;&lt;/script&gt;
-&lt;script src="js/main.js"&gt;&lt;/script&gt;</code></pre>
-
-        <p>
-          Reload, open the console and type <code>gsap</code>. If it says
-          <em>gsap is not defined</em>, check the two tags.
-        </p>
-
-        <h3 id="switch-on">Switch on ScrollTrigger</h3>
-
-        <p>One line, at the very top of <code>main.js</code>.</p>
-
-        <p class="filename">js/main.js</p>
-        <pre><code>gsap.registerPlugin(ScrollTrigger);</code></pre>
-
-        <h3 id="make-it-move">Make something move</h3>
-
-        <p class="filename">js/main.js, under that line</p>
-        <pre><code>gsap.from(".beat h2", {
-  opacity: 0,
-  y: 40,                // starts 40px lower than its resting place
-  duration: 0.8,        // seconds
-  ease: "power2.out"    // arrives fast, settles gently
-});</code></pre>
-
-        <p>
-          Reload. <code>gsap.from()</code> starts each heading from these values
-          and ends it wherever your CSS already puts it. If the script never
-          runs, the heading is simply there, so never set
-          <code>opacity: 0</code> in your CSS.
-        </p>
-
-        <p>
-          Now scroll down. The other headings have already played, while no one
-          was looking.
-        </p>
-
-        <h3 id="wait-for-reader">Wait for the reader</h3>
-
-        <p>
-          Give every heading its own trigger, so each one waits until the reader
-          reaches it.
-        </p>
-
-        <p class="filename">js/main.js, replacing the block above</p>
-        <pre><code>gsap.utils.toArray(".beat h2").forEach(function (heading) {
-  gsap.from(heading, {
-    opacity: 0,
-    y: 40,
-    duration: 0.8,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: heading,
-      start: "top 80%",         // the heading's top meets 80% down the screen
-      markers: true             // DELETE BEFORE YOU PUBLISH
-    }
-  });
-});</code></pre>
-
-        <h3 id="two-values">Why start has two values</h3>
-
-        <p>
-          <code>start</code> tells ScrollTrigger when to begin. To do that it
-          needs two pieces of information: which part of the heading to watch,
-          and how far up the screen that part has to travel. So it always takes
-          two values, in that order: first the heading, then the screen.
-        </p>
-
-        <figure class="figure">
-          <svg
-            class="st-diagram"
-            viewBox="0 0 600 450"
-            role="img"
-            aria-labelledby="st-diagram-title"
-          >
-            <title id="st-diagram-title">
-              How start: "top 80%" works. An arrow from the first value, top,
-              points to the top edge of a heading inside a browser window: a
-              place on the heading, marked start. An arrow from the second
-              value, 80%, points to a line across the window 80% of the way
-              down: a place on the screen, marked scroller-start. The heading
-              sits just below the line.
-            </title>
-            <defs>
-              <marker id="st-head-el" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-                <path class="st-fill-el" d="M0 0 L10 5 L0 10 z" />
-              </marker>
-              <marker id="st-head-sc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-                <path class="st-fill-sc" d="M0 0 L10 5 L0 10 z" />
-              </marker>
-            </defs>
-
-            <text class="st-code" x="196" y="61" text-anchor="end">start: "</text>
-            <rect class="st-pill st-pill--el" x="202" y="34" width="66" height="38" rx="6" />
-            <text class="st-code st-fill-el" x="235" y="61" text-anchor="middle">top</text>
-            <rect class="st-pill st-pill--sc" x="280" y="34" width="70" height="38" rx="6" />
-            <text class="st-code st-fill-sc" x="315" y="61" text-anchor="middle">80%</text>
-            <text class="st-code" x="356" y="61">",</text>
-
-            <rect class="st-window" x="110" y="110" width="360" height="320" rx="8" />
-            <line class="st-bar" x1="110" y1="134" x2="470" y2="134" />
-            <circle class="st-dot" cx="126" cy="122" r="4" />
-            <circle class="st-dot" cx="140" cy="122" r="4" />
-            <circle class="st-dot" cx="154" cy="122" r="4" />
-            <text class="st-small" x="300" y="127" text-anchor="middle">the screen (browser window)</text>
-
-            <line class="st-arrow-sc" x1="128" y1="140" x2="128" y2="364" marker-start="url(#st-head-sc)" marker-end="url(#st-head-sc)" />
-            <text class="st-label st-fill-sc" x="138" y="258">80%</text>
-
-            <line class="st-line-sc" x1="110" y1="370" x2="470" y2="370" />
-            <text class="st-small st-fill-sc" x="462" y="362" text-anchor="end">scroller-start</text>
-
-            <rect class="st-heading-box" x="170" y="386" width="220" height="34" />
-            <line class="st-line-el" x1="170" y1="386" x2="390" y2="386" />
-            <text class="st-heading-text" x="184" y="411">Closures</text>
-            <text class="st-small st-fill-el" x="398" y="391">start</text>
-
-            <path class="st-arrow-el" d="M235 74 V90 H72 V386 H160" marker-end="url(#st-head-el)" />
-            <path class="st-arrow-sc" d="M315 74 V90 H530 V370 H480" marker-end="url(#st-head-sc)" />
-
-            <text class="st-label st-fill-el" transform="translate(56 238) rotate(-90)" text-anchor="middle">a place on the heading</text>
-            <text class="st-label st-fill-sc" transform="translate(546 230) rotate(90)" text-anchor="middle">a place on the screen</text>
-          </svg>
-          <figcaption class="video__caption">
-            <strong>Just before it starts.</strong> As you scroll, the heading
-            rises. When its top edge reaches the line 80% of the way down the
-            screen, the animation plays.
-          </figcaption>
-        </figure>
-
-        <p>
-          <strong>The first value, <code>top</code>, is a place on the
-          heading:</strong> its top edge. This point belongs to the heading, so
-          it moves.
-        </p>
-
-        <p>
-          <strong>The second value, <code>80%</code>, is a place on the
-          screen:</strong> a line 80% of the way down from the top of the
-          browser window. It belongs to the screen, not the page, so it never
-          moves: the page scrolls past it. GSAP's <code>scroller-start</code>
-          line shows where it is.
-        </p>
-
-        <p>
-          The animation starts at the moment the first reaches the second: when
-          the top of the heading has scrolled up to 80% of the way down the
-          screen. With <code>markers: true</code> you can watch it happen. The
-          <code>start</code> marker rides up with the heading until it touches
-          the <code>scroller-start</code> line, which stays still. GSAP draws
-          both in green; in the diagram I have made the heading's marker blue
-          so you can tell them apart.
-        </p>
-
-        <p>
-          <code>end</code> works in exactly the same way, with red markers:
-          <code>end: "top 40%"</code> means "finish when the top of the heading
-          reaches 40% of the way down the screen". You will use it further down
-          this page.
-        </p>
-
-        <div class="table-scroll">
-          <table>
-            <caption>
-              Values you can use. Change one, reload, and watch the markers
-              move.
-            </caption>
-            <thead>
-              <tr>
-                <th scope="col">Value</th>
-                <th scope="col">First value: on the heading</th>
-                <th scope="col">Second value: on the screen</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>top</code></td>
-                <td>its top edge</td>
-                <td>the top of the screen</td>
-              </tr>
-              <tr>
-                <td><code>center</code></td>
-                <td>its middle</td>
-                <td>halfway down the screen</td>
-              </tr>
-              <tr>
-                <td><code>bottom</code></td>
-                <td>its bottom edge</td>
-                <td>the bottom of the screen</td>
-              </tr>
-              <tr>
-                <td><code>80%</code></td>
-                <td>80% of the way down the heading</td>
-                <td>80% of the way down the screen</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p>
-          So <code>"center center"</code> starts when the middle of the heading
-          reaches the middle of the screen, and <code>"top bottom"</code>
-          starts as soon as the top of the heading appears at the bottom of the
-          screen. <code>"top bottom"</code> is what GSAP uses if you leave
-          <code>start</code> out. GSAP spells <code>center</code> the American
-          way: <code>centre</code> will not work.
-        </p>
-
-        <p>Now scroll your page and watch the markers.</p>
-
-        <p>
-          <strong>See it working:</strong> I have made
-          <a href="kits/scrolltrigger-demos/index.html">three ScrollTrigger demos</a>:
-          arrive, scrub, and one where you change both values and watch the
-          markers move.
-          <a href="kits/scrolltrigger-demos.zip">Download them</a> and read
-          the code in VS Code.
-        </p>
-
-        <h3 id="scrub">Let the reader drive it</h3>
-
-        <p>
-          That plays once. Add two lines and the scroll drives it instead:
-          stop, and it stops; scroll back, and it goes back.
-        </p>
-
-        <p class="filename">js/main.js, inside the scrollTrigger</p>
-        <pre><code>start: "top 80%",
-end: "top 40%",             // the animation finishes here
-scrub: true,                // the scroll position drives it</code></pre>
-
-        <figure class="duo duo--shots">
-          <figure>
-            <img
-              src="images/week-7/markers-arrive.png"
-              width="1280"
-              height="960"
-              alt="A skeleton page with the heading Closures half faded in. At the right-hand edge, a green start marker sits just above a green scroller-start line, a red end marker below it, and a red scroller-end line at the top of the screen."
-              loading="lazy"
-            />
-            <pre><code>start: "top 80%",
-// no end, so GSAP uses "bottom top"</code></pre>
-            <figcaption>
-              <strong>Arrive.</strong> <code>start</code> is on the heading's
-              top, <code>scroller-start</code> 80% down the screen. With no
-              <code>end</code>, the <code>end</code> marker is on the heading's
-              bottom and <code>scroller-end</code> at the top of the screen.
-              Once <code>start</code> passes <code>scroller-start</code>, the
-              heading plays to the end on its own.
-            </figcaption>
-          </figure>
-          <figure>
-            <img
-              src="images/week-7/markers-scrub.png"
-              width="1280"
-              height="960"
-              alt="The same page with scrub on. The Closures heading is half faded. Its green start and red end markers sit together, between the green scroller-start line low on the screen and the red scroller-end line above the middle."
-              loading="lazy"
-            />
-            <pre><code>start: "top 80%",
-end: "top 40%",
-scrub: true,</code></pre>
-            <figcaption>
-              <strong>Scrub.</strong> Both say <code>top</code>, so
-              <code>start</code> and <code>end</code> sit together on the
-              heading's top edge. <code>scroller-end</code> has moved up to
-              40%. The heading only moves while its top travels from 80% up to
-              40% of the screen.
-            </figcaption>
-          </figure>
-        </figure>
-
-        <div class="activity" id="task-2">
-          <p class="activity__kicker">
-            Task 2 &middot; 10 minutes &middot; on your own project
-          </p>
-          <h3>Arrive, or follow the hand?</h3>
-          <ol class="steps">
-            <li>Add <code>end</code> and <code>scrub</code>. Scroll slowly, then back.</li>
-            <li>
-              For each frame on your storyboard, decide which it needs. The bank story
-              has no scrub at all.
-            </li>
-            <li>
-              Set <code>markers: false</code>. Commit as
-              <strong>first motion</strong> and sync.
-            </li>
-          </ol>
-        </div>
-
-        <h3 id="learn-gsap">Learn GSAP in your own time</h3>
-
-        <p>
-          Class gets you started. The rest is practice: work through these
-          between sessions.
-        </p>
-
-        <figure class="figure figure--shot">
-          <a href="https://gsap.com/resources/">
-            <img
-              src="images/week-7/gsap-learning.jpg"
-              width="2702"
-              height="1688"
-              alt="GSAP's Learning page, headed Unlock the power of GSAP. A sidebar lists Quick Start (Installation, YouTube, Demos, Cheatsheet), Getting Started (Your first animation, Easing, Staggers, Sequencing animations, Control and Callbacks) and Plugins (including ScrollTrigger tips and mistakes)."
-              loading="lazy"
-            />
-          </a>
-          <figcaption class="video__caption">
-            <strong>Start here:</strong>
-            <a href="https://gsap.com/resources/">gsap.com/resources</a>.
-            Work down the Getting Started list in the sidebar, then the
-            ScrollTrigger tips. Screenshot: GSAP.
-          </figcaption>
-        </figure>
-
-        <ul class="cards">
-          <li>
-            <a class="card" href="kits/scrolltrigger-demos/index.html">
-              <span class="card__title">ScrollTrigger demos</span>
-              <span class="card__meta">Kit &middot; three pages</span>
-              <p>Arrive, scrub, and try the values with the markers on.</p>
-            </a>
-          </li>
-          <li>
-            <a class="card" href="https://gsap.com/resources/">
-              <span class="card__title">GSAP learning</span>
-              <span class="card__meta">GSAP &middot; start here</span>
-              <p>Guides, videos and courses, all in one place.</p>
-            </a>
-          </li>
-          <li>
-            <a class="card" href="https://gsap.com/resources/get-started">
-              <span class="card__title">Getting started</span>
-              <span class="card__meta">GSAP guide</span>
-              <p>Your first animation, then easing, staggers and timelines.</p>
-            </a>
-          </li>
-          <li>
-            <a
-              class="card"
-              href="https://gsap.com/docs/v3/Plugins/ScrollTrigger/"
-            >
-              <span class="card__title">ScrollTrigger</span>
-              <span class="card__meta">GSAP docs</span>
-              <p>
-                <code>start</code>, <code>end</code>, <code>scrub</code> and
-                <code>markers</code>.
-              </p>
-            </a>
-          </li>
-          <li>
-            <a class="card" href="https://gsap.com/resources/st-mistakes">
-              <span class="card__title">ScrollTrigger tips and mistakes</span>
-              <span class="card__meta">GSAP guide</span>
-              <p>When something does not fire where you expect.</p>
-            </a>
-          </li>
-          <li>
-            <a class="card" href="https://www.youtube.com/@GreenSockLearning">
-              <span class="card__title">GreenSock Learning</span>
-              <span class="card__meta">YouTube</span>
-              <p>GSAP's own videos, including today's ScrollTrigger one.</p>
-            </a>
-          </li>
-          <li>
-            <a
-              class="card"
-              href="https://www.creativecodingclub.com/courses/FreeGSAP3Express"
-            >
-              <span class="card__title">GSAP Express</span>
-              <span class="card__meta">Free course &middot; Creative Coding Club</span>
-              <p>34 short video lessons on the basics. Free, but you sign up.</p>
-            </a>
-          </li>
-        </ul>
-
         <p class="runsheet-break">Break</p>
 
         <!-- ==================================================================== -->
-        <div class="part" id="part3">
-          <p class="part__label">Part three</p>
+        <div class="part" id="part2">
+          <p class="part__label">Part two</p>
           <h2>Figma: filling the boxes</h2>
         </div>
 
@@ -1042,9 +588,9 @@ scrub: true,</code></pre>
           </figcaption>
         </figure>
 
-        <div class="activity" id="task-3">
+        <div class="activity" id="task-2">
           <p class="activity__kicker">
-            Task 3 &middot; 25 minutes &middot; on your own
+            Task 2 &middot; 25 minutes &middot; on your own
           </p>
           <h3>Set up your Figma file</h3>
           <ol class="steps">
@@ -1105,9 +651,9 @@ scrub: true,</code></pre>
           </ol>
         </div>
 
-        <div class="activity" id="task-4">
+        <div class="activity" id="task-3">
           <p class="activity__kicker">
-            Task 4 &middot; 5 minutes &middot; on your own
+            Task 3 &middot; 5 minutes &middot; on your own
           </p>
           <h3>Save a version and share it with me</h3>
           <ol class="steps">
@@ -1125,9 +671,9 @@ scrub: true,</code></pre>
           </ol>
         </div>
 
-        <div class="activity" id="task-5">
+        <div class="activity" id="task-4">
           <p class="activity__kicker">
-            Task 5 &middot; the rest of the session &middot; on your own
+            Task 4 &middot; the rest of the session &middot; on your own
           </p>
           <h3>Start the graphics</h3>
           <p>
@@ -1143,16 +689,15 @@ scrub: true,</code></pre>
         </div>
 
         <!-- ==================================================================== -->
-        <div class="part" id="part4">
-          <p class="part__label">Part four</p>
+        <div class="part" id="part3">
+          <p class="part__label">Part three</p>
           <h2>Before you go</h2>
         </div>
 
         <div class="box box--task">
           <ul class="checklist">
             <li>
-              <strong>skeleton page</strong> and <strong>first motion</strong>
-              committed and synced.
+              <strong>skeleton page</strong> committed and synced.
             </li>
             <li>
               Figma file in your project, shared with me, one named version.
@@ -1180,14 +725,6 @@ scrub: true,</code></pre>
         <details>
           <summary>My skeleton page looks terrible</summary>
           <p>It should. Judge it on order and pacing only.</p>
-        </details>
-
-        <details>
-          <summary>Nothing moves</summary>
-          <p>
-            Red in the console? GSAP script tags above <code>main.js</code>?
-            Any <code>.beat h2</code> on the page?
-          </p>
         </details>
 
         <details>
