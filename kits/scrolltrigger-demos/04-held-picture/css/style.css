@@ -1,0 +1,224 @@
+/* =====================================================================
+   Demo 4: Held picture. The CSS for this page.
+
+   index.html links to this file, just as your page links to your
+   own css/style.css. Sections marked "as in Week 7" or "as in Week 8"
+   are already in your project. The intro, the cards and the end only
+   lay out this demo page: you do not need them.
+   ===================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  color: #12141a;
+  background: #fbfbfc;
+}
+.intro {
+  min-height: 100svh;
+  display: grid;
+  place-content: center;
+  padding: 2rem 1.25rem 8rem;
+  text-align: center;
+}
+.intro h1 {
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  margin: 0 0 1rem;
+}
+.intro p {
+  max-width: 34rem;
+  margin: 0 auto 0.8rem;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: #454a58;
+}
+.intro .down {
+  font-weight: 700;
+  color: #12141a;
+}
+
+/* THE SKELETON PAGE, as in Week 7 */
+.chapter {
+  border-bottom: 3px solid #12141a;
+}
+.beat {
+  position: relative; /* in front of the held picture */
+  min-height: 100svh;
+  border-bottom: 1px dashed #aeb3c0;
+}
+
+/* THE HELD PICTURE: stays in place while the chapter's beats scroll past */
+.held {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden; /* fine on the held div itself, never on a parent */
+  background: #12141a;
+}
+
+/* EVERYTHING IN THE HELD PICTURE SITS IN THE SAME PLACE */
+.held {
+  display: grid;
+  grid-template: 100% / 100%; /* one cell, the size of the screen */
+  place-items: center;
+}
+.held > * {
+  grid-area: 1 / 1; /* row 1, column 1: all on top of each other */
+  position: relative; /* so later in the HTML is always on top */
+}
+
+/* The photos fill the screen. Both photos and the markers layer are the
+   same size and centred in the same place, so each marker stays on the
+   thing it points at, whatever shape the screen is. */
+.held img,
+.markers {
+  width: max(100%, calc(100svh * 2400 / 1328));
+  max-width: none;
+  height: auto;
+  aspect-ratio: 2400 / 1328;
+}
+.held img {
+  display: block;
+}
+
+/* Beat 03: three markers, placed on the photo in percentages */
+.marker {
+  position: absolute;
+  margin: -1.1rem 0 0 -1.1rem; /* puts the dot's centre on the spot */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transform-origin: 1.1rem 50%; /* grows out of the dot */
+  font-weight: 700;
+  color: #fff;
+}
+/* Where each marker sits on the photo, across and down */
+#marker-1898 {
+  left: 46%;
+  top: 10%;
+}
+#marker-1909 {
+  left: 40%;
+  top: 36%;
+}
+#marker-1915 {
+  left: 42%;
+  top: 63%;
+}
+.marker::before {
+  content: "";
+  flex: none;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: #1b45c4;
+  border: 4px solid #fff;
+}
+.marker span {
+  padding: 0.3rem 0.6rem;
+  background: #12141a;
+  border-radius: 4px;
+}
+
+/* Beat 04: the label */
+#label {
+  align-self: start;
+  justify-self: start;
+  margin: 1.25rem;
+  padding: 0.8rem 1.1rem;
+  background: #12141a;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 6px;
+}
+
+/* Beat 05: the caption */
+#caption-c {
+  align-self: start; /* top left, clear of the cards */
+  justify-self: start;
+  margin: 1.25rem;
+  padding: 0.8rem 1.1rem;
+  background: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 6px;
+}
+
+/* Each beat's words, in a card on the right */
+.beat {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2rem 1.25rem;
+}
+.card {
+  width: min(30rem, 100%);
+  padding: 1.1rem 1.25rem;
+  background: #fff;
+  border: 1px solid #d8dbe3;
+  border-radius: 8px;
+  box-shadow: 0 6px 24px rgba(18, 20, 26, 0.12);
+}
+.card h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.5rem;
+}
+.card p {
+  margin: 0 0 0.8rem;
+  line-height: 1.5;
+  color: #454a58;
+}
+.card .story {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #12141a;
+} /* the beat's one line of story */
+.card pre {
+  margin: 0;
+  padding: 0.8rem 0.9rem;
+  overflow-x: auto;
+  border-radius: 6px;
+  background: #12141a;
+  color: #f4f5f8;
+  font:
+    13.5px/1.5 ui-monospace,
+    Menlo,
+    Consolas,
+    monospace;
+}
+.card pre b {
+  color: #9db3ff;
+  font-weight: 400;
+}
+@media (max-width: 40rem) {
+  .beat {
+    align-items: flex-end;
+  }
+  .marker span {
+    max-width: 11rem;
+  } /* long labels wrap on a phone */
+}
+
+.end {
+  padding: 4rem 1.25rem 12rem;
+  text-align: center;
+  color: #454a58;
+  line-height: 1.6;
+}
+.end p {
+  max-width: 40rem;
+  margin: 0 auto 1rem;
+}
+.end a {
+  color: #1b45c4;
+}
+.end .credits {
+  font-size: 0.95rem;
+}

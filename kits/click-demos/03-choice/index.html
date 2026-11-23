@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Demo 3: Choice | Click demos</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="intro">
+      <h1>3 Choice</h1>
+      <p>
+        Two buttons, two outcomes. Each button shows its own outcome and hides
+        the other, and both bring in a marker on the picture.
+      </p>
+      <p>
+        A choice like this is the clearest kind of interaction: a different
+        reader can choose differently.
+      </p>
+      <p class="down">Scroll down to the picture.</p>
+    </header>
+
+    <main>
+      <section class="chapter" id="chapter-1-granby-street">
+        <div class="held">
+          <img
+            id="pic-2009"
+            src="images/granby-street-2009.jpg"
+            alt="Granby Street, Leicester, in 2009. On the left, shops including Benny's Chicken and City Surplus below a tall red-brick hotel with a canopy marked Hotel. Cars and a white van in the road."
+            width="2400"
+            height="1328"
+          />
+          <div class="layer">
+            <p class="marker" id="marker-1915">
+              <span>1915. A cinema opens upstairs</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="beat" id="beat-01-choice">
+          <div class="card">
+            <h2>Beat 01: a choice</h2>
+            <p class="story">
+              In 1915, something opened upstairs at the Grand Hotel. Guess what.
+            </p>
+            <div class="buttons">
+              <button type="button" id="choose-pool">A swimming pool</button>
+              <button type="button" id="choose-cinema">A cinema</button>
+            </div>
+            <div aria-live="polite">
+              <p class="outcome" id="outcome-pool">
+                No pool. In 1915 a cinema opened upstairs.
+              </p>
+              <p class="outcome" id="outcome-cinema">
+                Yes. In 1915 a cinema opened upstairs.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="beat" id="beat-02-the-code">
+          <div class="card">
+            <h2>The code</h2>
+            <p>In <code>index.html</code>, inside the beat:</p>
+            <pre
+              tabindex="0"
+            ><code>&lt;button type="button" id="choose-pool"&gt;A swimming pool&lt;/button&gt;
+&lt;button type="button" id="choose-cinema"&gt;A cinema&lt;/button&gt;
+
+&lt;div aria-live="polite"&gt;
+  &lt;p id="outcome-pool"&gt;No pool. …&lt;/p&gt;
+  &lt;p id="outcome-cinema"&gt;Yes. …&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+            <p>In <code>js/main.js</code>:</p>
+            <pre
+              tabindex="0"
+            ><code>const outcomePool = document.querySelector("#outcome-pool");
+const outcomeCinema = document.querySelector("#outcome-cinema");
+<b>outcomePool.hidden = true;</b>
+<b>outcomeCinema.hidden = true;</b>
+
+const marker = gsap.from("#marker-1915", {
+  opacity: 0, scale: 0, duration: 0.5,
+  ease: "back.out(2)", paused: true
+});
+
+document.querySelector("#choose-pool")
+  .addEventListener("click", function () {
+    <b>outcomePool.hidden = false;</b>   <i>// show this one</i>
+    <b>outcomeCinema.hidden = true;</b>  <i>// hide the other</i>
+    marker.play();
+  });
+
+document.querySelector("#choose-cinema")
+  .addEventListener("click", function () {
+    <b>outcomeCinema.hidden = false;</b>
+    <b>outcomePool.hidden = true;</b>
+    marker.play();
+  });</code></pre>
+            <p>
+              <code>aria-live</code> reads the outcome out to screen-reader
+              users when it appears.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="end">
+      <p>End of the demo.</p>
+      <p class="credits">
+        Photo:
+        <a
+          href="https://commons.wikimedia.org/wiki/File:Granby_Street_Leicester_c1903_and_2009.jpg"
+          >Granby Street, Leicester</a
+        >, 16 August 2009, by NotFromUtrecht (<a
+          href="https://creativecommons.org/licenses/by-sa/3.0/"
+          >CC BY-SA 3.0</a
+        >), via Wikimedia Commons. Cropped and resized.
+      </p>
+      <p class="credits">
+        The story is true. Sources:
+        <a
+          href="https://storyofleicester.info/leisure-entertainment/grand-hotel-and-general-newsroom"
+          >Story of Leicester</a
+        >,
+        <a href="https://en.wikipedia.org/wiki/The_Grand_Hotel_Leicester"
+          >Wikipedia</a
+        >,
+        <a href="https://cinematreasures.org/theaters/50167">Cinema Treasures</a
+        >.
+      </p>
+      <p>
+        <a href="../01-hotspot/index.html">1 Hotspot</a> &middot;
+        <a href="../02-toggle/index.html">2 Toggle</a> &middot;
+        <a href="../03-choice/index.html">3 Choice</a> &middot;
+        <a href="../04-pop-up/index.html">4 Pop-up</a> &middot;
+        <a href="../05-slider/index.html">5 Slider</a> &middot;
+        <a href="../06-drag-the-bar/index.html">6 Drag the bar</a> &middot;
+        <a href="../index.html">All demos</a>
+      </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

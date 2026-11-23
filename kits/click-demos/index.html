@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Click demos | Interaction Design</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Click demos</h1>
+      <p>
+        Six demos: one for each kind of interaction in the brief, plus a pop-up
+        and a bar you drag. Every one is the same recipe: a button (or something
+        to grab), a listener, and a change.
+      </p>
+      <ol>
+        <li>
+          <a href="01-hotspot/index.html">Hotspot</a>: click a year on the hotel
+          and its note appears. Click again and it goes. No GSAP.
+        </li>
+        <li>
+          <a href="02-toggle/index.html">Toggle</a>: a click plays an animation,
+          another plays it back. Last week's <code>gsap.from()</code> with
+          <code>paused: true</code>.
+        </li>
+        <li>
+          <a href="03-choice/index.html">Choice</a>: two buttons, two outcomes.
+          Each shows its own outcome and hides the other.
+        </li>
+        <li>
+          <a href="04-pop-up/index.html">Pop-up</a>: a
+          <code>&lt;dialog&gt;</code> that opens over the page, and a
+          <code>&lt;details&gt;</code>
+          fold-out that needs no script. No GSAP.
+        </li>
+        <li>
+          <a href="05-slider/index.html">Slider</a>: slide to compare 1903 and
+          2009. An <code>&lt;input type="range"&gt;</code> that listens for
+          <code>"input"</code>. No GSAP.
+        </li>
+        <li>
+          <a href="06-drag-the-bar/index.html">Drag the bar</a>: grab the bar on
+          the picture and drag it. Three listeners: press, move, let go. The
+          slider stays for the keyboard. No GSAP.
+        </li>
+      </ol>
+      <p>
+        Each demo is a folder laid out like your own project:
+        <code>index.html</code>, <code>css/style.css</code>,
+        <code>js/main.js</code> and, where it needs them, <code>images</code>.
+        Open its <code>index.html</code> in a browser and read the three files
+        in VS Code.
+      </p>
+      <p>
+        Demos 2 and 3 need an internet connection: GSAP loads from jsDelivr.
+      </p>
+    </main>
+  </body>
+</html>

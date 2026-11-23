@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Demo 5: Slider | Click demos</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="intro">
+      <h1>5 Slider</h1>
+      <p>
+        Drag to compare 1903 and 2009, one photo cut away over the other. The
+        slider is an <code>&lt;input type="range"&gt;</code>, which the browser
+        draws for you. It works with a mouse, a finger and the arrow keys.
+      </p>
+      <p>
+        It listens for <code>"input"</code> instead of <code>"click"</code>: the
+        slider sends it every time it moves.
+      </p>
+      <p class="down">Scroll down to the picture.</p>
+    </header>
+
+    <main>
+      <section class="chapter" id="chapter-1-granby-street">
+        <div class="held">
+          <img
+            id="pic-2009"
+            src="images/granby-street-2009.jpg"
+            alt="Granby Street, Leicester, in 2009. On the left, shops including Benny's Chicken and City Surplus below a tall red-brick hotel with a canopy marked Hotel. Cars and a white van in the road."
+            width="2400"
+            height="1328"
+          />
+          <img
+            id="pic-1900s"
+            src="images/granby-street-early-1900s.jpg"
+            alt="The same view on a postcard from about 1903. The same hotel, a hairdresser's on the left, people in long skirts and hats, and horses and carts in the road."
+            width="2400"
+            height="1328"
+          />
+          <div id="divider"></div>
+        </div>
+
+        <div class="beat" id="beat-01-slider">
+          <div class="card">
+            <h2>Beat 01: a slider</h2>
+            <p class="story">
+              Granby Street about 1903, and the same corner in 2009. Above the
+              signs, almost nothing has changed.
+            </p>
+            <label for="slider">Slide right for more of 1903</label>
+            <input type="range" id="slider" min="0" max="100" value="50" />
+          </div>
+        </div>
+
+        <div class="beat" id="beat-02-the-code">
+          <div class="card">
+            <h2>The code</h2>
+            <p>In <code>index.html</code>, inside the beat:</p>
+            <pre
+              tabindex="0"
+            ><code>&lt;label for="slider"&gt;Slide right for more of 1903&lt;/label&gt;
+&lt;input type="range" id="slider"
+  min="0" max="100" value="50"&gt;</code></pre>
+            <p>In <code>js/main.js</code>:</p>
+            <pre
+              tabindex="0"
+            ><code>const slider = document.querySelector("#slider");
+const then = document.querySelector("#pic-1900s");
+const divider = document.querySelector("#divider");
+
+slider.addEventListener(<b>"input"</b>, function () {
+  <i>// slider.value is a number from 0 to 100</i>
+  then.style.clipPath =
+    "inset(0 " + (100 - slider.value) + "% 0 0)";
+  divider.style.left = slider.value + "%";
+});</code></pre>
+          </div>
+        </div>
+
+        <div class="beat" id="beat-03-move-along">
+          <div class="card">
+            <h2>Move something along instead</h2>
+            <p>
+              To move a marker along a line, rather than cut a picture away, set
+              its <code>left</code> from the slider, as the divider does here.
+              Give the marker <code>position: absolute</code> inside the line.
+            </p>
+            <pre
+              tabindex="0"
+            ><code>marker.style.left = slider.value + "%";</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="end">
+      <p>End of the demo.</p>
+      <p class="credits">
+        Photos:
+        <a
+          href="https://commons.wikimedia.org/wiki/File:Granby_Street_Leicester_c1903_and_2009.jpg"
+          >Granby Street, Leicester</a
+        >, on a postcard from about 1903 (photographer unknown, public domain)
+        and on 16 August 2009 by NotFromUtrecht (<a
+          href="https://creativecommons.org/licenses/by-sa/3.0/"
+          >CC BY-SA 3.0</a
+        >), via Wikimedia Commons. Cropped and resized.
+      </p>
+      <p class="credits">
+        The story is true. Sources:
+        <a
+          href="https://storyofleicester.info/leisure-entertainment/grand-hotel-and-general-newsroom"
+          >Story of Leicester</a
+        >,
+        <a href="https://en.wikipedia.org/wiki/The_Grand_Hotel_Leicester"
+          >Wikipedia</a
+        >.
+      </p>
+      <p>
+        <a href="../01-hotspot/index.html">1 Hotspot</a> &middot;
+        <a href="../02-toggle/index.html">2 Toggle</a> &middot;
+        <a href="../03-choice/index.html">3 Choice</a> &middot;
+        <a href="../04-pop-up/index.html">4 Pop-up</a> &middot;
+        <a href="../05-slider/index.html">5 Slider</a> &middot;
+        <a href="../06-drag-the-bar/index.html">6 Drag the bar</a> &middot;
+        <a href="../index.html">All demos</a>
+      </p>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Demo 4: Pop-up | Click demos</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="intro">
+      <h1>4 Pop-up</h1>
+      <p>
+        A button opens a box over the page, with more than the beat has room
+        for. It is an HTML <code>&lt;dialog&gt;</code>, and the browser does
+        most of the work: Esc closes it, and the page behind cannot be clicked
+        while it is open.
+      </p>
+      <p>
+        The last beat is a fold-out: a <code>&lt;details&gt;</code>. That one
+        needs no script at all.
+      </p>
+      <p class="down">Scroll down to the picture.</p>
+    </header>
+
+    <main>
+      <section class="chapter" id="chapter-1-granby-street">
+        <div class="held">
+          <img
+            id="pic-2009"
+            src="images/granby-street-2009.jpg"
+            alt="Granby Street, Leicester, in 2009. On the left, shops including Benny's Chicken and City Surplus below a tall red-brick hotel with a canopy marked Hotel. Cars and a white van in the road."
+            width="2400"
+            height="1328"
+          />
+        </div>
+
+        <div class="beat" id="beat-01-pop-up">
+          <div class="card">
+            <h2>Beat 01: a pop-up</h2>
+            <p class="story">
+              Granby Street, 2009. A postcard shows the same corner about 1903.
+            </p>
+            <div class="buttons">
+              <button type="button" id="open-postcard">
+                Open the postcard
+              </button>
+            </div>
+            <dialog id="postcard">
+              <img
+                src="images/granby-street-early-1900s.jpg"
+                alt="The postcard: the hotel, a hairdresser's on the left, people in long skirts and hats, and horses and carts in the road."
+                width="2400"
+                height="1328"
+              />
+              <p>
+                Granby Street, Leicester, on a postcard from about 1903. The
+                Grand Hotel is the tall building on the left.
+              </p>
+              <button type="button" id="close-postcard">Close</button>
+            </dialog>
+            <p>
+              The <code>&lt;dialog&gt;</code> stays shut until the script opens
+              it. With no script it never opens, so nothing your story needs
+              should be only in a pop-up.
+            </p>
+          </div>
+        </div>
+
+        <div class="beat" id="beat-02-the-code">
+          <div class="card">
+            <h2>The code</h2>
+            <p>In <code>index.html</code>, inside the beat:</p>
+            <pre
+              tabindex="0"
+            ><code>&lt;button type="button" id="open-postcard"&gt;Open the postcard&lt;/button&gt;
+
+&lt;dialog id="postcard"&gt;
+  &lt;img src="images/…" alt="…"&gt;
+  &lt;p&gt;Granby Street, about 1903.&lt;/p&gt;
+  &lt;button type="button" id="close-postcard"&gt;Close&lt;/button&gt;
+&lt;/dialog&gt;</code></pre>
+            <p>In <code>js/main.js</code>:</p>
+            <pre
+              tabindex="0"
+            ><code>const postcard = document.querySelector("#postcard");
+
+document.querySelector("#open-postcard")
+  .addEventListener("click", function () {
+    <b>postcard.showModal();</b>
+  });
+
+document.querySelector("#close-postcard")
+  .addEventListener("click", function () {
+    <b>postcard.close();</b>
+  });</code></pre>
+          </div>
+        </div>
+
+        <div class="beat" id="beat-03-fold-out">
+          <div class="card">
+            <h2>Beat 03: a fold-out, no script</h2>
+            <p class="story">By 2009 the Grand was a Ramada.</p>
+            <details>
+              <summary>Ramada</summary>
+              <p>A brand of hotels. By 2009 the Grand was one of them.</p>
+            </details>
+            <p>
+              Good for a word that needs explaining, or a glossary. It works
+              with no script, so with JavaScript off the reader can still open
+              it.
+            </p>
+            <pre tabindex="0"><code>&lt;details&gt;
+  &lt;summary&gt;Ramada&lt;/summary&gt;
+  &lt;p&gt;A brand of hotels. …&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="end">
+      <p>End of the demo.</p>
+      <p class="credits">
+        Photos:
+        <a
+          href="https://commons.wikimedia.org/wiki/File:Granby_Street_Leicester_c1903_and_2009.jpg"
+          >Granby Street, Leicester</a
+        >, on a postcard from about 1903 (photographer unknown, public domain)
+        and on 16 August 2009 by NotFromUtrecht (<a
+          href="https://creativecommons.org/licenses/by-sa/3.0/"
+          >CC BY-SA 3.0</a
+        >), via Wikimedia Commons. Cropped and resized.
+      </p>
+      <p class="credits">
+        The story is true. Sources:
+        <a
+          href="https://storyofleicester.info/leisure-entertainment/grand-hotel-and-general-newsroom"
+          >Story of Leicester</a
+        >,
+        <a href="https://en.wikipedia.org/wiki/The_Grand_Hotel_Leicester"
+          >Wikipedia</a
+        >.
+      </p>
+      <p>
+        <a href="../01-hotspot/index.html">1 Hotspot</a> &middot;
+        <a href="../02-toggle/index.html">2 Toggle</a> &middot;
+        <a href="../03-choice/index.html">3 Choice</a> &middot;
+        <a href="../04-pop-up/index.html">4 Pop-up</a> &middot;
+        <a href="../05-slider/index.html">5 Slider</a> &middot;
+        <a href="../06-drag-the-bar/index.html">6 Drag the bar</a> &middot;
+        <a href="../index.html">All demos</a>
+      </p>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>

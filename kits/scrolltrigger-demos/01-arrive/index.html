@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Demo 1: Arrive | ScrollTrigger demos</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="intro">
+      <h1>1 Arrive</h1>
+      <p>
+        Each heading has a dashed outline so you can see its top edge. Until it
+        starts, the heading is invisible: its start marker shows where it is.
+        The green <strong>start</strong> marker sits on that top edge and
+        scrolls up with the heading. The green
+        <strong>scroller-start</strong> line sits 80% of the way down the screen
+        and never moves.
+      </p>
+      <p>When the two meet, the heading plays to the end on its own.</p>
+      <p class="down">Scroll down slowly.</p>
+    </header>
+
+    <main>
+      <section class="beat">
+        <h2>1898</h2>
+        <p>
+          The Grand Hotel opens on Granby Street, Leicester. A coaching inn was
+          knocked down to make room for it.
+        </p>
+      </section>
+      <section class="beat">
+        <h2>1902</h2>
+        <p>
+          It is sold for &pound;150,000. People call it the finest hotel in the
+          Midlands.
+        </p>
+      </section>
+      <section class="beat">
+        <h2>1909</h2>
+        <p>Winston Churchill stays here.</p>
+      </section>
+      <section class="beat">
+        <h2>1915</h2>
+        <p>
+          A 700-seat cinema opens upstairs, in the ballroom. It closes in 1928.
+        </p>
+      </section>
+      <section class="beat">
+        <h2>2009</h2>
+        <p>
+          The hotel is a Ramada. Under it: an army surplus store and an
+          acupuncture clinic.
+        </p>
+      </section>
+      <section class="beat">
+        <h2>2024</h2>
+        <p>
+          The shopfronts are rebuilt in wood and glass, as close to the 1898
+          design as possible.
+        </p>
+      </section>
+    </main>
+
+    <div class="end">
+      <p>End of the demo. Scroll back up and watch it again.</p>
+      <p class="sources">
+        The story is true. Sources:
+        <a
+          href="https://storyofleicester.info/leisure-entertainment/grand-hotel-and-general-newsroom"
+          >Story of Leicester</a
+        >,
+        <a href="https://en.wikipedia.org/wiki/The_Grand_Hotel_Leicester"
+          >Wikipedia</a
+        >,
+        <a href="https://cinematreasures.org/theaters/50167">Cinema Treasures</a
+        >,
+        <a
+          href="https://news.leicester.gov.uk/news-articles/2024/december/grand-revamp-for-historic-hotel-and-shopping-street"
+          >Leicester City Council</a
+        >.
+      </p>
+      <p>
+        <a href="../01-arrive/index.html">1 Arrive</a> &middot;
+        <a href="../02-scrub/index.html">2 Scrub</a> &middot;
+        <a href="../03-try-the-values/index.html">3 Try the values</a> &middot;
+        <a href="../04-held-picture/index.html">4 Held picture</a> &middot;
+        <a href="../index.html">All demos</a>
+      </p>
+    </div>
+    <pre
+      class="panel"
+      tabindex="0"
+      aria-label="The code running on this page"
+    >scrollTrigger: {
+  trigger: heading,
+  start: <b>"top 80%"</b>,  // heading's top meets 80% down the screen
+  markers: true
+}</pre>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

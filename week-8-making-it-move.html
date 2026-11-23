@@ -70,27 +70,29 @@
             <a href="kits/scrolltrigger-demos.zip"
               ><strong>scrolltrigger-demos.zip</strong></a
             >
-            holds four working pages that cover everything we do today. Unzip
-            it, open the folder in VS Code, and copy what you need into your
-            own <code>main.js</code>.
+            holds four working demos that cover everything we do today. Each
+            one is a folder laid out like your own project:
+            <code>index.html</code>, <code>css/style.css</code> and
+            <code>js/main.js</code>. Unzip it, open the folder in VS Code, and
+            copy what you need into your own <code>main.js</code>.
           </p>
           <ol>
             <li>
-              <a href="kits/scrolltrigger-demos/01-arrive.html">Arrive</a>:
+              <a href="kits/scrolltrigger-demos/01-arrive/index.html">Arrive</a>:
               each heading waits for the reader.
             </li>
             <li>
-              <a href="kits/scrolltrigger-demos/02-scrub.html">Scrub</a>: the
+              <a href="kits/scrolltrigger-demos/02-scrub/index.html">Scrub</a>: the
               reader's scroll drives it.
             </li>
             <li>
-              <a href="kits/scrolltrigger-demos/03-try-the-values.html"
+              <a href="kits/scrolltrigger-demos/03-try-the-values/index.html"
                 >Try the values</a
               >: change <code>start</code> and <code>end</code> and watch the
               markers move.
             </li>
             <li>
-              <a href="kits/scrolltrigger-demos/04-held-picture.html"
+              <a href="kits/scrolltrigger-demos/04-held-picture/index.html"
                 >Held picture</a
               >: Granby Street in Leicester, then and now. A swap, a stagger,
               a slide, and two changes in order.
@@ -791,7 +793,7 @@ scrub: true,</code></pre>
 
         <p>
           <strong>See it working:</strong>
-          <a href="kits/scrolltrigger-demos/04-held-picture.html">demo 4, held picture</a>.
+          <a href="kits/scrolltrigger-demos/04-held-picture/index.html">demo 4, held picture</a>.
           Two photos of Granby Street in Leicester, a century apart, held
           while five beats scroll past: a swap, a stagger, a slide, and two
           changes in order, with the code beside each beat. It is in the
@@ -841,7 +843,7 @@ scrub: true,</code></pre>
             trigger. Each <code>.from()</code> starts when the one before it
             finishes. Beat 05 of demo 4 does this.
           </p>
-          <pre><code>var tl = gsap.timeline({
+          <pre><code>const tl = gsap.timeline({
   scrollTrigger: {
     trigger: "#beat-05-in-order",
     start: "top center",

@@ -1424,6 +1424,20 @@ details p {
   width: 70%;
 }
 
+/* Week 9: a slider handle in a Figma frame, before and after the reader drags it */
+.canvas__handle {
+  top: 5%;
+  bottom: 5%;
+  left: 50%;
+  width: 1.2%;
+  min-width: 2px;
+  background: var(--ink-quiet);
+}
+.canvas__handle--moved {
+  left: 80%;
+  background: var(--accent);
+}
+
 /* Screenshots on white need an edge on the near-white page */
 .duo--shots img,
 .figure--shot img {

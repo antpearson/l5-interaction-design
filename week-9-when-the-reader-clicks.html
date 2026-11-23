@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Week 9: Handling clicks (scripting the interactive section) | Interaction Design</title>
+    <meta
+      name="description"
+      content="Week 9: the reader clicks and the page answers. One recipe for every click: hotspot, toggle, choice, pop-up, slider and drag."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
+    />
+    <link rel="stylesheet" href="tutorial.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="masthead">
+      <div class="wrap">
+        <p class="masthead__week">Week 9</p>
+        <h1>Handling clicks (scripting the interactive section)</h1>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <main id="main" class="prose">
+        <p class="lede">
+          Last week your page started to move as the reader scrolled. Today
+          we're going to look at the interaction and specifically how to get
+          something to respond to a click. By the break, everyone should know
+          how to set up a button in their page, in the beat where their reader
+          clicks. First we'll get it to print a message to the console in the
+          dev tools and then we'll look at how to make it do what your
+          storyboard says, and I will come round.
+        </p>
+
+        <p>
+          You do not need lots of these. One click that your story needs, done
+          well, is enough.
+        </p>
+
+        <aside class="brief" aria-labelledby="brief-heading">
+          <p class="brief__label">From the assignment brief</p>
+          <h2 id="brief-heading" class="brief__title">
+            One moment where the reader acts
+          </h2>
+          <p>
+            Scroll is your primary input, but a page that merely plays a movie
+            as the reader scrolls is motion design, not interaction design. Your
+            narrative must include at least one designed moment of genuine
+            interaction (a hotspot, a toggle, a before/after slider, a real
+            choice) where the reader acts and the piece responds.
+          </p>
+          <p class="brief__foot">
+            Without one, your build mark cannot reach a 2:1. Today's demos cover
+            those four, plus a pop-up and a slider bar you can drag.
+          </p>
+        </aside>
+
+        <div class="box">
+          <p class="box__title">Today's code is ready to download</p>
+          <p>
+            <a href="kits/click-demos.zip"><strong>click-demos.zip</strong></a>
+            holds six demos, one for each kind of click in the brief, plus a
+            pop-up and a bar you drag. Each demo is a folder laid out like your
+            own project: <code>index.html</code>, <code>css/style.css</code>,
+            <code>js/main.js</code> and <code>images</code>. Unzip it, open the
+            folder in VS Code, and copy what you need into your own files.
+          </p>
+          <ol>
+            <li>
+              <a href="kits/click-demos/01-hotspot/index.html">Hotspot</a>:
+              click a year on the hotel and its note appears.
+            </li>
+            <li>
+              <a href="kits/click-demos/02-toggle/index.html">Toggle</a>: a
+              click plays an animation, and another plays it back.
+            </li>
+            <li>
+              <a href="kits/click-demos/03-choice/index.html">Choice</a>: two
+              buttons, two outcomes.
+            </li>
+            <li>
+              <a href="kits/click-demos/04-pop-up/index.html">Pop-up</a>: a box
+              that opens over the page, and a fold-out that needs no script.
+            </li>
+            <li>
+              <a href="kits/click-demos/05-slider/index.html">Slider</a>: slide
+              to compare 1903 and 2009.
+            </li>
+            <li>
+              <a href="kits/click-demos/06-drag-the-bar/index.html"
+                >Drag the bar</a
+              >: grab the bar on the picture itself and drag it.
+            </li>
+          </ol>
+        </div>
+
+        <h2 id="glance">Session at a glance</h2>
+
+        <ol class="runsheet">
+          <li>
+            <a href="#part1"><strong>A button that works</strong></a>
+          </li>
+        </ol>
+
+        <p class="runsheet-break">Break</p>
+
+        <ol class="runsheet" start="2">
+          <li>
+            <a href="#part2"><strong>Make it do something</strong></a>
+          </li>
+          <li>
+            <a href="#part3"><strong>Build your click</strong></a>
+          </li>
+          <li>
+            <a href="#part4">Before you go</a>
+          </li>
+        </ol>
+
+        <p class="runsheet-also">
+          Also on this page: <a href="#stuck">If you get stuck</a> &middot;
+          <a href="#resources">Resources</a>
+        </p>
+
+        <!-- ==================================================================== -->
+        <div class="part" id="part1">
+          <p class="part__label">Part one</p>
+          <h2>A button that works</h2>
+        </div>
+
+        <p>
+          Every click on your page is the same three things: a button in your
+          HTML, a listener in your script that waits for it, and the change it
+          makes. Before the break, get the first two working. The change can
+          come after.
+        </p>
+
+        <h3 id="the-button">1 The button</h3>
+
+        <p>
+          Find the beat on your storyboard where your reader clicks. Make sure
+          your skeleton page has that beat, then put a button in it with the
+          words your reader will click.
+        </p>
+
+        <p class="filename">index.html, in the beat where your reader clicks</p>
+        <pre tabindex="0"><code>&lt;div class="beat" id="beat-03-the-hotel"&gt;
+  &lt;p&gt;Click a year to see what happened here.&lt;/p&gt;
+  &lt;button type="button" id="button-1898"&gt;1898&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+
+        <p>
+          Use a real <code>&lt;button&gt;</code>, never a
+          <code>&lt;div&gt;</code> or a picture with a click on it. A button
+          works from the keyboard and with a screen reader without any extra
+          code.
+        </p>
+
+        <h3 id="the-listener">2 The listener</h3>
+
+        <p class="filename">js/main.js, at the bottom</p>
+        <pre
+          tabindex="0"
+        ><code>const button1898 = document.querySelector("#button-1898");
+
+button1898.addEventListener("click", function () {
+  console.log("1898 was clicked");
+});</code></pre>
+
+        <p>
+          <code>document.querySelector()</code> finds something on your page,
+          written as you would in CSS: a <code>#</code> and its id.
+          <code>addEventListener("click", …)</code> waits for a click on it.
+          Everything between the curly brackets happens when the click comes.
+        </p>
+
+        <p>
+          Open the console (in Chrome: View, Developer, JavaScript Console) and
+          click your button. The message appears every time you click. Your
+          <code>main.js</code> has had a <code>console.log</code> in it since
+          Week 1; this one waits for a click.
+        </p>
+
+        <div class="activity" id="task-1">
+          <p class="activity__kicker">
+            Task 1 &middot; 30 minutes &middot; on your own project &middot;
+            everyone, before the break
+          </p>
+          <h3>A button that works</h3>
+          <ol class="steps">
+            <li>
+              On your storyboard, find the beat where your reader clicks. If
+              there is more than one, start with one.
+            </li>
+            <li>
+              In your skeleton page, check that beat is there, with its id.
+            </li>
+            <li>
+              Put a <code>&lt;button&gt;</code> in it, with the words your
+              reader will click.
+            </li>
+            <li>
+              Add the listener at the bottom of <code>main.js</code>, with a
+              <code>console.log</code>.
+            </li>
+            <li>
+              Open the console and click. Then press Tab until the button is
+              outlined and press Return: the message should appear again.
+            </li>
+            <li>Commit as <strong>first button</strong> and sync.</li>
+          </ol>
+          <p>
+            Stuck? Check <a href="#stuck">If you get stuck</a>, then put your
+            hand up.
+          </p>
+        </div>
+
+        <p class="runsheet-break">Break</p>
+
+        <!-- ==================================================================== -->
+        <div class="part" id="part2">
+          <p class="part__label">Part two</p>
+          <h2>Make it do something</h2>
+        </div>
+
+        <p>
+          When your button logs its message, swap the
+          <code>console.log</code> for the change your storyboard shows. The
+          simplest change shows something that was hidden.
+        </p>
+
+        <figure class="figure figure--shot">
+          <img
+            src="images/week-9/demo-hotspot.jpg"
+            width="1280"
+            height="800"
+            alt="Demo 1: Granby Street in 2009, held behind a card of text. Three round buttons sit on the Grand Hotel, labelled 1898, 1909 and 1915. Two are open, with notes beside them: The Grand Hotel opens, and Winston Churchill stays here."
+            loading="lazy"
+          />
+          <figcaption class="video__caption">
+            <strong>Demo 1, hotspot.</strong> Three buttons on last week's held
+            photo. Click a year and its note appears; click again and it goes.
+            Try it from the keyboard too: Tab to a year, then Return.
+          </figcaption>
+        </figure>
+
+        <h3 id="the-change">Show something</h3>
+
+        <p>Put the thing to show in your HTML, beside the button.</p>
+
+        <p class="filename">index.html</p>
+        <pre
+          tabindex="0"
+        ><code>&lt;button type="button" id="button-1898" aria-expanded="false"&gt;1898&lt;/button&gt;
+&lt;p id="note-1898"&gt;The Grand Hotel opens.&lt;/p&gt;</code></pre>
+
+        <p class="filename">js/main.js, replacing your listener</p>
+        <pre
+          tabindex="0"
+        ><code>const button1898 = document.querySelector("#button-1898");
+const note1898 = document.querySelector("#note-1898");
+
+note1898.hidden = true;                // the script hides it
+
+button1898.addEventListener("click", function () {
+  note1898.hidden = !note1898.hidden;  // ! means "not": shown becomes hidden, and back
+  button1898.setAttribute("aria-expanded", !note1898.hidden);  // tells a screen reader it is open
+});</code></pre>
+
+        <p>
+          Your script does the hiding, not your CSS. If the script never runs,
+          the reader still sees the note. It is the same rule as
+          <code>gsap.from()</code> last week.
+        </p>
+
+        <div class="box box--note" id="pass-through">
+          <p class="box__title">A button on a held picture will not click</p>
+          <p>
+            Your beats sit in front of the held picture, so they catch every
+            click first. These two lines let clicks through the empty space in a
+            beat. Anything inside the beat still catches its own.
+          </p>
+          <pre tabindex="0"><code>/* In css/style.css, under YOUR STYLES.
+   CLICKS: let them through a beat to the held picture */
+.beat { pointer-events: none; }
+.beat &gt; * { pointer-events: auto; }</code></pre>
+        </div>
+
+        <h3 id="play">Play an animation on a click</h3>
+
+        <p>
+          When the change is movement, use last week's
+          <code>gsap.from()</code> and add one line: <code>paused: true</code>.
+          Instead of waiting for a scroll, it waits for a click.
+        </p>
+
+        <p class="filename">js/main.js</p>
+        <pre tabindex="0"><code>const swap = gsap.from("#pic-1900s", {
+  opacity: 0,
+  duration: 1,
+  paused: true          // hidden now; plays when it is told to
+});
+
+document.querySelector("#button-then").addEventListener("click", function () {
+  swap.play();
+});
+
+document.querySelector("#button-now").addEventListener("click", function () {
+  swap.reverse();
+});</code></pre>
+
+        <p>
+          As last week, your CSS holds where things end up and
+          <code>gsap.from()</code> holds where they start. With no script, the
+          reader sees how it ends.
+        </p>
+
+        <div class="table-scroll" tabindex="0">
+          <table>
+            <caption>
+              Pick one for each button.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">In the listener</th>
+                <th scope="col">What it does</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>swap.play()</code></td>
+                <td>plays it forwards, once</td>
+              </tr>
+              <tr>
+                <td><code>swap.reverse()</code></td>
+                <td>plays it backwards, to the start</td>
+              </tr>
+              <tr>
+                <td><code>swap.restart()</code></td>
+                <td>
+                  plays it from the start on every click: a dice roll, a spray,
+                  a flash
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          <strong>See it working:</strong>
+          <a href="kits/click-demos/02-toggle/index.html">demo 2, toggle</a>.
+        </p>
+
+        <div class="box box--note">
+          <p class="box__title">Two changes, one click</p>
+          <p>
+            A <code>timeline</code>, as in Week 8's demo 4, takes
+            <code>paused: true</code> too. Each <code>.from()</code> starts when
+            the one before it finishes. Then call <code>tl.play()</code> in the
+            listener.
+          </p>
+          <pre tabindex="0"><code>const tl = gsap.timeline({ paused: true });
+tl.from("#pic-1900s", { opacity: 0, duration: 1 })
+  .from("#caption", { opacity: 0, y: 40 });</code></pre>
+        </div>
+
+        <!-- ==================================================================== -->
+        <div class="part" id="part3">
+          <p class="part__label">Part three</p>
+          <h2>Build your click</h2>
+        </div>
+
+        <p>
+          Start from your Figma frames: the beat as the reader arrives, and
+          beside it the same beat after they click. If you have not drawn the
+          second frame yet, draw it first.
+        </p>
+
+        <figure class="figure">
+          <div
+            class="canvas"
+            role="img"
+            aria-label="Two Figma frames for one interaction in the bank story, each with notes to its right. beat-07-then-now shows a picture with a slider handle in the middle and a card of text. beat-07-then-now-after shows the same frame with the handle dragged most of the way to the right, picked out in blue."
+          >
+            <div class="canvas__section">
+              <p class="canvas__label">chapter-3-inside</p>
+              <div class="canvas__row">
+                <span class="canvas__name">beat-07-then-now</span>
+                <span></span>
+                <span></span>
+                <span class="canvas__screen"
+                  ><span class="canvas__pic"></span
+                  ><span class="canvas__handle"></span
+                  ><span class="canvas__card"></span
+                ></span>
+                <span></span>
+                <span class="canvas__notes">Notes<i></i><i></i><i></i></span>
+              </div>
+              <div class="canvas__row">
+                <span class="canvas__name">beat-07-then-now-after</span>
+                <span></span>
+                <span></span>
+                <span class="canvas__screen"
+                  ><span class="canvas__pic"></span
+                  ><span class="canvas__handle canvas__handle--moved"></span
+                  ><span class="canvas__card"></span
+                ></span>
+                <span></span>
+                <span class="canvas__notes">Notes<i></i><i></i><i></i></span>
+              </div>
+            </div>
+          </div>
+          <figcaption class="video__caption">
+            <strong>Two frames for one interaction</strong>, from the bank
+            story. Beat 07 as the reader arrives, then the same beat after they
+            have dragged the slider. Blue: what the reader changed. The notes
+            say what they click or drag, what changes, and what a second go
+            does.
+          </figcaption>
+        </figure>
+
+        <p>
+          Then find your click in the table and open its demo. Each one is the
+          same recipe with a different change. Copy from it, then change the ids
+          and the pictures to yours.
+        </p>
+
+        <div class="table-scroll" tabindex="0">
+          <table>
+            <caption>
+              Your Figma frames, and the demo to start from.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Your reader</th>
+                <th scope="col">Start from</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>clicks something in the picture, and a note appears</td>
+                <td>
+                  <a href="kits/click-demos/01-hotspot/index.html">1 Hotspot</a>
+                </td>
+              </tr>
+              <tr>
+                <td>clicks, and something moves, swaps or drops in</td>
+                <td>
+                  <a href="kits/click-demos/02-toggle/index.html">2 Toggle</a>
+                </td>
+              </tr>
+              <tr>
+                <td>chooses, and each choice shows something different</td>
+                <td>
+                  <a href="kits/click-demos/03-choice/index.html">3 Choice</a>
+                </td>
+              </tr>
+              <tr>
+                <td>opens a box with more detail</td>
+                <td>
+                  <a href="kits/click-demos/04-pop-up/index.html">4 Pop-up</a>
+                </td>
+              </tr>
+              <tr>
+                <td>opens a word to see what it means</td>
+                <td>
+                  <a
+                    href="kits/click-demos/04-pop-up/index.html#beat-03-fold-out"
+                    >4 Pop-up</a
+                  >, the fold-out
+                </td>
+              </tr>
+              <tr>
+                <td>slides a slider to compare, or to move something along</td>
+                <td>
+                  <a href="kits/click-demos/05-slider/index.html">5 Slider</a>
+                </td>
+              </tr>
+              <tr>
+                <td>grabs something on the picture and drags it</td>
+                <td>
+                  <a href="kits/click-demos/06-drag-the-bar/index.html"
+                    >6 Drag the bar</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          If yours is not in the table, show me and we will find the closest.
+        </p>
+
+        <h3 id="choice">A choice</h3>
+
+        <figure class="figure figure--shot">
+          <img
+            src="images/week-9/demo-choice.jpg"
+            width="1280"
+            height="800"
+            alt="Demo 3: a card asks what opened upstairs at the Grand Hotel in 1915, with two buttons, A swimming pool and A cinema. Below them the answer reads: Yes. In 1915 a cinema opened upstairs. A marker on the hotel reads 1915. A cinema opens upstairs."
+            loading="lazy"
+          />
+          <figcaption class="video__caption">
+            <strong>Demo 3, choice.</strong> Two buttons, two outcomes. Either
+            one also brings a marker in on the picture.
+          </figcaption>
+        </figure>
+
+        <p>
+          The script hides both outcomes. Each button shows its own outcome and
+          hides the other.
+        </p>
+
+        <p class="filename">js/main.js</p>
+        <pre
+          tabindex="0"
+        ><code>document.querySelector("#choose-pool").addEventListener("click", function () {
+  outcomePool.hidden = false;     // show this one
+  outcomeCinema.hidden = true;    // hide the other
+  marker.play();                  // and play something in the picture
+});</code></pre>
+
+        <p>
+          Put the outcomes inside <code>&lt;div aria-live="polite"&gt;</code>
+          and a screen reader reads each one out as it appears.
+        </p>
+
+        <h3 id="pop-up">A pop-up</h3>
+
+        <p>
+          A <code>&lt;dialog&gt;</code> opens over the page with
+          <code>showModal()</code> and shuts with <code>close()</code>. The
+          browser does the rest: Esc closes it, and the page behind cannot be
+          clicked while it is open.
+        </p>
+
+        <p class="filename">index.html</p>
+        <pre tabindex="0"><code>&lt;dialog id="postcard"&gt;
+  &lt;img src="images/postcard.jpg" alt="…"&gt;
+  &lt;p&gt;Granby Street, about 1903.&lt;/p&gt;
+  &lt;button type="button" id="close-postcard"&gt;Close&lt;/button&gt;
+&lt;/dialog&gt;</code></pre>
+
+        <p>
+          With no script it never opens, so nothing your story needs should be
+          only in a pop-up.
+        </p>
+
+        <p>
+          To explain a single word, use a <code>&lt;details&gt;</code>
+          instead. It folds open with no script at all.
+        </p>
+
+        <pre tabindex="0"><code>&lt;details&gt;
+  &lt;summary&gt;Ramada&lt;/summary&gt;
+  &lt;p&gt;A brand of hotels.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+
+        <h3 id="slider">A slider</h3>
+
+        <p>
+          Demo 5 uses <code>&lt;input type="range"&gt;</code>, a slider the
+          browser draws for you. It works with a mouse, a finger and the arrow
+          keys. It sends <code>"input"</code> rather than
+          <code>"click"</code> every time it moves, and
+          <code>slider.value</code> says where it is, from 0 to 100. To move
+          something along a line, set its position from it:
+          <code>marker.style.left = slider.value + "%";</code>
+        </p>
+
+        <p>
+          Demo 6 lets the reader grab the bar on the picture itself. It takes
+          three listeners: press on the bar, move, let go. It keeps the slider
+          too, because some readers cannot drag: anyone using the keyboard, and
+          some people who cannot hold a mouse button down. If your reader drags
+          something, give them a slider or buttons that do the same job.
+        </p>
+
+        <div class="box box--note">
+          <p class="box__title">Does it count?</p>
+          <p>
+            The test for a genuine interaction: the reader's action changes what
+            they see, and a different reader could do it differently. A button
+            that only says &ldquo;next&rdquo; fails it: every reader gets the
+            same thing, and nobody chose anything.
+          </p>
+        </div>
+
+        <div class="activity" id="task-2">
+          <p class="activity__kicker">
+            Task 2 &middot; 60 minutes &middot; on your own project
+          </p>
+          <h3>Build your click</h3>
+          <ol class="steps">
+            <li>
+              In Figma, draw the frame for after the click, if it is not there
+              yet. Give it the beat's name with <strong>-after</strong> on the
+              end, and save a named version.
+            </li>
+            <li>Open the demo that matches your Figma frames.</li>
+            <li>
+              Copy what you need from its <code>index.html</code> into yours,
+              and change the ids to yours.
+            </li>
+            <li>
+              Copy its <code>js/main.js</code> into the bottom of yours, and
+              change the ids to match.
+            </li>
+            <li>
+              Copy the styles you need from its <code>css/style.css</code> into
+              yours, under YOUR STYLES, then make them look like your design.
+            </li>
+            <li>Click it with the mouse, then try it from the keyboard.</li>
+            <li>Does a second click do what your Figma notes say?</li>
+            <li>Commit as <strong>my click</strong> and sync.</li>
+          </ol>
+          <p>
+            I will come round. Show me your Figma frames first, then the page.
+          </p>
+        </div>
+
+        <!-- ==================================================================== -->
+        <div class="part" id="part4">
+          <p class="part__label">Part four</p>
+          <h2>Before you go</h2>
+        </div>
+
+        <div class="box box--task">
+          <ul class="checklist">
+            <li>
+              <strong>first button</strong> committed and synced: clicking it
+              logs a message in the console.
+            </li>
+            <li>
+              <strong>my click</strong> committed and synced too, if you got
+              that far.
+            </li>
+            <li>
+              Figma: the after frame beside your click's beat, and a named
+              version.
+            </li>
+            <li>Any AI use today is in your AI-use log.</li>
+          </ul>
+        </div>
+
+        <p>
+          <strong>Before the next session:</strong> if your button only logs a
+          message, make it do what your Figma frame shows, starting from the
+          matching demo in the table.
+        </p>
+
+        <!-- ==================================================================== -->
+        <h2 id="stuck">If you get stuck</h2>
+
+        <details>
+          <summary>Nothing appears in the console when I click</summary>
+          <p>
+            Reload the page with the console open. Can you see
+            <em>main.js is connected</em>? If not, your script is not linked.
+            Red in the console? <em>Cannot read properties of null</em> means
+            <code>querySelector</code> found nothing: check that the id in your
+            script matches the id in your HTML, with a <code>#</code> in front.
+          </p>
+        </details>
+
+        <details>
+          <summary>My button on the held picture will not click</summary>
+          <p>
+            Add the two lines from
+            <a href="#pass-through"
+              >A button on a held picture will not click</a
+            >
+            to your CSS.
+          </p>
+        </details>
+
+        <details>
+          <summary>The note shows before I click</summary>
+          <p>
+            Is <code>note.hidden = true;</code> in your script? If your CSS
+            gives the note a <code>display</code>, that beats
+            <code>hidden</code>: add
+            <code>[hidden] { display: none !important; }</code> to your CSS.
+          </p>
+        </details>
+
+        <details>
+          <summary>It plays once, then never again</summary>
+          <p>
+            <code>play()</code> only plays forwards, once. Use
+            <code>restart()</code> to play it on every click, or a second button
+            with <code>reverse()</code>.
+          </p>
+        </details>
+
+        <details>
+          <summary>The pop-up will not open</summary>
+          <p>
+            Is it <code>showModal()</code>, with a capital M? Does the id match
+            your <code>&lt;dialog&gt;</code>?
+          </p>
+        </details>
+
+        <details>
+          <summary>Something else</summary>
+          <p>
+            Ask in the class, or email
+            <a href="mailto:a.m.pearson@leedsbeckett.ac.uk"
+              >a.m.pearson@leedsbeckett.ac.uk</a
+            >.
+          </p>
+        </details>
+
+        <!-- ==================================================================== -->
+        <h2 id="resources">Resources</h2>
+
+        <ul class="cards">
+          <li>
+            <a class="card" href="kits/click-demos/index.html">
+              <span class="card__title">Click demos</span>
+              <span class="card__meta">Kit &middot; six demos</span>
+              <p>Hotspot, toggle, choice, pop-up, slider and drag.</p>
+            </a>
+          </li>
+          <li>
+            <a
+              class="card"
+              href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events"
+            >
+              <span class="card__title">Introduction to events</span>
+              <span class="card__meta">MDN</span>
+              <p>What a listener is, starting with a button and a click.</p>
+            </a>
+          </li>
+          <li>
+            <a
+              class="card"
+              href="https://gsap.com/resources/getting-started/control"
+            >
+              <span class="card__title">Control and callbacks</span>
+              <span class="card__meta">GSAP guide</span>
+              <p>
+                <code>play()</code>, <code>reverse()</code>,
+                <code>restart()</code> and the rest.
+              </p>
+            </a>
+          </li>
+          <li>
+            <a
+              class="card"
+              href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog"
+            >
+              <span class="card__title">The dialog element</span>
+              <span class="card__meta">MDN</span>
+              <p>
+                <code>showModal()</code>, <code>close()</code>, and styling the
+                backdrop.
+              </p>
+            </a>
+          </li>
+          <li>
+            <a class="card" href="week-8-making-it-move.html">
+              <span class="card__title">Making it move</span>
+              <span class="card__meta">Week 8</span>
+              <p><code>gsap.from()</code>, the held picture, and timelines.</p>
+            </a>
+          </li>
+        </ul>
+      </main>
+    </div>
+
+    <footer class="colophon">
+      <div class="wrap">
+        <p>
+          <strong>Interaction Design</strong> &middot; Level 5 &middot; BSc
+          (Hons) Content Creation &middot; Leeds School of Arts, Leeds Beckett
+          University
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

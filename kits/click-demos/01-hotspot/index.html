@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Demo 1: Hotspot | Click demos</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="intro">
+      <h1>1 Hotspot</h1>
+      <p>
+        Click a year on the hotel and its note appears. Click it again and the
+        note goes.
+      </p>
+      <p>
+        The photo is held, as in last week's demo 4. The years are real buttons,
+        so they work from the keyboard too: press Tab to reach one, then Return.
+      </p>
+      <p class="down">Scroll down to the picture.</p>
+    </header>
+
+    <main>
+      <section class="chapter" id="chapter-1-granby-street">
+        <div class="held">
+          <img
+            src="images/granby-street-2009.jpg"
+            alt="Granby Street, Leicester, in 2009. On the left, shops including Benny's Chicken and City Surplus below a tall red-brick hotel with a canopy marked Hotel. Cars and a white van in the road."
+            width="2400"
+            height="1328"
+          />
+          <div class="layer">
+            <div class="hotspot" id="hotspot-1898">
+              <button type="button" id="button-1898" aria-expanded="false">
+                1898
+              </button>
+              <p class="note" id="note-1898">The Grand Hotel opens.</p>
+            </div>
+            <div class="hotspot" id="hotspot-1909">
+              <button type="button" id="button-1909" aria-expanded="false">
+                1909
+              </button>
+              <p class="note" id="note-1909">Winston Churchill stays here.</p>
+            </div>
+            <div class="hotspot" id="hotspot-1915">
+              <button type="button" id="button-1915" aria-expanded="false">
+                1915
+              </button>
+              <p class="note" id="note-1915">A cinema opens upstairs.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="beat" id="beat-01-the-hotel">
+          <div class="card">
+            <h2>Beat 01: three hotspots</h2>
+            <p class="story">
+              Granby Street, Leicester, 2009. The tall building is the Grand
+              Hotel. Click a year to see what happened behind its windows.
+            </p>
+            <p>
+              Each year is a <code>&lt;button&gt;</code> on the held picture.
+              Each note is a plain <code>&lt;p&gt;</code> that the script hides
+              as the page loads.
+            </p>
+          </div>
+        </div>
+
+        <div class="beat" id="beat-02-the-code">
+          <div class="card">
+            <h2>The code for one hotspot</h2>
+            <p>In <code>index.html</code>, inside the held picture:</p>
+            <pre tabindex="0"><code>&lt;button type="button" id="button-1898"
+  aria-expanded="false"&gt;1898&lt;/button&gt;
+&lt;p id="note-1898"&gt;The Grand Hotel opens.&lt;/p&gt;</code></pre>
+            <p>In <code>js/main.js</code>:</p>
+            <pre
+              tabindex="0"
+            ><code>const button1898 = document.querySelector("#button-1898");
+const note1898 = document.querySelector("#note-1898");
+
+<b>note1898.hidden = true;</b> <i>// no script, no hiding</i>
+
+button1898.addEventListener("click", function () {
+  <b>note1898.hidden = !note1898.hidden;</b>
+  button1898.setAttribute("aria-expanded", !note1898.hidden);
+});</code></pre>
+            <p>1909 and 1915 are the same block, with their own ids.</p>
+          </div>
+        </div>
+
+        <div class="beat" id="beat-03-the-css">
+          <div class="card">
+            <h2>Why the clicks reach the picture</h2>
+            <p>
+              In <code>css/style.css</code>. The beats sit in front of the held
+              picture, so they would catch every click. These two lines let
+              clicks through the empty space in a beat. Anything inside the beat
+              still catches its own.
+            </p>
+            <pre tabindex="0"><code>.beat { pointer-events: none; }
+.beat &gt; * { pointer-events: auto; }</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="end">
+      <p>End of the demo.</p>
+      <p class="credits">
+        Photo:
+        <a
+          href="https://commons.wikimedia.org/wiki/File:Granby_Street_Leicester_c1903_and_2009.jpg"
+          >Granby Street, Leicester</a
+        >, 16 August 2009, by NotFromUtrecht (<a
+          href="https://creativecommons.org/licenses/by-sa/3.0/"
+          >CC BY-SA 3.0</a
+        >), via Wikimedia Commons. Cropped and resized.
+      </p>
+      <p class="credits">
+        The story is true. Sources:
+        <a
+          href="https://storyofleicester.info/leisure-entertainment/grand-hotel-and-general-newsroom"
+          >Story of Leicester</a
+        >,
+        <a href="https://en.wikipedia.org/wiki/The_Grand_Hotel_Leicester"
+          >Wikipedia</a
+        >,
+        <a href="https://cinematreasures.org/theaters/50167">Cinema Treasures</a
+        >.
+      </p>
+      <p>
+        <a href="../01-hotspot/index.html">1 Hotspot</a> &middot;
+        <a href="../02-toggle/index.html">2 Toggle</a> &middot;
+        <a href="../03-choice/index.html">3 Choice</a> &middot;
+        <a href="../04-pop-up/index.html">4 Pop-up</a> &middot;
+        <a href="../05-slider/index.html">5 Slider</a> &middot;
+        <a href="../06-drag-the-bar/index.html">6 Drag the bar</a> &middot;
+        <a href="../index.html">All demos</a>
+      </p>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>
